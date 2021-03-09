@@ -27,7 +27,6 @@
         margin-left: 11.4166vw;
         margin-right: 1.5625vw;
         float: left;
-        color: $white;
 
         .img-password {
             float: left;
@@ -64,6 +63,10 @@
             outline: none;
         }
 
+        .input-email:disabled {
+            opacity: 0.5;
+        }
+
         .input-password {
             padding: 0.025vw;
             float: left;
@@ -85,6 +88,10 @@
             border-left: 0.1562vw solid white;
             outline: none;
             background-color: transparent;
+        }
+
+        .input-password:disabled {
+            opacity: 0.5;
         }
 
         ::placeholder {
