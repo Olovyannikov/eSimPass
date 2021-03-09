@@ -4,7 +4,7 @@ import * as rxaj from "rxjs/ajax"
 import * as rx from 'rxjs/Rx'
 import {v4 as uuid} from "uuid"
 import { WebClientBase } from "./generated/proto.web";
-import { Logger } from "@glonassmobile/codebase/client/Logger";
+import { Logger } from "@glonassmobile/codebase-web/Logger";
 
 export class Connection extends WebClientBase {
 

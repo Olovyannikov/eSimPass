@@ -1,5 +1,5 @@
-import { Logger } from "@glonassmobile/codebase/client/Logger";
-import { useEffectRx } from "@glonassmobile/codebase/client/useEffectRx";
+import { Logger } from "@glonassmobile/codebase-web/Logger";
+import { useEffectRx } from "@glonassmobile/codebase-web/useEffectRx";
 import * as React from "react";
 import { ListRatesResponse } from "../../../../../../../../generated/proto.web";
 import { Country } from "./country/Country";

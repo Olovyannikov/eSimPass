@@ -2,7 +2,7 @@ import { Store } from "redux";
 import { createStore } from "redux";
 import { doSetAuthenticated, setAuthenticatedCode, setAuthenticatedAction } from "./actions/setAuthenticated";
 import { State } from "./State";
-import { Action } from "@glonassmobile/codebase/client/Action";
+import { Action } from "@glonassmobile/codebase-web/Action";
 
 export const INITIAL_STATE : State = {
     auth : {},

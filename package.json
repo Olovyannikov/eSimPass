@@ -6,8 +6,8 @@
         "web": "webpack serve --config src/client/webpack.config.js --port 9999 --mode development"
     },
     "devDependencies": {
-        "@glonassmobile/codebase" : "1.0.14",
-        "@glonassmobile/codebase-web" : "1.0.14",
+        "@glonassmobile/codebase" : "1.0.15",
+        "@glonassmobile/codebase-web" : "1.0.15",
         "@types/node": "14.14.32",
         "@types/nodemailer": "6.4.0",
         "@types/react": "17.0.3",

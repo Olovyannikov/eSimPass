@@ -1,5 +1,5 @@
-import { Action } from "@glonassmobile/codebase/client/Action";
-import { createAction } from "@glonassmobile/codebase/client/createAction";
+import { Action } from "@glonassmobile/codebase-web/Action";
+import { createAction } from "@glonassmobile/codebase-web/createAction";
 import { State } from "./../State";
 import { INITIAL_STATE } from "./../StateApi";
 
