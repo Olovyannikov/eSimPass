@@ -23,7 +23,6 @@ build:
     stage: build
     script:
         - yarn
-        - yarn test
     artifacts:
         when: always
         paths:
