@@ -1,24 +1,25 @@
 import * as React from 'react';
 
 import { Spinner } from '../../components/spinner/Spinner';
-import { img_next, img_activeEye, img_disableEye } from '../../../../resources/images';
+import {img_next, img_activeEye, img_disableEye} from '../../../../resources/images';
+import { RegisterWebRequest } from '../../../../generated/proto.web';
 import { CONNECTION } from '../../../../Connection';
-import { LoginRequest } from '../../../../generated/proto.web';
 
-interface PasswordViewModeModel {
+interface PasswordViewModel {
     img : string;
     type : 'text' | 'password';
 }
 
-export const Login = () => {
+export const Registration = () => {
 
-    const [passwordViewMode, setPasswordViewMode] = React.useState<PasswordViewModeModel>({
+    const [passwordViewMode, setPasswordViewMode] = React.useState<PasswordViewModel>({
         img : img_activeEye,
-        type : 'password'
+        type : 'password',
     })
 
-    const email = React.useRef<HTMLInputElement>()
-    const password = React.useRef<HTMLInputElement>()
+    const email = React.useRef<HTMLInputElement>();
+    const password = React.useRef<HTMLInputElement>();
+    const passwordRepeat = React.useRef<HTMLInputElement>();
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
 
@@ -27,10 +28,10 @@ export const Login = () => {
             setPasswordViewMode(prev => ({
                 ...prev,
                 img : img_disableEye,
-                type : 'text'
+                type : 'text',
             }))
         } else {
-            setPasswordViewMode(prev =>({
+            setPasswordViewMode(prev => ({
                 ...prev,
                 img : img_activeEye,
                 type : 'password'
@@ -38,35 +39,33 @@ export const Login = () => {
         }
     }
 
-    const handleLogin = () => {
-        setInProgress(prev => prev = true);
-        
-        const subscription = CONNECTION.login(createLoginRequest())
-            
+    const handleRegister = () => {
+        setInProgress(prev => prev = true)
 
-            
+        const subscription = CONNECTION.registerWeb()
     }
 
     const showInProgress = () => {
         if (inProgress) {
-            return <Spinner/>
+            return <Spinner />
         } else {
-            return <img onClick={handleLogin} src={img_next} className='button-next' alt="Next"/>
+            return <img onClick={handleRegister} src={img_next} className='button-next' alt="Next"/>
         }
     }
 
-    const createLoginRequest = () : LoginRequest => ({
+    const createRegisterRequest = () : RegisterWebRequest => ({
         email : email.current.value,
-        password : password.current.value
+        password : password.current.value,
     })
 
     return (
-        <div className="Login" onClick={(e) => e.stopPropagation ()}>
+        <div className="Registration">
             <div className="title">Войти в личный кабинет</div>
             <div className="inputs-block">
                 <input ref={email} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
                 <input ref={password} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
-                <div onClick={handlePasswordMode} className="img-password">
+                <input ref={passwordRepeat} disabled={inProgress} required name='password' className='input-password' placeholder='Повторите пароль' type={passwordViewMode.type}/>
+                <div onClick={handleShowPassword} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>
                 {showInProgress()}

@@ -9,7 +9,6 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
 
     const showWizard = () => {
         if (props.showAuthWizard) {
-            
             return <Modals mode={props.showAuthWizard} />
         }
     }
