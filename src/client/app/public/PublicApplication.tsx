@@ -9,7 +9,8 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
 
     const showWizard = () => {
         if (props.showAuthWizard) {
-            return <Modals />
+            
+            return <Modals mode={props.showAuthWizard} />
         }
     }
 
@@ -23,7 +24,7 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
 
 
 const mapStateToProps = (state : State) => ({
-    showAuthWizard : state.showAuthWizard != null
+    showAuthWizard : state.showAuthWizard 
 })
 
 export const PublicApplication = connect(mapStateToProps)(PublicApplicationImpl)

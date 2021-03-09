@@ -19,6 +19,7 @@ reducersMap [hideAuthWizardCode] = doHideAuthWizard;
 const reducer = (state = INITIAL_STATE, action: Action<any>) : State => {
 
     const actionReducer = reducersMap[action.type]
+    console.log(action);
     
     if (actionReducer) {
         return actionReducer (state, action);
