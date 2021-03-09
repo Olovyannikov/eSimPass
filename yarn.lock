@@ -14,15 +14,15 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@glonassmobile/codebase-web@1.0.17":
-  version "1.0.17"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-1.0.17.tgz#ce77e89892c26f52651793cde2a07facef13b042"
-  integrity sha512-4nUe00aGQaLJWYc/TXKBBIideI13PXyf7ZAjPMkTVqCHqRyzgcpSVhrico4sBDDtLCDajl+57b7K0LtZz1N/2Q==
+"@glonassmobile/codebase-web@1.0.18":
+  version "1.0.18"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-1.0.18.tgz#f18b0846ec4f047c474f259aafa1ddb4829e9a6e"
+  integrity sha512-ov+jnKLAyuSbun3QC6I2xkZ97tqcGkYsqgYANqmwkxGEezyN0/ollfY5XxnEoLYDZNZMMk7Cf0m2OU+DUgauBQ==
 
-"@glonassmobile/codebase@1.0.17":
-  version "1.0.17"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.0.17.tgz#413c302dbb2c48b2ff6b3ffaf21370cacbd9b3cf"
-  integrity sha512-jL92BfvR3nYm1Pae3LqS08m5AJG/NK8eMFTUaT6/5nr/2g7Yzl4mmXALPc2XlkO2W4YRRTOrznOabrWc6elqlw==
+"@glonassmobile/codebase@1.0.18":
+  version "1.0.18"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.0.18.tgz#dba258d693bcd9d7d6e293bed1f4acc113024ba9"
+  integrity sha512-xfss//amuAGeACrSnc6hYoCswYGQTFF+vJGdC6ijVF8mbQugqmXkPkmujIjKs5Q1XpEJ8yHnquzMUGxiPV2fjw==
   dependencies:
     "@grpc/proto-loader" "0.5.6"
     axios "0.21.1"
@@ -2836,10 +2836,10 @@ html-entities@^1.3.1:
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.4.0.tgz#cfbd1b01d2afaf9adca1b10ae7dffab98c71d2dc"
   integrity sha512-8nxjcBcd8wovbeKx7h3wTji4e6+rhaVuPNpMqwWgnHh+N9ToqsCs6XztWRBPQ+UtzsoMAdKZtUENoVzU/EMtZA==
 
-html-loader@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-2.1.1.tgz#61174d43a4fe97b2a79c3b6206736e6725e13b97"
-  integrity sha512-L6HUVgr2aeGMyiool2raoBQb8Lue2UTAhUsHvsMLyNxfBHMtOz1NJL1GyE4VbyAoYBK5PJp1I9Aw+FqS3d2eTA==
+html-loader@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-2.1.2.tgz#17eb111441e863a9308071ed876b4ba861f143df"
+  integrity sha512-XB4O1+6mpLp4qy/3qg5+1QPZ/uXvWtO64hNAX87sKHwcHkp1LJGU7V3sJ9iVmRACElAZXQ4YOO/Lbkx5kYfl9A==
   dependencies:
     html-minifier-terser "^5.1.1"
     parse5 "^6.0.1"
@@ -2857,10 +2857,10 @@ html-minifier-terser@^5.0.1, html-minifier-terser@^5.1.1:
     relateurl "^0.2.7"
     terser "^4.6.3"
 
-html-webpack-plugin@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.3.0.tgz#9d93a547db34ac1f28b9f41fd8fe38a5d56770f3"
-  integrity sha512-BjtSQCy5J0e9EDV+NZ4i+w36N9avXfQDF4QoAV9YAECG50x6/2tfJkFb0ws9eTcszLdyg4vs6FI6hMgVzVoQqw==
+html-webpack-plugin@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.3.1.tgz#8797327548e3de438e3494e0c6d06f181a7f20d1"
+  integrity sha512-rZsVvPXUYFyME0cuGkyOHfx9hmkFa4pWfxY/mdY38PsBEaVNsRoA+Id+8z6DBDgyv3zaw6XQszdF8HLwfQvcdQ==
   dependencies:
     "@types/html-minifier-terser" "^5.0.0"
     html-minifier-terser "^5.0.1"

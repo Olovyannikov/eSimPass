@@ -6,8 +6,8 @@
         "web": "webpack serve --config src/client/webpack.config.js --port 9999 --mode development"
     },
     "devDependencies": {
-        "@glonassmobile/codebase": "1.0.17",
-        "@glonassmobile/codebase-web": "1.0.17",
+        "@glonassmobile/codebase": "1.0.18",
+        "@glonassmobile/codebase-web": "1.0.18",
         "@types/node": "14.14.32",
         "@types/nodemailer": "6.4.0",
         "@types/react": "17.0.3",
@@ -26,8 +26,8 @@
         "gulp": "4.0.2",
         "gulp-clean": "0.4.0",
         "gulp-replace": "1.0.0",
-        "html-loader": "2.1.1",
-        "html-webpack-plugin": "5.3.0",
+        "html-loader": "2.1.2",
+        "html-webpack-plugin": "5.3.1",
         "less": "4.1.1",
         "less-loader": "8.0.0",
         "node-sass": "5.0.0",
