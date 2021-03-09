@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package api;
+
+option java_package = "com.glonassmobile.toesim.client.api";
+
+import "codebase.proto";
+import "shared.proto";
+
+service Rate {
+    rpc listRates (ListRatesRequest) returns (ListRatesResponse);
+}
+
+message ListRatesRequest {
+    Int64Value seq = 1;
+}
+
+message ListRatesResponse {
+
+    message SuccessModel {
+
+        message RateModel {
+            
+            message PackModel {
+                double price = 1;
+                PACK_DURATION duration = 2;
+                int64 quota = 3;
+            }
+            
+            string rateId = 1;
+            string countryCode = 2;
+            string countryName = 3;
+            string operatorName = 4;
+            double price = 5;
+            Int32Value favoriteOrder = 6;
+            repeated PackModel packs = 7;
+        }
+
+        int64 seq = 1;
+        repeated RateModel rates = 2;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+    }
+}

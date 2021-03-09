@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { img_touch, img_travel, img_women, img_world } from '../../../../../images';
+import { img_touch, img_travel, img_women, img_world } from './../../../../../../resources/images';
 
 export const WhyBlock = () => {
     

@@ -1,41 +1,25 @@
 import * as React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { State } from '../redux/State';
 
 import { PublicApplication } from './public/PublicApplication';
-import { Cabinet } from './private/cabinet/Cabinet';
-import { State } from "./../redux/State";
-import { Modals } from './modals/Modals';
 
-const ApplicationImpl = ({auth, modal} : ReturnType<typeof mapStateToProps>) => {
-
-    const checkAuth = () => {
-        if (auth.login) {
-            return <Cabinet />
-        } else {
-            return <Redirect to='/' />
-        }
-    }
-
+const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
+    
     return (
         <Router>
             <Switch>
                 <Route exact path='/'>
                     <PublicApplication />
                 </Route>
-                <Route exact path='/cabinet'>
-                    {/* {checkAuth()} */}
-                    <Cabinet />
-                </Route>
             </Switch>
-            <Modals />
         </Router>
     )
 }
 
 const mapStateToProps = (state : State) => ({
-    auth : state.auth,
-    modal : state.modal,
+    authenticated : state.auth != null,
 })
 
 export const Application = connect(mapStateToProps)(ApplicationImpl)

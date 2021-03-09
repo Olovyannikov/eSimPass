@@ -1,0 +1,47 @@
+.LogoBlock {
+    
+    width: 100%;
+
+    td:nth-child(1) {
+        width: 100%;
+        div {
+            margin-left: 3vw;
+
+            .logo-block__text {
+                color: #ffffff;
+                max-width: 40.8vw;
+                font-size: 4.16vw;
+                font-weight: 700;
+            }
+            
+            .logo-block__connect {
+                margin-top: 1.5095vw;
+        
+                a {
+                    >div {
+                        height: 3.481vw;
+                        border-radius: 2.0405vw;
+                        border: 0.2604vw #ffffff solid;
+                        width: 15.7395vw;
+                        text-align: center;
+                        font-size: 1.302vw;
+                        font-weight: 500;
+                        line-height: 3.481vw;
+                        color: #ffffff;
+                        cursor: pointer;
+
+                    }
+                }
+            }              
+        }
+    }
+
+    img {
+        margin-right: 9.11vw;
+        width: 28.8vw;
+        height: 28.4vw;
+        float: right;
+
+    }      
+}
+

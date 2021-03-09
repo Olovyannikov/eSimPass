@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { openModal } from '../../../../../../../../../../codebase/utils';
+
 import { ListRatesResponse } from '../../../../../../../../../../generated/proto.web';
-import { img_planeBig } from '../../../../../../../../../images';
+import { img_planeBig } from './../../../../../../../../../../resources/images';
 
 import { Props } from '../CountryBlock';
 import { PackItem } from './item/PackItem';
@@ -24,7 +24,7 @@ export const PricesBlock = ({ rate }: Props) => {
                 <img src={img_planeBig} />
                 <div className="prices-block__connect">
                     <a>
-                        <div onClick={() => openModal('registration')}>
+                        <div>
                             Подключить
                         </div>
                     </a>

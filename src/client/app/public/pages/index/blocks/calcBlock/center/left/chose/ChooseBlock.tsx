@@ -1,5 +1,5 @@
 import * as React from "react";
-import { img_planeBig } from "./../../../../../../../../images";
+import { img_planeBig } from "./../../../../../../../../../resources/images";
 
 export const ChooseBlock = () => {
     return (

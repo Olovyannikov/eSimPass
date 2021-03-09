@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { openModal } from '../../../../../../codebase/utils';
 
-import { img_appstore, img_googlePlay, img_phone, img_qr } from '../../../../../images';
+
+import { img_appstore, img_googlePlay, img_phone, img_qr, img_appGallery } from './../../../../../../resources/images';
 
 export const TutorialBlock = () => {
 
@@ -24,9 +24,9 @@ export const TutorialBlock = () => {
                         <img className='tutorial-block__img_googlePlay' src={img_googlePlay} alt="Download Google Play"/>
                         <img className='tutorial-block__img_qr-img' src={img_qr} alt="QR"/>
                     </div>
-                    <div className="tutorial-block__get-qr modal">
-                        <div className="tutorial-block__apk"> <div>Скачать .apk</div></div>
-                        <div className='tutorial-block__getQr' onClick={() => openModal('registration')} > <div>Получить QR код сейчас</div></div>
+                    <div className="tutorial-block__qr">
+                        <img className='tutorial-block__img_googlePlay' src={img_appGallery} alt="Download Google Play"/>
+                        <img className='tutorial-block__img_qr-img' src={img_qr} alt="QR"/>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-/// <reference path="./test.d.ts" />
+/// <reference path="./resources/images.d.ts" />
 
 import * as React from "react";
 import { render } from "react-dom";

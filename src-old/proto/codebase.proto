@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package api;
+option java_package = "com.glonassmobile.toesim.client.api";
+
+message Empty {
+    
+}
+
+message StringValue {
+    string value = 1;
+}
+
+message Int32Value {
+    int32 value = 1;
+}
+
+message Int64Value {
+    int64 value = 1;
+}
+
+message BoolValue {
+    bool value = 1;
+}

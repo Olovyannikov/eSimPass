@@ -1,7 +1,6 @@
 import * as React from "react";
-import { openModal } from "../../../../../../codebase/utils";
 
-import { img_girl1 } from "../../../../../images";
+import { img_girl1 } from "../../../../../../resources/images";
 
 
 export const LogoBlock = () => {
@@ -17,7 +16,7 @@ export const LogoBlock = () => {
                             </div>
                             <div className="logo-block__connect">
                                 <a>
-                                    <div onClick={() => openModal('registration')}>
+                                    <div>
                                         Подключить
                                     </div>
                                 </a>

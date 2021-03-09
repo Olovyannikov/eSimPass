@@ -1,6 +1,6 @@
-@import './fonts/stylesheet.css';
 @import "./../../node_modules/flag-icon-css/css/flag-icon.css";
-@import './variables.scss';
+@import './resources/variables.scss';
+@import './resources/fonts.css';
 
 body, html { 
     height: 100%;
@@ -16,33 +16,9 @@ body, html {
     #root {
         height: 100%;
     }
-
-    .Modals {
-
-        &.active {
-            display: block;
-        }
-
-        display: none;
-        position: fixed; 
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        overflow: auto;
-        background: rgba(0,0,0,0.5);
-        z-index: 1050;
-        width: 100%;
-        height: 100%;
-    }
 }
 
 @import "./app/public/PublicApplication.scss";
-@import './app/private/cabinet/Cabinet.scss';
-@import './app/modals/Modals.scss';
-
-
-
 
 // SPINNER
 @keyframes lds-ring {
@@ -80,72 +56,3 @@ body, html {
         }
   }
   
-
-/*
-@import "./generated/sprite.css";
-
-.flag-icon-background {
-    background-size: contain;
-    background-position: 50%;
-    background-repeat: no-repeat;
-}
-//@for $i from 1 through 192 {
-
-    //@media screen and (min-width: $i * 10px) {
-      //$d: $i/192;
-        //$d: 1;
-
-        //@import './app/modal/Modal.scss';
-        //@import './app/private/cabinet/Cabinet.scss';
-        //@media all and (-ms-high-contrast:none), (-ms-high-contrast:active) {
-            
-
-            //.next {
-                //width: $d*80px!important;
-                //height: $d*80px!important;
-            //}
-        //}
-    //} 
-//}
-
-
-// @media screen and (max-width: 500px) {
-
-//     body {
-//         background: linear-gradient(24.79deg, #FF785A 0%, #FFF05A 100%);
-//     }
-        
-//     .PublicApplication {
-//         display: none;
-//     }
-// }
-
-// @media screen and (min-width: 500px) {
-
-//     body {
-//         background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
-//     }
-    
-//     .MobileApplication {
-//         display: none;
-//     }
-// }
-
-
-// @for $x from 10 through 89 {
-
-//     @media screen and (min-width: $x*10px) {
-//         $dx: $x/89;
-                
-//         @import "./app/mobile/MobileApplication.scss";
-        
-//         @for $y from 10 through 41 {
-//             @media screen and (min-height: $y*10px) {
-//                 $dy: $y/41;
-            
-
-//             }        
-//         }
-//     } 
-// }
-*/

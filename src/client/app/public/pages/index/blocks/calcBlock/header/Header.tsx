@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { Chooser } from "./chooser/Chooser";
-import { img_dividedLine, img_planeSmall } from "./../../../../../../images";
-import { ListRatesResponse } from "../../../../../../../generated/proto.web";
+import { img_dividedLine, img_planeSmall } from "./../../../../../../../resources/images";
+import { ListRatesResponse } from "./../../../../../../../generated/proto.web";
 
 interface Props {
     selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void

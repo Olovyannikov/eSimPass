@@ -1,0 +1,16 @@
+.Chooser {
+    position: absolute;
+    max-height: 26vw;
+    width:100%;
+    overflow: auto;
+    background: white;
+    border: 0.125vw solid black;
+    left: -0.1102vw;
+
+    .Country:hover {
+        color: #546c84;
+        background-color: rgba(194, 192, 192, 0.6);
+    }
+
+    @import "./country/Country.scss";
+}

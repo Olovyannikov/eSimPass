@@ -1,0 +1,18 @@
+.CalcBlock {
+    margin-left: 5.15vw;
+    margin-right: 4.95vw;
+    
+    >div:nth-child(1) {
+        @import "./header/Header.scss";
+    }
+    
+    @import "./center/CenterBlock.scss";
+
+    .calc-block__footer {
+        height: 2.7779vw;
+        background-color: #000000;
+        border-bottom-left-radius: 2.7812vw;
+        border-bottom-right-radius: 2.7812vw;
+        margin-bottom: 4.3609vw;
+    }
+}
