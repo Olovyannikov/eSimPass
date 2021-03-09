@@ -17,7 +17,13 @@ import planeSmall from "./img/plane-small.png"
 import dividedLine from './img/divided-line.png';
 import lupa from './img/lupa.png';
 import appGallery from './img/app-gallery.png';
+import next from './img/next.png';
+import activeEye from './img/active-eye.png';
+import disableEye from './img/disable-eye.png';
 
+export const img_activeEye = activeEye;
+export const img_disableEye = disableEye;
+export const img_next = next;
 export const img_appGallery  = appGallery;
 export const img_lupa = lupa;
 export const img_lk = lk

@@ -21,6 +21,14 @@ body, html {
 @import "./app/public/PublicApplication.scss";
 
 // SPINNER
+@keyframes lds-spinner {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 @keyframes lds-ring {
     0% {
         -moz-transform: rotate(0deg);

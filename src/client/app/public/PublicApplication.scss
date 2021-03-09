@@ -1,4 +1,5 @@
 .PublicApplication {
     @import "./pages/PagesHolder.scss";
-
+    @import './modals/Modals.scss';
+    @import './components/components.scss';
 }
