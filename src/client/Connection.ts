@@ -36,6 +36,7 @@ export class Connection extends WebClientBase {
                 'x-client-version': 'snapshot'
             }
         })
+        .delay (1000)
         .flatMap (response => {
             executed = true
 

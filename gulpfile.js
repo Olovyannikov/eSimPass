@@ -9,35 +9,7 @@ const proc = require('child_process');
 const packageJson = JSON.parse(fs.readFileSync("package.json"));
 
 var generateApi = require ('@glonassmobile/codebase/generator/generateApi').generate;
-
-const execute = (cb, command) => {
-    const cmd = command.split (" ");
-
-    const process = proc.spawn (cmd[0], cmd.slice (1, cmd.length))
-
-    process.stderr.setEncoding('utf8');
-
-    let error = ""
-
-    process.stderr.on('data', data => {
-        console.log (data)
-        error += data.toString ();
-    });
-
-
-    process.stdout.on('data', (buffer) => {
-        console.log (buffer.toString())
-    })
-
-    process.on ('exit', code => {
-        if (code > 0) {
-            cb (error)
-        }
-        else {
-            cb ()
-        }
-    })
-}
+var execute = require ('@glonassmobile/codebase/execute').execute;
 
 const clean = () => gulp.src([
     'build/*',
@@ -45,11 +17,7 @@ const clean = () => gulp.src([
 
 ], {read: false}).pipe(gulpClean());
 
-const createDirs = cb => {
-    fs.mkdirSync('src/client/generated', {recursive: true})
-    
-    return cb();
-};
+const createDirs = cb => fs.mkdir('src/client/generated', {recursive: true}, cb)
 
 const generateClientApi = cb => generateApi (cb, './src/proto', './src/client/generated', true);
 
@@ -61,7 +29,11 @@ exports.default = series(
     createDirs,
     clean,
     createDirs,
-    generateClientApi,
-    copyDockerToBuild,
-    compileWeb
+    parallel (
+        copyDockerToBuild,
+        series (
+            generateClientApi,
+            compileWeb
+        )
+    )
 )

@@ -1,9 +1,12 @@
+import * as rx from "rxjs/Rx"
 import * as React from 'react';
 
 import { Spinner } from '../../components/spinner/Spinner';
 import { img_next, img_activeEye, img_disableEye } from '../../../../resources/images';
 import { CONNECTION } from '../../../../Connection';
-import { LoginRequest } from '../../../../generated/proto.web';
+import { LoginRequest, LoginResponse } from '../../../../generated/proto.web';
+import { Logger } from "@glonassmobile/codebase-web/Logger";
+import { waitForClose } from "./../../../../utils";
 
 interface PasswordViewModeModel {
     img : string;
@@ -11,6 +14,14 @@ interface PasswordViewModeModel {
 }
 
 export const Login = () => {
+
+    const logger = new Logger ("LoginDialog")
+
+    const closedSubject = waitForClose ();
+
+    React.useEffect (() => {
+        return () => closedSubject.next ()
+    },[])
 
     const [passwordViewMode, setPasswordViewMode] = React.useState<PasswordViewModeModel>({
         img : img_activeEye,
@@ -41,10 +52,19 @@ export const Login = () => {
     const handleLogin = () => {
         setInProgress(prev => prev = true);
         
-        const subscription = CONNECTION.login(createLoginRequest())
-            
+        CONNECTION.login(createLoginRequest())
+            .do (parseLoginResponse)
+            .takeUntil (closedSubject)
+            .subscribe (logger.rx.subscribe ("Error logging in"))
+    }
 
-            
+    const parseLoginResponse = (response : LoginResponse) => {
+
+        if (response.invalidEmailOrPassword) {
+
+        }
+        
+        setInProgress(prev => prev = false);
     }
 
     const showInProgress = () => {
