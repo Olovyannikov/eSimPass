@@ -10,10 +10,10 @@ docker login $REPO
 
 cd ./build
 
-export DOCKER_TAG=$REPO/glonassmobile/toesim-web:latest
+export DOCKER_TAG=$REPO/glonassmobile/toesim/web:latest
 docker build --build-arg NPMRC=$npmrc -t $DOCKER_TAG .
 docker push $DOCKER_TAG
 
 cd $pwd
 
-#./deploy.sh latest dev
+./deploy.sh latest dev

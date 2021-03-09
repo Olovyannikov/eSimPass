@@ -6,6 +6,6 @@ export KUBECONFIG=./../infra/selectel/stand.gmdp.io/rke/kube_config_cluster.yml
     --set reload=$(date -u +%Y-%m-%d_%H:%M:%S) \
     --set version=$1 \
     --set dns=toesim-dev.stand.gmdp.io \
-    -n toesim-$2 \
+    -n toesim-web-$2 \
     ./src/helm
     
