@@ -1,0 +1,27 @@
+.ChooseBlock {
+    height: 26.9805vw;
+    
+    >div {
+        float: left;
+        height: 26.9805vw;
+    }
+    
+    >div:nth-child(1) {
+        color:rgba(255, 120, 90, 1);
+        font-size: 3.125vw;
+        font-weight: 600;
+        width: 20.2083vw;
+        height: 26.9805vw;
+        margin-top: 4vw;
+        margin-left: 7vw;
+    }
+
+    img {
+        width: 17.2916vw;
+        height: 13.6947vw;
+        float: left;
+        margin-top: 6vw;  
+        margin-left: 4vw;      
+    }
+
+}

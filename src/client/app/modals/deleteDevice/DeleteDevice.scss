@@ -1,0 +1,51 @@
+.DeleteDevice {
+    background: linear-gradient(300.97deg, #C4FFF9 -24.36%, #003554 99.15%);
+    width: 50vw;
+    left: 25vw;
+    right: 28vw;
+    top: 25vw;
+    bottom: 15vw;
+    position: fixed;
+    z-index: 2;
+    height: 14.0625vw;
+    border-radius: 0.5vw;
+
+    .delete-device__title {
+        color: white;
+        margin: auto;
+        font-weight: 600;
+        font-size: 1.3541vw;
+        margin-top: 2.5vw;
+        text-align: center;
+    }
+
+    .Button.delete {
+        margin-top: 3vw;
+        float: left;
+        margin-left: 7.2395vw;
+        div {
+            margin-top: 0.5vw;
+            font-weight: 600;
+            font-size: 1.3541vw;
+        }
+    }
+
+    .Button.dont-delete {
+        margin-top: 3vw;
+        float: right;
+        margin-right: 5.625vw;
+        background-color: rgba(29, 190, 104, 1);
+        width: 14.5833vw;
+        height: 2.9166vw;
+        border-radius: 2.0833vw;
+        text-align: center;
+        color: $white;
+        cursor: pointer;
+
+        div {
+            margin-top: 0.5vw;
+            font-weight: 600;
+            font-size: 1.3541vw;
+        }
+    }
+}

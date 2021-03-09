@@ -1,0 +1,82 @@
+.MenuItem {
+
+    width: 26.3020vw;
+    height: 4.0625vw;
+    border: 0.0520vw solid $white;
+    background: $bgTransparent;
+    color: white;
+    margin-top: 1.5431vw;
+    float: left;
+    margin-right: 2.0833vw;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 1vw;
+    text-align: center;
+    cursor: pointer;
+
+    &.active {
+        border: 0.0520vw solid transparent;
+        -webkit-box-shadow: 0vw 0vw 0vw 0.2vw $yellowLk; 
+        box-shadow: 0vw 0vw 0vw 0.2vw $yellowLk;
+        color: $yellowLk;
+    }
+
+
+    .menu-item__wrap {
+        width: fit-content;
+        display: table;
+        margin: auto;
+
+        .menu-item__img_icon {
+            display: inline-block;
+            margin-top: 1.3vw;
+            float: left;
+            
+            img {
+                float: left;
+            }
+
+            .devices {
+                width: 1.3741vw;
+                height: 1.1375vw;
+            }
+    
+            .detail {
+                width: 1.3541vw;
+                height: 0.677vw;
+                margin-top: 0.3vw;
+            }
+    
+            .change {
+                width: 1.3541vw;
+                height: 1.3541vw;
+            }
+    
+            .loyalty {
+                width: 1.3541vw;
+                height: 1.3541vw;
+            }
+    
+            .support {
+                width: 1.3541vw;
+                height: 1.3541vw;
+            }
+    
+            .settings {
+                width: 1.3vw;
+                height: 1.3vw;
+            }
+        }
+    }
+
+
+    .menu-item__text {
+        text-align: center;
+        margin-top: 1.3vw;
+        display: inline-block;
+        font-size: 1.0416vw;
+        margin-left: 0.9375vw;
+        float: left;
+    }
+}

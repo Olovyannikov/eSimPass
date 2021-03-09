@@ -1,0 +1,28 @@
+.CabinetHolder {
+
+    height: 100%;
+    overflow: hidden;
+    .Cabinet {
+        @import '../../components/components.scss';
+        @import './dropDown/DropDown.scss';
+        @import './navbar/Navbar.scss';
+        @import './balance/BalanceBlock.scss';
+        @import './packageBlock/PackageBlock.scss';
+        @import './menuBlock/MenuBlock.scss';
+
+        @import './menuBlock/settingBlock/SettingBlock.scss';
+        @import './menuBlock/devicesBlock/DevicesBlock.scss';
+        @import './menuBlock/buyQrBlock/BuyQrBlock.scss';
+        @import './menuBlock/loyaltyBlock/LoyaltyBlock.scss';
+        @import './menuBlock/detailedBlock/DetailedBlock.scss';
+        @import './menuBlock/supportBlock/SupportBlock.scss';
+        @import './menuBlock/supportBlock/FAQ/FAQ.scss';
+
+        background: $cabinetBG;
+        height: 100%;
+        overflow: auto;
+
+        @import '../../modals/Modals.scss';
+    }
+}
+

@@ -1,0 +1,57 @@
+image: node:14.16.0-alpine3.11
+
+variables:
+    CI: "use"
+    TAG: registry.gmdp.io/glonassmobile/toesim/web
+
+default:
+  before_script:
+    - mkdir -p ~/.docker/
+    - cat $docker_config > ~/.docker/config.json
+    - cat $npmrc > ~/.npmrc
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+    - build
+    - publish
+    - deploy
+
+build:
+    stage: build
+    script:
+        - yarn
+        - yarn test
+    artifacts:
+        when: always
+        paths:
+            - build
+
+publish_master:
+    only:
+        - master
+    stage: publish
+    image: docker:19.03.0
+    dependencies:
+        - build
+    script:
+        - cd build
+        - export DOCKER_TAG=$TAG:latest
+        - docker build -t $DOCKER_TAG .
+        - docker push $DOCKER_TAG
+
+publish_release:
+    only:
+        - release/*
+    stage: publish
+    image: docker:19.03.0
+    dependencies:
+        - build
+    script:
+        - version="${CI_BUILD_REF_NAME/release\//}"    
+        - cd build
+        - export DOCKER_TAG=$TAG:$version
+        - docker build -t $DOCKER_TAG .
+        - docker push $DOCKER_TAG

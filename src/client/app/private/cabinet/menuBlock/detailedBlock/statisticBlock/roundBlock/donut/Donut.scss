@@ -1,0 +1,19 @@
+.Donut {
+
+    width:14.8vw;
+    height:13.75vw;
+
+    .donut__money {
+        font-size: 12px; 
+        font-weight: 700;   
+        fill: $white;
+        text-anchor: middle;
+    }
+
+    .donut__date {
+        font-weight: 400;
+        font-size:  8px;
+        fill: $white;
+        text-anchor: middle;
+    }
+}

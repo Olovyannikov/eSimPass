@@ -1,0 +1,78 @@
+.Navbar {
+
+    background: $yellowLk;
+    width: 100%;
+    height: 3.6458vw;
+    position: sticky;
+    top: 0;
+    color: $textNavLk;
+    z-index: 10;
+
+    .navbar__left-nav {
+
+        float: left;
+        margin-left: 6.9791vw;
+        margin-top: 1vw;
+
+        .navbar__logo {
+            float: left;
+            padding-right: 4.8437vw;
+            border-right: 0.1041vw solid rgba(255, 255, 255, 0.1);
+            font-size: 1.5625vw;
+            text-decoration: none;
+            color: $textNavLk;
+        }
+    }
+
+    .navbar__right-nav {
+        float: right;
+        width: 41.6666vw;
+        margin-top: 1vw;
+
+        .navbar__search {
+            float: left;
+            padding: 0.002vw;
+            padding-right: 0.9895vw;
+            border-right: 0.1041vw solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            border: none;
+            width: 3.9062vw;
+            font-size: 1.3020vw;
+            outline: none;
+        } 
+        ::placeholder {
+            color: rgba($textNavLk, 0.6);
+        }
+        
+        .navbar__languages {
+            float: left;
+            margin-left: 1.7708vw;
+            font-size: 1.3020vw;
+            padding-right: 1.7708vw;
+            border-right: 0.1041vw solid rgba(255, 255, 255, 0.1);
+            
+            >span {
+                margin-right: 0.8854vw;
+                
+                &.disabled {
+                    color: rgba($textNavLk, 0.6);
+                }
+            }
+        }
+        
+        .navbar__email {
+            float: left;
+            font-size: 1.3020vw;
+            margin-left: 0.6038vw;
+            cursor: pointer;
+        }
+
+        .navbar__img_person {
+            width: 1.0937vw;
+            height: 1.0937vw;
+            float: left;
+            margin-left: 1.7187vw;
+            margin-top: 0.2vw;
+        }
+    }
+}

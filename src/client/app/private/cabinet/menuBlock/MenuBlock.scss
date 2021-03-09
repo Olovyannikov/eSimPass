@@ -1,0 +1,15 @@
+.MenuBlock {
+    
+    width: 92.1875vw;
+    margin-left: 8.5316vw;
+    height:9.8958vw;
+    
+    @import '../../../components/menuItem/MenuItem.scss';
+    @import './settingBlock/SettingBlock.scss';
+    @import './devicesBlock/DevicesBlock.scss';
+    @import './buyQrBlock/BuyQrBlock.scss';
+    @import './loyaltyBlock/LoyaltyBlock.scss';
+    @import './detailedBlock/DetailedBlock.scss';
+    @import './supportBlock/SupportBlock.scss';
+    @import './supportBlock/FAQ/FAQ.scss';
+}

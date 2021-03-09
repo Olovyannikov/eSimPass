@@ -1,0 +1,193 @@
+syntax = "proto3";
+
+package api;
+
+option java_package = "com.glonassmobile.toesim.client.api";
+
+import "codebase.proto";
+
+service Abonent {
+    rpc listenBalance (stream Empty) returns (stream ListenBalanceResponse);
+    rpc login (LoginRequest) returns (LoginResponse);
+    rpc registerMobile (RegisterMobileRequest) returns (RegisterMobileResponse);
+    rpc verifyMobileCode (VerifyMobileCodeRequest) returns (VerifyMobileCodeResponse);
+    rpc getBalance (Empty) returns (GetBalanceResponse);
+    rpc registerWeb (RegisterWebRequest) returns (RegisterWebResponse);
+    rpc verifyWebRegistration (VerifyWebRegistrationRequest) returns (VerifyWebRegistrationResponse);
+    rpc listCharges (ListChargesRequest) returns (ListChargesResponse);
+    rpc changePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+}
+
+message VerifyMobileCodeRequest {
+    string token = 1;
+    int32 mobileCode = 2;
+}
+
+message VerifyMobileCodeResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty expired = 3;
+        Empty invalidCode = 4;
+        int64 tooManyErrorAttempts = 5;
+    }
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmailOrPassword = 3;
+        int64 tooManyErrorAttempts = 4;
+    }
+}
+
+message RegisterMobileRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message RegisterMobileResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmail = 3;
+        Empty invalidPassword = 4;
+        Empty emailAlreadyUsed = 5;
+        int64 tooManyAttempts = 6;
+        Empty expired = 7;
+    }
+}
+
+message GetBalanceResponse {
+
+    message SuccessModel {
+        double balance = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+    }
+}
+
+message RegisterWebRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message RegisterWebResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmail = 3;
+        Empty invalidPassword = 4;
+        Empty emailAlreadyUsed = 5;
+        int64 tooManyAttempts = 6;
+        Empty expired = 7;
+    }
+}
+
+message VerifyWebRegistrationRequest {
+    string token = 1;
+}
+
+message VerifyWebRegistrationResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty expired = 3;
+        Empty invalidToken = 4;
+    }
+}
+
+message ListenBalanceResponse {
+
+    message SuccessModel {
+        double balance = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        Empty unauthorized = 2;
+    }
+}
+
+message ListChargesRequest {
+    Int64Value fromDate = 1;
+}
+
+message ListChargesResponse {
+
+    message SuccessModel {
+
+        message ChargeModel {
+
+            enum CHARGE_TYPE {
+                CHARGE_TYPE_UNKNOWN = 0;
+                ADD_FUNDS = 1;
+                DATA_USED_FROM_BALANCE = 2;
+                PACK_BOUGHT = 3;
+            }
+                        
+            CHARGE_TYPE type = 1;
+            int64 date = 2;
+            double total = 3;
+            Int64Value bytes = 4;
+        }
+        
+        repeated ChargeModel charges = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+    }
+}
+
+message ChangePasswordRequest {
+    string password = 1;
+}
+
+
+message ChangePasswordResponse {
+
+    oneof result {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty invalidPassword = 3;
+        Empty unauthorized = 4;
+    }
+}

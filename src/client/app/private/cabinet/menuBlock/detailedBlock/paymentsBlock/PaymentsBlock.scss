@@ -1,0 +1,17 @@
+.PaymentsBlock {
+    width: 50.625vw;
+    height: 23.5416vw;
+    float: right;
+
+    .table-pages {
+        float: right;
+        color: $white;
+        font-size: 1.0416vw;
+        margin-top: 0.5vw;
+    }
+
+    @import './togglerTable/TogglerTable.scss';
+    @import './tablePages/TablePages.scss';
+    @import './tableBlock/TableBlock.scss';
+    @import './detailAndNavigation/DetailAndNavigation.scss';
+}

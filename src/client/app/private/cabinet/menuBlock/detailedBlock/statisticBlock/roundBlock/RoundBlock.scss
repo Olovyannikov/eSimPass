@@ -1,0 +1,32 @@
+.RoundBlock {
+    width: 100%;
+    margin-top: 0.8854vw;
+    height: 15.25vw;
+    float: left;
+
+    .round-block__left-button {
+        height: 100%;
+        float: left;
+        padding-left: 2.4479vw;
+        padding-right: 2.4479vw;
+        cursor: pointer;
+    }
+
+    .round-block__right-button {
+        height: 100%;
+        float: right;
+        padding-left: 1.3vw;
+        padding-right: 2.4479vw;
+        cursor: pointer;
+    }
+
+
+    .round-block__button {
+        width: 0.677vw;
+        height: 1.0937vw;
+        margin-top: 7.1875vw;
+        float: left
+    }
+
+    @import './donut/Donut.scss';
+}

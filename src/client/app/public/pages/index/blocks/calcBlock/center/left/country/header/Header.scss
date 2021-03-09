@@ -1,0 +1,24 @@
+.Header {
+    width: 100%;
+    margin-top: 1vw;
+
+    .flag-icon-background {
+        float: left;
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    td:nth-child(2) {
+        width: 100%;
+        
+        >div {
+            padding-left: 1vw;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 3.125vw;
+            font-weight: 700;
+            max-width: 47vw;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.Verified {
+
+    width: 19.0104vw;
+    height: 5.9895vw;
+    background: $yellowLk;
+    margin-top: 2.1875vw;
+    margin-left: 2.3958vw;
+    margin-bottom: 2.1133vw;
+
+    div {
+        margin-top: 0.8386vw;
+        margin-left: 1.3020vw;
+        margin-bottom: 0.8386vw;
+
+        .okay {
+            width: 1.0937vw;
+            height: 0.7044vw;
+            float: right;
+        }
+        
+        .text {
+            display: inline-block;
+            float: left;
+            color: rgba(27, 27, 27, 0.6);
+            font-weight: 500;
+            font-size: 0.8333vw;
+        }
+    }
+    
+    .document {
+        width: 13.9583vw;
+        height: 0.7380vw;
+        color: black;
+        font-size: 1.1458vw;
+        margin-left: 1.3020vw;
+        margin-bottom: 0.8386vw;
+    }
+}

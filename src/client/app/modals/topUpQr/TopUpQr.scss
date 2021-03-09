@@ -1,0 +1,21 @@
+.TopUpQr {
+    width: 50vw;
+    height: 26.125vw;
+    color: black;
+    left: 25vw;
+    right: 28vw;
+    top: 15vw;
+    bottom: 15vw;
+    position: fixed;
+    z-index: 2;
+    float: left;
+    background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
+
+    .Button.supplementQr {
+        margin-top: 3vw;
+        cursor: pointer;
+    }
+
+    @import '../../components/buttons/Button.scss';
+    @import '../../components/connectQrCode/ConnectQrCode.scss';
+}

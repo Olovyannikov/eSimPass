@@ -1,0 +1,21 @@
+.PackItem {
+    width: 29.1666vw;
+    height: 3.8456vw;
+    margin-top: 0.6711vw;
+
+    .pack-item__size {
+        float: left;
+        width: 19.5vw;
+        font-size: 1.5625vw;
+        font-weight: 400;
+    }
+    
+    .pack-item__price {
+        float: right;
+        width: 8vw;
+        font-weight: bold;
+        font-size: 1.5625vw;
+        font-weight: 600;
+        text-align: start;
+    }
+}

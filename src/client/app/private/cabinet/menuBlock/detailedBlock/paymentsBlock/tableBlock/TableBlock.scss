@@ -1,0 +1,16 @@
+.TableBlock {
+    float: right;
+    width: 50.625vw;
+    max-height: 17.7083vw;
+    min-height: 3.5vw;
+    border: 0.052vw solid white;
+    background: transparent;
+    border-radius: 1vw;
+    margin-top: 1vw;
+
+    
+    .Column:nth-last-child(1) {
+        border-bottom: none;
+    }
+    @import './column/Column.scss';
+}

@@ -1,0 +1,18 @@
+.PackageBlockDevice {
+    @import './activePackage/ActivePackage.scss';
+    @import './spentPackage/SpentPackage.scss';
+
+    margin-top: 1.875vw;
+    float: left;
+    margin-bottom: 1.5vw;
+
+    .title {
+        float: left;
+        margin-top: 1.875vw;
+        font-size: 1.5625vw;
+        font-weight: 400;
+        color: $yellowLk;
+        font-family: 'TT Travels';
+
+    }
+}

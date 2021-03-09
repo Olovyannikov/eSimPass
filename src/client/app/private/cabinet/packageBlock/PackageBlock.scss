@@ -1,0 +1,16 @@
+.PackageBlock {
+
+    margin-top: 4.6354vw;
+    margin-left: 8.5316vw;
+    margin-right: 8.6458vw;
+    
+    .package__block-title {
+        margin-bottom: 1.5386vw;
+        font-size: 1.875vw;
+        font-weight: 400;
+        color: $yellowLk;
+        font-family: 'TT Travels';
+    }
+
+    @import './package/Package.scss';
+}

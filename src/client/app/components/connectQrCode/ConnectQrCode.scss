@@ -1,0 +1,39 @@
+.ConnectQrCode {
+
+    float: left;
+
+    .connectQrCode__title {
+        font-size: 1.3020vw;
+        margin-bottom: 0.7715vw;
+        margin-top: 0.9728vw;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .connectQrCode__text {
+        font-size: 1.0416vw;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 1.3354vw;
+        text-align: center;
+    }
+
+    .connectionQrCode__step-img {
+        margin-top: 0.5031vw;
+        margin-left: 21.0937vw;
+        margin-right: 21.0937vw;
+        margin-bottom: 1.2031vw;
+        width: 7.8125vw;
+        height: 7.8125vw;
+        float: left;
+    }
+
+    .connection__action-text {
+        font-size: 1.0416vw;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 1.3354vw;
+        width: 36vw;
+        margin: auto;
+    }
+}

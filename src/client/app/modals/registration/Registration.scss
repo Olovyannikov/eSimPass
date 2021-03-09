@@ -1,0 +1,101 @@
+.Registration {
+
+    width: 50vw;
+    height: 30.125vw;
+    color: black;
+    left: 25vw;
+    right: 28vw;
+    top: 15vw;
+    bottom: 15vw;
+    position: fixed;
+    z-index: 2;
+    float: left;
+    background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
+
+    .registration__inputs-block {
+        height: 4.8641vw;
+        width: 38.0208vw;
+        margin-bottom: 0.4360vw;
+        margin-top: 1.2025vw;
+        margin-left: 11.4166vw;
+        margin-right: 1.5625vw;
+        float: left;
+
+        .registration__input-email {
+            padding: 0.025vw;
+            float: left;
+            display: block;
+            color: white;
+            font-size: 1.1458vw;
+            background-color: transparent;
+            width: 23.4375vw;
+            height: 2.6772vw;
+            border: 0.1562vw solid white;
+            border-radius: 0.7812vw;
+            margin-bottom: 0.5367vw;
+            background-image: url('./img/mail.png');
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 1.1458vw;
+            background-position-x: 0.8854vw;
+            padding-left: 3.6458vw;
+            border-left: 0.1562vw solid white;
+            outline: none;
+        }
+
+        .registration__input-password {
+            padding: 0.025vw;
+            float: left;
+            display: block;
+            color: white;
+            font-size: 1.1458vw;
+            width: 20.4375vw;
+            height: 2.6772vw;
+            border: 0.1562vw solid white;
+            border-radius: 0.7812vw;
+            margin-bottom: 0.5367vw;
+            background-image: url('./img/protected.png'), url('./img/disable-eye.png');
+            background-position: left, right;
+            background-repeat: no-repeat, no-repeat;
+            background-size: 1.1458vw, 1.6458vw;
+            background-position-x: 0.8854vw, 24.5vw;
+            padding-left: 3.6458vw;
+            padding-right: 3vw;
+            border-left: 0.1562vw solid white;
+            outline: none;
+            background-color: transparent;
+        }
+
+        .registration__button-next {
+            cursor: pointer;
+            z-index: 10;
+            width: 5.2083vw;
+            height: 5.2083vw;
+            display: block;
+            float: right;
+            margin-right: 2vw;
+        }
+
+        .registration__already-abonent {
+            color: black;
+            float: left;
+            font-size: 0.9375vw;
+            margin-left: 8vw;
+            margin-top: 0.4vw;
+            cursor: pointer;
+        }
+
+        .registration__error {
+            width: 28.4166vw;
+            padding-bottom: 0.5031vw;
+            font-weight: 600;
+            color: red;
+            font-size: 1.25vw;
+            float: left;
+            margin-top: 0.5vw;
+            text-align: center;
+        }
+    }
+
+    @import '../../components/connectQrCode/ConnectQrCode.scss';
+}

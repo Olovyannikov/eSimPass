@@ -1,0 +1,63 @@
+.ChatBlock {
+    width: 82.7604vw;
+    height: 7.4479vw;
+    float: left;
+    margin-left: 8.5416vw;
+    border-radius: 1vw;
+    background: transparent;
+    border: 0.052vw solid white;
+    margin-top: 2.2395vw;
+    margin-bottom: 2.9166vw;
+
+    .chat-block__img {
+        margin-left: 3.0208vw;
+        margin-top: 1.927vw;
+        float: left;
+
+        .chat-block__img_icon {
+            width: 3.6458vw;
+            height: 3.6458vw;
+            float: left;
+        }
+    }
+
+    .chat-block__info {
+        width: 54.6354vw;
+        float: left;
+        margin-left: 2.8125vw;
+        color: $white;
+        margin-top: 1.25vw;
+
+        .chat-block__title {
+            font-weight: 700;
+            font-size: 1.3541vw;
+        }
+
+        .chat-block__text {
+            margin-top: 0.7vw;
+            font-size: 1.0416vw;
+            font-weight: 400;
+        }
+    }
+
+    .chat-block__button {
+        width: 14.5833vw;
+        height: 2.9166vw;
+        background: $yellowLk;
+        border-radius: 2.0833vw;
+        margin-bottom: 0.5702vw;
+        text-align: center;
+        margin-right: 0.5416vw;
+        color: black;
+        cursor: pointer;
+        float: right;
+        margin-top: 2.2916vw;
+
+        >div {
+            margin-top: 0.9vw;
+            text-align: center;
+            font-size: 1.0416vw;
+            font-weight: 500;
+        }
+    }
+}
