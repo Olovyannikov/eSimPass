@@ -2,9 +2,29 @@
     margin-top: 2.9116vw;
     margin-left: 8.5416vw;
     color: $white;
+    float: left;
 
     .faq__title {
         font-weight: 700;
-        
+        font-size: 1.3541vw;
     }
+
+    .faq__questions-block {
+        margin-top: 1.416vw;
+        width: 82.7604vw;
+        float: left;
+        border-radius: 1vw;
+        background: transparent;
+        border: 0.052vw solid white;
+        height: 13.8vw;
+        margin-bottom: 2vw;
+        
+        .Question:nth-last-child(1) {
+            border-bottom: none;
+        }
+
+        @import './question/Question.scss';
+
+    }
+
 }
