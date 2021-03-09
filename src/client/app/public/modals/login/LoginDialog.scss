@@ -1,11 +1,11 @@
-.Login {
+.LoginDialog {
     width: 50vw;
-    height: 17.125vw;
+    height: 17.525vw;
     color: black;
-    left: 25vw;
-    right: 28vw;
-    top: 15vw;
-    bottom: 15vw;
+    left: 25%;
+    right: 28%;
+    top: 15%;
+    bottom: 15%;
     position: absolute;
     float: left;
     background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
@@ -120,6 +120,11 @@
             margin-left: 8vw;
             margin-top: 0.4vw;
             cursor: pointer;
+
+            &.reg {
+                font-size: 1.3vw;
+                margin-left: 6.2vw;
+            }
         }
 
         .error {
