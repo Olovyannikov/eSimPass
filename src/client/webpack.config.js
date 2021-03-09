@@ -1,4 +1,6 @@
 const path = require('path');
+const ES6Promise = require("es6-promise");
+ES6Promise.polyfill();
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
@@ -83,7 +85,8 @@ module.exports = env => {
             }),
             new webpack.ProvidePlugin({
                 $: 'jquery',
-                jQuery: 'jquery'
+                jQuery: 'jquery',
+                Promise: 'es6-promise-promise', 
             }),
             new webpack.DefinePlugin({
                 "process.env": "{}",

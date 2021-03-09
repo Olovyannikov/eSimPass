@@ -5,6 +5,7 @@ import { img_planeBig } from './../../../../../../../../../../resources/images';
 
 import { Props } from '../CountryBlock';
 import { PackItem } from './item/PackItem';
+import { STATE_API } from '../../../../../../../../../../redux/StateApi';
 
 export const PricesBlock = ({ rate }: Props) => {
 
@@ -24,7 +25,7 @@ export const PricesBlock = ({ rate }: Props) => {
                 <img src={img_planeBig} />
                 <div className="prices-block__connect">
                     <a>
-                        <div>
+                        <div onClick={() => STATE_API.showAuthWizard('register')}>
                             Подключить
                         </div>
                     </a>

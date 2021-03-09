@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { STATE_API } from "../../../../../../redux/StateApi";
 import { img_girl1 } from "../../../../../../resources/images";
 
 
@@ -16,7 +17,7 @@ export const LogoBlock = () => {
                             </div>
                             <div className="logo-block__connect">
                                 <a>
-                                    <div>
+                                    <div onClick={() => STATE_API.showAuthWizard('register')}>
                                         Подключить
                                     </div>
                                 </a>
