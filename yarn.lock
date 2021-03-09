@@ -14,10 +14,15 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@glonassmobile/codebase@1.0.10":
-  version "1.0.10"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.0.10.tgz#6625838b261ee11b109a1755b2c03729cc93d15f"
-  integrity sha512-NTVhLAK4VHYR1/TH0U/7bBTHqBPgWc92BuT4RHS+ohPgGqGTzqgndO3uzq9Xe3xSH/oPHj/B7GCo5bQgpAhGoA==
+"@glonassmobile/codebase-web@1.0.14":
+  version "1.0.14"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-1.0.14.tgz#442563a932510c834d84e43999f2adc9da8d63d9"
+  integrity sha512-6WRgmFcmmftS4eVdE4yBf8R7rOMti8S0hd1bQzCxdVVMLCzcAedIrQ/ICKEbIBKO2FDKNieY8SxVuR4Nq7Le3g==
+
+"@glonassmobile/codebase@1.0.14":
+  version "1.0.14"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.0.14.tgz#9d3859bef135b22624bc377264a340858946e2cb"
+  integrity sha512-isIBI2z/JChLmLN/IcPECXz/ZYNPzWdS7jbG1KoCJdATRkWefXLeicShCCyZl7vhXMTaTnS9gRL4FhSL3N1mtw==
   dependencies:
     "@grpc/proto-loader" "0.5.6"
     axios "0.21.1"

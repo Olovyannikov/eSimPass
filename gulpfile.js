@@ -8,7 +8,7 @@ const proc = require('child_process');
 
 const packageJson = JSON.parse(fs.readFileSync("package.json"));
 
-var generateApi = require ('@glonassmobile/codebase/util/generator/generateApi').generate;
+var generateApi = require ('@glonassmobile/codebase/generator/generateApi').generate;
 
 const execute = (cb, command) => {
     const cmd = command.split (" ");
