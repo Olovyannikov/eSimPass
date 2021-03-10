@@ -27,3 +27,18 @@ export const waitForClose = () => {
 
     return result;
 }
+
+
+export const convertEndingOfNoun = (seconds : number) => {
+
+    const str = seconds.toString ()
+    if (str.endsWith ("1")) {
+        return 'секунду'
+    }
+    else if (str.endsWith('2') || str.endsWith('3') || str.endsWith('4')) {
+        return 'секунды'
+    } 
+    else {
+        return 'секунд'
+    }
+}

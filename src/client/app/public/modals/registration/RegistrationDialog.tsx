@@ -20,9 +20,9 @@ export const RegistrationDialog = () => {
         type : 'password',
     })
 
-    const email = React.useRef<HTMLInputElement>();
-    const password = React.useRef<HTMLInputElement>();
-    const passwordRepeat = React.useRef<HTMLInputElement>();
+    const emailInput = React.useRef<HTMLInputElement>();
+    const passwordInput = React.useRef<HTMLInputElement>();
+    const passwordRepeatInput = React.useRef<HTMLInputElement>();
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
 
@@ -42,10 +42,18 @@ export const RegistrationDialog = () => {
         }
     }
 
+    const handleLoginClicked = () => STATE_API.showAuthWizard('login');
+
+    const showError = () => {
+        if (error) {
+            return <div className="error">{error}</div>
+        }
+    }
+
     const handleRegister = () => {
         setInProgress(prev => prev = true)
+        CONNECTION.registerWeb(createRegisterRequest())
 
-        const subscription = CONNECTION.registerWeb(createRegisterRequest())
     }
 
     const showInProgress = () => {
@@ -57,26 +65,40 @@ export const RegistrationDialog = () => {
     }
 
     const createRegisterRequest = () : RegisterWebRequest => ({
-        email : email.current.value,
-        password : password.current.value,
+        email : emailInput.current.value,
+        password : passwordInput.current.value,
     })
+
+    const handleEventEnter = (e : React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            if (document.activeElement === emailInput.current) {
+                passwordInput.current.focus();
+            }
+            else if (document.activeElement === passwordInput.current) {
+                passwordRepeatInput.current.focus();
+            }
+            else if (document.activeElement === passwordRepeatInput.current) {
+                handleRegister()
+            }
+        }   
+    }
 
     return (
         <div className="RegistrationDialog" onClick={(e) => e.stopPropagation()}>
-            <div className="title">Войти в личный кабинет</div>
+            <div className="title">Регистрация</div>
             <div className="inputs-block">
-                <input ref={email} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
-                <input ref={password} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
+                <input onKeyDown={handleEventEnter} ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
+                <input onKeyDown={handleEventEnter} ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>
-                <input ref={passwordRepeat} disabled={inProgress} required name='password' className='input-password' placeholder='Повторите пароль' type={passwordViewMode.type}/>
+                <input onKeyDown={handleEventEnter} ref={passwordRepeatInput} disabled={inProgress} required name='password' className='input-password' placeholder='Повторите пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>
                 {showInProgress()}
-                <div onClick={() => STATE_API.showAuthWizard('login')} className="forgot-password reg">Уже зарегистрирован</div>
-                <div className="error">{error}</div>
+                <div onClick={handleLoginClicked} className="forgot-password reg">Уже зарегистрирован</div>
+                {showError()}
             </div>
         </div>
     )
