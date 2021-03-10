@@ -9,7 +9,8 @@ export const Modals = (props : {mode : SHOW_AUTH_WIZARD_MODE} ) => {
     const showModal = () => {
         if (props.mode === 'login') {
             return <LoginDialog />
-        } else if (props.mode === 'register') {
+        } 
+        else if (props.mode === 'register') {
             return <RegistrationDialog />
         }
     }

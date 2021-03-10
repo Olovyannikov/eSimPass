@@ -11,9 +11,9 @@
     background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
     z-index: 100;
 
+
     .title {
         font-size: 1.3020vw;
-        margin-bottom: 0.7715vw;
         margin-top: 0.9728vw;
         font-weight: 700;
         text-align: center;
@@ -33,6 +33,7 @@
             margin-left: -2.8vw;
             margin-top: 0.7vw;
             cursor: pointer;
+
             img {
                 float: left;
                 float: left;
@@ -113,18 +114,13 @@
             margin-top: 2.5vw;
         }
 
-        .forgot-password {
+        .already-register {
             color: black;
             float: left;
-            font-size: 0.9375vw;
-            margin-left: 8vw;
             margin-top: 0.4vw;
             cursor: pointer;
-
-            &.reg {
-                font-size: 1.3vw;
-                margin-left: 6.2vw;
-            }
+            font-size: 1.3vw;
+            margin-left: 6.2vw;
         }
 
         .error {
@@ -136,6 +132,31 @@
             float: left;
             margin-top: 0.5vw;
             text-align: center;
+        }
+
+        .title-success {
+            float: left;
+            width: 28vw;
+            text-align: center;
+            font-size: 1vw;
+        }
+
+        .verify-button {
+            border: 0.1604vw solid white;
+            width: 17.6875vw;
+            float: left;
+            border-radius: 0.7vw;
+            margin-top: 0.7vw;
+            height: 1.9166vw;
+            margin-left: 4.9vw;
+            cursor: pointer;
+            
+            .verify-text {
+                text-align: center;
+                color: white;
+                margin-top: 0.3vw;
+                font-size: 1.2vw;
+            }
         }
     }
 }

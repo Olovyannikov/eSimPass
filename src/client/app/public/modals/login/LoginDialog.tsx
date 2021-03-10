@@ -24,7 +24,6 @@ export const LoginDialog = () => {
         return () => closedSubject.next ()
     },[])
 
-    const [email, setEmail] = React.useState<string>(null);
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [error, setError] = React.useState<string>(null);
     const [passwordViewMode, setPasswordViewMode] = React.useState<PasswordViewModeModel>({
@@ -71,8 +70,6 @@ export const LoginDialog = () => {
         }
     }
 
-    const handleChangeEmail = (e : React.ChangeEvent<HTMLInputElement>) => setEmail(prev => prev = e.target.value);
-
     const parseLoginResponse = (response : LoginResponse) => {
         if (response.invalidEmailOrPassword) {
             handleInvalidEmailOrPasswordResponse()
@@ -113,8 +110,8 @@ export const LoginDialog = () => {
     const handleSuccessResponse = (response : LoginResponse) => {
         setInProgress(prev => prev = false);
         window.localStorage.setItem('token', response.success.token);
-        STATE_API.setAuthenticated(email);
-        STATE_API.hideAuthWizard()
+        STATE_API.setAuthenticated(emailInput.current.value);
+        STATE_API.hideAuthWizard();
     }
 
     const showInProgress = () => {
@@ -144,7 +141,7 @@ export const LoginDialog = () => {
         <div className="LoginDialog" onClick={(e) => e.stopPropagation ()}>
             <div className="title">Войти в личный кабинет</div>
             <div className="inputs-block">
-                <input onKeyDown={handleEventEnter} ref={emailInput} disabled={inProgress} required name='email' onChange={handleChangeEmail} className='input-email' placeholder='Эл.почта' type="text"/>
+                <input onKeyDown={handleEventEnter} ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
                 <input onKeyDown={handleEventEnter} ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
