@@ -1,10 +1,10 @@
-
 import { EMPTY } from "rxjs";
 import * as rxaj from "rxjs/ajax"
 import * as rx from 'rxjs/Rx'
 import {v4 as uuid} from "uuid"
 import { WebClientBase } from "./generated/proto.web";
 import { Logger } from "@glonassmobile/codebase-web/Logger";
+import { STORAGE } from './StorageAdapter';
 
 export class Connection extends WebClientBase {
 
@@ -29,7 +29,7 @@ export class Connection extends WebClientBase {
             crossDomain: true,
             headers: {
                 'Content-Type': 'application/json',
-                authorization: localStorage.getItem ('token'),
+                authorization: STORAGE.getToken(),
                 'x-request-id': requestId,
                 'x-partner-id': 'gm',
                 'x-client-platform': 'web',

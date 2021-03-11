@@ -8,6 +8,7 @@ import { LoginRequest, LoginResponse } from '../../../../generated/proto.web';
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { waitForClose, convertEndingOfNoun } from "../../../../utils";
 import { STATE_API } from "../../../../redux/StateApi";
+import { STORAGE } from "../../../../StorageAdapter";
 
 interface PasswordViewModeModel {
     img : string;
@@ -109,7 +110,7 @@ export const LoginDialog = () => {
 
     const handleSuccessResponse = (response : LoginResponse) => {
         setInProgress(prev => prev = false);
-        window.localStorage.setItem('token', response.success.token);
+        STORAGE.setToken(response.success.token);
         STATE_API.setAuthenticated(emailInput.current.value);
         STATE_API.hideAuthWizard();
     }

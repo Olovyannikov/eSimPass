@@ -7,12 +7,10 @@ import { useParams } from 'react-router-dom';
 import { CONNECTION } from '../../../../Connection';
 import { waitForClose } from '../../../../utils';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { TokenController } from '../../../../utils';
+import { STORAGE } from '../../../../StorageAdapter';
 import { STATE_API } from '../../../../redux/StateApi';
 
 export const VerifyDialog = () => {
-
-    const tokenController = new TokenController();
 
     const logger = new Logger ('VerifyDialog');
 
@@ -55,7 +53,7 @@ export const VerifyDialog = () => {
     }
 
     const handleSuccessResponse = (response : VerifyWebRegistrationResponse) => {
-        tokenController.setToken(response.success.token);
+        STORAGE.setToken(response.success.token);
         setSuccess(prev => prev = 'Верификация успешно пройдена');
         setInProgress(prev => prev = false);
     }
