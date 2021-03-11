@@ -10,9 +10,22 @@ export class Connection extends WebClientBase {
 
     private readonly logger = new Logger (Connection.name);
 
-    protected readonly connectStream : (path : string) => WebSocket;
+    protected readonly connectStream = (path : string) : WebSocket => new WebSocket (`wss://toesim-dev.stand.gmdp.io/http-api${path}?authorization=${STORAGE.getToken()}&x-request-id=${uuid().toString()}&x-partner-id=gm&x-client-platform=web&x-client-version=SNAPSHOT`)
+   
 
     private readonly getUrl = (path : string) => `https://toesim-dev.stand.gmdp.io/http-api${path}`
+
+    public readonly checkStreamResponse = <T>(response : T) => {
+        if ((response as any).unauthorized) {
+            localStorage.clear ()
+            window.location.reload ()
+
+            return rx.Observable.empty ()
+        }
+        else {
+            return rx.Observable.of (response)
+        }
+    }
 
     protected readonly executeCall = (path: string, request: any) => {
 
