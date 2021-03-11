@@ -118,7 +118,14 @@ export const LoginDialog = () => {
         if (inProgress) {
             return <Spinner/>
         } else {
-            return <img onClick={handleLogin} src={img_next} className='button-next' alt="Next"/>
+
+            return (
+                <>
+                    <img onClick={handleLogin} src={img_next} className='button-next' alt="Next"/>
+                    <div className="forgot-password">Восстановить пароль</div>
+                    <div onClick={handleRegisterClicked} className="registration">Зарегистрироваться</div>
+                </>
+            )
         }
     }
 
@@ -147,8 +154,6 @@ export const LoginDialog = () => {
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>
                 {showInProgress()}
-                <div className="forgot-password">Восстановить пароль</div>
-                <div onClick={handleRegisterClicked} className="registration">Зарегистрироваться</div>
                 {showError()}
             </div>
         </div>

@@ -11,6 +11,9 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
         <Router>
             <Switch>
                 <Route exact path='/'>
+                    <PublicApplication  />
+                </Route>
+                <Route exact path='/verifyRegistrationEmail/:token'>
                     <PublicApplication />
                 </Route>
             </Switch>
@@ -22,4 +25,4 @@ const mapStateToProps = (state : State) => ({
     authenticated : state.auth != null,
 })
 
-export const Application = connect(mapStateToProps)(ApplicationImpl)
+export const Application = connect(mapStateToProps)(ApplicationImpl);

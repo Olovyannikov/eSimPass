@@ -1,4 +1,4 @@
-export type SHOW_AUTH_WIZARD_MODE = 'login' | 'register';
+export type SHOW_AUTH_WIZARD_MODE = 'login' | 'register' | 'verify';
 
 export interface State {
     auth? : {

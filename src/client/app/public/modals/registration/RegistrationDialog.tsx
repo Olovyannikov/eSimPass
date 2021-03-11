@@ -8,6 +8,7 @@ import { RegisterWebRequest, RegisterWebResponse } from '../../../../generated/p
 import { CONNECTION } from '../../../../Connection';
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { waitForClose, convertEndingOfNoun } from '../../../../utils';
+// import { useHistory } from "react-router-dom";
 
 interface PasswordViewModel {
     img : string;
@@ -16,6 +17,8 @@ interface PasswordViewModel {
 }
 
 export const RegistrationDialog = () => {
+
+    // const history = useHistory()
 
     const logger = new Logger ('RegistrationDialog');
 
@@ -109,7 +112,7 @@ export const RegistrationDialog = () => {
             handleRegister ()    
         }
         else if (response.success) {
-            handleSuccessResponse()
+            handleSuccessResponse(response)
         }
     }
 
@@ -122,9 +125,10 @@ export const RegistrationDialog = () => {
         }
     }
 
-    const handleSuccessResponse = () => {
+    const handleSuccessResponse = (response : RegisterWebResponse) => {
         setInProgress(prev => prev = false);
         setSuccessRegister(prev => prev = true)
+        // history.push(`/verifyRegistrationEmail/${response.success.token}`)
         STATE_API.setAuthenticated(emailInput.current.value)
     }
 
