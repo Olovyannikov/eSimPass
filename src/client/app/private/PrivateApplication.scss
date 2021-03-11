@@ -1,8 +1,9 @@
 .PrivateApplication {
-    
+
     background: $cabinetBG;
     height: 100%;
     overflow: auto;
 
-    @import './blocks/BlocksHolder.scss';
+    @import './components/components.scss';
+    @import './pages/PagesHolder.scss';
 }

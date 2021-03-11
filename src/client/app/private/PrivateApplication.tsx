@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { PagesHolder } from './pages/PagesHolder';
 
-import { BlocksHolder } from "./blocks/BlocksHolder";
+
 
 export const PrivateApplication = () => {
     return (
         <div className="PrivateApplication">
-            <BlocksHolder />
+            <PagesHolder />
         </div>
     )
 }

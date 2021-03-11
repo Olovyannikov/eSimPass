@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export const NavBar = () => {
+export const Packages = () => {
     return (
-        <div className="NavBar">
+        <div className="Packages">
             
         </div>
     )

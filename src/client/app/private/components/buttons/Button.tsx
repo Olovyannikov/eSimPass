@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-// type ButtonClass = 'buy' | 'delete' | 'supplement' | 'supplementQr' | 'buyQr';
-
 interface Props {
     text : string;
     className? : string;

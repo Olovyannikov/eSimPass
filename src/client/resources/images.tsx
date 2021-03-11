@@ -20,7 +20,9 @@ import appGallery from './img/app-gallery.png';
 import next from './img/next.png';
 import activeEye from './img/active-eye.png';
 import disableEye from './img/disable-eye.png';
+import person from './img/person.png';
 
+export const img_person = person;
 export const img_activeEye = activeEye;
 export const img_disableEye = disableEye;
 export const img_next = next;
