@@ -17,7 +17,6 @@ export const nothingToNull = (value: string) : string => {
     }
 }
 
-
 export const waitForClose = () => {
     const result = new rx.Subject<void> ();
 
@@ -27,3 +26,34 @@ export const waitForClose = () => {
 
     return result;
 }
+
+export const convertEndingOfNoun = (seconds : number) => {
+
+    const str = seconds.toString ()
+    if (str.endsWith ("1")) {
+        return 'секунду'
+    }
+    else if (str.endsWith('2') || str.endsWith('3') || str.endsWith('4')) {
+        return 'секунды'
+    } 
+    else {
+        return 'секунд'
+    }
+}
+
+export class TokenController {
+
+    public setToken(token : string) : void {
+        window.localStorage.setItem('token', token)
+    }
+
+    public deleteToken() : void {
+        window.localStorage.removeItem('token')
+    }
+
+    public getToken() : string {
+        return window.localStorage.getItem('token')
+    }
+}
+
+

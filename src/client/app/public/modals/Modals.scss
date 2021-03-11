@@ -9,5 +9,7 @@
     height: 100%;
     background: rgba(255,255,255,0.7);
 
-    @import './login/Login.scss';
+    @import './login/LoginDialog.scss';
+    @import './registration/RegistrationDialog.scss';
+    @import './verify/VerifyDialog.scss';
 }

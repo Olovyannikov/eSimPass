@@ -1,13 +1,21 @@
 import * as React from 'react';
 import { STATE_API } from '../../../redux/StateApi';
 import { SHOW_AUTH_WIZARD_MODE } from '../../../redux/State';
-import { Login } from './login/Login';
+import { LoginDialog } from './login/LoginDialog';
+import { RegistrationDialog } from './registration/RegistrationDialog';
+import { VerifyDialog } from './verify/VerifyDialog';
 
 export const Modals = (props : {mode : SHOW_AUTH_WIZARD_MODE} ) => {
 
     const showModal = () => {
         if (props.mode === 'login') {
-            return <Login />
+            return <LoginDialog />
+        } 
+        else if (props.mode === 'register') {
+            return <RegistrationDialog/>
+        }
+        else if (props.mode === 'verify') {
+            return <VerifyDialog />
         }
     }
 
