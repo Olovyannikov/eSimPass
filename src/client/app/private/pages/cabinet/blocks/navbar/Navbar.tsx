@@ -19,7 +19,7 @@ export const Navbar = () => {
             <div className="right-nav">
                 <img className='img_person' src={img_person} alt="User"/>
                 <div className="email">example@gmail.com</div>
-                <div onClick={handleLogout} className="logout">Logout</div>
+                <div onClick={handleLogout} className="logout">Выйти</div>
             </div>
         </div>
     )

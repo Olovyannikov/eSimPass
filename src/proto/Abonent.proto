@@ -11,7 +11,7 @@ service Abonent {
     rpc login (LoginRequest) returns (LoginResponse);
     rpc registerMobile (RegisterMobileRequest) returns (RegisterMobileResponse);
     rpc verifyMobileCode (VerifyMobileCodeRequest) returns (VerifyMobileCodeResponse);
-    rpc getBalance (Empty) returns (GetBalanceResponse);
+    rpc getAbonent (Empty) returns (GetAbonentResponse);
     rpc registerWeb (RegisterWebRequest) returns (RegisterWebResponse);
     rpc verifyWebRegistration (VerifyWebRegistrationRequest) returns (VerifyWebRegistrationResponse);
     rpc listCharges (ListChargesRequest) returns (ListChargesResponse);
@@ -79,10 +79,10 @@ message RegisterMobileResponse {
     }
 }
 
-message GetBalanceResponse {
+message GetAbonentResponse {
 
     message SuccessModel {
-        double balance = 1;
+        string email = 1;
     }
 
     oneof response {

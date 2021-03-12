@@ -30,18 +30,22 @@
             float: left;
             font-size: 1.1458vw;
             outline: none;
-            color: $white;
+            color: $yellowLk;
         }
         ::placeholder {
             color: $yellowLk;
             font-family: 'TT Travels';
         }
 
+        .input:disabled {
+            opacity: 0.5;
+        }
+
         .text {
             float: left;
             color: $yellowLkOpacity;
             font-size: 1vw;
-            margin-right: 11.4583vw;
+            margin-left: 1.2vw;
         }
 
         .button-top-up {
@@ -52,14 +56,25 @@
             height: 2.8125vw;
             margin-left: 2.8645vw;
             margin-bottom: 0;
+            cursor: pointer;
+            outline: none;
+            background: transparent;
             
             div {
-                margin-top: 0.79vw;
                 font-size: 1.1458vw;
                 color: $white;
                 text-align: center;
                 font-weight: 500;
             }
+        }
+
+        .button-top-up:disabled {
+            opacity: 0.5;
+        }
+
+        .payment-spinner {
+            width: 1vw;
+            height: 1vw;
         }
     }
 }

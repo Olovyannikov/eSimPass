@@ -4,13 +4,14 @@ interface Props {
     text : string;
     className? : string;
     func? : () => void;
+    disabled? : boolean;
 }
 
-export const Button = ({text, className, func} : Props) => {
+export const Button = ({text, className, func, disabled} : Props) => {
     
     return (
-        <div onClick={func} className={`Button ${className}`}>
+        <button disabled={disabled} onClick={func} className={`Button ${className}`}>
             <div>{text}</div>
-        </div>
+        </button>
     )
 }
