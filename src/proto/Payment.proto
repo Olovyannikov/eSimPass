@@ -8,11 +8,16 @@ import "codebase.proto";
 import "shared.proto";
 
 service Payment {
+    rpc getMinBalancePaymentAmmount (Empty) returns (GetMinBalancePaymentAmmountRespoonse);
     rpc createBalancePayment (CreateBalancePaymentRequest) returns (CreateBalancePaymentResponse);
     rpc createDevicePayment (CreateDevicePaymentRequest) returns (CreateDevicePaymentResponse);
     rpc buyPack (BuyPackRequest) returns (BuyPackResponse);
     rpc getPayment (GetPaymentRequest) returns (GetPaymentResponse);
     rpc getDevicePaymentAmmount (Empty) returns (GetDevicePaymentAmmountResponse);
+}
+
+message GetMinBalancePaymentAmmountRespoonse {
+    double ammount = 1;
 }
 
 message GetDevicePaymentAmmountResponse {
@@ -35,6 +40,7 @@ message CreateBalancePaymentResponse {
         SuccessModel success = 1;
         string invalidRequest = 2;
         Empty unauthorized = 3;
+        Empty ammountIsLessMinimal = 4;
     }    
 }
 

@@ -41,13 +41,8 @@ export const TopUpBalance = () => {
 
     const parseBalancePaymentResponse = (response : CreateBalancePaymentResponse) => {
 
-        if (response.unauthorized) {
-            
-        } 
-        else if (response.invalidRequest) {
-
-        }
-        else if (response.success) {
+       
+        if (response.success) {
             handleSuccessResponse(response)
         } 
     }
