@@ -54,9 +54,7 @@ export const TopUpBalance = () => {
 
     const handleSuccessResponse = (response : CreateBalancePaymentResponse) => {
         setInProgress(prev => prev = false);
-        console.log(response.success.url);
-        
-
+        window.open(response.success.url)
     }
 
     const createBalancePaymentRequest = () : CreateBalancePaymentRequest => ({
