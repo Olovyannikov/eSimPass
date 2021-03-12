@@ -49,7 +49,15 @@ export class Connection extends WebClientBase {
                 'x-client-version': 'snapshot'
             }
         })
-        .delay (1000)
+        .flatMap (response => {
+            if (window.location.port == "9999") {
+                return rx.Observable.timer (1000)
+                    .map (() => response)
+            }
+            else {
+                return rx.Observable.of (response)
+            }
+        })
         .flatMap (response => {
             executed = true
 
