@@ -102,6 +102,14 @@
             display: none;
         }
 
+        .input-email:-webkit-autofill,
+        .input-email:-webkit-autofill:hover,
+        .input-email:-webkit-autofill:focus,
+        .input-email:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-text-fill-color: #fff !important;
+        }
+
         .button-next {
             cursor: pointer;
             z-index: 10;

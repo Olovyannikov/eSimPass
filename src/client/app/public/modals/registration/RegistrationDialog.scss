@@ -100,9 +100,18 @@
             color: $white;
         }
 
+        .input-email:-webkit-autofill,
+        .input-email:-webkit-autofill:hover,
+        .input-email:-webkit-autofill:focus,
+        .input-email:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-text-fill-color: #fff !important;
+        }
+
         input::-ms-clear, input::-ms-reveal {
             display: none;
         }
+
 
         .button-next {
             cursor: pointer;
