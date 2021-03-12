@@ -1,9 +1,10 @@
 import { Store } from "redux";
 import { createStore } from "redux";
 import { doSetAuthenticated, setAuthenticatedCode, setAuthenticatedAction } from "./actions/setAuthenticated";
-import { doShowAuthWizard, showAuthWizardCode, showAuthWizardAction } from './actions/showAuthWizard';
-import {hideAuthWizardCode, doHideAuthWizard, hideAuthWizardAction} from './actions/hideAuthWizard';
-import { SHOW_AUTH_WIZARD_MODE, State } from "./State";
+import { doPublicWizard, publicWizardCode, publicWizardAction } from './actions/showPublicWizard';
+import { hideAuthWizardCode, doHideAuthWizard, hideAuthWizardAction } from './actions/hideAuthWizard';
+import { doPrivateWizard, privateWizardAction, privateWizardCode } from './actions/showPrivateWizard';
+import { SHOW_PRIVATE_WIZARD_MODE, SHOW_PUBLIC_WIZARD_MODE, State } from "./State";
 import { Action } from "@glonassmobile/codebase-web/Action";
 
 export const INITIAL_STATE : State = {
@@ -13,8 +14,9 @@ export const INITIAL_STATE : State = {
 const reducersMap = {};
 
 reducersMap [setAuthenticatedCode] = doSetAuthenticated;
-reducersMap [showAuthWizardCode] = doShowAuthWizard;
+reducersMap [publicWizardCode] = doPublicWizard;
 reducersMap [hideAuthWizardCode] = doHideAuthWizard;
+reducersMap [privateWizardCode] = doPrivateWizard;
 
 const reducer = (state = INITIAL_STATE, action: Action<any>) : State => {
 
@@ -34,8 +36,9 @@ export const STORE = createStore(reducer);
 
 export const createDispatcher = (store : Store<State, any>) => ({
     setAuthenticated : (email : string) => store.dispatch (setAuthenticatedAction (email)),
-    showAuthWizard : (mode : SHOW_AUTH_WIZARD_MODE) => store.dispatch(showAuthWizardAction(mode)),
+    showPublicWizard : (mode : SHOW_PUBLIC_WIZARD_MODE) => store.dispatch(publicWizardAction(mode)),
     hideAuthWizard : () => store.dispatch(hideAuthWizardAction()),
+    showPrivateWizard : (mode : SHOW_PRIVATE_WIZARD_MODE) => store.dispatch(privateWizardAction(mode)),
 })
 
 export const STATE_API = createDispatcher (STORE)

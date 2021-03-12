@@ -14,7 +14,7 @@ export const HeaderBlock = () => {
             history.push('/cabinet')
         }
         else {
-            return STATE_API.showAuthWizard('login');
+            return STATE_API.showPublicWizard('login');
         }
     }
 

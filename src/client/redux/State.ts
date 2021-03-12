@@ -1,8 +1,10 @@
-export type SHOW_AUTH_WIZARD_MODE = 'login' | 'register' | 'verify';
+export type SHOW_PUBLIC_WIZARD_MODE = 'login' | 'register' | 'verify';
+export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment';
 
 export interface State {
     auth? : {
         email? : string;
     },
-    showAuthWizard? : SHOW_AUTH_WIZARD_MODE;
+    publicWizard? : SHOW_PUBLIC_WIZARD_MODE;
+    privateWizard? : SHOW_PRIVATE_WIZARD_MODE;
 }

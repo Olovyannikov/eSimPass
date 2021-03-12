@@ -17,6 +17,8 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
         }
     }
 
+    //https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615543967968X10094
+
     return (
         <Router>
             <Switch>
@@ -28,6 +30,12 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 </Route>
                 <Route exact path='/cabinet'>
                     {() => checkAuthenticatedUser() }
+                </Route>
+                <Route path='/deeplink/payment/success'>
+                    {() => checkAuthenticatedUser()}
+                </Route>
+                <Route path='*' exact>
+                    <Redirect to='/' />
                 </Route>
             </Switch>
         </Router>

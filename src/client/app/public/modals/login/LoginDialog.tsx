@@ -66,7 +66,7 @@ export const LoginDialog = () => {
             .subscribe (logger.rx.subscribe ("Error logging in"))
     }
 
-    const handleRegisterClicked = () => STATE_API.showAuthWizard('register');
+    const handleRegisterClicked = () => STATE_API.showPublicWizard('register');
 
     const showError = () => {
         if (error) {

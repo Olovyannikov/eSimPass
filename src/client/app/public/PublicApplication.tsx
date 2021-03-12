@@ -14,8 +14,8 @@ export interface TokenModel {
 export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
     const showWizard = () => {
-        if (props.showAuthWizard) {
-            return <Modals mode={props.showAuthWizard} />
+        if (props.publicWizard) {
+            return <Modals mode={props.publicWizard} />
         }
     }
 
@@ -23,7 +23,7 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
 
     const handlerTokenFromUrl = (token : string) => {
         if (token) {
-            STATE_API.showAuthWizard('verify');
+            STATE_API.showPublicWizard('verify');
         }
     }
 
@@ -43,7 +43,7 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
 
 
 const mapStateToProps = (state : State) => ({
-    showAuthWizard : state.showAuthWizard 
+    publicWizard : state.publicWizard 
 })
 
 export const PublicApplication = connect(mapStateToProps)(PublicApplicationImpl)

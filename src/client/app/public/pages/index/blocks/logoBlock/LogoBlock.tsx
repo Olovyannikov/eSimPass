@@ -7,7 +7,7 @@ import { STORAGE } from "../../../../../../StorageAdapter";
 
 export const LogoBlock = () => {
 
-    const handlerClickRegister = () => STATE_API.showAuthWizard('register');
+    const handlerClickRegister = () => STATE_API.showPublicWizard('register');
 
     return (
         <table className="LogoBlock" cellSpacing="0" cellPadding="0">
