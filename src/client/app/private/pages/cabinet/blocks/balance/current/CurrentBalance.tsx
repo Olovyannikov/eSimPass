@@ -9,7 +9,7 @@ import {waitForClose} from "./../../../../../../../utils";
 
 export const CurrentBalance = () => {
 
-    const [balance, setBalance] = React.useState (0);
+    const [balance, setBalance] = React.useState ('0.00');
 
     const logger = new Logger ('CurrentBalance')
 
@@ -25,7 +25,7 @@ export const CurrentBalance = () => {
             ws.getResponseObservable ()
         )
         .flatMap (CONNECTION.checkStreamResponse)
-        .do (response => setBalance (parseInt (response.success.balance)))
+        .do (response => setBalance (Number(response.success.balance).toFixed(2)))
         .takeUntil (closer)
         .finally (() => ws.close ())
         .retryWhen (logger.rx.retry ("Reconnecting"))
@@ -35,7 +35,7 @@ export const CurrentBalance = () => {
     return (
         <div className="CurrentBalance">
             <div className="balance">
-                <div className='text'>Текущий баланс<span>{balance} ₽</span></div>
+                <div className='text'>Текущий баланс<span>{balance} €</span></div>
             </div>
         </div>
     )

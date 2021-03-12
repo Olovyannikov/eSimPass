@@ -2,6 +2,9 @@
 @import './resources/variables.scss';
 @import './resources/fonts.css';
 
+@import "./app/public/PublicApplication.scss";
+@import './app/private/PrivateApplication.scss';
+
 body, html { 
     height: 100%;
     width: 100%;
@@ -18,18 +21,9 @@ body, html {
     }
 }
 
-@import "./app/public/PublicApplication.scss";
-@import './app/private/PrivateApplication.scss';
 
 // SPINNER
-@keyframes lds-spinner {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+
 @keyframes lds-ring {
     0% {
         -moz-transform: rotate(0deg);

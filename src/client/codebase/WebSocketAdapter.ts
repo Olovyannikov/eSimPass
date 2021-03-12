@@ -24,7 +24,7 @@ export class WebSocketAdapter<R,T> {
                 catch (error) {
                     clearInterval (interval)
                 }
-            }, 1000);
+            }, 5000);
             
             this.socket.addEventListener ('close', () => {
                 clearInterval (interval)
