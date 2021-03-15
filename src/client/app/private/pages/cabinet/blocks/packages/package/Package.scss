@@ -1,0 +1,52 @@
+.Package {
+    width: 82.8125vw;
+    height: 10.1562vw;
+    border: 0.0520vw solid white;
+    margin-bottom: 1.3418vw;
+    border-radius: 1vw;
+    background: $bgTransparent;
+
+    .left-block {
+        margin-top: 0.9895vw;
+        margin-left: 2.0833vw;
+        height: 7.3958vw;
+        width: 50.9375vw;
+        display: inline-block;
+        float: left;
+
+        .whose {
+            float: left;
+            width: 18vw;
+            height: 2vw;
+            
+            div {
+                display: inline-block;
+                color: $yellowLk;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                float: left;
+            }
+            
+            .whose-device {
+                padding: 0.002vw;
+                float: left;
+                min-width: 3.125vw;
+                max-width: 5vw;
+                background: inherit;
+                border: none;
+                border-bottom: 0.0220vw solid rgba(white, 0.6);
+                color: $white;
+                margin-left: 0.5208vw;
+                font-size: 1.3541vw;
+                background: url('./resources/img/pen.png') no-repeat right;
+                background-size: 1.0416vw;
+                text-align: center;
+                padding-right: 1.3020vw;
+                outline: none;
+            } 
+            ::placeholder {
+                color: white;
+            }
+        }
+    }
+}

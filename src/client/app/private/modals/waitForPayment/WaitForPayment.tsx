@@ -33,68 +33,138 @@ export const WaitForPayment = () => {
     React.useEffect(() => {
 
         waitForPayment()
-
+        
     }, [])
-
+    
     const waitForPayment = () => {
+
         let lastState = WAIT_STATE.WAITING_FOR_PAYMENT
-
+        
         rx.Observable.of ({})
-            .concatMap (() => CONNECTION.getPayment (createGetPaymentRequest ())
-                .map (response => {
-                    if (response.paymentNotFound) {
+            .concatMap (() => getPaymentResponse ()
+            .map (response => {
 
-                        handlePaymentStatusResponse('Платеж не найден');
-                        return WAIT_STATE.PAYMENT_NOT_FOUND
-                    }
-                    else if (response.success.deviceCreated) {
+                console.log (response)
 
-                        handlePaymentStatusResponse('Устройство создано');
-                        return WAIT_STATE.DEVICE_CREATED
-                    }
-                    else if (response.success.paymentReceived.waitForDevice == true) {
-
-                        handlePaymentStatusResponse('Платеж получен, создаем устройство');
-                        return WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE
-                    }
-                    else if (response.success.paymentReceived.waitForDevice == false) {
-
-                        handlePaymentStatusResponse('Платеж получен');
-                        return WAIT_STATE.PAYMENT_RECEIVED
-                    }
-                    else {
-
-                        handlePaymentStatusResponse('Ожидается платеж');
-                        return WAIT_STATE.WAITING_FOR_PAYMENT
-                    }
-                })
-                .do (state => {
-                    lastState = state
-                    console.log('state',state); 
-                })
-            )
+                if (response.notReady) {
+                    setPaymentStatus(prev => prev = 'Ожидается платеж')
+                    return WAIT_STATE.WAITING_FOR_PAYMENT
+                }
+                else if (response.paymentNotFound) {
+                    
+                    handlePaymentStatusResponse('Платеж не найден');
+                    return WAIT_STATE.PAYMENT_NOT_FOUND
+                }
+                else if (response.success.deviceCreated) {
+                    
+                    handlePaymentStatusResponse('Устройство создано');
+                    return WAIT_STATE.DEVICE_CREATED
+                }
+                else if (response.success.paymentReceived?.waitForDevice == true) {
+                    
+                    handlePaymentStatusResponse('Платеж получен, создаем устройство');
+                    return WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE
+                }
+                else if (response.success.paymentReceived?.waitForDevice == false) {
+                    
+                    handlePaymentStatusResponse('Платеж получен');
+                    return WAIT_STATE.PAYMENT_RECEIVED
+                }
+                else {
+                    setPaymentStatus(prev => prev = 'Ожидается платеж')
+                    return WAIT_STATE.WAITING_FOR_PAYMENT
+                }
+            })
+            .do (state => {
+                lastState = state
+            }))
             .delay (1000)
             .repeat (10)
             .takeWhile (repeat => repeat == WAIT_STATE.WAITING_FOR_PAYMENT || repeat == WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE )
-            .takeUntil (rx.Observable.timer (10000))
+            .takeUntil (rx.Observable.timer (3000))
             .defaultIfEmpty (lastState)
-            .do (state => {
-                console.log('state',state);
-                if (state == WAIT_STATE.PAYMENT_NOT_FOUND) {
-                    console.log('payment not found');
-                    
-                }
-            })
+            .do (state => {console.log('state',state)})
             .delay (1000)
-            .do (() => backToCabinet())
-            .takeUntil (closedSubject)        
+            // .do (() => backToCabinet())
+            .do (() => console.log ("backToCabinet"))
+            .takeUntil (closedSubject)
             .subscribe(logger.rx.subscribe('Error in createGetPaymentRequest'))
     }
 
+    let attempt = 0;
+
+    const getPaymentResponse = () => {
+
+        if (window.location.href.endsWith ("paymentNotFound")) {
+            const response : GetPaymentResponse = {
+                paymentNotFound : {},
+            }
+
+            return rx.Observable.of (response)
+                .delay (1000)
+        }
+
+        else if (window.location.href.endsWith ("balancePayment")) {
+            if (attempt === 0) {
+                const response : GetPaymentResponse = {
+                    notReady : {}
+                }
+                attempt++
+                return rx.Observable.of (response)
+            }
+            else {
+                const response : GetPaymentResponse = {
+                    success : {
+                        paymentReceived : {
+                            waitForDevice : false
+                        }
+                    }
+                }
+                return rx.Observable.of (response)
+            }
+        }
+        else if (window.location.href.endsWith ("devicePayment")) {
+            if (attempt == 0) {
+                const response : GetPaymentResponse = {
+                    notReady : {}
+                }
+                attempt++
+                return rx.Observable.of (response)
+            }
+            else if (attempt == 1) {
+                const response : GetPaymentResponse = {
+                    success : {
+                        paymentReceived : {
+                            waitForDevice : true
+                        }
+                    }
+                }
+                attempt++
+                return rx.Observable.of (response)
+            }
+            else {
+                const response : GetPaymentResponse = {
+                    success : {
+                        deviceCreated : {}
+                    }
+                }
+                attempt++
+                return rx.Observable.of (response)
+            }
+        } 
+        else {
+            const response : GetPaymentResponse = {
+                notReady : {}
+            }
+            return rx.Observable.of(response)
+        }
+    }
 
     const createGetPaymentRequest = () : GetPaymentRequest => ({
         url : location
     })
+
+    const createGetPaymentResponse = () => CONNECTION.getPayment(createGetPaymentRequest())
 
     const handlePaymentStatusResponse = (title : string) => {
         setInProgress(prev => prev = false);
@@ -121,3 +191,4 @@ export const WaitForPayment = () => {
 }
 
 //https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615558464422X10110
+//https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615790041178X10116

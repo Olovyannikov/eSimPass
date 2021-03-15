@@ -1,3 +1,35 @@
 .Packages {
     
+    float: left;
+    margin-top: 4.6354vw;
+    margin-left: 8.5316vw;
+    margin-right: 8.6458vw;
+    
+    .title {
+        margin-bottom: 1.5386vw;
+        font-size: 1.875vw;
+        font-weight: 400;
+        color: $yellowLk;
+        font-family: 'TT Travels';
+    }
+
+    .dont-have-package {
+        width: 82.8125vw;
+        height: 10.1562vw;
+        border: 0.0520vw solid white;
+        margin-bottom: 1.3418vw;
+        border-radius: 1vw;
+        background: $bgTransparent;
+        text-align: center;
+        cursor: pointer;
+
+        .buy-package {
+            font-size: 2vw;
+            margin-top: 3.5vw;
+            color: $white;
+            float: left;
+        }
+    }
+
+    @import './package/Package.scss';
 }
