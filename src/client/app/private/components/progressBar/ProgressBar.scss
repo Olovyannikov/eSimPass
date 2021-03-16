@@ -1,0 +1,34 @@
+.ProgressBar {
+    float: left;
+    border: 0.025vw solid $white;
+    width: 32.5vw;
+    height: 2.9166vw;
+    display: inline-block;
+    border-radius: 1.1vw;
+
+    .bar {
+        float: left;
+        border-radius: 1.1vw;
+        background: $progressColorActive;
+        height: 100%;
+    }
+}
+
+.AmountRate {
+    margin-left: 2.2915vw;
+    float: left;
+    
+    .spent {
+        color: $yellowLk;
+        font-size: 2.2916vw;
+        font-weight: 600;
+        margin-bottom: -0.4vw;
+        margin-top: -0.3vw;
+    }
+    
+    .total {
+        font-weight: 400;
+        color: white;
+        font-size: 1vw;
+    }
+}

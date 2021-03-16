@@ -41,10 +41,8 @@ export const WaitForPayment = () => {
         let lastState = WAIT_STATE.WAITING_FOR_PAYMENT
         
         rx.Observable.of ({})
-            .concatMap (() => getPaymentResponse ()
+            .concatMap (() => createGetPaymentResponse ()
             .map (response => {
-
-                console.log (response)
 
                 if (response.notReady) {
                     setPaymentStatus(prev => prev = 'Ожидается платеж')
@@ -83,82 +81,80 @@ export const WaitForPayment = () => {
             .takeWhile (repeat => repeat == WAIT_STATE.WAITING_FOR_PAYMENT || repeat == WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE )
             .takeUntil (rx.Observable.timer (3000))
             .defaultIfEmpty (lastState)
-            .do (state => {console.log('state',state)})
             .delay (1000)
-            // .do (() => backToCabinet())
-            .do (() => console.log ("backToCabinet"))
+            .do (() => backToCabinet())
             .takeUntil (closedSubject)
             .subscribe(logger.rx.subscribe('Error in createGetPaymentRequest'))
     }
 
-    let attempt = 0;
+    // let attempt = 0;
 
-    const getPaymentResponse = () => {
+    // const getPaymentResponse = () => {
 
-        if (window.location.href.endsWith ("paymentNotFound")) {
-            const response : GetPaymentResponse = {
-                paymentNotFound : {},
-            }
+    //     if (window.location.href.endsWith ("paymentNotFound")) {
+    //         const response : GetPaymentResponse = {
+    //             paymentNotFound : {},
+    //         }
 
-            return rx.Observable.of (response)
-                .delay (1000)
-        }
+    //         return rx.Observable.of (response)
+    //             .delay (1000)
+    //     }
 
-        else if (window.location.href.endsWith ("balancePayment")) {
-            if (attempt === 0) {
-                const response : GetPaymentResponse = {
-                    notReady : {}
-                }
-                attempt++
-                return rx.Observable.of (response)
-            }
-            else {
-                const response : GetPaymentResponse = {
-                    success : {
-                        paymentReceived : {
-                            waitForDevice : false
-                        }
-                    }
-                }
-                return rx.Observable.of (response)
-            }
-        }
-        else if (window.location.href.endsWith ("devicePayment")) {
-            if (attempt == 0) {
-                const response : GetPaymentResponse = {
-                    notReady : {}
-                }
-                attempt++
-                return rx.Observable.of (response)
-            }
-            else if (attempt == 1) {
-                const response : GetPaymentResponse = {
-                    success : {
-                        paymentReceived : {
-                            waitForDevice : true
-                        }
-                    }
-                }
-                attempt++
-                return rx.Observable.of (response)
-            }
-            else {
-                const response : GetPaymentResponse = {
-                    success : {
-                        deviceCreated : {}
-                    }
-                }
-                attempt++
-                return rx.Observable.of (response)
-            }
-        } 
-        else {
-            const response : GetPaymentResponse = {
-                notReady : {}
-            }
-            return rx.Observable.of(response)
-        }
-    }
+    //     else if (window.location.href.endsWith ("balancePayment")) {
+    //         if (attempt === 0) {
+    //             const response : GetPaymentResponse = {
+    //                 notReady : {}
+    //             }
+    //             attempt++
+    //             return rx.Observable.of (response)
+    //         }
+    //         else {
+    //             const response : GetPaymentResponse = {
+    //                 success : {
+    //                     paymentReceived : {
+    //                         waitForDevice : false
+    //                     }
+    //                 }
+    //             }
+    //             return rx.Observable.of (response)
+    //         }
+    //     }
+    //     else if (window.location.href.endsWith ("devicePayment")) {
+    //         if (attempt == 0) {
+    //             const response : GetPaymentResponse = {
+    //                 notReady : {}
+    //             }
+    //             attempt++
+    //             return rx.Observable.of (response)
+    //         }
+    //         else if (attempt == 1) {
+    //             const response : GetPaymentResponse = {
+    //                 success : {
+    //                     paymentReceived : {
+    //                         waitForDevice : true
+    //                     }
+    //                 }
+    //             }
+    //             attempt++
+    //             return rx.Observable.of (response)
+    //         }
+    //         else {
+    //             const response : GetPaymentResponse = {
+    //                 success : {
+    //                     deviceCreated : {}
+    //                 }
+    //             }
+    //             attempt++
+    //             return rx.Observable.of (response)
+    //         }
+    //     } 
+    //     else {
+    //         const response : GetPaymentResponse = {
+    //             notReady : {}
+    //         }
+    //         return rx.Observable.of(response)
+    //     }
+    // }
 
     const createGetPaymentRequest = () : GetPaymentRequest => ({
         url : location

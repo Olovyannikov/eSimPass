@@ -50,8 +50,6 @@ export const TopUpBalance = () => {
         }
     }
 
-    //deeplink/payment/success?paymentId=1615538433398X10074
-
     const handleErrorAmountIsLessMin = () => {
         setError(prev => prev = true);
         setInProgress(prev => prev = false);

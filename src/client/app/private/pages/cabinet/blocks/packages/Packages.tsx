@@ -1,53 +1,76 @@
 import * as React from 'react';
+import * as rx from "rxjs/Rx"
 
 import { ListDevicesResponse } from '../../../../../../generated/proto.web';
-import { Package } from './package/Package';
+import { ActivePackage } from './activePackage/ActivePackage';
+import { EmptyPackage } from './emptyPackage/EmptyPackage';
+import { devicesData } from '../../../../../../mockData/mockDevices';
+import { CONNECTION } from '../../../../../../Connection';
+import { PACKAGES } from '../../../../../../PackageAdapter';
+import { Spinner } from '../../../../../public/components/spinner/Spinner';
+import { Logger } from '@glonassmobile/codebase-web/Logger';
+import { waitForClose } from '../../../../../../utils';
 
-export interface DevicesModel {
-    devices? : ListDevicesResponse.SuccessModel.DeviceModel[]
-}
+export const Packages = () => {
 
-export const Packages = (props : DevicesModel) => {
+    const logger = new Logger('Packages block');
 
-    const showActivePackage = (device : ListDevicesResponse.SuccessModel.DeviceModel, index : number) => {
-        let empty : boolean;
-        for (let i in device.currentPack) {
-            if (device.currentPack.hasOwnProperty(i)) {
-                empty = false
-            }
-            empty = true;
-        } 
-        if (empty) {
-            return <Package key={index} device={device} />
-        } else {
-            return false
-        }
+    const closedSubject = waitForClose();
+
+    const [inProgress, setInProgress] = React.useState<boolean>(true);
+    const [packages, setPackages] = React.useState<ListDevicesResponse.SuccessModel.DeviceModel[]>([])
+
+    React.useEffect(() => {
+
+        getListDevicesResponse()
+            .do(response => {
+                if (response.success) {
+                    handleSuccessResponse()
+                }
+                else {
+                    setInProgress(prev => prev = false)
+                }
+                
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in device response'))
+
+    }, [])
+
+    const getListDevicesResponse = () => CONNECTION.listDevices({})
+
+    const handleSuccessResponse = () => {
+        PACKAGES.setActivePackage(devicesData)
+        setPackages(prev => prev = PACKAGES.getActivePackages())
+        setInProgress(prev => prev = false)
     }
 
-    const hasPackage = () => {
-        if (props.devices) {
-            return <div className="title">Активные пакеты</div>
+    const showPackages = () => {
+        if (inProgress) {
+            return <Spinner />
         }
         else {
-            return (
-                <>
-                    <div className="title">Нет активных пакетов</div>
-                    <div className="dont-have-package">
-                        <div className="buy-package">
-                            Купить пакет
-                        </div>
-                    </div>
-                </>
-            )
+            if (packages.length) {
+                
+                return (
+                    <>
+                        <div className="title-active">Активные пакеты</div>
+                        {packages.map((el, index : number) => (
+                            <ActivePackage package={el} key={index} />
+                        ))}
+                    </>
+                )
+            }
+            else {
+                return <EmptyPackage />
+            }
+
         }
     }
 
     return (
         <div className="Packages">
-            {hasPackage()}
-            {props.devices && props.devices.map((el, index : number) => (
-                showActivePackage(el, index)
-            ))}
+            {showPackages()}
         </div>
     )
 }
