@@ -16,7 +16,7 @@ export const ActivePackage = (props : DeviceModel) => {
     return (
         <div className="ActivePackage">
             <div className="left-block">
-                <WhoseDevice name={props.package.name.value} />
+                <WhoseDevice id={props.package.deviceId} name={props.package.name.value} />
                 <div className="progress-block">
                     <div className="info-rate">
                         <div className='country'>{props.package.currentPack.rate.countryName}</div>
