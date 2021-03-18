@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { MenuButton } from '../MenuWrapper';
 import { BuyQrCode } from './menuItems/buyQrCode/BuyQrCode';
+import { Devices } from './menuItems/devices/Devices';
 import { Loyalty } from './menuItems/loyalty/Loyalty';
 import { Settings } from './menuItems/settings/Settings';
 
@@ -11,7 +12,7 @@ interface MenuActiveItemModel {
 
 export const MenuActiveItem = (props : MenuActiveItemModel) => {
 
-    const showActiveItem = () => {
+    const renderActiveItem = () => {
         if (props.activeItem === 'buyQr') {
             return <BuyQrCode />
         } 
@@ -19,7 +20,7 @@ export const MenuActiveItem = (props : MenuActiveItemModel) => {
             return <div>DETAILED</div>
         }
         else if (props.activeItem === 'devices') {
-            return <div>DEVICES</div>
+            return <Devices />
         }
         else if (props.activeItem === 'loyalty') {
             return <Loyalty />
@@ -34,7 +35,7 @@ export const MenuActiveItem = (props : MenuActiveItemModel) => {
     
     return (
         <div className="MenuActiveItem">
-            {showActiveItem()}
+            {renderActiveItem()}
         </div>
     )
 }

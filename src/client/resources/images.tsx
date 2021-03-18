@@ -38,7 +38,13 @@ import bigQrActive from './img/big-qr.png';
 import relation from './img/relation.png';
 import arrowDown from './img/arrow-down.png';
 import passport from './img/passport.png';
+import addIcon from './img/add.png';
+import redCross from './img/red-cross.png';
+import iphone  from './img/iphone-11.png';
 
+export const img_addIcon = addIcon;
+export const img_redCross = redCross;
+export const img_iphone = iphone;
 export const img_passport = passport;
 export const img_arrowDown = arrowDown;
 export const img_bigQrActive = bigQrActive;

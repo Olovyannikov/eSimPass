@@ -5,7 +5,6 @@ import { unitConventer, restPercentOfPackageQuota, setColorBar, ConventerUnitMod
 interface ProgressBarModel {
     quota : string;
     used : string;
-    className? : string;
 }
 
 export const ProgressBar = (props : ProgressBarModel) => {
@@ -18,7 +17,7 @@ export const ProgressBar = (props : ProgressBarModel) => {
 
     return (
         <>
-            <div className="ProgressBar">
+            <div className='ProgressBar'>
                 <div className='bar' style={{width:`${restPercentOfPackageQuota(+props.quota, +props.used)}%`, backgroundColor: setColorBar(restPercentOfPackageQuota(+props.quota, +props.used))}}></div>
             </div>
             <div className="AmountRate">

@@ -22,22 +22,12 @@ export const Packages = () => {
 
     const filterActivePackages = (packages : ListDevicesResponse.SuccessModel.DeviceModel[]) => {
 
-        const activePackages : ListDevicesResponse.SuccessModel.DeviceModel[] = []
-
-        packages.map(el => {
-            let empty : boolean;
-            for (let i in el.currentPack) {
-                if (el.currentPack.hasOwnProperty(i)) {
-                    empty = false
-                } 
-                empty = true
+        return packages.filter(el => {
+            if (Object.keys(el.currentPack).length !== 0) {
+                return true
             } 
-            if (empty) {
-                activePackages.push(el)
-            }
+            else return false
         })
-
-        return activePackages
 
     }
 

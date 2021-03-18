@@ -90,16 +90,16 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
     },
     packs : [],
 },
-// {
-//     deviceId : '3',
-//     created : '02/19/2021',
-//     currentPack : {},
-//     lpaUrl : 'lpaUrl-1',
-//     name : {
-//         value : 'Супруга',
-//     },
-//     packs : [],
-// }
+{
+    deviceId : '3',
+    created : '02/19/2021',
+    currentPack : {},
+    lpaUrl : 'lpaUrl-1',
+    name : {
+        value : 'Супруга',
+    },
+    packs : [],
+}
 ,{
     deviceId : '4',
     created : '07/15/2020',

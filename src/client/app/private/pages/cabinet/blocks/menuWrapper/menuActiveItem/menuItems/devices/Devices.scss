@@ -1,0 +1,9 @@
+.Devices {
+    float: left;
+    margin-left: 3.9062vw;
+    margin-bottom: 1.5vw;
+
+    @import './addDevice/AddDevice.scss';
+    @import './device/Device.scss';
+    @import './disabledDevice/DisabledDevice.scss';
+}

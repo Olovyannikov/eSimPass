@@ -1,0 +1,219 @@
+.Device {
+    float: left;
+    width: 38.9vw;
+    margin-left: 4.6354vw;
+    height: 17.3958vw;
+    border-radius: 1vw;
+    border: 0.27vw solid $yellowLk;
+    margin-top: 3.9062vw;
+
+    .left-block {
+        float: left;
+        margin-top: 1.5625vw;
+        margin-left: 1.6666vw;
+        width: 22vw;
+
+        .WhoseDevice {
+            float: left;
+            width: 45vw;
+            height: 2vw;
+            
+            .device {
+                display: inline-block;
+                color: $yellowLk;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                float: left;
+            }
+            
+            .whose-device {
+                padding: 0.002vw;
+                float: left;
+                width: 9vw;
+                background: transparent;
+                border: none;
+                border-bottom: 0.0220vw solid rgba(white, 0.6);
+                color: $white;
+                margin-left: 0.5208vw;
+                font-size: 1.3541vw;
+                text-align: center;
+                outline: none;
+            } 
+
+            ::placeholder {
+                color: white;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                font-family: 'TT Travels';
+            }
+
+            .whose-device:disabled {
+                opacity: 0.5;
+            }
+
+            .whose-name {
+                color: $white;
+                text-align: center;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                float: left;
+                margin-left: 1vw;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-width: 9vw;
+            }
+
+            .pen {
+                width: 1.0416vw;
+                height: 1.0416vw;
+                float: left;
+                cursor: pointer;
+                margin-left: 1vw;
+                margin-top: 0.2vw;
+            }
+
+            .error {
+                color: $white;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                float: left;
+                margin-left: 1vw;
+                color: rgba(214, 36, 36, 1);
+            }
+        }
+
+        .rate-info {
+            float: left;
+            width: 16.625vw;
+            height: 1.8229vw;
+            margin-top: 1vw;
+
+            .rate {
+                float: left;
+                height: 1.6229vw;
+                border: 0.025vw solid $yellowLk;
+                border-radius: 0.3vw;
+                text-align: center;
+                font-size: 0.729vw;
+                color: $yellowLk;
+                font-weight: 500;
+                width: 6vw;
+
+                >div {
+                    margin-top: 0.4vw;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+
+            .device-info {
+                float: right;
+                color: $white;
+                font-weight: 700;
+                font-size: 1.25vw;
+                margin-top: 0.1vw;
+            }
+        }
+
+        .price {
+            width: 12.0312vw;
+            height: 1.5625vw;
+            color: $white;
+            font-weight: 400;
+            font-size: 1.1458vw;
+            float: left;
+            margin-top: 1.777vw;
+        }
+
+        .ProgressBar {
+            margin-top: 1vw;
+            float: left;
+            border: 0.025vw solid $white;
+            width: 16.7708vw;
+            height: 2.3166vw;
+            border-radius: 0.7vw;
+    
+            .bar {
+                float: left;
+                border-radius: 0.7vw;
+                background: $progressColorActive;
+                height: 100%;
+            }
+    
+        }
+
+        .AmountRate {
+            margin-left: 0.5915vw;
+            margin-top: 1.4vw;
+            float: left;
+            
+            .spent {
+                color: $yellowLk;
+                font-size: 1.3458vw;
+                font-weight: 600;
+                margin-top: -0.5vw;
+                margin-bottom: 0;
+            }
+            
+            .total {
+                font-weight: 400;
+                color: $white;
+                font-size: 0.825vw;
+            }
+        }
+
+        .until {
+            color: $white;
+            font-size: 1vw;
+            float: left;
+            margin-top: 1vw;
+            font-weight: 400;
+    
+            .date {
+                color: $yellowLk;
+            }
+        }
+    }
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .right-block {
+            .iphone {
+                .iphone11 {
+                    margin-right: 0!important;
+                    margin-top: 4.88vw!important;
+                    margin-right: -1.6666vw!important;
+                }
+            }
+        }
+    }
+
+    .right-block {
+        float: right;
+
+        .active-arrow {
+            float: right;
+            cursor: pointer;
+
+            .active-arrow {
+                margin-top: 1.2583vw;
+                margin-right: 1.2583vw;
+                width: 2vw;
+                height: 2vw;
+                float: right;
+            }
+        }
+
+        .iphone {
+
+            .iphone11 {
+                float: right;
+                margin-top: 1.5833vw;
+                margin-right: 1.6666vw;
+                width: 11.1979vw;
+                height: 12.5vw;
+            }
+        }
+    }
+}
