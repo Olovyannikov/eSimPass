@@ -1,0 +1,45 @@
+.BuyQrCode {
+    width: 82.7083vw;
+    margin-left: 8.5416vw;
+    margin-top: 3vw;
+    float: left;
+    margin-bottom: 1.5vw;
+
+    .qr-block {
+        float: left;
+        margin-left: 2vw;
+
+        .img-gr {
+            width: 13.75vw;
+            height: 13.75vw;
+            float: left;
+            margin-top: 3.3vw;
+        }
+
+        .img_relation {
+            float: right;
+            width: 2.2312vw;
+            height: 2.2312vw;
+        }
+    }
+
+    .qr-block_right {
+
+        float: right;
+        color: $white;
+        width: 60vw;
+
+        .title {
+            float: left;
+            margin-bottom: 2vw;
+            font-size: 2.0833vw;
+            font-weight: 400;
+        }
+
+        .text {
+            float: left;
+            margin-bottom: 3vw;
+            font-size: 1.5625vw;
+        }
+    }
+}

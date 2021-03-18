@@ -34,7 +34,11 @@ import activeChange from './img/active-change.png';
 import activeLoyalty from './img/active-loyalty.png';
 import activeSettings from './img/active-settings.png';
 import pen from './img/pen.png';
+import bigQrActive from './img/big-qr.png';
+import relation from './img/relation.png';
 
+export const img_bigQrActive = bigQrActive;
+export const img_relation = relation;
 export const img_pen = pen;
 export const img_support = support;
 export const img_devices = devices;

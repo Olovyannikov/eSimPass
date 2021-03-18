@@ -11,7 +11,7 @@
 
     .left-block {
         margin-top: 0.9895vw;
-        margin-left: 2.0833vw;
+        margin-left: 1.0833vw;
         height: 7.3958vw;
         width: 50.9375vw;
         display: inline-block;
@@ -19,7 +19,6 @@
 
         .WhoseDevice {
             float: left;
-            // width: 20vw;
             width: 45vw;
             height: 2vw;
             
@@ -101,13 +100,19 @@
                     font-size: 1.3541vw;
                     font-weight: 600;
                     color: $white;
+                    width: 8.5vw;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
         
                 .rate-info {
                     font-weight: 700;
                     color: $yellowLk;
                     font-size: 1.3541vw;
-                    height: 1.1741vw;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
                 }
             }
         }

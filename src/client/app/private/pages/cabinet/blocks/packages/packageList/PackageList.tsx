@@ -12,9 +12,9 @@ export const PackageList = (props : DevicesModel) => {
     return (
         <div className="PackageList">
             <div className="title-active">Активные пакеты</div>
-            {props.packages.map((el, index : number) => (
-                <ActivePackage package={el} key={index} />
-            ))}
+                {props.packages.map((el, index : number) => (
+                    <ActivePackage package={el} key={index} />
+                ))}
         </div>
     )
 }

@@ -33,7 +33,10 @@
             float: left;
             font-size: 1.3020vw;
             margin-left: 1.6038vw;
-            cursor: pointer;
+            width: 20vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .img_person {
@@ -48,7 +51,7 @@
             float: right;
             font-size: 1.3020vw;
             cursor: pointer;
-            margin-right: 3vw;
+            margin-right: 2vw;
         }
 
         .logout:hover {

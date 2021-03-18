@@ -4,6 +4,7 @@ import { Balance } from './blocks/balance/Balance';
 import { Packages } from './blocks/packages/Packages';
 import { Navbar } from './blocks/navbar/Navbar';
 import { Menu } from './blocks/menu/Menu';
+// import { BuyQrCode } from './blocks/buyQrCode/BuyQrCode';
 
 
 export const Cabinet = () => {
@@ -14,6 +15,7 @@ export const Cabinet = () => {
             <Balance />
             <Packages />
             <Menu />
+            {/* <BuyQrCode /> */}
         </div>
     )
 }

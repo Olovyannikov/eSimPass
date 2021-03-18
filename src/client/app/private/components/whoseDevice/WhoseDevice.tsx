@@ -22,9 +22,6 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
     const [deviceName, setDeviceName] = React.useState<string>(props.name);
     const [inProgress, setInProgress] = React.useState<boolean>(false)
 
-    // const inputRef = React.useRef<HTMLInputElement>();
-    // const [inputValue, setInputValue] = React.useState<string>(props.name)
-
     const doRender = () => {
         if (showInput) {
             return (
@@ -58,8 +55,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
         setInProgress(prev => prev = true)
 
         if (checkEqualsName()) {
-            setShowInput(prev => prev = false);
-            setInProgress(prev => prev = false);
+            handleSuccessDeviceNameChange()
         } 
         else {
             CONNECTION.renameDevice(createRenameDeviceRequest())
@@ -68,7 +64,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
                         handleSuccessDeviceNameChange()
                     }
                     else if (response.deviceNotFound) {
-                        setError(prev => prev = 'Устройство не найдено')
+                        handleDeviceNotFound()
                     }
                 })
                 .takeUntil(closedSubject)
@@ -81,6 +77,13 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
     const handleSuccessDeviceNameChange = () => {
         setInProgress(prev => prev = false);
         setShowInput(prev => prev = false);
+    }
+
+    const handleDeviceNotFound = () => {
+        setError(prev => prev = 'Устройство не найдено');
+        setInProgress(prev => prev = false);
+        setShowInput(prev => prev = false)
+        setDeviceName(prev => prev = props.name)
     }
 
     const createRenameDeviceRequest = () : RenameDeviceRequest => ({
