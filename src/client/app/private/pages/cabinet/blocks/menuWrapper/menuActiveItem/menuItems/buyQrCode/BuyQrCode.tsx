@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { img_relation, img_bigQrActive } from '../../../../../../resources/images';
-import { Button } from '../../../../components/buttons/Button';
+import { img_relation, img_bigQrActive } from '../../../../../../../../../resources/images';
+import { Button } from '../../../../../../../components/buttons/Button';
 
 export const BuyQrCode = () => {
     return (
@@ -16,8 +16,8 @@ export const BuyQrCode = () => {
                     Поделитесь QR кодом с друзьями и получай cashback 5% от их трат на баланс!
                     <br/>
                     После покупки QR-код с интсрукцикй появится слева. Также мы продублируем его на вашу почту.
-                <Button className='buyQr' text='Купить QR-код'/>
                 </div>
+                <Button className='buyQr' text='Купить QR-код'/>
             </div>
         </div>
     )

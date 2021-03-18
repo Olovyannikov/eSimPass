@@ -4,6 +4,7 @@
     margin-top: 3vw;
     float: left;
     margin-bottom: 1.5vw;
+    padding-bottom: 1vw;
 
     .qr-block {
         float: left;
@@ -13,7 +14,7 @@
             width: 13.75vw;
             height: 13.75vw;
             float: left;
-            margin-top: 3.3vw;
+            margin-top: 2.3vw;
         }
 
         .img_relation {
@@ -38,8 +39,29 @@
 
         .text {
             float: left;
-            margin-bottom: 3vw;
+            margin-bottom: 2vw;
             font-size: 1.5625vw;
         }
     }
+    
+    .Button {
+
+        &.buyQr {
+            border: 0.2604vw solid transparent;
+            background: #fff05a;
+            width: 16.6875vw;
+            float: left;
+            border-radius: 2.0833vw;
+            height: 2.4166vw;
+            outline: none;
+    
+            div {
+                color: black;
+                text-align: center;
+                font-weight: 600;
+                font-size: 1.0416vw;
+            }
+        }
+    }
+
 }

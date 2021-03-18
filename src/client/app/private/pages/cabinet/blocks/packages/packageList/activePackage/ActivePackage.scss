@@ -34,7 +34,7 @@
                 padding: 0.002vw;
                 float: left;
                 width: 9vw;
-                background: inherit;
+                background: transparent;
                 border: none;
                 border-bottom: 0.0220vw solid rgba(white, 0.6);
                 color: $white;
@@ -44,13 +44,15 @@
                 outline: none;
             } 
 
-            .whose-device:disabled {
-                opacity: 0.5;
-            }
-
             ::placeholder {
                 color: white;
+                font-weight: 400;
+                font-size: 1.3541vw;
                 font-family: 'TT Travels';
+            }
+
+            .whose-device:disabled {
+                opacity: 0.5;
             }
 
             .whose-name {

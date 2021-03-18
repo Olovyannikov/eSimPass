@@ -1,0 +1,42 @@
+.PassportData {
+    width: 82.9687vw;
+    height: 5.625vw;
+    margin-left: 8.802vw;
+    border-radius: 1vw;
+    background: $bgTransparent;
+    border: 0.0520vw solid $white;
+    margin-top: 3.0191vw;
+    margin-bottom: 4.0254vw;
+    
+    .passport-block {
+        float: left;
+        width: 14.0625vw;
+        margin-top: 2.0958vw;
+        margin-left: 2.3958vw;
+
+        .passport {
+            margin-right: 0.7291vw;
+            display: inline-block;
+            float: left;
+            img {
+                width: 1.0416vw;
+                height: 1.1458vw;
+                float: left;
+            }
+        }
+
+        div {
+            color: $white;
+            font-size: 1.15vw;
+            float: left;
+        }
+    }
+
+    .arrow {
+        float: right;
+        margin-right: 1.4583vw;
+        width: 1.5104vw;
+        height: 0.8854vw;
+        margin-top: 2.3041vw;
+    }
+}

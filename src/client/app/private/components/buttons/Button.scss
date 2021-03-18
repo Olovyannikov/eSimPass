@@ -1,5 +1,5 @@
 .Button {
-
+    cursor: pointer;
     // &.supplementQr {
     //     border: 0.2604vw solid $white;
     //     width: 19.6875vw;
@@ -14,24 +14,6 @@
     //         margin-top: 0.7vw;
     //     }
     // }
-
-    &.buyQr {
-        border: 0.2604vw solid transparent;
-        background: #fff05a;
-        width: 16.6875vw;
-        float: left;
-        border-radius: 2.0833vw;
-        height: 2.4166vw;
-
-        div {
-            color: black;
-            margin-left: 0.3vw;
-            text-align: center;
-            margin-top: 0.6vw;
-            font-weight: 600;
-            font-size: 1.0416vw;
-        }
-    }
     
     // &.supplement {
     //     float: left;

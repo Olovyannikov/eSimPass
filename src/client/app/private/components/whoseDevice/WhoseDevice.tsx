@@ -4,7 +4,7 @@ import { img_pen } from '../../../../resources/images';
 import { CONNECTION } from '../../../../Connection';
 import { RenameDeviceRequest } from '../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../utils';
+import { nothingToNull, waitForClose } from '../../../../utils';
 
 interface WhoseDeviceModel {
     name : string;
@@ -34,44 +34,55 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
         else return (
             <>
                 <div className="whose-name">{deviceName}</div>
-                <img className='pen' onClick={handleInputState} src={img_pen} alt="Pen"/>
+                <img className='pen' onClick={toggleInput} src={img_pen} alt="Pen"/>
             </>
         )
     }
 
-    const handleInputState = () => {
-        setShowInput(prev => prev = true)
+    const toggleInput = () => {
+        setShowInput(prev => prev = !prev)
         setError(null)
     }
 
-    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-        setDeviceName(prev => prev = e.target.value)
-    }
+    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => setDeviceName(prev => prev = e.target.value)
 
     const checkEqualsName = () => deviceName === props.name ? true : false;
 
     const submitChangeName = () => {
 
-        setInProgress(prev => prev = true)
+        if (nothingToNull(deviceName)) {
+            
+            if (checkEqualsName()) {
+                handleSuccessDeviceNameChange()
+            } 
+            else {
+                setInProgress(prev => prev = true)
 
-        if (checkEqualsName()) {
-            handleSuccessDeviceNameChange()
-        } 
-        else {
-            CONNECTION.renameDevice(createRenameDeviceRequest())
-                .do(response => {
-                    if (response) {
-                        handleSuccessDeviceNameChange()
-                    }
-                    else if (response.deviceNotFound) {
-                        handleDeviceNotFound()
-                    }
-                })
-                .takeUntil(closedSubject)
-                .subscribe(logger.rx.subscribe('Error in device response'))
+                CONNECTION.renameDevice(createRenameDeviceRequest())
+                    .do(response => {
+                        if (response) {
+                            handleSuccessDeviceNameChange()
+                        }
+                        else if (response.deviceNotFound) {
+                            handleDeviceNotFound()
+                        }
+                    })
+                    .takeUntil(closedSubject)
+                    .subscribe(logger.rx.subscribe('Error in device response'))
+    
+            }
 
         }
+        else {
+            setPrevState()
+        }
 
+    }
+
+    const setPrevState = () => {
+        setDeviceName(prev => prev = props.name);
+        setError(null)
+        toggleInput()
     }
 
     const handleSuccessDeviceNameChange = () => {
