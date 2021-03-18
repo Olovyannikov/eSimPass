@@ -1,14 +1,18 @@
 import * as React from 'react';
-import { ListDevicesResponse } from '../../../../../../../../../../generated/proto.web';
 
+import { ListDevicesResponse } from '../../../../../../../../../../generated/proto.web';
 import { WhoseDevice } from '../../../../../../../../components/whoseDevice/WhoseDevice';
 import { img_iphone, img_redCross } from '../../../../../../../../../../resources/images';
+import { STATE_API } from '../../../../../../../../../../redux/StateApi';
 
 interface DisabledDeviceModel {
     device : ListDevicesResponse.SuccessModel.DeviceModel
 }
 
 export const DisabledDevice = (props : DisabledDeviceModel) => {
+
+    const deleteDevice = () => STATE_API.showPrivateWizard('deleteDevice');
+
     return (
         <div className="DisabledDevice">
             <div className="left-block">
@@ -26,7 +30,7 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
                 </div>
             </div>
             <div className="right-block">
-                <div className='cross'>   
+                <div className='cross' onClick={deleteDevice}>   
                     <img className='cross-img' src={img_redCross} alt="icon-arrow"/>
                 </div>
                 <div className='iphone'>

@@ -25,7 +25,7 @@ export const Devices = () => {
 
             .do(response => {
                 if (response.success) {
-                    // setPackages(prev => prev = filterActivePackages(devicesData))
+                    // setPackages(prev => prev = devicesData)
                 }
                 // setInProgress(prev => prev = false)
             })

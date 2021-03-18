@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { ListDevicesResponse } from '../../../../../../../../../../generated/proto.web';
+import { STATE_API } from '../../../../../../../../../../redux/StateApi';
 import { img_iphone, img_redCross } from '../../../../../../../../../../resources/images';
 import { convertDateUntilPackage } from '../../../../../../../../../../utils';
 import { ProgressBar } from '../../../../../../../../components/progressBar/ProgressBar';
@@ -11,6 +12,8 @@ interface DeviceModel {
 }
 
 export const Device = (props : DeviceModel) => {
+
+    const deleteDevice = () => STATE_API.showPrivateWizard('deleteDevice');
     
     return (
         <div className="Device">
@@ -31,8 +34,8 @@ export const Device = (props : DeviceModel) => {
                 <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.boughtDate, props.device.currentPack.duration).toLocaleDateString()}</span></div>
             </div>
             <div className="right-block">
-                <div className='active-arrow'>   
-                    <img className='active-arrow' src={img_redCross} alt="icon-arrow"/>
+                <div className='cross' onClick={deleteDevice}>   
+                    <img className='cross' src={img_redCross} alt="icon-arrow"/>
                 </div>
                 <div className='iphone'>
                     <img className='iphone11' src={img_iphone} alt="Iphone"/>

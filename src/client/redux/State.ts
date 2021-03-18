@@ -1,5 +1,5 @@
 export type SHOW_PUBLIC_WIZARD_MODE = 'login' | 'register' | 'verify';
-export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment';
+export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment' | 'deleteDevice';
 
 export interface State {
     auth? : {

@@ -39,7 +39,7 @@ const menuButtons : MenuButtonModel[] = [{
     },
     text : 'Подключенные устройства',
     className : 'devices',
-    active : false,
+    active : true,
 }, {
     icon : {
         active : img_activeDetail,
@@ -55,7 +55,7 @@ const menuButtons : MenuButtonModel[] = [{
     },
     text : 'Купить QR-код',
     className : 'buyQr',
-    active : true
+    active : false
 },{
     icon : {
         active : img_activeLoyalty,
