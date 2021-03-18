@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 
-import { ListDevicesResponse } from '../../../../../../../generated/proto.web';
-import { BuyRate } from '../../../../../components/buyRate/BuyRate';
-import { ProgressBar } from '../../../../../components/progressBar/ProgressBar';
-import { WhoseDevice } from '../../../../../components/whoseDevice/WhoseDevice';
+import { ListDevicesResponse } from '../../../../../../../../generated/proto.web';
+import { BuyRate } from '../../../../../../components/buyRate/BuyRate';
+import { ProgressBar } from '../../../../../../components/progressBar/ProgressBar';
+import { WhoseDevice } from '../../../../../../components/whoseDevice/WhoseDevice';
 
 
 export interface DeviceModel {

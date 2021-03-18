@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
+import { ListDevicesResponse } from './generated/proto';
 import { PACK_DURATION } from './generated/proto.web';
 
 export const nothingToNull = (value: string) : string => {

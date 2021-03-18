@@ -5,26 +5,13 @@ import { MenuItem } from './menuItem/MenuItem';
 
 export const Menu = () => {
 
-    const toggleActive = (menuItem : string) => {
-        menuItems.map(el => {
-            if (el.active === true) {
-                el.active = false
-                console.log('active',el.className);
-                
-            } 
-            else if (menuItem === el.className) {
-                el.active = true;
-                console.log('disabled',el.className);
-            }
-        })
-    }
 
     const [menuItems, setMenuItems] = React.useState<MenuItemModel[]>(items);
 
     return (
         <div className="Menu">
             {menuItems.map((el : MenuItemModel, index : number) => (
-                <MenuItem key={index} item={el} toggleActive={toggleActive}  />
+                <MenuItem key={index} item={el} />
             ))}
         </div>
     )

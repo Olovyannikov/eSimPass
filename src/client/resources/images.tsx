@@ -33,7 +33,9 @@ import activeDetail from './img/active-detail.png';
 import activeChange from './img/active-change.png';
 import activeLoyalty from './img/active-loyalty.png';
 import activeSettings from './img/active-settings.png';
+import pen from './img/pen.png';
 
+export const img_pen = pen;
 export const img_support = support;
 export const img_devices = devices;
 export const img_detail = detail;

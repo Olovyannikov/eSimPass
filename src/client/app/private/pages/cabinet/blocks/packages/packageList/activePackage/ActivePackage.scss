@@ -19,10 +19,11 @@
 
         .WhoseDevice {
             float: left;
-            width: 18vw;
+            // width: 20vw;
+            width: 45vw;
             height: 2vw;
             
-            div {
+            .device {
                 display: inline-block;
                 color: $yellowLk;
                 font-weight: 400;
@@ -33,22 +34,55 @@
             .whose-device {
                 padding: 0.002vw;
                 float: left;
-                min-width: 3.125vw;
-                max-width: 5vw;
+                width: 9vw;
                 background: inherit;
                 border: none;
                 border-bottom: 0.0220vw solid rgba(white, 0.6);
                 color: $white;
                 margin-left: 0.5208vw;
                 font-size: 1.3541vw;
-                background: url('./resources/img/pen.png') no-repeat right;
-                background-size: 1.0416vw;
                 text-align: center;
-                padding-right: 1.3020vw;
                 outline: none;
             } 
+
+            .whose-device:disabled {
+                opacity: 0.5;
+            }
+
             ::placeholder {
                 color: white;
+                font-family: 'TT Travels';
+            }
+
+            .whose-name {
+                color: $white;
+                text-align: center;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                float: left;
+                margin-left: 1vw;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                max-width: 9vw;
+            }
+
+            .pen {
+                width: 1.0416vw;
+                height: 1.0416vw;
+                float: left;
+                cursor: pointer;
+                margin-left: 1vw;
+                margin-top: 0.2vw;
+            }
+
+            .error {
+                color: $white;
+                font-weight: 400;
+                font-size: 1.3541vw;
+                float: left;
+                margin-left: 1vw;
+                color: rgba(214, 36, 36, 1);
             }
         }
 
