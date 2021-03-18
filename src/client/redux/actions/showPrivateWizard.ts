@@ -9,5 +9,7 @@ export const privateWizardAction = (mode : SHOW_PRIVATE_WIZARD_MODE) => createAc
 
 export const doPrivateWizard = (state = INITIAL_STATE, action : Action<SHOW_PRIVATE_WIZARD_MODE>) : State => ({
     ...state,
-    privateWizard : action.payload
+    privateWizard : {
+        stage : action.payload
+    }
 })

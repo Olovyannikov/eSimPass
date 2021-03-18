@@ -13,7 +13,10 @@ interface DeviceModel {
 
 export const Device = (props : DeviceModel) => {
 
-    const deleteDevice = () => STATE_API.showPrivateWizard('deleteDevice');
+    const deleteDevice = () => STATE_API.deleteDevice({
+        deviceId : props.device.deviceId,
+        deviceName : props.device.name.value
+    });
     
     return (
         <div className="Device">

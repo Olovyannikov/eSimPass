@@ -17,7 +17,7 @@ const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
     const showWizard = () => {
         if (props.privateWizard) {
-            return <Modal mode={props.privateWizard} />
+            return <Modal state={props.privateWizard} />
         }
     }
 

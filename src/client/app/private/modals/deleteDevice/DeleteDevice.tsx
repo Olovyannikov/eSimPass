@@ -18,7 +18,8 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
 
     const closedSubject = waitForClose();
 
-    const [inProgress, setInProgress] = React.useState<boolean>(false)
+    const [inProgress, setInProgress] = React.useState<boolean>(false);
+    const [response, setResponse] = React.useState<string>(null)
 
     const closeModal = () => STATE_API.hideAuthWizard();
 
@@ -31,12 +32,14 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
                 console.log(response);
                 
                 if (response.success) {
-                    closeModal()
+                    setResponse(prev => prev = `Устройство ${props.deviceName} успешно удалено`)
                 }
                 else if (response.deviceNotFound) {
-
+                    setResponse(prev => prev = `Устройство ${props.deviceName} не найдено`)
                 }
             })
+            .delay(2000)
+            .do(() => closeModal())
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in deleting device'))
 
@@ -49,6 +52,7 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
             <div className="title">Вы действительно хотите удалить устройство {props.deviceName}?</div>
             <Button disabled={inProgress} className='delete' text='Да' func={deleteDevice} />
             <Button disabled={inProgress} className='close' text='Нет' func={closeModal} />
+            <div className="response">{response}</div>
         </div>
     )
 }

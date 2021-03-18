@@ -14,9 +14,18 @@
 
     .title {
         text-align: center;
-        font-size: 600;
+        font-weight: 600;
         margin-top: 3vw;
         font-size: 1.3541vw;
+    }
+
+    .response {
+        color: $yellowLk;
+        text-align: center;
+        font-weight: 600;
+        margin-top: 6.5vw;
+        font-size: 1.3541vw;
+        height: 1vw;
     }
 
     .Button {
@@ -25,7 +34,7 @@
         border: none;
         text-align: center;
         color: $white;
-        margin-top: 3.16vw;
+        margin-top: 2.16vw;
         outline: none;
         height: 3vw;
         font-size: 1.3541vw;

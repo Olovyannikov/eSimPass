@@ -1,23 +1,27 @@
 import * as React from 'react';
 
-import { SHOW_PRIVATE_WIZARD_MODE } from '../../../redux/State';
+import { PrivateWizard } from '../../../redux/State';
 import { STATE_API } from '../../../redux/StateApi';
 import { DeleteDevice } from './deleteDevice/DeleteDevice';
 import { WaitForPayment } from './waitForPayment/WaitForPayment';
 
-export const Modal = (props : {mode : SHOW_PRIVATE_WIZARD_MODE} ) => {
+interface PrivateStageModals {
+    state : PrivateWizard
+}
+
+export const Modal = (props : PrivateStageModals ) => {
 
     const showModal = () => {
-        if (props.mode === 'waitForPayment') {
+        if (props.state.stage === 'waitForPayment') {
             return <WaitForPayment />
         }
-        else if (props.mode === 'deleteDevice') {
-            return <DeleteDevice />
+        else if (props.state.stage === 'deleteDevice') {
+            return <DeleteDevice deviceId={props.state.device.deviceId} deviceName={props.state.device.deviceName} />
         }
     }
 
     const preventClosedWizard = () => {
-        if (props.mode !== 'waitForPayment') {
+        if (props.state.stage !== 'waitForPayment') {
             STATE_API.hideAuthWizard()
         }
     }
