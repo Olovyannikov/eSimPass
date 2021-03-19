@@ -24,8 +24,6 @@ export const EntrySetting = () => {
 
     React.useEffect(() => {
 
-        CONNECTION.changePassword
-
         STORAGE.getEmail()
             .do(email => {
                 setEmail(prev => prev = email)
@@ -36,7 +34,7 @@ export const EntrySetting = () => {
     }, [])
 
     const checkPasswords = () => {
-        
+
         if (nothingToNull(password) && nothingToNull(newPassword)) {
 
             if (password === newPassword) {
@@ -94,7 +92,7 @@ export const EntrySetting = () => {
     const createPasswordChangeRequest = () : ChangePasswordRequest => ({
         password : newPassword
     })
-    
+
     return (
         <div onKeyPress={handleEnterPressEvent} className="EntrySetting">
             <div className="title">Настройки входа</div>

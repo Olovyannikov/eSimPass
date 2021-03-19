@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { PrivateWizard } from '../../../redux/State';
 import { STATE_API } from '../../../redux/StateApi';
+import { ConfirmPurchase } from './confirmPurchase/ConfirmPurchase';
+import { CreateDevice } from './createDevice/CreateDevice';
 import { DeleteDevice } from './deleteDevice/DeleteDevice';
 import { WaitForPayment } from './waitForPayment/WaitForPayment';
 
@@ -17,6 +19,12 @@ export const Modal = (props : PrivateStageModals ) => {
         }
         else if (props.state.stage === 'deleteDevice') {
             return <DeleteDevice deviceId={props.state.device.deviceId} deviceName={props.state.device.deviceName} />
+        }
+        else if (props.state.stage === 'addDevice') {
+            return <CreateDevice />
+        }
+        else if (props.state.stage === 'buyQrCode') {
+            return <ConfirmPurchase />
         }
     }
 

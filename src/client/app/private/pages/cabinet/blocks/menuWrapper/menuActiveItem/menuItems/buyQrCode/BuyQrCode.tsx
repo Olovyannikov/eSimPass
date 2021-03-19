@@ -1,9 +1,13 @@
 import * as React from 'react';
+import { STATE_API } from '../../../../../../../../../redux/StateApi';
 
 import { img_relation, img_bigQrActive } from '../../../../../../../../../resources/images';
 import { Button } from '../../../../../../../components/buttons/Button';
 
 export const BuyQrCode = () => {
+
+    const handleBuyQrCode = () => STATE_API.showPrivateWizard('buyQrCode');
+
     return (
         <div className="BuyQrCode">
             <div className='qr-block'>
@@ -17,7 +21,7 @@ export const BuyQrCode = () => {
                     <br/>
                     После покупки QR-код с интсрукцикй появится слева. Также мы продублируем его на вашу почту.
                 </div>
-                <Button className='buyQr' text='Купить QR-код'/>
+                <Button func={handleBuyQrCode} className='buyQr' text='Купить QR-код'/>
             </div>
         </div>
     )
