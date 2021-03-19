@@ -59,5 +59,16 @@
             float: right;
         }
 
+        &.show {
+            transform: rotate(180deg);
+            transition: 0.3s all ease-in-out;
+        }
+
+        &.hidden {
+            transform: rotate(360deg);
+            transition: 0.3s all ease-in-out;
+        }
+        
     }
 }
+

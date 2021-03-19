@@ -43,9 +43,11 @@ import redCross from './img/red-cross.png';
 import iphone  from './img/iphone-11.png';
 import arrowDownFAQ from './img/arrow-down-faq.png';
 import supportImg from './img/support-img.png';
+import arrowUpFAQ from './img/arrow-up-faq.png';
 
 
 export const img_supportImg = supportImg;
+export const img_arrowUpFaq = arrowUpFAQ;
 export const img_arrowDownFaq = arrowDownFAQ;
 export const img_addIcon = addIcon;
 export const img_redCross = redCross;
