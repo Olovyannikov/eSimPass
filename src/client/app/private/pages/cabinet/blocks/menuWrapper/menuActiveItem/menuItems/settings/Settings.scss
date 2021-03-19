@@ -1,4 +1,7 @@
 .Settings {
-    
+
+    float: left;
+
     @import './passportData/PassportData.scss';
+    @import './entrySetting/EntrySetting.scss';
 }

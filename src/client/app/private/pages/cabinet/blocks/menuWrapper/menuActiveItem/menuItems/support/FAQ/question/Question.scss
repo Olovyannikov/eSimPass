@@ -6,7 +6,7 @@
     width: 100%;
 
     &.show {
-        height: 9vw;
+        height: 8vw;
         transition: 0.3s all ease;
     }
 
@@ -33,13 +33,13 @@
         width: 95%;
 
         &.show {
-            transition: 0.3s all ease;
+            transition: 0.2s all ease;
             opacity: 1;
             visibility: visible;
         }
 
         &.hidden {
-            transition: 0.3s all ease;
+            transition: 0.2s all ease;
             opacity: 0;
             visibility: hidden;
         }

@@ -31,6 +31,11 @@
             outline: none;
             color: $yellowLk;
         }
+
+        .input:focus {
+            border-color: $yellowLk;
+        }
+
         ::placeholder {
             color: $yellowLk;
             font-family: 'TT Travels';

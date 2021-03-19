@@ -27,7 +27,7 @@ export const MenuActiveItem = (props : MenuActiveItemModel) => {
             return <Loyalty />
         }
         else if (props.activeItem === 'settings') {
-            return <div>SETTINGS</div>
+            return <Settings />
         }
         else if (props.activeItem === 'support') {
             return <Support />

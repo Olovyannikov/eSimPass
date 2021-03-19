@@ -16,15 +16,12 @@ export const FAQ = () => {
 }
 
 const questions : QuestionModel[] = [{
-    title : 'Как узнать условия моего тарифа',
-    text : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fuga reprehenderit officiis debitis ullam inventore rem dignissimos possimus numquam ratione.'
+    title : 'Если я активировал пакет интернета и выехал из страны, он "сгорает"?',
+    text : 'Нет, пакет интернета будет работать при выезде и возвращении в страну в течении срока действия.'
 },{
-    title : 'Как сменить тариф',
-    text : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fuga reprehenderit officiis debitis ullam inventore rem dignissimos possimus numquam ratione.'
+    title : 'Что делать, если купленный пакет интернета закончился, а Wi-Fi недоступен?',
+    text : 'В новой стране на покупку и активацию нового пакета вам предоставляется небольшой объем бесплатного трафика, который будет вычтен из нового купленного пакета.'
 },{
-    title : 'Как добавлять номера',
-    text : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fuga reprehenderit officiis debitis ullam inventore rem dignissimos possimus numquam ratione.'
-},{
-    title : 'Как подтвердить паспортные данные через госуслуги',
-    text : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fuga reprehenderit officiis debitis ullam inventore rem dignissimos possimus numquam ratione.'
+    title : 'Будут ли работать устройства в "Режиме модема".',
+    text : 'Некоторые операторы сотовой связи накладывают ограничение на количество подключений или блокируют такую возможность.'
 }]

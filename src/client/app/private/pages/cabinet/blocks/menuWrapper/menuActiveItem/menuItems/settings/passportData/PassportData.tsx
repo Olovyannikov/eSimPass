@@ -9,7 +9,7 @@ export const PassportData = () => {
                 <div className='passport'><img src={img_passport} alt="Passport"/></div>
                 <div>Паспортные данные</div>
             </div>
-            <img src={img_passport} alt="Arrow" className="arrow"/>
+            <img src={img_arrowDown} alt="Arrow" className="arrow"/>
         </div>
     )
 }
