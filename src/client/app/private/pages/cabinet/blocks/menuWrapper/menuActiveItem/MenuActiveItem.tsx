@@ -5,6 +5,7 @@ import { BuyQrCode } from './menuItems/buyQrCode/BuyQrCode';
 import { Devices } from './menuItems/devices/Devices';
 import { Loyalty } from './menuItems/loyalty/Loyalty';
 import { Settings } from './menuItems/settings/Settings';
+import { Support } from './menuItems/support/Support';
 
 interface MenuActiveItemModel {
     activeItem : MenuButton
@@ -29,7 +30,7 @@ export const MenuActiveItem = (props : MenuActiveItemModel) => {
             return <div>SETTINGS</div>
         }
         else if (props.activeItem === 'support') {
-            return <div>SUPPORT</div>
+            return <Support />
         }
     }
     
