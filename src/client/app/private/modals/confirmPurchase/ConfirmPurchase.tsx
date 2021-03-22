@@ -2,17 +2,12 @@ import * as React from 'react';
 
 import { STATE_API } from '../../../../redux/StateApi';
 import { Button } from '../../components/buttons/Button';
-import { CONNECTION } from '../../../../Connection';
 
 export const ConfirmPurchase = () => {
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
 
     const closeModal = () => STATE_API.hideAuthWizard();
-
-    const createPurchaseRequest = () => {
-
-    }
 
     return (
         <div className="ConfirmPurchase" onClick={(e) => e.stopPropagation()}>

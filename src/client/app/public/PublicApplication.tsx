@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 import { STATE_API } from "../../redux/StateApi";
 
 export interface TokenModel {
-    token : string
+    tokenVerify : string;
+    tokenRestore : string;
 }
 
 export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
@@ -19,19 +20,22 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
         }
     }
 
-    const { token } = useParams<TokenModel>();
+    const { tokenVerify, tokenRestore } = useParams<TokenModel>();
 
-    const handlerTokenFromUrl = (token : string) => {
-        if (token) {
-            STATE_API.showPublicWizard('verify');
+    const handlerTokenFromUrl = () => {
+        if (tokenVerify) {
+            STATE_API.showPublicWizard('verifyRegistration');
+        }
+        else if (tokenRestore) {
+            STATE_API.showPublicWizard('verifyPasswordRestore');
         }
     }
 
     React.useEffect(() =>  {
 
-        handlerTokenFromUrl(token)
+        handlerTokenFromUrl()
         
-    }, [token])
+    }, [tokenVerify, tokenRestore])
 
     return (
         <div className="PublicApplication">

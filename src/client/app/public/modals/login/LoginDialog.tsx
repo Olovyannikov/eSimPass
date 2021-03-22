@@ -125,7 +125,7 @@ export const LoginDialog = () => {
             return (
                 <>
                     <img onClick={handleLogin} src={img_next} className='button-next' alt="Next"/>
-                    <div className="forgot-password">Восстановить пароль</div>
+                    <div onClick={handleRestorePasswordClick} className="forgot-password">Восстановить пароль</div>
                     <div onClick={handleRegisterClicked} className="registration">Зарегистрироваться</div>
                 </>
             )
@@ -147,12 +147,14 @@ export const LoginDialog = () => {
         }   
     }
 
+    const handleRestorePasswordClick = () => STATE_API.showPublicWizard('passwordRestore');
+
     return (
-        <div className="LoginDialog" onClick={(e) => e.stopPropagation ()}>
+        <div onKeyDown={handleEventEnter} className="LoginDialog" onClick={(e) => e.stopPropagation ()}>
             <div className="title">Войти в личный кабинет</div>
             <div className="inputs-block">
-                <input onKeyDown={handleEventEnter} ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
-                <input onKeyDown={handleEventEnter} ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
+                <input ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
+                <input ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>

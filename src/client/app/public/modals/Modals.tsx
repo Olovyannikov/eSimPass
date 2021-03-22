@@ -1,9 +1,12 @@
 import * as React from 'react';
+
 import { STATE_API } from '../../../redux/StateApi';
 import { SHOW_PUBLIC_WIZARD_MODE } from '../../../redux/State';
 import { LoginDialog } from './login/LoginDialog';
 import { RegistrationDialog } from './registration/RegistrationDialog';
-import { VerifyDialog } from './verify/VerifyDialog';
+import { VerifyRegistrationDialog } from './verify/verifyRegistration/VerifyRegistrationDialog';
+import { PasswordRestoreDialog } from './restore/passwordRestore/PasswordRestoreDialog';
+import { VerifyPasswordRestoreDialog } from './verify/verifyPasswordRestore/VerifyPasswordRestoreDialog';
 
 export const Modals = (props : {mode : SHOW_PUBLIC_WIZARD_MODE} ) => {
 
@@ -14,8 +17,14 @@ export const Modals = (props : {mode : SHOW_PUBLIC_WIZARD_MODE} ) => {
         else if (props.mode === 'register') {
             return <RegistrationDialog/>
         }
-        else if (props.mode === 'verify') {
-            return <VerifyDialog />
+        else if (props.mode === 'verifyRegistration') {
+            return <VerifyRegistrationDialog />
+        }
+        else if (props.mode === 'passwordRestore') {
+            return <PasswordRestoreDialog />
+        }
+        else if (props.mode === 'verifyPasswordRestore') {
+            return <VerifyPasswordRestoreDialog />
         }
     }
 

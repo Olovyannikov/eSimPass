@@ -1,18 +1,19 @@
 import * as React from 'react';
 
-import { Spinner } from './../../components/spinner/Spinner';
-import {VerifyWebRegistrationRequest, VerifyWebRegistrationResponse } from '../../../../generated/proto.web';
-import { TokenModel } from '../../PublicApplication';
+import { Spinner } from '../../../components/spinner/Spinner';
+import {VerifyWebRegistrationRequest, VerifyWebRegistrationResponse } from '../../../../../generated/proto.web';
+import { TokenModel } from '../../../PublicApplication';
 import { useParams } from 'react-router-dom';
-import { CONNECTION } from '../../../../Connection';
-import { waitForClose } from '../../../../utils';
+import { CONNECTION } from '../../../../../Connection';
+import { waitForClose } from '../../../../../utils';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { STORAGE } from '../../../../StorageAdapter';
-import { STATE_API } from '../../../../redux/StateApi';
+import { STORAGE } from '../../../../../StorageAdapter';
+import { STATE_API } from '../../../../../redux/StateApi';
 
-export const VerifyDialog = () => {
 
-    const logger = new Logger ('VerifyDialog');
+export const VerifyRegistrationDialog = () => {
+
+    const logger = new Logger ('VerifyRegistrationDialog');
 
     const closedSubject = waitForClose ();
 
@@ -22,9 +23,10 @@ export const VerifyDialog = () => {
 
     const [inProgress, setInProgress] = React.useState<boolean>(true);
     const [error, setError] = React.useState<string>(null);
-    const [success, setSuccess] = React.useState<string>(null)
+    const [success, setSuccess] = React.useState<string>(null);
 
-    const { token } = useParams<TokenModel>();
+    const { tokenVerify } = useParams<TokenModel>();
+    const token = tokenVerify;
 
     
     React.useEffect(() => {
@@ -86,7 +88,7 @@ export const VerifyDialog = () => {
     const backToMainPage = () => STATE_API.hideAuthWizard();
 
     return (
-        <div className="VerifyDialog" onClick={e => e.stopPropagation()}>
+        <div className="VerifyRegistrationDialog" onClick={e => e.stopPropagation()}>
             {showInProgress()}
             {showResponse(success)}
             {showResponse(error)}
