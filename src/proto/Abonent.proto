@@ -16,6 +16,7 @@ service Abonent {
     rpc verifyWebRegistration (VerifyWebRegistrationRequest) returns (VerifyWebRegistrationResponse);
     rpc listCharges (ListChargesRequest) returns (ListChargesResponse);
     rpc changePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+    rpc requestPasswordRestore (RequestPasswordRestoreRequest) returns (RequestPasswordRestoreResponse);
 }
 
 message VerifyMobileCodeRequest {
@@ -189,5 +190,21 @@ message ChangePasswordResponse {
         string invalidRequest = 2;
         Empty invalidPassword = 3;
         Empty unauthorized = 4;
+    }
+}
+
+message RequestPasswordRestoreRequest {
+    string email = 1;
+}
+
+message RequestPasswordRestoreResponse {
+
+    oneof result {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmail = 3;
+        Empty accountNotFound = 4;
+        Empty expired = 5;
+        int64 tooManyErrorAttempts = 6;
     }
 }

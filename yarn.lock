@@ -14,15 +14,15 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@glonassmobile/codebase-web@1.1.1":
-  version "1.1.1"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-1.1.1.tgz#fc077ae1d16983e0047b97f8689a3b9b565173ad"
-  integrity sha512-6XQ4VwJYAAjH9r0CIPH/1QUt4hL7xDltlCJ7uGzRkR6KtA3BTbF0nyiPele1cO/xH3IDg3gIUJtm1HC8CuZ1Kw==
+"@glonassmobile/codebase-web@0.0.0-snapshot":
+  version "0.0.0-snapshot"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-0.0.0-snapshot.tgz#d203ca1f8ff34b8c85c3e33048c2530f4f2fe5c9"
+  integrity sha512-iI9hi2vE9A76PZSqQq+jPw91gmb/BXtEfA3/T44ju8Ch9v7XQQ9xSR1iwVs1n7pg2eruKTjuvwHhxHroBPlX4A==
 
-"@glonassmobile/codebase@1.1.1":
-  version "1.1.1"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.1.1.tgz#d133c7fede16c251940ae29a2b45bb7251eff32a"
-  integrity sha512-OPvqPy23lKC/mjUXwNjtKzqtWf73L4DcKfE+1WEz7OyNz/jkgheBzfSlzJ56rA3nDa//aYKXv92XB7/jtF+R1w==
+"@glonassmobile/codebase@0.0.0-snapshot":
+  version "0.0.0-snapshot"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-0.0.0-snapshot.tgz#ce35695b70db354e7c0f91183d5ec99f7e60f98a"
+  integrity sha512-mcUUUZTjrH+1N+FOfhdreIp/87Qq+LAftGN61mv/9pcQ8V8EJGHpcAa1iTmvL62rI37T6AgwUbHI+fIX0P3tTg==
   dependencies:
     "@grpc/proto-loader" "0.5.6"
     axios "0.21.1"
@@ -41,7 +41,7 @@
     uuid "8.3.2"
     validator "13.5.2"
     ws "7.4.4"
-    yaml "1.10.0"
+    yaml "1.10.2"
 
 "@grpc/proto-loader@0.5.6":
   version "0.5.6"
@@ -6698,10 +6698,10 @@ yallist@^4.0.0:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.0.tgz#3b593add944876077d4d683fee01081bd9fff31e"
-  integrity sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
+yaml@1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
+  integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
 yargs-parser@5.0.0-security.0:
   version "5.0.0-security.0"
