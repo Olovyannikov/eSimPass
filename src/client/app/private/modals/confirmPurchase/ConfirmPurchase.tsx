@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { STATE_API } from '../../../../redux/StateApi';
 
+import { STATE_API } from '../../../../redux/StateApi';
 import { Button } from '../../components/buttons/Button';
+import { CONNECTION } from '../../../../Connection';
 
 export const ConfirmPurchase = () => {
 
@@ -9,7 +10,10 @@ export const ConfirmPurchase = () => {
 
     const closeModal = () => STATE_API.hideAuthWizard();
 
-    
+    const createPurchaseRequest = () => {
+
+    }
+
     return (
         <div className="ConfirmPurchase" onClick={(e) => e.stopPropagation()}>
             <div className="title">Подтвердите покупку QR-кода за 3 € ?</div>
