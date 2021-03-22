@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export KUBECONFIG=./../infra/selectel/stand.gmdp.io/rke/kube_config_cluster.yml
+export KUBECONFIG=./../../devops2/infra/selectel/stand.gmdp.io/rke/kube_config_cluster.yml
 
-./../infra/bin/helm upgrade -i app \
+./../../devops2/infra/bin/helm upgrade -i app \
     --set reload=$(date -u +%Y-%m-%d_%H:%M:%S) \
     --set version=$1 \
     --set dns=toesim-dev.stand.gmdp.io \
