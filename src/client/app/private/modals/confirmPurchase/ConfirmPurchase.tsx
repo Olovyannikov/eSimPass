@@ -9,7 +9,7 @@ export const ConfirmPurchase = () => {
 
     const closeModal = () => STATE_API.hideAuthWizard();
 
-
+    
     return (
         <div className="ConfirmPurchase" onClick={(e) => e.stopPropagation()}>
             <div className="title">Подтвердите покупку QR-кода за 3 € ?</div>
