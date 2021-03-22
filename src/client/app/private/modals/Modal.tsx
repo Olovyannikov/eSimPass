@@ -1,14 +1,15 @@
 import * as React from 'react';
 
+import { BuyPackDialog } from './buyPack/BuyPackDialog';
 import { PrivateWizard } from '../../../redux/State';
 import { STATE_API } from '../../../redux/StateApi';
 import { ConfirmPurchase } from './confirmPurchase/ConfirmPurchase';
-import { CreateDevice } from './createDevice/CreateDevice';
-import { DeleteDevice } from './deleteDevice/DeleteDevice';
+import { CreateDevice } from './device/createDevice/CreateDevice';
+import { DeleteDevice } from './device/deleteDevice/DeleteDevice';
 import { WaitForPayment } from './waitForPayment/WaitForPayment';
 
 interface PrivateStageModals {
-    state : PrivateWizard
+    state : PrivateWizard;
 }
 
 export const Modal = (props : PrivateStageModals ) => {
@@ -25,6 +26,9 @@ export const Modal = (props : PrivateStageModals ) => {
         }
         else if (props.state.stage === 'buyQrCode') {
             return <ConfirmPurchase />
+        }
+        else if (props.state.stage === 'buyPack') {
+            return <BuyPackDialog pack={props.state.pack} />
         }
     }
 

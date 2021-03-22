@@ -4,9 +4,11 @@ import { doSetAuthenticated, setAuthenticatedCode, setAuthenticatedAction } from
 import { doPublicWizard, publicWizardCode, publicWizardAction } from './actions/showPublicWizard';
 import { hideAuthWizardCode, doHideAuthWizard, hideAuthWizardAction } from './actions/hideAuthWizard';
 import { doPrivateWizard, privateWizardAction, privateWizardCode } from './actions/showPrivateWizard';
-import { SHOW_PRIVATE_WIZARD_MODE, SHOW_PUBLIC_WIZARD_MODE, State, Device } from "./State";
+import { SHOW_PRIVATE_WIZARD_MODE, SHOW_PUBLIC_WIZARD_MODE, State, Device, BuyPackWizard } from "./State";
 import { deleteDeviceCode, deleteDeviceAction, doDeleteDevice } from './actions/deleteDeviceWizard';
+import { buyPackAction, buyPackCode, doBuyPack} from './actions/buyPackWizard';
 import { Action } from "@glonassmobile/codebase-web/Action";
+
 
 export const INITIAL_STATE : State = {
     auth : {},
@@ -14,6 +16,7 @@ export const INITIAL_STATE : State = {
 
 const reducersMap = {};
 
+reducersMap [buyPackCode] = doBuyPack;
 reducersMap [deleteDeviceCode] = doDeleteDevice;
 reducersMap [setAuthenticatedCode] = doSetAuthenticated;
 reducersMap [publicWizardCode] = doPublicWizard;
@@ -41,7 +44,8 @@ export const createDispatcher = (store : Store<State, any>) => ({
     showPublicWizard : (mode : SHOW_PUBLIC_WIZARD_MODE) => store.dispatch(publicWizardAction(mode)),
     hideAuthWizard : () => store.dispatch(hideAuthWizardAction()),
     showPrivateWizard : (mode : SHOW_PRIVATE_WIZARD_MODE) => store.dispatch(privateWizardAction(mode)),
-    deleteDevice : (device : Device) => store.dispatch(deleteDeviceAction(device))
+    deleteDevice : (device : Device) => store.dispatch(deleteDeviceAction(device)),
+    buyPack : (pack : BuyPackWizard) => store.dispatch(buyPackAction(pack))
 })
 
 export const STATE_API = createDispatcher (STORE)
