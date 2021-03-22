@@ -1,0 +1,28 @@
+.AddDevice {
+
+        float: left;
+        width: 39.0625vw;
+        margin-left: 4.6354vw;
+        height: 17.3958vw;
+        border-radius: 1vw;
+        border: 0.27vw solid $white;
+        margin-top: 3.9062vw;
+        background: $notActiveBg;
+
+        .img_add-icon {
+            width: 3.6458vw;
+            height: 3.6458vw;
+            float: right;
+            margin-top: 1.4062vw;
+            margin-right: 1.4062vw;
+            cursor: pointer;
+        }
+
+        .add-text {
+            color: $white;
+            font-weight: 600;
+            font-size: 2.2916vw;
+            text-align: center;
+            margin-top: 7vw;
+        }
+}

@@ -10,6 +10,7 @@
     float: left;
     background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
     z-index: 100;
+    border-radius: 3.125vw;
 
 
     .title {
@@ -100,9 +101,18 @@
             color: $white;
         }
 
+        .input-email:-webkit-autofill,
+        .input-email:-webkit-autofill:hover,
+        .input-email:-webkit-autofill:focus,
+        .input-email:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-text-fill-color: #fff !important;
+        }
+
         input::-ms-clear, input::-ms-reveal {
             display: none;
         }
+
 
         .button-next {
             cursor: pointer;

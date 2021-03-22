@@ -25,7 +25,7 @@ export const PricesBlock = ({ rate }: Props) => {
                 <img src={img_planeBig} />
                 <div className="prices-block__connect">
                     <a>
-                        <div onClick={() => STATE_API.showAuthWizard('register')}>
+                        <div onClick={() => STATE_API.showPublicWizard('register')}>
                             Подключить
                         </div>
                     </a>

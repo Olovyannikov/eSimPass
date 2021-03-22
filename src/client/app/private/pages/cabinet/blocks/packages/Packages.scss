@@ -1,3 +1,23 @@
 .Packages {
-    
+
+    float: left;
+    margin-top: 5vw;
+
+    .Spinner {
+        margin-left: 48vw;
+        margin-top: 5vw;
+        width: 40vw!important;
+    }
+
+    .title-active {
+        margin-bottom: 1.5386vw;
+        font-size: 1.875vw;
+        font-weight: 400;
+        color: $yellowLk;
+        margin-left: 8.5316vw;
+    }
+
+    @import '../../../../../public/components/components.scss';
+    @import './packageList/PackageList.scss';
+    @import './emptyPackage/EmptyPackage.scss';
 }

@@ -46,7 +46,7 @@ export class Connection extends WebClientBase {
                 'x-request-id': requestId,
                 'x-partner-id': 'gm',
                 'x-client-platform': 'web',
-                'x-client-version': 'snapshot'
+                'x-client-version': STORAGE.VERSION
             }
         })
         .flatMap (response => {

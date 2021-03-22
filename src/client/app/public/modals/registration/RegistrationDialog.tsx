@@ -21,10 +21,6 @@ export const RegistrationDialog = () => {
 
     const closedSubject = waitForClose ();
 
-    React.useEffect (() => {
-        return () => closedSubject.next ()
-    },[])
-
     const [successRegister, setSuccessRegister] = React.useState<boolean>(null)
     const [error, setError] = React.useState<string>('');
     const [inProgress, setInProgress] = React.useState<boolean>(false);
@@ -53,7 +49,7 @@ export const RegistrationDialog = () => {
         }
     }
 
-    const handleLoginClicked = () => STATE_API.showAuthWizard('login');
+    const handleLoginClicked = () => STATE_API.showPublicWizard('login');
 
     const showError = () => {
         if (error) {

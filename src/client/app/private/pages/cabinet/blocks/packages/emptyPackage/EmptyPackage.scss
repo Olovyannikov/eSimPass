@@ -1,0 +1,22 @@
+.EmptyPackage {
+    float: left;
+    margin-left: 8.5316vw;
+    margin-top: 1.5vw;
+
+    .dont-have-package {
+        width: 82.8125vw;
+        height: 10.1562vw;
+        border: 0.0520vw solid white;
+        margin-bottom: 1.3418vw;
+        border-radius: 1vw;
+        background: $bgTransparent;
+        text-align: center;
+        cursor: pointer;
+
+        .buy-package {
+            font-size: 2vw;
+            margin-top: 3.5vw;
+            color: $white;
+        }
+    }
+}

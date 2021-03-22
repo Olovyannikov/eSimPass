@@ -29,6 +29,12 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 <Route exact path='/cabinet'>
                     {() => checkAuthenticatedUser() }
                 </Route>
+                <Route path='/deeplink/payment/success'>
+                    {() => checkAuthenticatedUser()}
+                </Route>
+                <Route path='*' exact>
+                    <Redirect to='/' />
+                </Route>
             </Switch>
         </Router>
     )

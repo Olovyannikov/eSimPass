@@ -1,0 +1,64 @@
+.WaitForPayment {
+    width: 33vw;
+    height: 15.525vw;
+    color: black;
+    left: 33%;
+    right: 33%;
+    top: 20%;
+    bottom: 20%;
+    position: absolute;
+    float: left;
+    background: $cabinetBG;
+    z-index: 100;
+
+    .title {
+        color: $yellowLk;
+        margin-top: 2vw;
+        font-weight: 600;
+        font-size: 2vw;
+        text-align: center;
+    }
+
+    .Spinner {
+
+        margin-left: 13.5vw;
+        margin-top: 2vw;
+        float: left;
+
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+          }
+          .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 5.3333vw;
+            height: 5.3333vw;
+            margin-left: 0.8vw;
+            margin-top: 0.1vw;
+            border: 0.4166vw solid #fff;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+          }
+          .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+          }
+          .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+          }
+          .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+          }
+          @keyframes lds-ring {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+          
+    }
+}

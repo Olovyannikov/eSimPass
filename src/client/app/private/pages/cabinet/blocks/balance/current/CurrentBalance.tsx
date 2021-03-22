@@ -25,12 +25,16 @@ export const CurrentBalance = () => {
             ws.getResponseObservable ()
         )
         .flatMap (CONNECTION.checkStreamResponse)
-        .do (response => setBalance (Number(response.success.balance).toFixed(2)))
+        .do (response => setBalance (prev => prev = balanceConventer(response.success.balance)))
         .takeUntil (closer)
         .finally (() => ws.close ())
         .retryWhen (logger.rx.retry ("Reconnecting"))
         .subscribe (logger.rx.subscribe ("Listen balance"))
     })
+
+    const balanceConventer = (balance : string) : string => {
+        return Number(balance).toFixed(2)
+    }
 
     return (
         <div className="CurrentBalance">
