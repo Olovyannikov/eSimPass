@@ -1,0 +1,47 @@
+import * as React from 'react';
+
+import { Logger } from '@glonassmobile/codebase-web/Logger';
+import { CONNECTION } from '../../../../../../../../../Connection';
+import { waitForClose } from '../../../../../../../../../utils';
+import { DetailedHeader } from './detailedHeader/DetailedHeader';
+import { Table } from './table/Table';
+import { ListChargesRequest, ListChargesResponse } from '../../../../../../../../../generated/proto.web';
+
+export type TableView = 'expenses' | 'payments';
+
+export const Detailed = () => {
+
+    const logger = new Logger('Packages block');
+
+    const closedSubject = waitForClose();
+
+    const [tableView, setTableView] = React.useState<TableView>('expenses');
+    const [currentPage, setCurrentPage] = React.useState<number>(0);
+    const [charges, setCharges] = React.useState<ListChargesResponse.SuccessModel.ChargeModel[]>([]);
+
+    React.useEffect(() => {
+
+        CONNECTION.listCharges(createListChargesRequest())
+            .do(response => {
+                if (response.success) {
+                    setCharges(prev => prev = response.success.charges)
+                }
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in dcharges response'))
+
+    }, [])
+
+    const createListChargesRequest = () : ListChargesRequest => ({
+        fromDate : {
+            value : 'some data'
+        }
+    })
+
+    return (
+        <div className="Detailed">
+            <DetailedHeader allPages={charges.length} currentPage={currentPage} togglePage={setTableView} tableView={tableView} /> 
+            <Table charges={charges} />
+        </div>
+    )
+}
