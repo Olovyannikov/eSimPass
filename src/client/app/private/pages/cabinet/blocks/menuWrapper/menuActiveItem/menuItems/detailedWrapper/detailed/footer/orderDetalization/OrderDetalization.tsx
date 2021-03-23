@@ -54,7 +54,7 @@ export const OrderDetalization = () => {
 
     const renderSuccessfullOrder = () => {
         if (order) {
-            return <Button text='Детализация отправлена на Вашу почту' className='send-detailed' />
+            return <Button text='Детализация отправлена на Вашу почту!' className='send-detailed' />
         }
         else {
             return <Button func={handleOrderDetailed} text='Заказать детализацию' className='order-detail' />
