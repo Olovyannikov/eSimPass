@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { MenuButton } from '../MenuWrapper';
 import { BuyQrCode } from './menuItems/buyQrCode/BuyQrCode';
-import { Detailed } from './menuItems/detailed/Detailed';
+import { DetailedWrapper } from './menuItems/detailedWrapper/DetailedWrapper';
 import { Devices } from './menuItems/devices/Devices';
 import { Loyalty } from './menuItems/loyalty/Loyalty';
 import { Settings } from './menuItems/settings/Settings';
@@ -19,7 +19,7 @@ export const MenuActiveItem = (props : MenuActiveItemModel) => {
             return <BuyQrCode />
         } 
         else if (props.activeItem === 'detail') {
-            return <Detailed />
+            return <DetailedWrapper />
         }
         else if (props.activeItem === 'devices') {
             return <Devices />

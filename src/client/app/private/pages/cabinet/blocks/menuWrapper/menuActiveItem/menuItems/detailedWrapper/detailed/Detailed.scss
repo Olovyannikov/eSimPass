@@ -1,0 +1,8 @@
+.Detailed {
+    
+    float: left;
+
+    @import './table/Table.scss';
+    @import './header/Header.scss';
+    @import './footer/Footer.scss';
+}
