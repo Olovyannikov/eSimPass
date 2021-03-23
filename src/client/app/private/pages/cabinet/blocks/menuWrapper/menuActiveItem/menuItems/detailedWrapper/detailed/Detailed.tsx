@@ -27,7 +27,7 @@ export const Detailed = (props : DetailedModel) => {
         <div className="Detailed">
             <Header allPages={filterChargesByTableView(tableView).length} currentPage={currentPage} togglePage={setTableView} tableView={tableView} /> 
             <Table charges={filterChargesByTableView(tableView)} />
-            <Footer />
+            <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} allPage={filterChargesByTableView(tableView).length + 1} />
         </div>
     )
 }

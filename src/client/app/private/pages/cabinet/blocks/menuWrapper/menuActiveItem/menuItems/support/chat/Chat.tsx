@@ -12,9 +12,9 @@ export const Chat = () => {
             </div>
             <div className="info">
                 <div className="title">Онлайн чат с поддержкой</div>
-                <div className="text">Онлайн-чат — это простой и быстрый способ решения ваших вопросов. Наши специалисты всегда на связи и оперативно ответят Вам.</div>
+                <div className="text">Чат — это простой и быстрый способ решения ваших вопросов. Напишите на почту <a href="mailto:support@esimpass.com" className='link-to-mail'>support@esimpass.com</a> специалисты всегда на связи и оперативно ответят Вам.</div>
             </div>
-            <Button text='Открыть чат' className='chat-button'/>
+            {/* <Button text='Открыть чат' className='chat-button'/> */}
         </div>
     )
 }
