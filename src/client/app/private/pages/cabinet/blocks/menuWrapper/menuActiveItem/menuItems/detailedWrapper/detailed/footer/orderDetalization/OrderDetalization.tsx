@@ -7,7 +7,7 @@ import { Button } from '../../../../../../../../../../components/buttons/Button'
 export const OrderDetalization = () => {
 
     const [showDetailed, setShowDetailed] = React.useState<boolean>(false);
-    const [startDate, setStartDate] = React.useState<Date>(new Date());
+    const [startDate, setStartDate] = React.useState<Date>(null);
     const [endDate, setEndDate] = React.useState<Date>(null);
     const [order, setOrder] = React.useState<boolean>(false)
 
@@ -29,8 +29,13 @@ export const OrderDetalization = () => {
     }
 
     const inputDatePickerValue = () => {
-        if (startDate && endDate) {
-            return `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+        if (startDate) {
+
+            if (startDate && endDate) {
+                return `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
+            }
+            
+            return `${startDate.toLocaleDateString()} -  До `
         }
         else {
             return 'Выберите дату'
