@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { img_leftNav, img_rightNav } from '../../../../../../../../../../../resources/images';
-import { DatePicker } from './datePicker/DatePicker';
+import { OrderDetalization } from './orderDetalization/OrderDetalization';
 
 
 interface FooterModel {
@@ -38,7 +38,7 @@ export const Footer = (props : FooterModel) => {
     
     return (
         <div className="Footer">
-            <DatePicker />
+            <OrderDetalization />
             <div className="navigation">
                 {handlePageNavigator()}
             </div>
