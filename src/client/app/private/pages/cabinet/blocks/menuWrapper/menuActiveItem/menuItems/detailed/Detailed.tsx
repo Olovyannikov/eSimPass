@@ -5,6 +5,7 @@ import { CONNECTION } from '../../../../../../../../../Connection';
 import { waitForClose } from '../../../../../../../../../utils';
 import { DetailedHeader } from './detailedHeader/DetailedHeader';
 import { Table } from './table/Table';
+import { Spinner } from '../../../../../../../../public/components/spinner/Spinner';
 import { ListChargesRequest, ListChargesResponse } from '../../../../../../../../../generated/proto.web';
 
 export type TableView = 'expenses' | 'payments';
@@ -18,13 +19,16 @@ export const Detailed = () => {
     const [tableView, setTableView] = React.useState<TableView>('expenses');
     const [currentPage, setCurrentPage] = React.useState<number>(0);
     const [charges, setCharges] = React.useState<ListChargesResponse.SuccessModel.ChargeModel[]>([]);
+    const [inProgress, setInProgress] = React.useState<boolean>(true)
 
     React.useEffect(() => {
+
 
         CONNECTION.listCharges(createListChargesRequest())
             .do(response => {
                 if (response.success) {
                     setCharges(prev => prev = response.success.charges)
+                    setInProgress(prev => prev = false)
                 }
             })
             .takeUntil(closedSubject)
@@ -38,10 +42,23 @@ export const Detailed = () => {
         }
     })
 
+    const doRender = () => {
+        if (inProgress) {
+            return <Spinner />
+        }
+        else {
+            return (
+                <>
+                    <DetailedHeader allPages={charges.length} currentPage={currentPage} togglePage={setTableView} tableView={tableView} /> 
+                    <Table charges={charges} />
+                </>
+            )
+        }
+    }
+
     return (
         <div className="Detailed">
-            <DetailedHeader allPages={charges.length} currentPage={currentPage} togglePage={setTableView} tableView={tableView} /> 
-            <Table charges={charges} />
+            {doRender()}
         </div>
     )
 }
