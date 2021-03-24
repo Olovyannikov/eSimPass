@@ -1,4 +1,4 @@
-.PassportData {
+.PassportDropDown {
     width: 82.9687vw;
     height: 5.625vw;
     margin-left: 8.802vw;
@@ -7,17 +7,28 @@
     border: 0.0520vw solid $white;
     margin-top: 3.0191vw;
     margin-bottom: 4.0254vw;
+
+    &.show {
+        transition: 0.3s height ease-in;
+        height: 28.802vw;
+    }
     
-    .passport-block {
+    &.hidden {
+        height: 5.625vw;
+        transition: 0.3s height ease-in;
+    }
+    
+    .passport-text {
         float: left;
-        width: 14.0625vw;
+        width: 50.0625vw;
         margin-top: 2.0958vw;
         margin-left: 2.3958vw;
 
-        .passport {
+        .passport-img {
             margin-right: 0.7291vw;
             display: inline-block;
             float: left;
+
             img {
                 width: 1.0416vw;
                 height: 1.1458vw;
@@ -38,5 +49,18 @@
         width: 1.5104vw;
         height: 0.8854vw;
         margin-top: 2.3041vw;
+        cursor: pointer;
+
+        &.show {
+            transform: rotate(180deg);
+            transition: 0.3s all ease-in-out;
+        }
+    
+        &.hidden {
+            transform: rotate(360deg);
+            transition: 0.3s all ease-in-out;
+        }
     }
+
+    @import './passportWrapper/PassportWrapper.scss';
 }

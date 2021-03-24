@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import { EntrySetting } from './entrySetting/EntrySetting';
-import { PassportData } from './passportData/PassportData';
+import { PassportDropDown } from './passportDropDown/PassportDropDown';
 
 export const Settings = () => {
     return (
         <div className="Settings">
-            <PassportData />
+            <PassportDropDown />
             <EntrySetting />
         </div>
     )

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { img_arrowDownFaq, img_arrowUpFaq } from '../../../../../../../../../../../resources/images';
+import { img_arrowDownFaq } from '../../../../../../../../../../../resources/images';
 
 export interface QuestionModel {
     title : string;
