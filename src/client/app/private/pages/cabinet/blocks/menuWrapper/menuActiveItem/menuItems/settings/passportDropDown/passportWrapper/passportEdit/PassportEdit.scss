@@ -93,25 +93,6 @@
 
     }
 
-    .photo-download {
-        background: $yellowLk;
-        width: 15.2083vw;
-        height: 2.3166vw;
-        border-radius: 2.0833vw;
-        margin-top: 2vw;
-        text-align: center;
-        color: black;
-        cursor: pointer;
-        float: left;
-        outline: none;
-        border: none;
-
-        >div {
-            font-size: 0.75vw;
-            font-weight: 600;
-        }
-    }
-
     .edit {
         font-size: 0.791vw;
         color: $yellowLk;
@@ -137,4 +118,6 @@
     //     0% { left: -0.4vw; }
     //     100% { right: -0.4vw; }
     // }
+
+    @import './imageUpload/ImageUpload.scss';
 }

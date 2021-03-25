@@ -5,21 +5,35 @@ import { PassportModel } from '../PassportWrapper';
 
 export const PassportView = (props : PassportModel) => {
 
+    const { fullName, series, gotDate, gender, citizenship, bornDate, address } = props.passportState;
+
     const handleChangeMode = () => props.toggleMode(prev => !prev)
+
+    const convertMsToDateString = (ms : string) => new Date(ms).toLocaleDateString();
     
     return (
         <div className="PassportView">
             <div className="top">
-                <span className='name'>Иванова Александра Юрьевна</span>
+                <span className='name'>{fullName}</span>
                 <span onClick={handleChangeMode} className='edit'>Редактировать</span>
             </div>
-            <div className="born yellow-text">Дата рождения: <span> 22.04.1994</span> </div>
-            <div className="gender yellow-text">Пол: <span> Женский</span> </div>
-            <div className="citizenship yellow-text">Гражданство: <span> Россия</span> </div>
-            <div className="series yellow-text">Серия и номер паспорта: <span> 4230 350032</span> </div>
-            <div className="date-passport yellow-text">Дата выдачи: <span> 01.02.2018</span> </div>
-            <div className="address yellow-text">Адрес: <span> Россия, Москва, Красная площадь 1, к в1</span> </div>
-            <Button text='Фотография загружена' className='photo-download' />
+            <div className="yellow-text">
+                Дата рождения: <span> {convertMsToDateString(bornDate)} </span> 
+            </div>
+            <div className="yellow-text">
+                Пол: <span> {gender} </span> 
+            </div>
+            <div className="yellow-text">
+                Гражданство: <span> {citizenship} </span> 
+            </div>
+            <div className="yellow-text">
+                Серия и номер паспорта: <span> {series} </span> 
+            </div>
+            <div className="yellow-text">
+                Дата выдачи: <span> {convertMsToDateString(gotDate)} </span> 
+            </div>
+            <div className="yellow-text">Адрес: <span> {address} </span> </div>
+            <Button text='Фотография загружена!' className='photo-download' />
         </div>
     )
 }

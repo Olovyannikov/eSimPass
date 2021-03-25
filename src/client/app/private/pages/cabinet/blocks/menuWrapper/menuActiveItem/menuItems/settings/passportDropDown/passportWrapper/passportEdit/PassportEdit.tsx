@@ -1,64 +1,48 @@
 import * as React from 'react';
 
-import { Button } from '../../../../../../../../../../components/buttons/Button';
 import { PassportModel } from '../PassportWrapper';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { ImageUpload } from './imageUpload/ImageUpload';
 
-enum Gender {
-    male = 'Мужчина',
-    women = 'Женщина'
-}
-
-interface PassportStateModel {
-    bornDate? : Date;
-    gotDate? : Date;
-    // gender? : string;
-    citizenship? : string;
-    series? : string;
-    fullName? : string;
-    address? : string;
-}
 
 export const PassportEdit = (props : PassportModel) => {
 
-    const [passportState, setPassportState] = React.useState<PassportStateModel>({
-        bornDate : null,
-        gotDate : null,
-        citizenship : '',
-        series : '',
-        fullName : '',
-        address : ''
-    })
 
-    const [error, setError] = React.useState<boolean>(null)
+    const [error, setError] = React.useState<boolean>(null);
+
+    const radioMaleRef = React.useRef<HTMLInputElement>();
+    
+    const handleRadioButtonsChange = () => {
+        props.setPassportState(prev => ({
+            ...prev,
+            gender : radioMaleRef.current.checked ? 'Мужчина' : 'Женщина'
+        }))
+    }
 
     const handleInputChange = (key : string, event? : React.ChangeEvent<HTMLInputElement> , date? : Date | [Date, Date]) => {
-        if (key === 'gender') {
-            setPassportState(prev => ({
-                ...prev,
-                [key] : event.target.checked
-            }))
-        }
-        else if (event) {
-            setPassportState(prev => ({
+        
+        if (event) {
+            props.setPassportState(prev => ({
                 ...prev,
                 [key] : event.target.value
             }))
         }
         else {
-            setPassportState(prev => ({
+            console.log('date', Date.parse(String(date)), new Date(Date.parse(String(date))));
+            
+            props.setPassportState(prev => ({
                 ...prev,
-                [key] : date
+                [key] : Date.parse(String(date))
             }))
         }
     }
 
 
     const saveChanges = () => {
-        const {address, series, gotDate, bornDate, fullName, citizenship} = passportState
+        const {address, series, gotDate, bornDate, fullName, citizenship, gender} = props.passportState
 
-        if (address && series && gotDate && bornDate && fullName && citizenship) {
+        if (address && series && gotDate && bornDate && fullName && citizenship && gender) {
             props.toggleMode(prev => !prev)
         }
         else {
@@ -78,7 +62,7 @@ export const PassportEdit = (props : PassportModel) => {
                 <input 
                     placeholder='Фамилия Имя Отчество' 
                     onChange={(e) => handleInputChange('fullName', e)} 
-                    value={passportState.fullName} 
+                    value={props.passportState.fullName} 
                     className='input-name' 
                     type='text' 
                 />
@@ -86,17 +70,20 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Дата рождения: 
                 <DatePicker 
-                    placeholderText='ММ.ДД.ГГГГ' 
+                    dateFormat='dd/MM/yyyy'
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={passportState.bornDate} 
+                    selected={new Date(props.passportState.bornDate)} 
                     onChange={(date) => handleInputChange('bornDate', null , date)}
                 />
             </div>
-            <div className="yellow-text">
+            <div onChange={handleRadioButtonsChange} className="yellow-text">
                 Пол:
                 <input 
-                    // onChange={(e) => handleInputChange('gender', e)}
-
+                    defaultChecked={props.passportState.gender === 'Женщина' ? true : false}
                     className='radio' 
                     value='Жен' 
                     type="radio" 
@@ -104,6 +91,8 @@ export const PassportEdit = (props : PassportModel) => {
                 /> 
                 <span>Жен</span>
                 <input 
+                    ref={radioMaleRef}
+                    defaultChecked={props.passportState.gender === 'Мужчина' ? true : false}
                     className='radio' 
                     value='Муж' 
                     type="radio" 
@@ -115,7 +104,7 @@ export const PassportEdit = (props : PassportModel) => {
                 Гражданство: 
                 <input 
                     onChange={(e) => handleInputChange('citizenship', e)} 
-                    value={passportState.citizenship} 
+                    value={props.passportState.citizenship} 
                     className='input citizenship' 
                     type='text' 
                 />
@@ -124,7 +113,7 @@ export const PassportEdit = (props : PassportModel) => {
                 Серия и номер паспорта: 
                 <input 
                     onChange={(e) => handleInputChange('series', e)} 
-                    value={passportState.series} 
+                    value={props.passportState.series} 
                     className='input passport-series' 
                     type='text' 
                 />
@@ -132,9 +121,13 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Дата выдачи: 
                 <DatePicker 
-                    placeholderText='ММ.ДД.ГГГГ' 
+                    dateFormat='dd/MM/yyyy'
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={passportState.gotDate} 
+                    selected={new Date(props.passportState.gotDate)} 
                     onChange={(date) => handleInputChange('gotDate', null ,date)}
                 />
             </div>
@@ -142,12 +135,12 @@ export const PassportEdit = (props : PassportModel) => {
                 Адрес: 
                 <input 
                     onChange={(e) => handleInputChange('address', e)} 
-                    value={passportState.address} 
+                    value={props.passportState.address} 
                     className='input address' 
                     type='text'
                 />
             </div>
-            <Button text='Загрузите фотографию паспорта' className='photo-download' />
+            <ImageUpload passportImage={props.passportState.image} setPassportImage={props.setPassportState} />
             <div onClick={saveChanges} className='edit'>Сохранить</div>
             {renderError()}
         </div>
