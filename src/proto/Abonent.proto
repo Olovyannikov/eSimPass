@@ -17,6 +17,7 @@ service Abonent {
     rpc listCharges (ListChargesRequest) returns (ListChargesResponse);
     rpc changePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
     rpc requestPasswordRestore (RequestPasswordRestoreRequest) returns (RequestPasswordRestoreResponse);
+    rpc verifyPasswordRestore (VerifyPasswordRestoreRequest) returns (VerifyPasswordRestoreResponse);
 }
 
 message VerifyMobileCodeRequest {
@@ -206,5 +207,22 @@ message RequestPasswordRestoreResponse {
         Empty accountNotFound = 4;
         Empty expired = 5;
         int64 tooManyErrorAttempts = 6;
+    }
+}
+
+message VerifyPasswordRestoreRequest {
+    string verificationToken = 1;
+}
+
+message VerifyPasswordRestoreResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof result {
+        SuccessModel success = 1;
+        Empty expired = 2;
+        Empty invalidToken = 3;
     }
 }
