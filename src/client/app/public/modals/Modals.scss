@@ -11,5 +11,7 @@
 
     @import './login/LoginDialog.scss';
     @import './registration/RegistrationDialog.scss';
-    @import './verify/VerifyDialog.scss';
+    @import './restore/passwordRestore/PasswordRestoreDialog.scss';
+    @import './verify/verifyRegistration/VerifyRegistrationDialog.scss';
+    @import './verify/verifyPasswordRestore/VerifyPasswordRestoreDialog.scss';
 }

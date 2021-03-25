@@ -6,6 +6,7 @@ import { CONNECTION } from '../../../../../../Connection';
 import { img_person } from '../../../../../../resources/images';
 import { STORAGE } from '../../../../../../StorageAdapter';
 import { waitForClose } from '../../../../../../utils';
+import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
 
 export const Navbar = () => {
 
@@ -46,6 +47,7 @@ export const Navbar = () => {
                 <div className="email">{email}</div>
                 <div onClick={handleLogout} className="logout">Выйти</div>
             </div>
+            <WithoutPassportData />
         </div>
     )
 }

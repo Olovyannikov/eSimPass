@@ -17,7 +17,7 @@ interface PasswordViewModel {
 
 export const RegistrationDialog = () => {
 
-    const logger = new Logger ('RegistrationDialog');
+    const logger = new Logger ('Registration Dialog');
 
     const closedSubject = waitForClose ();
 
@@ -200,15 +200,15 @@ export const RegistrationDialog = () => {
     }
 
     return (
-        <div className={`RegistrationDialog`} onClick={(e) => e.stopPropagation()}>
+        <div onKeyUp={handleEventEnter} className={`RegistrationDialog`} onClick={(e) => e.stopPropagation()}>
             <div className="title">Регистрация</div>
             <div className="inputs-block">
-                <input onKeyUp={handleEventEnter} ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
-                <input onKeyUp={handleEventEnter} ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
+                <input ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
+                <input ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>
-                <input onKeyUp={handleEventEnter} ref={passwordRepeatInput} disabled={inProgress} required name='password' className='input-password' placeholder='Повторите пароль' type={passwordViewMode.type}/>
+                <input ref={passwordRepeatInput} disabled={inProgress} required name='password' className='input-password' placeholder='Повторите пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>

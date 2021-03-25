@@ -1,11 +1,11 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
-import { CONNECTION } from '../../../../Connection';
-import { DeleteDeviceRequest } from '../../../../generated/proto.web';
-import { STATE_API } from '../../../../redux/StateApi';
-import { waitForClose } from '../../../../utils';
+import { CONNECTION } from '../../../../../Connection';
+import { DeleteDeviceRequest } from '../../../../../generated/proto.web';
+import { STATE_API } from '../../../../../redux/StateApi';
+import { waitForClose } from '../../../../../utils';
 
-import { Button } from '../../components/buttons/Button';
+import { Button } from '../../../components/buttons/Button';
 
 interface DeleteDeviceModel {
     deviceId? : string;
@@ -19,7 +19,7 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
     const closedSubject = waitForClose();
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
-    const [response, setResponse] = React.useState<string>(null)
+    const [response, setResponse] = React.useState<string>(null);
 
     const closeModal = () => STATE_API.hideAuthWizard();
 
@@ -29,7 +29,6 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
 
         CONNECTION.deleteDevice(deleteDeviceRequest())
             .do(response => {
-                console.log(response);
                 
                 if (response.success) {
                     setResponse(prev => prev = `Устройство ${props.deviceName} успешно удалено`)

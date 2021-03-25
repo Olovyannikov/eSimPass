@@ -21,7 +21,7 @@
     }
 
     .info {
-        width: 54.6354vw;
+        width: 72.6354vw;
         float: left;
         margin-left: 2.8125vw;
         color: $white;
@@ -36,6 +36,12 @@
             margin-top: 0.7vw;
             font-size: 1.0416vw;
             font-weight: 400;
+
+            .link-to-mail {
+                text-decoration: none;
+                color: $yellowLk;
+
+            }
         }
     }
 

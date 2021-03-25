@@ -1,0 +1,17 @@
+.Table {
+    float: left;
+    width: 82.8125vw;
+    // max-height: 17.7083vw;
+    min-height: 3.5vw;
+    border: 0.052vw solid white;
+    background: transparent;
+    border-radius: 1vw;
+    margin-top: 1vw;
+
+    
+    .Row:nth-last-child(1) {
+        border-bottom: none;
+    }
+
+    @import './row/Row.scss';
+}

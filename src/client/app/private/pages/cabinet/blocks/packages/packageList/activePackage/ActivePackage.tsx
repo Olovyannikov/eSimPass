@@ -2,7 +2,7 @@ import * as React from 'react';
 
 
 import { ListDevicesResponse } from '../../../../../../../../generated/proto.web';
-import { BuyRate } from '../../../../../../components/buyRate/BuyRate';
+import { BuyPack } from '../../../../../../components/buyPack/BuyPack';
 import { ProgressBar } from '../../../../../../components/progressBar/ProgressBar';
 import { WhoseDevice } from '../../../../../../components/whoseDevice/WhoseDevice';
 
@@ -29,7 +29,7 @@ export const ActivePackage = (props : DeviceModel) => {
                 <div className="text">Стоимость</div>
                 <div className="amount">{props.package.currentPack.price}<span>€</span> </div>
             </div>
-            <BuyRate package={props.package} />
+            <BuyPack package={props.package} />
         </div>
     )
 }

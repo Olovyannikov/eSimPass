@@ -1,0 +1,29 @@
+.ImageUpload {
+
+    float: left;
+
+    .button-download {
+        background: $yellowLk;
+        width: 15.2083vw;
+        height: 2.3166vw;
+        border-radius: 2.0833vw;
+        margin-top: 2vw;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        float: left;
+        outline: none;
+        border: none;
+        
+        >div {
+            font-size: 0.75vw;
+            font-weight: 600;
+            margin-top: 0.72vw;
+        }
+    }
+
+    .input-file {
+        opacity: 0;
+        width: 0.01vw;
+    }
+}

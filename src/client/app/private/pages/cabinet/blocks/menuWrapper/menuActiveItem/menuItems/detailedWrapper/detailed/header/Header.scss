@@ -1,0 +1,49 @@
+.Header {
+
+    width: 82.8125vw;
+    float: left;
+    
+    .toggler {
+        float: left;
+        width: 11vw;
+        height: 2vw;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 1.0416vw;
+        color: rgba(255, 255, 255, 0.6);
+
+        .expenses {
+            float: left;
+            width: 5.2vw;
+            padding-bottom: 0.5vw;
+            padding-right: 0.5vw;
+            border-bottom: 0.25vw solid rgba(255, 255, 255, 0.6);
+            border-radius: 0.25vw 0 0 0.25vw;
+
+            &.active {
+                color: $yellowLk;
+                border-bottom: 0.25vw solid $yellowLk;
+            }
+        }
+
+        .payments {
+            float: right;
+            width: 5.3vw;
+            padding-bottom: 0.5vw;
+            border-bottom: 0.25vw solid rgba(255, 255, 255, 0.6);
+            border-radius: 0vw 0 0.28vw;
+
+            &.active {
+                color: $yellowLk;
+                border-bottom: 0.25vw solid $yellowLk;
+            }
+        }
+    }
+
+    .pages {
+        float: right;
+        color: $white;
+        font-size: 1.0416vw;
+        margin-top: 0.5vw;
+    }
+}

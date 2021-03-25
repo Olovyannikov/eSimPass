@@ -10,7 +10,7 @@ interface DisabledDeviceModel {
 }
 
 export const DisabledDevice = (props : DisabledDeviceModel) => {
-
+    
     const deleteDevice = () => STATE_API.deleteDevice({
         deviceId : props.device.deviceId,
         deviceName : props.device.name.value

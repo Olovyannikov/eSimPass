@@ -1,14 +1,21 @@
-export type SHOW_PUBLIC_WIZARD_MODE = 'login' | 'register' | 'verify';
-export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment' | 'deleteDevice' | 'addDevice' | 'buyQrCode';
+import { BuyPackRequest, ListDevicesResponse } from "../generated/proto.web";
+
+export type SHOW_PUBLIC_WIZARD_MODE = 'login' | 'register' | 'verifyRegistration' | 'passwordRestore' | 'verifyPasswordRestore';
+export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment' | 'deleteDevice' | 'addDevice' | 'buyQrCode' | 'buyPack';
 
 export interface Device {
     deviceId : string;
     deviceName : string;
 }
 
+export interface BuyPackWizard {
+    device : ListDevicesResponse.SuccessModel.DeviceModel
+}
+
 export interface PrivateWizard {
     stage? : SHOW_PRIVATE_WIZARD_MODE;
     device? : Device;
+    pack? : BuyPackWizard;
 }
 
 export interface State {

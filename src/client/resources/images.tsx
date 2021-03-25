@@ -44,8 +44,11 @@ import iphone  from './img/iphone-11.png';
 import arrowDownFAQ from './img/arrow-down-faq.png';
 import supportImg from './img/support-img.png';
 import arrowUpFAQ from './img/arrow-up-faq.png';
+import leftNav from './img/left-nav.png';
+import rightNav from './img/right-nav.png';
 
-
+export const img_leftNav = leftNav;
+export const img_rightNav = rightNav;
 export const img_supportImg = supportImg;
 export const img_arrowUpFaq = arrowUpFAQ;
 export const img_arrowDownFaq = arrowDownFAQ;
