@@ -13,7 +13,7 @@ export interface PaymentIdModel {
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
     const { paymentId } = useParams<PaymentIdModel>();
-    const {search} = useLocation()
+    const { search } = useLocation();
 
     const showWizard = () => {
         if (props.privateWizard) {

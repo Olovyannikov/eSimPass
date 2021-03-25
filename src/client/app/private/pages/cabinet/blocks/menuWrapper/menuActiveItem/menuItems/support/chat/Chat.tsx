@@ -14,7 +14,6 @@ export const Chat = () => {
                 <div className="title">Онлайн чат с поддержкой</div>
                 <div className="text">Чат — это простой и быстрый способ решения ваших вопросов. Напишите на почту <a href="mailto:support@esimpass.com" className='link-to-mail'>support@esimpass.com</a> специалисты всегда на связи и оперативно ответят Вам.</div>
             </div>
-            {/* <Button text='Открыть чат' className='chat-button'/> */}
         </div>
     )
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button } from '../../../../../components/buttons/Button';
 import { CONNECTION } from '../../../../../../../Connection';
-import { CreateBalancePaymentRequest, CreateBalancePaymentResponse, GetMinBalancePaymentAmmountRespoonse } from '../../../../../../../generated/proto.web';
+import { CreateBalancePaymentRequest, CreateBalancePaymentResponse } from '../../../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';

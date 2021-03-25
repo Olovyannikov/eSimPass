@@ -25,6 +25,8 @@ export const Devices = () => {
 
             .do(response => {
                 if (response.success) {
+                    console.log(response);
+                    
                     // setPackages(prev => prev = devicesData)
                 }
                 // setInProgress(prev => prev = false)

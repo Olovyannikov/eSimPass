@@ -26,7 +26,7 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 <Route exact path='/verifyRegistrationEmail/:tokenVerify'>
                     <PublicApplication />
                 </Route>
-                <Route exact path='/passwordRestore/:tokenRestore'>
+                <Route exact path='/restorePassword/:tokenRestore'>
                     <PublicApplication />
                 </Route>
                 <Route exact path='/cabinet'>

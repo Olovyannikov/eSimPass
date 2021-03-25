@@ -2,14 +2,14 @@ import * as rx from "rxjs/Rx"
 import * as React from 'react';
 
 import { Spinner } from '../../components/spinnerPayment/Spinner';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../Connection';
-import { GetPaymentRequest, GetPaymentResponse } from '../../../../generated/proto.web';
+import { GetPaymentRequest } from '../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../utils';
 import { STATE_API } from "../../../../redux/StateApi";
 
-enum WAIT_STATE {
+export enum WAIT_STATE {
     PAYMENT_NOT_FOUND,
     WAITING_FOR_PAYMENT,
     PAYMENT_RECEIVED,
@@ -19,7 +19,7 @@ enum WAIT_STATE {
 
 export const WaitForPayment = () => {
 
-    const logger = new Logger ('RegistrationDialog');
+    const logger = new Logger ('WaitForPayment');
 
     const closedSubject = waitForClose ();
 
@@ -53,15 +53,15 @@ export const WaitForPayment = () => {
                     handlePaymentStatusResponse('Платеж не найден');
                     return WAIT_STATE.PAYMENT_NOT_FOUND
                 }
-                else if (response.success.deviceCreated) {
-                    
-                    handlePaymentStatusResponse('Устройство создано');
-                    return WAIT_STATE.DEVICE_CREATED
-                }
                 else if (response.success.paymentReceived?.waitForDevice == true) {
                     
                     handlePaymentStatusResponse('Платеж получен, создаем устройство');
                     return WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE
+                }
+                else if (response.success.deviceCreated) {
+                    
+                    handlePaymentStatusResponse('Устройство создано');
+                    return WAIT_STATE.DEVICE_CREATED
                 }
                 else if (response.success.paymentReceived?.waitForDevice == false) {
                     
