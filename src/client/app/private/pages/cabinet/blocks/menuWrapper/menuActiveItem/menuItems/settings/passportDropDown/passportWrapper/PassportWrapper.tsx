@@ -1,7 +1,11 @@
 import * as React from 'react';
+
+import { SetDocumentRequest } from '../../../../../../../../../../../generated/proto.web';
 import { Button } from '../../../../../../../../../components/buttons/Button';
 import { PassportEdit } from './passportEdit/PassportEdit';
 import { PassportView } from './passportView/PassportView';
+import { Buffer } from 'buffer';
+
 
 interface PassportWrapperModel {
     show : boolean;
@@ -10,14 +14,14 @@ interface PassportWrapperModel {
 export type Gender = 'Мужчина' | 'Женщина' | '';
 
 export interface PassportStateModel {
-    bornDate? : string;
-    gotDate? : string;
-    gender? : Gender;
-    citizenship? : string;
-    series? : string;
-    fullName? : string;
+    birhday? : string;
+    issueDate? : string;
+    // gender? : Gender;
+    // citizenship? : string;
+    sn? : string;
+    fio? : string;
     address? : string;
-    image? : string;
+    photo? : Buffer;
 }
 
 export interface PassportModel {
@@ -30,17 +34,17 @@ export interface PassportModel {
 export const PassportWrapper = (props : PassportWrapperModel) => {
 
     const [passportState, setPassportState] = React.useState<PassportStateModel>({
-        bornDate : null,
-        gotDate : null,
-        citizenship : '',
-        series : '',
-        fullName : '',
+        birhday : null,
+        issueDate : null,
+        // citizenship : '',
+        sn : '',
+        fio : '',
         address : '',
-        gender : 'Женщина',
+        // gender : 'Женщина',
     })
-
-    const passportClass = () => props.show ? 'active' : 'disabled';
     const [mode, setMode] = React.useState<boolean>(true);
+    
+    const passportClass = () => props.show ? 'active' : 'disabled';
 
     const doRender = () => {
         if (mode) {

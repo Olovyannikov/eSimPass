@@ -20,6 +20,7 @@
         "@types/webpack": "4.41.26",
         "@types/webpack-dev-server": "3.11.2",
         "@types/ws": "7.4.0",
+        "buffer": "6.0.3",
         "css-loader": "5.2.0",
         "es6-promise-promise": "1.0.0",
         "file-loader": "6.2.0",

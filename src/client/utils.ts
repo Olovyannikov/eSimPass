@@ -110,8 +110,8 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
 }
 
 export const convertDateUntilPackage = (date : string, duration? : PACK_DURATION) => {
-
-    const boughtDate = new Date(date)
+    
+    const boughtDate = new Date(Number(date))    
 
     switch (duration) {
         case PACK_DURATION.DAY:

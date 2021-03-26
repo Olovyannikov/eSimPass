@@ -21,14 +21,14 @@ export const Packages = () => {
 
 
     const filterActivePackages = (packages : ListDevicesResponse.SuccessModel.DeviceModel[]) => {
-
-        return packages.filter(el => {
-            if (Object.keys(el.currentPack).length !== 0) {
-                return true
-            } 
-            else return false
-        })
-
+        if (packages) {
+            return packages.filter(el => {
+                if (el.currentPack) {
+                    return true
+                } 
+                else return false
+            })
+        }
     }
 
     React.useEffect(() => {
@@ -37,7 +37,7 @@ export const Packages = () => {
 
             .do(response => {
                 if (response.success) {
-                    setPackages(prev => prev = filterActivePackages(devicesData))
+                    setPackages(prev => prev = filterActivePackages(response.success.devices))
                 }
                 setInProgress(prev => prev = false)
             })
@@ -50,7 +50,7 @@ export const Packages = () => {
         if (inProgress) {
             return <Spinner />
         }
-        else if (packages.length) {                
+        else if (packages?.length) {                
             return <PackageList packages={packages} />
         }
         else {

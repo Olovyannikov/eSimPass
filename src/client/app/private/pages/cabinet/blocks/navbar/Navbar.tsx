@@ -14,7 +14,8 @@ export const Navbar = () => {
     
     const closedSubject = waitForClose ();
 
-    const [email, setEmail] = React.useState<string>(null)
+    const [email, setEmail] = React.useState<string>(null);
+    const [documentUploaded, setDocumentUploaded] = React.useState<boolean>(null)
 
     const handleLogout = () => {
         STORAGE.deleteToken();
@@ -30,12 +31,25 @@ export const Navbar = () => {
             .do(email => {
                 STORAGE.storeEmail (email)
                 setEmail(prev => prev = email)
+
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in navbar'))
+
+        STORAGE.getDocumentUploaded()
+            .concat(CONNECTION.getAbonent({})
+                .map(response => response.success.documentUploaded)
+            )
+            .do(documentUploaded => {
+                STORAGE.storeDocumentUploaded(documentUploaded)
+                setDocumentUploaded(prev =>prev = documentUploaded)
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in navbar'))
 
     }, [])
 
+    const renderRedAttention = () => documentUploaded ? <></> : <WithoutPassportData />;
 
     return (
         <div className="Navbar">
@@ -47,7 +61,7 @@ export const Navbar = () => {
                 <div className="email">{email}</div>
                 <div onClick={handleLogout} className="logout">Выйти</div>
             </div>
-            <WithoutPassportData />
+            {renderRedAttention()}
         </div>
     )
 }

@@ -25,6 +25,10 @@
             float: left;
         }
 
+        :disabled {
+            opacity: 0.5;
+        }
+
         ::placeholder {
             color: $white;
             font-weight: 600;
@@ -70,6 +74,9 @@
             &.address {
                 width: 27.8vw;
             }
+        }
+        :disabled {
+            opacity: 0.5;
         }
 
         ::placeholder {

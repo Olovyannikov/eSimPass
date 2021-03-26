@@ -15,13 +15,13 @@ export const Device = (props : DeviceModel) => {
 
     const deleteDevice = () => STATE_API.deleteDevice({
         deviceId : props.device.deviceId,
-        deviceName : props.device.name.value
+        deviceName : props.device.name?.value
     });
     
     return (
         <div className="Device">
             <div className="left-block">
-                <WhoseDevice id={props.device.deviceId} name={props.device.name.value} />
+                <WhoseDevice id={props.device.deviceId} name={props.device.name?.value} />
                 <div className="rate-info">
                     <div className="rate">
                         <div>eSIM {props.device.currentPack.rate.operatorName}</div>

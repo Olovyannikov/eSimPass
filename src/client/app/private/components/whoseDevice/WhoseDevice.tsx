@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { img_pen } from '../../../../resources/images';
 import { CONNECTION } from '../../../../Connection';
-import { RenameDeviceRequest } from '../../../../generated/proto.web';
+import { RenameDeviceRequest, RenameDeviceResponse } from '../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { nothingToNull, waitForClose } from '../../../../utils';
 
@@ -19,7 +19,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
 
     const [showInput, setShowInput] = React.useState<boolean>(false);
     const [error, setError] = React.useState<string>(null);
-    const [deviceName, setDeviceName] = React.useState<string>(props.name);
+    const [deviceName, setDeviceName] = React.useState<string>(props.name || '');
     const [inProgress, setInProgress] = React.useState<boolean>(false)
 
     const doRender = () => {
@@ -44,7 +44,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
         setError(null)
     }
 
-    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => setDeviceName(prev => prev = e.target.value)
+    const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => setDeviceName(e.target.value)
 
     const checkEqualsName = () => deviceName === props.name ? true : false;
 
@@ -60,7 +60,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
 
                 CONNECTION.renameDevice(createRenameDeviceRequest())
                     .do(response => {
-                        if (response) {
+                        if (response.success) {
                             handleSuccessDeviceNameChange()
                         }
                         else if (response.deviceNotFound) {
@@ -99,7 +99,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
 
     const createRenameDeviceRequest = () : RenameDeviceRequest => ({
         deviceId : props.id,
-        name : props.name
+        name : deviceName
     })
     
     return (

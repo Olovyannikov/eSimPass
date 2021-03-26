@@ -3,12 +3,12 @@ import { ListDevicesResponse, PACK_DURATION } from "../generated/proto.web";
 
 export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
     deviceId : '1',
-    created : '01/25/2021',
+    created : "1616503481367",
     name : {
         value : 'Я',
     },
     packs : [{
-        boughtDate : '01/25/2021',
+        boughtDate : "1616503481367",
         current : '',
         duration : PACK_DURATION.WEEK,
         price : '7',
@@ -22,7 +22,7 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
         },
         used : '157286400',
     },{
-        boughtDate : '02/03/2021',
+        boughtDate : "1616503481367",
         current : '',
         duration : PACK_DURATION.DAY,
         price : '1.5',
@@ -36,7 +36,7 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
         },
         used : '104857600',
     },{
-        boughtDate : '02/05/2021',
+        boughtDate : "1616503481367",
         current : '',
         duration : PACK_DURATION.TWO_WEEKS,
         price : '13.31',
@@ -52,7 +52,7 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
     }],
     lpaUrl : 'lpa-3',
     currentPack : {
-        boughtDate : '02/25/2021',
+        boughtDate : "1616503481367",
         current : '',
         duration : PACK_DURATION.MONTH,
         price : '58.88',
@@ -68,9 +68,9 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
     }
 },{
     deviceId : '2',
-    created : '02/20/2021',
+    created : "1616503481367",
     currentPack : {
-        boughtDate : '02/21/2021',
+        boughtDate : "1616503481367",
         current : '',
         duration : PACK_DURATION.WEEK,
         price : '7',
@@ -92,8 +92,7 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
 },
 {
     deviceId : '3',
-    created : '02/19/2021',
-    currentPack : {},
+    created : "1616503481367",
     lpaUrl : 'lpaUrl-1',
     name : {
         value : 'Супруга',
@@ -102,9 +101,9 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
 }
 ,{
     deviceId : '4',
-    created : '07/15/2020',
+    created : "1616503481367",
     currentPack : {
-        boughtDate : '02/21/2021',
+        boughtDate : "1616503481367",
         current : '',
         duration : PACK_DURATION.TWO_WEEKS,
         price : '1.5',

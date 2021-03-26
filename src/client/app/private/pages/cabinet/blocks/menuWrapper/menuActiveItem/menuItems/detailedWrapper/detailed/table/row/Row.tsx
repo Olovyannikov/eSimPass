@@ -14,11 +14,21 @@ export const Row = (props : RowModel) => {
 
     const convertMsToLocalDate = (date : string) => new Date(+date).toLocaleString().replace(',', ' в'); 
 
+    React.useEffect(() => {
+        //TODO: fix charges conventer
+        if (props.charge?.bytes) {
+            setChargesUnit(unitConventer(+props.charge.bytes.value, +props.charge.total))
+        }
+        else {
+            setChargesUnit(unitConventer(0, +props.charge?.total || 0))
+        }
+    }, [])
+
     const renderChargesByType = () => {
+        
 
         if (props.charge.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT) {
 
-            setChargesUnit(unitConventer(+props.charge.bytes.value))
 
             return (
                 <>

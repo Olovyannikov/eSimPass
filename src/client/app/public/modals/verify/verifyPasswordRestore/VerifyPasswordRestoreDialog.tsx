@@ -24,7 +24,6 @@ export const VerifyPasswordRestoreDialog = () => {
     const verificationToken = tokenRestore;
 
     React.useEffect(() => {
-        console.log(tokenRestore);
 
         CONNECTION.verifyPasswordRestore(createVerifyPasswordRestoreRequest())
         .do(parseVerifyPasswordRestoreResponse)

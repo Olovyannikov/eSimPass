@@ -65,7 +65,6 @@ export const QrModal = () => {
                     }))
                     STATE_API.setAuthenticated(data)
                     setError('')
-                    console.log('RESPONSE',res, data)
                 } else {
                     setError(res.response)
                 }

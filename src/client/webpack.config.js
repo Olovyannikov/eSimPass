@@ -1,4 +1,5 @@
 const path = require('path');
+const Buffer = require('buffer/').Buffer;
 const ES6Promise = require("es6-promise");
 ES6Promise.polyfill();
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -91,6 +92,9 @@ module.exports = env => {
             new webpack.DefinePlugin({
                 "process.env": "{}",
                 global: {}
+            }),
+            new webpack.ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
             })
         ],
         devServer: {

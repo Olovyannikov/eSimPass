@@ -4,15 +4,25 @@ import { PassportModel } from '../PassportWrapper';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { ImageUpload } from './imageUpload/ImageUpload';
+import { SetDocumentResponse, SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
+import { Logger } from '@glonassmobile/codebase-web/Logger';
+import { waitForClose } from '../../../../../../../../../../../../utils';
+import { CONNECTION } from '../../../../../../../../../../../../Connection';
+
 
 
 export const PassportEdit = (props : PassportModel) => {
+
+    const logger = new Logger('Packages block');
+
+    const closedSubject = waitForClose();
 
 
     const [error, setError] = React.useState<boolean>(null);
 
     const radioMaleRef = React.useRef<HTMLInputElement>();
-    
+    const [inProgress, setInProgress] = React.useState<boolean>(false);
+
     const handleRadioButtonsChange = () => {
         props.setPassportState(prev => ({
             ...prev,
@@ -29,8 +39,6 @@ export const PassportEdit = (props : PassportModel) => {
             }))
         }
         else {
-            console.log('date', Date.parse(String(date)), new Date(Date.parse(String(date))));
-            
             props.setPassportState(prev => ({
                 ...prev,
                 [key] : Date.parse(String(date))
@@ -40,14 +48,42 @@ export const PassportEdit = (props : PassportModel) => {
 
 
     const saveChanges = () => {
-        const {address, series, gotDate, bornDate, fullName, citizenship, gender} = props.passportState
+        const {address, sn, issueDate, birhday, fio, photo} = props.passportState
 
-        if (address && series && gotDate && bornDate && fullName && citizenship && gender) {
-            props.toggleMode(prev => !prev)
+        if (address && sn && issueDate && birhday && fio) {
+            handleSaveDocument();
         }
         else {
             setError(true)
         }
+    }
+
+    const createSetDocumentRequest = () : SetDocumentRequest => ({
+        address : props.passportState.address,
+        birhday : props.passportState.birhday,
+        fio : props.passportState.fio,
+        issueDate : props.passportState.issueDate,
+        sn : props.passportState.sn,
+        phone : '1234',
+        photo : (props.passportState.photo.toString ('base64') as any) as Buffer ,
+    });
+
+    const handleSaveDocument = () => {
+
+        setInProgress(prev => prev = true)
+
+        CONNECTION.setDocument(createSetDocumentRequest())
+            .do(response => {
+                if (response.success) {
+                    props.toggleMode(prev => !prev)
+                }
+                else {
+                    setError(true)
+                }
+            })
+            .do(() => setInProgress(prev => prev = false))
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in device response'))
     }
 
     const renderError = () => {
@@ -60,9 +96,10 @@ export const PassportEdit = (props : PassportModel) => {
         <div className="PassportEdit">
             <div className="top">
                 <input 
+                    disabled={inProgress}
                     placeholder='Фамилия Имя Отчество' 
-                    onChange={(e) => handleInputChange('fullName', e)} 
-                    value={props.passportState.fullName} 
+                    onChange={(e) => handleInputChange('fio', e)} 
+                    value={props.passportState.fio} 
                     className='input-name' 
                     type='text' 
                 />
@@ -70,20 +107,22 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Дата рождения: 
                 <DatePicker 
+                    disabled={inProgress}
                     dateFormat='dd/MM/yyyy'
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={new Date(props.passportState.bornDate)} 
-                    onChange={(date) => handleInputChange('bornDate', null , date)}
+                    selected={new Date(props.passportState.birhday)} 
+                    onChange={(date) => handleInputChange('birhday', null , date)}
                 />
             </div>
             <div onChange={handleRadioButtonsChange} className="yellow-text">
                 Пол:
                 <input 
-                    defaultChecked={props.passportState.gender === 'Женщина' ? true : false}
+                    disabled={inProgress}
+                    defaultChecked
                     className='radio' 
                     value='Жен' 
                     type="radio" 
@@ -91,8 +130,9 @@ export const PassportEdit = (props : PassportModel) => {
                 /> 
                 <span>Жен</span>
                 <input 
+                    disabled={inProgress}
                     ref={radioMaleRef}
-                    defaultChecked={props.passportState.gender === 'Мужчина' ? true : false}
+                    // defaultChecked={props.passportState.gender === 'Мужчина' ? true : false}
                     className='radio' 
                     value='Муж' 
                     type="radio" 
@@ -103,8 +143,9 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Гражданство: 
                 <input 
-                    onChange={(e) => handleInputChange('citizenship', e)} 
-                    value={props.passportState.citizenship} 
+                disabled={inProgress}
+                    // onChange={(e) => handleInputChange('citizenship', e)} 
+                    // value={props.passportState.citizenship} 
                     className='input citizenship' 
                     type='text' 
                 />
@@ -112,8 +153,9 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Серия и номер паспорта: 
                 <input 
-                    onChange={(e) => handleInputChange('series', e)} 
-                    value={props.passportState.series} 
+                    disabled={inProgress}
+                    onChange={(e) => handleInputChange('sn', e)} 
+                    value={props.passportState.sn} 
                     className='input passport-series' 
                     type='text' 
                 />
@@ -121,28 +163,31 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Дата выдачи: 
                 <DatePicker 
+                    disabled={inProgress}
                     dateFormat='dd/MM/yyyy'
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={new Date(props.passportState.gotDate)} 
-                    onChange={(date) => handleInputChange('gotDate', null ,date)}
+                    selected={new Date(props.passportState.issueDate)} 
+                    onChange={(date) => handleInputChange('issueDate', null ,date)}
                 />
             </div>
             <div className="yellow-text">
                 Адрес: 
                 <input 
+                    disabled={inProgress}
                     onChange={(e) => handleInputChange('address', e)} 
                     value={props.passportState.address} 
                     className='input address' 
                     type='text'
                 />
             </div>
-            <ImageUpload passportImage={props.passportState.image} setPassportImage={props.setPassportState} />
+            <ImageUpload disabled={inProgress} passportImage={props.passportState.photo} setPassportImage={props.setPassportState} />
             <div onClick={saveChanges} className='edit'>Сохранить</div>
             {renderError()}
         </div>
     )
 }
+

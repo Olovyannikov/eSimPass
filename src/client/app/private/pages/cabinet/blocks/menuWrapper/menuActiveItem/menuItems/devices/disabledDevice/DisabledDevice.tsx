@@ -13,13 +13,13 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
     
     const deleteDevice = () => STATE_API.deleteDevice({
         deviceId : props.device.deviceId,
-        deviceName : props.device.name.value
+        deviceName : props.device.name?.value
     });
 
     return (
         <div className="DisabledDevice">
             <div className="left-block">
-                <WhoseDevice id={props.device.deviceId} name={props.device.name.value} />
+                <WhoseDevice id={props.device.deviceId} name={props.device.name?.value} />
                 <div className="rate-info">
                     <div className="rate">
                         <div>eSIM</div>
@@ -43,3 +43,4 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
         </div>
     )
 }
+// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616742440855X10302

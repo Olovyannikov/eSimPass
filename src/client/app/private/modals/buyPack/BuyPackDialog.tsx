@@ -38,7 +38,6 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
     }
 
     const parseBuyPackResponse = (response : BuyPackResponse) => {
-        console.log(response)
         if (response.success) {
             setSuccess(prev => prev = true)
         }

@@ -31,10 +31,10 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
             .do(response => {
                 
                 if (response.success) {
-                    setResponse(prev => prev = `Устройство ${props.deviceName} успешно удалено`)
+                    setResponse(prev => prev = `Устройство ${props.deviceName || ''} успешно удалено`)
                 }
                 else if (response.deviceNotFound) {
-                    setResponse(prev => prev = `Устройство ${props.deviceName} не найдено`)
+                    setResponse(prev => prev = `Устройство ${props.deviceName || ''} не найдено`)
                 }
             })
             .delay(2000)

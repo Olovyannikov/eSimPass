@@ -30,9 +30,6 @@ const reducer = (state = INITIAL_STATE, action: Action<any>) : State => {
 
     const actionReducer = reducersMap[action.type]
 
-    console.log('PAYLOAD',action.payload)
-    console.log('TYPE',action.type)
-
     if (actionReducer) {
         return actionReducer (state, action);
     }
