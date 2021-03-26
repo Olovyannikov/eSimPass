@@ -19,6 +19,7 @@ service Abonent {
     rpc requestPasswordRestore (RequestPasswordRestoreRequest) returns (RequestPasswordRestoreResponse);
     rpc verifyPasswordRestore (VerifyPasswordRestoreRequest) returns (VerifyPasswordRestoreResponse);
     rpc setDocument (SetDocumentRequest) returns (SetDocumentResponse);
+    rpc getDocumentPhoto (GetDocumentPhotoRequest) returns (GetDocumentPhotoResponse);
 }
 
 message VerifyMobileCodeRequest {
@@ -85,8 +86,17 @@ message RegisterMobileResponse {
 message GetAbonentResponse {
 
     message SuccessModel {
+        message DocumentModel {
+            string fio = 1;
+            string phone = 2;
+            string birhday = 3;
+            string address = 4;
+            string sn = 5;
+            string issueDate = 6;
+        }
+
         string email = 1;
-        bool documentUploaded = 2;
+        DocumentModel document = 2;
     }
 
     oneof response {
@@ -247,4 +257,16 @@ message SetDocumentResponse {
         Empty success = 1;
         string invalidRequest = 2;
     }    
+}
+
+message GetDocumentPhotoRequest {
+}
+
+message GetDocumentPhotoResponse {
+
+    oneof result {
+        bytes success = 1;
+        string invalidRequest = 2;
+        Empty documentIsNotLoaded = 3;
+    }
 }
