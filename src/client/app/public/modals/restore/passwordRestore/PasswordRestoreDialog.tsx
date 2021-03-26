@@ -41,7 +41,6 @@ export const PasswordRestoreDialog = () => {
 
     const parsePasswordRestoreResponse = (response : RequestPasswordRestoreResponse) => {
 
-        console.log(response);
         if (response.success) {
             handleSuccessResponse()
         }
@@ -58,6 +57,8 @@ export const PasswordRestoreDialog = () => {
         //     handlePasswordRestore();
         // }   
     }
+
+    const closeModal = () => STATE_API.hideAuthWizard();
 
     const handlePlainErrorResponse = (error : string) => {
         setEmail(null);
@@ -119,7 +120,14 @@ export const PasswordRestoreDialog = () => {
 
     const showSuccessResponse = () => {
         if (success) {
-            return <div className="title-success">Вам на почту отправленна ссылка для восстановления пароля!</div>
+            return (
+                <>
+                    <div className="title-success">Вам на почту отправленна ссылка для восстановления пароля!</div>
+                    <div onClick={closeModal} className="back-to-main-button">
+                        <div className="back-to-main-text">Назад</div>
+                    </div>
+                </>
+            )
         } 
         else {
             return (<>
@@ -141,3 +149,4 @@ export const PasswordRestoreDialog = () => {
         </div>
     )
 }
+
