@@ -35,4 +35,18 @@
         height: 100%;
         border-radius: 1.3vw;
     }
+
+    .attention {
+        font-size: 1.5vw;
+        text-align: center;
+        margin-top: 9vw;
+        font-weight: 600;
+        color: $yellowLk;
+    }
+
+    @import '../../../../../../../../../../components/spinnerPayment/Spinner.scss';
+    .lds-ring {
+        margin-top: 9vw;
+        margin-left: 16vw;
+    }
 }

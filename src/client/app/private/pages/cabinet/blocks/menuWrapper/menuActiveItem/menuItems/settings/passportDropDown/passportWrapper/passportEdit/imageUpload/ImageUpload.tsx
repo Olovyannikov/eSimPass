@@ -10,16 +10,7 @@ interface ImageUploadModel {
 
 export const ImageUpload = (props : ImageUploadModel) => {
 
-    const [image, setImage] = React.useState<string>(null);
-
     const inputRef = React.useRef<HTMLInputElement>();
-
-    // React.useEffect(() => {
-    //     let img = Base64.fromUint8Array(props.passportImage)
-    //     console.log(img);
-        
-    //     setImage(prev => prev = img)
-    // }, [props.passportImage])
 
     const handleImagePicker = () => {
         const reader = new FileReader();
@@ -55,7 +46,6 @@ export const ImageUpload = (props : ImageUploadModel) => {
         <div className="ImageUpload">
             <label aria-disabled={props.disabled} className='button-download' htmlFor="image_uploads"><div>{handleImageDownload()}</div></label>
             <input onChange={handleImagePicker} ref={inputRef} id='image_uploads' accept=".jpeg" type='file' className='input-file' />
-            {/* <img className='img' src={`${props.passportImage}`} alt=""/> */}
         </div>
     )
 }

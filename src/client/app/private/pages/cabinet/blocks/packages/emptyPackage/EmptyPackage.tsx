@@ -24,6 +24,7 @@ export const EmptyPackage = () => {
             }
             else {
                 //TODO : Buy Package
+                //redirect to other page?
                 
             }
             setInProgress(prev => prev = false);

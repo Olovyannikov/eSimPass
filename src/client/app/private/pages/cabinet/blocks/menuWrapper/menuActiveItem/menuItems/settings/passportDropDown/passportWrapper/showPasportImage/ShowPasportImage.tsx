@@ -4,6 +4,7 @@ import { GetDocumentPhotoRequest } from '../../../../../../../../../../../../gen
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../Connection';
+import { Spinner } from '../../.../../../../../../../../../../components/spinnerPayment/Spinner';
 
 
 interface ShowPasportImageModel {
@@ -18,6 +19,7 @@ export const ShowPasportImage = (props : ShowPasportImageModel) => {
     const closedSubject = waitForClose();
 
     const [photo, setPhoto] = React.useState<string>(null);
+    const [inProgress, setInProgress] = React.useState<boolean>(true);
  
     const passportClass = () => props.show ? 'active' : 'disabled';
 
@@ -25,69 +27,63 @@ export const ShowPasportImage = (props : ShowPasportImageModel) => {
 
     React.useEffect(() => {
 
+
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
             .do(response => {
                 console.log(response);
                 
                 if (response.success) {
-                    
                     // let buffer = new Uint8Array(response.success).buffer
                     
                     // console.log(buffer);
                     // let base64String = btoa(String.fromCharCode.apply(null, buffer));
                     // setPhoto(prev => prev = base64String)
                     // console.log(`data:image/jpeg;base64,${base64String}`);
+                    // console.log('response',response.success);
+                    
+                    // const buffer = new Uint8Array(response.success.data)
+
+            
+                    // const base64String = btoa(String.fromCharCode.apply(null, buffer));
+                    // console.log(`data:image/jpeg;base64,${base64String}`);
+                    
+                    // setPhoto(prev => prev = `data:image/jpeg;base64,${base64String}`) 
                     
                 }
                 else if (response.documentIsNotLoaded) {
                     
                 }
             })
+            .do(() => setInProgress(prev => prev = false))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [])
 
-    // React.useEffect(() => {
-    //     convertBufferToString()
-
-    // }, [])
-
-    const convertBufferToString = () => {
-        if (photo) {
-            // let blob = new Blob([photo], {'type' : 'image/jpeg'})
-            // let urlCreator = window.URL || window.webkitURL;
-            // let imageUrl = urlCreator.createObjectURL(blob);
-            // imgRef.current.src = imageUrl
-
-            
-            // console.log(`data:image/jpeg;base64,${Base64.fromUint8Array(photo.data)}`);
-            // {`data:image/jpeg;base64,/9j/${photo}`}
-            // return `data:image/jpeg;base64,${Base64.fromUint8Array(photo.data)}`
-            
-            // return imageUrl
+    const convertBufferToBase64 = () => {
+        if (props.img) {
+            const buffer = new Uint8Array(props.img)
+            const base64String = btoa(String.fromCharCode.apply(null, buffer));
+            return `data:image/jpeg;base64,${base64String}`
         }
     }
 
     const renderImage = () => {
-        if (props.img) {
 
-            const buffer = new Uint8Array(props.img)
-            
-            const base64String = btoa(String.fromCharCode.apply(null, buffer));
-            return `data:image/jpeg;base64,${base64String}`
+        if (inProgress) {
+            return <Spinner />    
+        } 
+        else if (!inProgress && !props.img) {
+            return <div className="attention">Фотография паспорта отсутствует!</div>
         }
         else {
-
+            return <img className='img' src={convertBufferToBase64()} alt="Passport"/>
         }
     }
 
-    const imgRef = React.useRef<HTMLImageElement>();
-
     return (
         <div className={`ShowPasportImage ${passportClass()}`}>
-            <img className='img' src={renderImage()} alt=""/>
-
+            {renderImage()}
         </div>
     )
 }
