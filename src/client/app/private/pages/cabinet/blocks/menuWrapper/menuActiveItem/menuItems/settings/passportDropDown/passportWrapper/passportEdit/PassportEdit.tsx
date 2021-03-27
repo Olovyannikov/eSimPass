@@ -4,7 +4,7 @@ import { PassportModel } from '../PassportWrapper';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { ImageUpload } from './imageUpload/ImageUpload';
-import { SetDocumentResponse, SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
+import { SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../Connection';
@@ -16,7 +16,6 @@ export const PassportEdit = (props : PassportModel) => {
     const logger = new Logger('Packages block');
 
     const closedSubject = waitForClose();
-
 
     const [error, setError] = React.useState<boolean>(null);
 

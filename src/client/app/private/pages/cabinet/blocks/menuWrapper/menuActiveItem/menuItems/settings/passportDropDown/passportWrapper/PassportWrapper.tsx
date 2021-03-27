@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-import { SetDocumentRequest } from '../../../../../../../../../../../generated/proto.web';
-import { Button } from '../../../../../../../../../components/buttons/Button';
+import { SetDocumentRequest, SetDocumentResponse } from '../../../../../../../../../../../generated/proto.web';
 import { PassportEdit } from './passportEdit/PassportEdit';
 import { PassportView } from './passportView/PassportView';
-import { Buffer } from 'buffer';
+import { ShowPasportImage } from './showPasportImage/ShowPasportImage';
 
 
 interface PassportWrapperModel {
@@ -13,7 +12,7 @@ interface PassportWrapperModel {
 
 export type Gender = 'Мужчина' | 'Женщина' | '';
 
-export interface PassportStateModel {
+export interface PassportStateModel extends SetDocumentRequest {
     birhday? : string;
     issueDate? : string;
     // gender? : Gender;
@@ -36,11 +35,9 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
     const [passportState, setPassportState] = React.useState<PassportStateModel>({
         birhday : null,
         issueDate : null,
-        // citizenship : '',
         sn : '',
         fio : '',
         address : '',
-        // gender : 'Женщина',
     })
     const [mode, setMode] = React.useState<boolean>(true);
     
@@ -56,8 +53,11 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
     }
 
     return (
-        <div className={`PassportWrapper ${passportClass()}`}>
-            {doRender()}
+        <div className='PassportWrapper'>
+            <div className={`passport-block ${passportClass()}`}>
+                {doRender()}
+            </div>
+            <ShowPasportImage img={passportState.photo} show={props.show} />
         </div>
     )
 }

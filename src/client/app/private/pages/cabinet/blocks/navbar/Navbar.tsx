@@ -36,16 +36,16 @@ export const Navbar = () => {
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in navbar'))
 
-        STORAGE.getDocumentUploaded()
-            .concat(CONNECTION.getAbonent({})
-                .map(response => response.success.documentUploaded)
-            )
-            .do(documentUploaded => {
-                STORAGE.storeDocumentUploaded(documentUploaded)
-                setDocumentUploaded(prev =>prev = documentUploaded)
-            })
-            .takeUntil(closedSubject)
-            .subscribe(logger.rx.subscribe('Error in navbar'))
+        // STORAGE.getDocumentUploaded()
+        //     .concat(CONNECTION.getAbonent({})
+        //         .map(response => response.success.documentUploaded)
+        //     )
+        //     .do(documentUploaded => {
+        //         STORAGE.storeDocumentUploaded(documentUploaded)
+        //         setDocumentUploaded(prev =>prev = documentUploaded)
+        //     })
+        //     .takeUntil(closedSubject)
+        //     .subscribe(logger.rx.subscribe('Error in navbar'))
 
     }, [])
 
