@@ -36,6 +36,7 @@ export const CreateDevice = () => {
     const handleSuccessDevicePaymentAmount = (response : GetDevicePaymentAmmountResponse) => {
         setPaymentAmount(prev => prev = response.ammount);
         setInProgress(prev => prev = false);
+
     }
 
     const handlePlainErrorResponse = (error : string) => {

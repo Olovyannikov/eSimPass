@@ -1,5 +1,6 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
+
+import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../Connection';
 import { DeleteDeviceRequest } from '../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../redux/StateApi';
@@ -21,7 +22,9 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [response, setResponse] = React.useState<string>(null);
 
-    const closeModal = () => STATE_API.hideAuthWizard();
+    const closeModal = () => {
+        STATE_API.hideAuthWizard();
+    } 
 
     const deleteDevice = () => {
 

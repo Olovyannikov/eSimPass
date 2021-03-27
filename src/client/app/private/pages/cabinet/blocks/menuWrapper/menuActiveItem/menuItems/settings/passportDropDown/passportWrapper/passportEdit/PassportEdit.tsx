@@ -13,7 +13,7 @@ import { CONNECTION } from '../../../../../../../../../../../../Connection';
 
 export const PassportEdit = (props : PassportModel) => {
 
-    const logger = new Logger('Packages block');
+    const logger = new Logger('Passport edit');
 
     const closedSubject = waitForClose();
 
@@ -45,6 +45,10 @@ export const PassportEdit = (props : PassportModel) => {
         }
     }
 
+    React.useEffect(() => {
+        console.log(props.passportState.photo?.toString('base64'));
+        
+    }, [props.passportState])
 
     const saveChanges = () => {
         const {address, sn, issueDate, birhday, fio, photo} = props.passportState
@@ -64,7 +68,7 @@ export const PassportEdit = (props : PassportModel) => {
         issueDate : props.passportState.issueDate,
         sn : props.passportState.sn,
         phone : '1234',
-        photo : (props.passportState.photo.toString ('base64') as any) as Buffer ,
+        photo : (props.passportState.photo.toString('base64') as any) as Buffer,
     });
 
     const handleSaveDocument = () => {
@@ -82,7 +86,7 @@ export const PassportEdit = (props : PassportModel) => {
             })
             .do(() => setInProgress(prev => prev = false))
             .takeUntil(closedSubject)
-            .subscribe(logger.rx.subscribe('Error in device response'))
+            .subscribe(logger.rx.subscribe('Error in create set document response'))
     }
 
     const renderError = () => {
@@ -113,7 +117,7 @@ export const PassportEdit = (props : PassportModel) => {
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={new Date(props.passportState.birhday)} 
+                    selected={new Date(+props.passportState.birhday)} 
                     onChange={(date) => handleInputChange('birhday', null , date)}
                 />
             </div>
@@ -169,7 +173,7 @@ export const PassportEdit = (props : PassportModel) => {
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={new Date(props.passportState.issueDate)} 
+                    selected={new Date(+props.passportState.issueDate)} 
                     onChange={(date) => handleInputChange('issueDate', null ,date)}
                 />
             </div>

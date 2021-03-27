@@ -3,9 +3,10 @@ import * as React from 'react';
 
 import { Link } from 'react-router-dom';
 import { CONNECTION } from '../../../../../../Connection';
+import { GetAbonentResponse } from '../../../../../../generated/proto.web';
 import { img_person } from '../../../../../../resources/images';
 import { STORAGE } from '../../../../../../StorageAdapter';
-import { waitForClose } from '../../../../../../utils';
+import { nothingToNull, waitForClose } from '../../../../../../utils';
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
 
 export const Navbar = () => {
@@ -36,18 +37,24 @@ export const Navbar = () => {
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in navbar'))
 
-        // STORAGE.getDocumentUploaded()
-        //     .concat(CONNECTION.getAbonent({})
-        //         .map(response => response.success.documentUploaded)
-        //     )
-        //     .do(documentUploaded => {
-        //         STORAGE.storeDocumentUploaded(documentUploaded)
-        //         setDocumentUploaded(prev =>prev = documentUploaded)
-        //     })
-        //     .takeUntil(closedSubject)
-        //     .subscribe(logger.rx.subscribe('Error in navbar'))
 
+        STORAGE.getDocumentUploaded()
+            .concat(CONNECTION.getAbonent({})
+                .map(response => checkFilledPassportData(response))
+            )
+            .do(documentUploaded => {
+                STORAGE.storeDocumentUploaded(documentUploaded)
+                setDocumentUploaded(prev =>prev = documentUploaded)
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in navbar'))
+
+            
     }, [])
+
+    const checkFilledPassportData = (resposne : GetAbonentResponse) => {
+        return Object.keys(resposne.success.document).every(key => nothingToNull(key))
+    }
 
     const renderRedAttention = () => documentUploaded ? <></> : <WithoutPassportData />;
 

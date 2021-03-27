@@ -1,6 +1,9 @@
+import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
+import { CONNECTION } from '../../../../../../../../../../../Connection';
 
-import { SetDocumentRequest, SetDocumentResponse } from '../../../../../../../../../../../generated/proto.web';
+import { GetAbonentResponse, SetDocumentRequest } from '../../../../../../../../../../../generated/proto.web';
+import { waitForClose } from '../../../../../../../../../../../utils';
 import { PassportEdit } from './passportEdit/PassportEdit';
 import { PassportView } from './passportView/PassportView';
 import { ShowPasportImage } from './showPasportImage/ShowPasportImage';
@@ -12,16 +15,7 @@ interface PassportWrapperModel {
 
 export type Gender = 'Мужчина' | 'Женщина' | '';
 
-export interface PassportStateModel extends SetDocumentRequest {
-    birhday? : string;
-    issueDate? : string;
-    // gender? : Gender;
-    // citizenship? : string;
-    sn? : string;
-    fio? : string;
-    address? : string;
-    photo? : Buffer;
-}
+export interface PassportStateModel extends SetDocumentRequest {}
 
 export interface PassportModel {
     toggleMode : React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +25,26 @@ export interface PassportModel {
 }
 
 export const PassportWrapper = (props : PassportWrapperModel) => {
+
+    const logger = new Logger('Passport wrapper');
+
+    const closedSubject = waitForClose();
+
+    React.useEffect(() => {
+
+        CONNECTION.getAbonent(createGetAbonentPassportRequest())
+            .do(response => {
+                if (response.success) {
+                    // console.log(response.success.document);
+                    setPassportState(response.success.document)
+                }
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in get abonent passport response'))
+
+    }, [])
+
+    const createGetAbonentPassportRequest = () : GetAbonentResponse => ({});
 
     const [passportState, setPassportState] = React.useState<PassportStateModel>({
         birhday : null,
