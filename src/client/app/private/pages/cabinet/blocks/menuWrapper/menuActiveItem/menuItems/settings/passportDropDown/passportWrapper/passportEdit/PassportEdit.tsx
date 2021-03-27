@@ -45,10 +45,10 @@ export const PassportEdit = (props : PassportModel) => {
         }
     }
 
-    React.useEffect(() => {
-        console.log(props.passportState.photo?.toString('base64'));
+    // React.useEffect(() => {
+        // console.log(props.passportState.photo?.toString('base64'));
         
-    }, [props.passportState])
+    // }, [props.passportState])
 
     const saveChanges = () => {
         const {address, sn, issueDate, birhday, fio, photo} = props.passportState
@@ -68,7 +68,7 @@ export const PassportEdit = (props : PassportModel) => {
         issueDate : props.passportState.issueDate,
         sn : props.passportState.sn,
         phone : '1234',
-        photo : (props.passportState.photo.toString('base64') as any) as Buffer,
+        photo : props.passportState.photo.toString('base64') as any as Buffer,
     });
 
     const handleSaveDocument = () => {

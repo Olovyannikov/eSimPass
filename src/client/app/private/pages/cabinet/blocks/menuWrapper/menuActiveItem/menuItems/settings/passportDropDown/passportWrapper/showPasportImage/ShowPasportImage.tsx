@@ -37,6 +37,8 @@ export const ShowPasportImage = (props : ShowPasportImageModel) => {
                     
                     // console.log(buffer);
                     // let base64String = btoa(String.fromCharCode.apply(null, buffer));
+                    // console.log(base64String);
+                    
                     // setPhoto(prev => prev = base64String)
                     // console.log(`data:image/jpeg;base64,${base64String}`);
                     // console.log('response',response.success);
