@@ -46,7 +46,13 @@ import supportImg from './img/support-img.png';
 import arrowUpFAQ from './img/arrow-up-faq.png';
 import leftNav from './img/left-nav.png';
 import rightNav from './img/right-nav.png';
+import chooserArrowBack from './img/chooser-arrow-back.png';
+import chooserLupa from './img/chooser-lupa.png';
+import flagFrance from './img/france.png';
 
+export const img_flagFrance = flagFrance;
+export const img_chooserLupa = chooserLupa;
+export const img_choserArrowBack = chooserArrowBack;
 export const img_leftNav = leftNav;
 export const img_rightNav = rightNav;
 export const img_supportImg = supportImg;

@@ -1,0 +1,20 @@
+.ChooserWrapper {
+
+    margin-top: 7.4479vw;
+    
+    .img-arrow-back {
+        margin-left: 3.75vw;
+        float: left;
+        cursor: pointer;
+        margin-top: 1vw;
+
+        img {
+            float: left;
+            width: 5.2983vw;
+            height: 2.8645vw;
+        }
+    }
+
+    @import './blocks/search/Search.scss';
+    @import './blocks/detailedRate/DetailedRate.scss';
+}

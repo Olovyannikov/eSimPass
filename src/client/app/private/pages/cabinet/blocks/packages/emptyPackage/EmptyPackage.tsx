@@ -1,5 +1,6 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
+import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../../../Connection';
 import { ListDevicesResponse } from '../../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../../redux/StateApi';
@@ -11,6 +12,8 @@ export const EmptyPackage = () => {
     const logger = new Logger('Packages block');
 
     const closedSubject = waitForClose();
+
+    const history = useHistory();
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
 
@@ -25,6 +28,7 @@ export const EmptyPackage = () => {
             else {
                 //TODO : Buy Package
                 //redirect to other page?
+                history.push('/cabinet/chooseRates')
                 
             }
             setInProgress(prev => prev = false);

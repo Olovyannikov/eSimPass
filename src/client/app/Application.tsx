@@ -5,6 +5,7 @@ import { State } from '../redux/State';
 import { STORAGE } from '../StorageAdapter';
 import { PublicApplication } from './public/PublicApplication';
 import { PrivateApplication } from "./private/PrivateApplication";
+import { Chooser } from './private/pages/chooser/Chooser';
 
 const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
@@ -29,10 +30,13 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 <Route exact path='/restorePassword/:tokenRestore'>
                     <PublicApplication />
                 </Route>
-                <Route exact path='/cabinet'>
+                <Route path='/cabinet'>
                     {() => checkAuthenticatedUser() }
                 </Route>
                 <Route path='/deeplink/payment/success'>
+                    {() => checkAuthenticatedUser()}
+                </Route>
+                <Route path='/cabinet/chooseRates'>
                     {() => checkAuthenticatedUser()}
                 </Route>
                 <Route path='*' exact>

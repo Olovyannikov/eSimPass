@@ -1,0 +1,16 @@
+.Rates {
+
+    margin-left: 4.0625vw;
+    margin-top: 2vw;
+    float: left;
+    width: 87vw;
+
+    .title {
+        color: $white;
+        font-size: 2.0833vw;
+        font-weight: 600;
+        margin-top: 2vw;
+    }
+
+    @import './rateCountry/RateCountry.scss';
+}

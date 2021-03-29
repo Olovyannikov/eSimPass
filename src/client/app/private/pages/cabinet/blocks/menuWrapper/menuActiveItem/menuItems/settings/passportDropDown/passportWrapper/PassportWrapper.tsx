@@ -29,6 +29,8 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
     const logger = new Logger('Passport wrapper');
 
     const closedSubject = waitForClose();
+    
+    const [mode, setMode] = React.useState<boolean>(true);
 
     React.useEffect(() => {
 
@@ -52,7 +54,6 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
         fio : '',
         address : '',
     })
-    const [mode, setMode] = React.useState<boolean>(true);
     
     const passportClass = () => props.show ? 'active' : 'disabled';
 

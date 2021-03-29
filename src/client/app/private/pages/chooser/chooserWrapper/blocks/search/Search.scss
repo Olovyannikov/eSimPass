@@ -1,0 +1,41 @@
+.Search {
+    float: left;
+    width: 79vw;
+
+    .input-search-block {
+        float: left;
+        margin-left: 4.0625vw;
+        height: 4.0104vw;
+        width: 73.9062vw;
+        border: 0.3vw solid white;
+    
+        .search-input {
+            width: 90%;
+            height: 100%;
+            background: transparent;
+            float: left;
+            outline: none;
+            padding: 0vw;
+            padding-left: 2.55vw;
+            border: none;
+            font-size: 1.5625vw;
+            font-weight: 600;
+            color: $white;
+        }
+    
+        ::placeholder {
+            color: $white;
+        }
+    
+        .search-lupa {
+            width: 2.6041vw;
+            height: 2.6041vw;
+            float: right;
+            margin-top: 0.7vw;
+            margin-right: 1.5vw;
+        }
+
+    }
+
+    @import './rates/Rates.scss';
+}

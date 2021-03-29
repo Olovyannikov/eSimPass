@@ -22,7 +22,6 @@ export const ShowPasportImage = (props : PassportModel) => {
 
     React.useEffect(() => {
 
-
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
             .do((response) => {
                 console.log(response.success);
@@ -42,15 +41,15 @@ export const ShowPasportImage = (props : PassportModel) => {
 
     const arrayBufferToBase64 = ( response : any ) => {
         let binary = '';
-        let bytes = new Uint8Array( response.success.data  );
-        let len = bytes.byteLength;
+        const bytes = new Uint8Array( response.success.data  );
+        const len = bytes.byteLength;
         for (let i = 0; i < len; i++) {
             binary += String.fromCharCode( bytes[ i ] );
         }
             const base64 = btoa( binary );
             props.setPassportState(prev => ({
                 ...prev,
-                photo : base64 as any as Buffer
+                photo : (base64 as any) as Buffer
             }));
     }
 
