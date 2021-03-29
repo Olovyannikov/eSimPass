@@ -99,15 +99,15 @@ export const EntrySetting = () => {
             <div className="change-setting">
                 <div className="left-block">
                     <div className='label'>Пароль</div>
-                    <input ref={passwordRef} onChange={(e) => handlePasswordInputs(e, setPassword)} value={password} disabled={inProgress} placeholder='Пароль' className='input' type="password"/>
-                    <input ref={newPasswordRef} onChange={(e) => handlePasswordInputs(e, setNewPassword)} value={newPassword} disabled={inProgress} placeholder='Новый пароль' className='input' type="password"/>
+                    <input autoComplete='new-password' ref={passwordRef} onChange={(e) => handlePasswordInputs(e, setPassword)} value={password} disabled={inProgress} placeholder='Пароль' className='input' type="password"/>
+                    <input autoComplete='new-password' ref={newPasswordRef} onChange={(e) => handlePasswordInputs(e, setNewPassword)} value={newPassword} disabled={inProgress} placeholder='Новый пароль' className='input' type="password"/>
                     <div className="dont-remember">Не помню пароль</div>
                     <Button disabled={inProgress} func={handleChangePassword} text={'Изменить'} className='button-change' />
                     <div className='status'>{status}</div>
                 </div>
                 <div className="right-block">
                     <div className='label'>E-mail</div>
-                    <input placeholder={email} className='input' type="email"/>
+                    <input autoComplete='new-password' placeholder={email} className='input' type="email"/>
                 </div>
             </div>
         </div>

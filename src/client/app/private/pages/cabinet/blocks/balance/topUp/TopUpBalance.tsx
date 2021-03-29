@@ -83,7 +83,7 @@ export const TopUpBalance = () => {
         <div className="TopUpBalance">
             <div className='top-up-block'>
                 <div>Пополните свой счет</div>
-                <input disabled={inProgress} ref={inputBalance} placeholder={`${minAmount} €`} type="text" className='input'/>
+                <input autoComplete='new-password' disabled={inProgress} ref={inputBalance} type="text" className='input'/>
                 <Button disabled={inProgress} func={handleBalancePayment} className='button-top-up' text='Пополнить'/>
                 {showInProgress()}
                 {showError()}

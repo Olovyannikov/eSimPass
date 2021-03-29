@@ -6,7 +6,7 @@
     width: 100%;
 
     &.show {
-        height: 8vw;
+        height: 7vw;
         transition: 0.3s all ease;
     }
 
@@ -14,18 +14,18 @@
         transition: 0.3s all ease;
         height: 3.3854vw;
     }
-
+    
     .title {
         float: left;
         margin-left: 1.5vw;
         margin-top: 1.2026vw;
-        font-size: 1vw;
         font-weight: 500;
-    }
-
-    .text {
-        height: auto;
         font-size: 1.3vw;
+    }
+    
+    .text {
+        font-size: 1vw;
+        height: auto;
         font-weight: 500;
         margin-top: 0.8vw;
         float: left;

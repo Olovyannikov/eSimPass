@@ -10,7 +10,7 @@ class StorageAdapter {
     private readonly STORE_EMAIL = 'email';
     private readonly DOCUMENT_UPLOADED = 'documentUploaded';
 
-    private storage = new Map<string,any> ()
+    private storage = new Map<string,any> ();
 
     public readonly storeEmail = (email : string) => this.store (this.STORE_EMAIL, email);
 

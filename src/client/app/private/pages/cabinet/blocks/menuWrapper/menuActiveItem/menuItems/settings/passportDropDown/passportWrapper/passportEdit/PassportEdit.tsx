@@ -30,8 +30,6 @@ export const PassportEdit = (props : PassportModel) => {
     }
 
     const handleInputChange = (key : string, event? : React.ChangeEvent<HTMLInputElement> , date? : Date | [Date, Date]) => {
-        console.log(props.passportState.issueDate);
-        console.log(props.passportState.birhday);
         
         if (event) {
             props.setPassportState(prev => ({
@@ -47,11 +45,6 @@ export const PassportEdit = (props : PassportModel) => {
         }
     }
 
-    // React.useEffect(() => {
-        // console.log(props.passportState.photo?.toString('base64'));
-        
-    // }, [props.passportState])
-
     const saveChanges = () => {
         const {address, sn, issueDate, birhday, fio, photo} = props.passportState
 
@@ -64,13 +57,13 @@ export const PassportEdit = (props : PassportModel) => {
     }
 
     const createSetDocumentRequest = () : SetDocumentRequest => ({
-        address : props.passportState.address,
-        birhday : props.passportState.birhday,
-        fio : props.passportState.fio,
-        issueDate : props.passportState.issueDate,
-        sn : props.passportState.sn,
+        address : props.passportState.address || '',
+        birhday : props.passportState.birhday || '',
+        fio : props.passportState.fio || '',
+        issueDate : props.passportState.issueDate || '',
+        sn : props.passportState.sn || '',
         phone : '1234',
-        photo : props.passportState.photo.toString('base64') as any as Buffer,
+        photo : props.passportState.photo.toString('base64') as any as Buffer || null,
     });
 
     const handleSaveDocument = () => {

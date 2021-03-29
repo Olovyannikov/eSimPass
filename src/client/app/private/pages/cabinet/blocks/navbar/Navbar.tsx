@@ -44,7 +44,7 @@ export const Navbar = () => {
             )
             .do(documentUploaded => {
                 STORAGE.storeDocumentUploaded(documentUploaded)
-                setDocumentUploaded(prev =>prev = documentUploaded)
+                setDocumentUploaded(prev => prev = documentUploaded)
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in navbar'))
