@@ -30,6 +30,8 @@ export const PassportEdit = (props : PassportModel) => {
     }
 
     const handleInputChange = (key : string, event? : React.ChangeEvent<HTMLInputElement> , date? : Date | [Date, Date]) => {
+        console.log(props.passportState.issueDate);
+        console.log(props.passportState.birhday);
         
         if (event) {
             props.setPassportState(prev => ({
@@ -73,7 +75,7 @@ export const PassportEdit = (props : PassportModel) => {
 
     const handleSaveDocument = () => {
 
-        setInProgress(prev => prev = true)
+        setInProgress(prev => prev = true);
 
         CONNECTION.setDocument(createSetDocumentRequest())
             .do(response => {

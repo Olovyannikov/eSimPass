@@ -9,7 +9,7 @@ export const PassportView = (props : PassportModel) => {
 
     const handleChangeMode = () => props.toggleMode(prev => !prev)
 
-    const convertMsToDateString = (ms : string) => new Date(ms).toLocaleDateString();
+    const convertMsToDateString = (ms : string) => new Date(Number(ms)).toLocaleDateString();
     
     return (
         <div className="PassportView">

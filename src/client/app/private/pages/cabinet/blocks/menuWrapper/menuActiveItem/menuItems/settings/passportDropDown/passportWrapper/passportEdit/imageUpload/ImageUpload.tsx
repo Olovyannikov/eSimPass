@@ -19,17 +19,15 @@ export const ImageUpload = (props : ImageUploadModel) => {
 
         reader.onload = () => {
             
-            const result : ArrayBufferLike = reader.result as ArrayBufferLike
+            const result : ArrayBufferLike = reader.result as ArrayBufferLike;
             
-            const buffer = new Uint8Array(result)
+            const buffer = new Uint8Array(result);
             
-            // let base64String = btoa(String.fromCharCode.apply(null, buffer));
-
-            // console.log(`data:image/jpeg;base64,${base64String}`);
+            const base64String = btoa(String.fromCharCode.apply(null, buffer));
             
             props.setPassportImage(prev => ({
                 ...prev,
-                photo : (buffer.buffer as any) as Buffer
+                photo : (base64String as any) as Buffer
             }))
 
         }

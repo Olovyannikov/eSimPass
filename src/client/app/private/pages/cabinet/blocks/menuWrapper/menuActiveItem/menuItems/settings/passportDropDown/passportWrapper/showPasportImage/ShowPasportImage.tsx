@@ -1,24 +1,19 @@
 import * as React from 'react';
 
-import { GetDocumentPhotoRequest } from '../../../../../../../../../../../../generated/proto.web';
+import { GetDocumentPhotoRequest, GetDocumentPhotoResponse } from '../../../../../../../../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../Connection';
 import { Spinner } from '../../.../../../../../../../../../../components/spinnerPayment/Spinner';
+import { PassportModel } from '../PassportWrapper';
 
 
-interface ShowPasportImageModel {
-    show : boolean;
-    img : Buffer;
-}
-
-export const ShowPasportImage = (props : ShowPasportImageModel) => {
+export const ShowPasportImage = (props : PassportModel) => {
 
     const logger = new Logger('ShowPhotoImage');
 
     const closedSubject = waitForClose();
 
-    const [photo, setPhoto] = React.useState<string>(null);
     const [inProgress, setInProgress] = React.useState<boolean>(true);
  
     const passportClass = () => props.show ? 'active' : 'disabled';
@@ -29,28 +24,11 @@ export const ShowPasportImage = (props : ShowPasportImageModel) => {
 
 
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
-            .do(response => {
-                console.log(response);
-                
-                if (response.success) {
-                    // let buffer = new Uint8Array(response.success).buffer
-                    
-                    // console.log(buffer);
-                    // let base64String = btoa(String.fromCharCode.apply(null, buffer));
-                    // console.log(base64String);
-                    
-                    // setPhoto(prev => prev = base64String)
-                    // console.log(`data:image/jpeg;base64,${base64String}`);
-                    // console.log('response',response.success);
-                    
-                    // const buffer = new Uint8Array(response.success.data)
+            .do((response) => {
+                console.log(response.success);
 
-            
-                    // const base64String = btoa(String.fromCharCode.apply(null, buffer));
-                    // console.log(`data:image/jpeg;base64,${base64String}`);
-                    
-                    // setPhoto(prev => prev = `data:image/jpeg;base64,${base64String}`) 
-                    
+                if (response.success) {
+                    handleSuccessResponse(response)
                 }
                 else if (response.documentIsNotLoaded) {
                     
@@ -62,11 +40,35 @@ export const ShowPasportImage = (props : ShowPasportImageModel) => {
 
     }, [])
 
-    const convertBufferToBase64 = () => {
-        if (props.img) {
-            const buffer = new Uint8Array(props.img)
-            const base64String = btoa(String.fromCharCode.apply(null, buffer));
-            return `data:image/jpeg;base64,${base64String}`
+    const arrayBufferToBase64 = ( response : any ) => {
+        let binary = '';
+        let bytes = new Uint8Array( response.success.data  );
+        let len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode( bytes[ i ] );
+        }
+            const base64 = btoa( binary );
+            props.setPassportState(prev => ({
+                ...prev,
+                photo : base64 as any as Buffer
+            }));
+    }
+
+    const handleSuccessResponse = (response : GetDocumentPhotoResponse) => {
+
+        arrayBufferToBase64(response)
+        // const buffer = new Uint8Array(response.success.data)
+        // const string = new TextDecoder().decode(response.success.data)
+        // console.log(string);
+        
+        // const base64String = btoa(String.fromCharCode.apply(null, string));
+        // console.log(base64String);
+
+    }
+
+    const returnBase64String = () => {
+        if (props.passportState.photo) {
+            return `data:image/jpeg;base64,${props.passportState.photo}`;
         }
     }
 
@@ -75,11 +77,11 @@ export const ShowPasportImage = (props : ShowPasportImageModel) => {
         if (inProgress) {
             return <Spinner />    
         } 
-        else if (!inProgress && !props.img) {
-            return <div className="attention">Фотография паспорта отсутствует!</div>
+        else if (props.passportState.photo) {
+            return <img className='img' src={returnBase64String()} alt="Passport"/>
         }
-        else {
-            return <img className='img' src={convertBufferToBase64()} alt="Passport"/>
+        else if (!inProgress && !props.passportState.photo) {
+            return <div className="attention">Фотография паспорта отсутствует!</div>
         }
     }
 

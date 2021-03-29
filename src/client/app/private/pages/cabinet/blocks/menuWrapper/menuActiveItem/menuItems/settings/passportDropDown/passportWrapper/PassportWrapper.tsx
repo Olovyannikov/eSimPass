@@ -18,10 +18,10 @@ export type Gender = 'Мужчина' | 'Женщина' | '';
 export interface PassportStateModel extends SetDocumentRequest {}
 
 export interface PassportModel {
-    toggleMode : React.Dispatch<React.SetStateAction<boolean>>;
+    toggleMode? : React.Dispatch<React.SetStateAction<boolean>>;
     passportState : PassportStateModel;
     setPassportState? : React.Dispatch<React.SetStateAction<PassportStateModel>>;
-
+    show? : boolean;
 }
 
 export const PassportWrapper = (props : PassportWrapperModel) => {
@@ -35,8 +35,7 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
         CONNECTION.getAbonent(createGetAbonentPassportRequest())
             .do(response => {
                 if (response.success) {
-                    // console.log(response.success.document);
-                    setPassportState(response.success.document)
+                    setPassportState(response.success.document);
                 }
             })
             .takeUntil(closedSubject)
@@ -71,7 +70,7 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
             <div className={`passport-block ${passportClass()}`}>
                 {doRender()}
             </div>
-            <ShowPasportImage img={passportState.photo} show={props.show} />
+            <ShowPasportImage setPassportState={setPassportState} passportState={passportState} show={props.show} />
         </div>
     )
 }
