@@ -41,9 +41,6 @@ export const Rates = (props : RatesModel) => {
         else {
             setFilteredRates([])
         }
-        // else {
-        //     setFilteredRates (filteredRates => filteredRates = allRates)
-        // }
         
     }, [props.filter, allRates])
 

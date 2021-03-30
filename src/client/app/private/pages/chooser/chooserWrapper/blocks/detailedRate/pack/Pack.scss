@@ -1,7 +1,30 @@
 .Pack {
     float: left;
     width: 22.6041vw;
-    height: 17.1354vw;
+    height: 18.1354vw;
     border-radius: 0.5vw;
-    border: 0.3vw solid $white;
+    border: 0.02vw solid $white;
+    margin-left: 4.6875vw;
+
+    .wrapper {
+        float: left;
+        margin: 0.8333vw;
+        color: $white;
+
+        .operator-name {
+            font-size: 1.5625vw;
+            font-weight: 400;
+            float: left;
+            width: 100%;
+        }
+
+        .type {
+            width: 100%;
+            font-size: 1.0415vw;
+            float: left;
+            margin-top: 1vw;
+        }
+
+        @import './detailedInfo/DetailedInfo.scss';
+    }
 }

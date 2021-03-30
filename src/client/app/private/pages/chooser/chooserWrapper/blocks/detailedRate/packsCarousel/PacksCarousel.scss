@@ -1,0 +1,38 @@
+.PacksCarousel {
+    float: left;
+    margin-left: -2.5vw;
+    margin-top: 2.8055vw;
+    width: 90vw;
+
+    .button-left {
+
+        height: 11.1354vw;
+        width: 2vw;
+        cursor: pointer;
+        float: left;
+        padding-top: 7vw;
+
+        .arrow {
+            float: left;
+            width: 1.5625vw;
+            height: 2.6041vw;
+        }
+        
+    }
+    
+    .button-right {
+
+        float: right;
+        cursor: pointer;
+        height: 11.1354vw;
+        width: 4vw;
+        padding-top: 7vw;
+
+        .arrow {
+            float: right;
+            width: 1.5625vw;
+            height: 2.6041vw;
+        }
+
+    }
+}

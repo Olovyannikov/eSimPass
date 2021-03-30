@@ -5,15 +5,7 @@ import { useLocation } from 'react-router-dom'
 
 export const PagesHolder = () => {
 
-
     const location = useLocation()
-
-    // React.useEffect(() => {
-    //     if (location.pathname === '/cabinet') {
-    //         return <Cabinet />
-    //     }
-        
-    // }, [location])
 
     const renderActivePage = () => {
         console.log(location.pathname);
@@ -28,8 +20,6 @@ export const PagesHolder = () => {
 
     return (
         <div className="PagesHolder">
-            {/* <Cabinet /> */}
-            {/* <Chooser /> */}
             {renderActivePage()}
         </div>
     )

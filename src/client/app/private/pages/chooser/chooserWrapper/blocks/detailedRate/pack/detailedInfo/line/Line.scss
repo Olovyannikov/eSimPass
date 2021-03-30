@@ -1,0 +1,26 @@
+.Line {
+    float: left;
+    width: 100%;
+    margin-bottom: 1.3vw;
+
+    .img-icon {
+        width: 1.614vw;
+        height: 1.5625vw;
+        float: left;
+    }
+
+    .text {
+        float: left;
+        font-size: 1.25vw;
+        margin-left: 1vw;
+        font-weight: 400;
+    }
+
+    .amount {
+        color: $yellowLk;
+        float: right;
+        font-size: 1.25vw;
+        font-weight: 500;
+    }
+
+}

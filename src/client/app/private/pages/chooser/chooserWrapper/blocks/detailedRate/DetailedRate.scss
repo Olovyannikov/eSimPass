@@ -1,12 +1,13 @@
 .DetailedRate {
     float: left;
-    width: 75.2vw;
-    margin-left: 4.2708vw;
+    width: 88.2vw;
+    // margin-right: 4.2708vw;
 
     .flag-name {
         float: left;
         width: 22.6041vw;
         height: 17.1354vw;
+        margin-left: 4.2708vw;
 
         .country {
             font-weight: 600;
@@ -23,4 +24,7 @@
             margin-top: 2.3vw;
         }
     }
+
+    @import './pack/Pack.scss';
+    @import './packsCarousel/PacksCarousel.scss';
 }
