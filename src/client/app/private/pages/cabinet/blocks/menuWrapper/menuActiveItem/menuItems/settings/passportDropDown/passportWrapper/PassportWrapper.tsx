@@ -60,7 +60,7 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
     const passportClass = () => props.show ? 'active' : 'disabled';
 
     const doRender = () => {
-        
+
         if (mode) {
             return <PassportEdit passportState={passportState} setPassportState={setPassportState} toggleMode={setMode} />
         }

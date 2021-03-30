@@ -9,6 +9,13 @@
     .Spinner {
         margin-left: 40vw;
     }
+
+    .empty-charges {
+        font-size: 2vw;
+        margin-left: 29.3vw;
+        color: white;
+        font-weight: 600;
+    }
     
     @import './detailed/Detailed.scss';
 }

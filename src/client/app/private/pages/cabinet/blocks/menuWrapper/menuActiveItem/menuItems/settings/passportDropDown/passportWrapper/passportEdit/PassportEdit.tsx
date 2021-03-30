@@ -12,6 +12,11 @@ import { CONNECTION } from '../../../../../../../../../../../../Connection';
 
 
 export const PassportEdit = (props : PassportModel) => {
+    React.useEffect(() => {
+        console.log(+props.passportState?.birhday);
+        
+    }, [])
+    
 
     const logger = new Logger('Passport edit');
 
@@ -57,11 +62,11 @@ export const PassportEdit = (props : PassportModel) => {
     }
 
     const createSetDocumentRequest = () : SetDocumentRequest => ({
-        address : props.passportState.address || '',
-        birhday : props.passportState.birhday || '',
-        fio : props.passportState.fio || '',
-        issueDate : props.passportState.issueDate || '',
-        sn : props.passportState.sn || '',
+        address : props.passportState.address,
+        birhday : props.passportState.birhday,
+        fio : props.passportState.fio,
+        issueDate : props.passportState.issueDate,
+        sn : props.passportState.sn,
         phone : '1234',
         photo : props.passportState.photo.toString('base64') as any as Buffer || null,
     });
@@ -89,6 +94,18 @@ export const PassportEdit = (props : PassportModel) => {
             return <div className="error">Заполните все поля</div>
         }
     }
+
+    // const returnValidDate = (date : string) => {
+    //     if (props.passportState?.birhday && date === 'birhday') {
+    //         return new Date(+props.passportState.birhday)
+    //     }
+    //     else if (props.passportState?.issueDate && date === 'issueDate') {
+    //         return new Date(+props.passportState.issueDate)
+    //     }
+    //     else {
+    //         return new Date
+    //     }
+    // }
     
     return (
         <div className="PassportEdit">
@@ -97,7 +114,7 @@ export const PassportEdit = (props : PassportModel) => {
                     disabled={inProgress}
                     placeholder='Фамилия Имя Отчество' 
                     onChange={(e) => handleInputChange('fio', e)} 
-                    value={props.passportState.fio} 
+                    value={props.passportState?.fio} 
                     className='input-name' 
                     type='text' 
                 />
@@ -112,7 +129,7 @@ export const PassportEdit = (props : PassportModel) => {
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={new Date(+props.passportState.birhday)} 
+                    selected={props.passportState?.birhday ? new Date(+props.passportState?.birhday) : new Date()} 
                     onChange={(date) => handleInputChange('birhday', null , date)}
                 />
             </div>
@@ -153,7 +170,7 @@ export const PassportEdit = (props : PassportModel) => {
                 <input 
                     disabled={inProgress}
                     onChange={(e) => handleInputChange('sn', e)} 
-                    value={props.passportState.sn} 
+                    value={props.passportState?.sn} 
                     className='input passport-series' 
                     type='text' 
                 />
@@ -168,7 +185,7 @@ export const PassportEdit = (props : PassportModel) => {
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={new Date(+props.passportState.issueDate)} 
+                    selected={props.passportState?.issueDate ? new Date(+props.passportState?.issueDate) : new Date()} 
                     onChange={(date) => handleInputChange('issueDate', null ,date)}
                 />
             </div>
@@ -177,12 +194,12 @@ export const PassportEdit = (props : PassportModel) => {
                 <input 
                     disabled={inProgress}
                     onChange={(e) => handleInputChange('address', e)} 
-                    value={props.passportState.address} 
+                    value={props.passportState?.address} 
                     className='input address' 
                     type='text'
                 />
             </div>
-            <ImageUpload disabled={inProgress} passportImage={props.passportState.photo} setPassportImage={props.setPassportState} />
+            <ImageUpload disabled={inProgress} passportImage={props.passportState?.photo} setPassportImage={props.setPassportState} />
             <div onClick={saveChanges} className='edit'>Сохранить</div>
             {renderError()}
         </div>

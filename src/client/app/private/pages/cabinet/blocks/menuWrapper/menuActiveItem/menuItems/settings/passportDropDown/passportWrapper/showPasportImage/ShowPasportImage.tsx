@@ -24,13 +24,12 @@ export const ShowPasportImage = (props : PassportModel) => {
 
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
             .do((response) => {
-                console.log(response.success);
 
                 if (response.success) {
                     handleSuccessResponse(response)
                 }
                 else if (response.documentIsNotLoaded) {
-                    
+                    //TODO!
                 }
             })
             .do(() => setInProgress(prev => prev = false))
@@ -56,12 +55,6 @@ export const ShowPasportImage = (props : PassportModel) => {
     const handleSuccessResponse = (response : GetDocumentPhotoResponse) => {
 
         arrayBufferToBase64(response)
-        // const buffer = new Uint8Array(response.success.data)
-        // const string = new TextDecoder().decode(response.success.data)
-        // console.log(string);
-        
-        // const base64String = btoa(String.fromCharCode.apply(null, string));
-        // console.log(base64String);
 
     }
 
@@ -72,14 +65,14 @@ export const ShowPasportImage = (props : PassportModel) => {
     }
 
     const renderImage = () => {
-
+        // TODO! Check props
         if (inProgress) {
             return <Spinner />    
         } 
-        else if (props.passportState.photo) {
+        else if (props.passportState?.photo) {
             return <img className='img' src={returnBase64String()} alt="Passport"/>
         }
-        else if (!inProgress && !props.passportState.photo) {
+        else if (!inProgress && !props.passportState?.photo) {
             return <div className="attention">Фотография паспорта отсутствует!</div>
         }
     }

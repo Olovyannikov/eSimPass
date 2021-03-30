@@ -11,7 +11,7 @@ import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
 
 export const Navbar = () => {
 
-    const logger = new Logger ('RegistrationDialog');
+    const logger = new Logger ('Navbar');
     
     const closedSubject = waitForClose ();
 
@@ -52,8 +52,13 @@ export const Navbar = () => {
             
     }, [])
 
-    const checkFilledPassportData = (resposne : GetAbonentResponse) => {
-        return Object.keys(resposne.success.document).every(key => nothingToNull(key))
+    const checkFilledPassportData = (response : GetAbonentResponse) => {
+        if (response.success?.document) {
+            return Object.keys(response.success.document).every(key => nothingToNull(key))
+        }
+        else {
+            return false
+        }
     }
 
     const renderRedAttention = () => documentUploaded ? <></> : <WithoutPassportData />;

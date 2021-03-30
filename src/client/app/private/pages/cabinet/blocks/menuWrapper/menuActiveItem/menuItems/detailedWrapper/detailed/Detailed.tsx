@@ -17,6 +17,7 @@ export const Detailed = (props : DetailedModel) => {
     const [currentPage, setCurrentPage] = React.useState<number>(0);
 
     const filterChargesByTableView = (tableView : TableView) => {
+        
         if (tableView === 'expenses') {
             return props.charges.filter(el => el.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT)
         }
