@@ -27,7 +27,7 @@ export const ActivePackage = (props : DeviceModel) => {
             </div>
             <div className="price-block">
                 <div className="text">Стоимость</div>
-                <div className="amount">{props.package.currentPack.price}<span>€</span> </div>
+                <div className="amount">{props.package.currentPack.price}<span>₽</span> </div>
             </div>
             <BuyPack package={props.package} />
         </div>

@@ -17,7 +17,7 @@ export const PricesBlock = ({ rate }: Props) => {
             <div className="prices-block__prices">
                 <div className="PackItem">
                     <span className='pack-item__size'>Помегабайтный тариф</span>
-                    <span className='pack-item__price'>{rate.price} €</span>
+                    <span className='pack-item__price'>{rate.price} ₽</span>
                 </div>
                 {rate.packs.map((pack: ListRatesResponse.SuccessModel.RateModel.PackModel) => <PackItem pack={pack} key={pack.quota} />)}
             </div>

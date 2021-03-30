@@ -21,7 +21,7 @@ export const Column = ({charge} : IColumn) => {
             <span className="column__date">{charge.date}</span>
             <span className="column__who">Имя девайса</span>
             <span className="column__rate">{chargesUnit?.quota} {chargesUnit?.unit} по тарифу <span>Имя тарифа</span></span>
-            <span className="column__price">- {charge.total} €</span>
+            <span className="column__price">- {charge.total} ₽</span>
         </div>
     )
 }

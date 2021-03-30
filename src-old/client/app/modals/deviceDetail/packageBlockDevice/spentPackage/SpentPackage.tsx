@@ -25,7 +25,7 @@ export const SpentPackage = ({pack} : IProps) => {
                 <div className="quota">
                     {renderQuota(Number(pack.quota))}
                 </div>
-                <div className="price-amount">{pack.price}<span>€</span> </div>
+                <div className="price-amount">{pack.price}<span>₽</span> </div>
             </div>
         </div>
     )

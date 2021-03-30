@@ -39,7 +39,7 @@ export const CurrentBalance = () => {
     return (
         <div className="CurrentBalance">
             <div className="balance">
-                <div className='text'>Текущий баланс<span>{balance} €</span></div>
+                <div className='text'>Текущий баланс<span>{balance} ₽</span></div>
             </div>
         </div>
     )

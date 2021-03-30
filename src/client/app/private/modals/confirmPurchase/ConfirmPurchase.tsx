@@ -80,7 +80,7 @@ export const ConfirmPurchase = () => {
 
     return (
         <div className="ConfirmPurchase" onClick={(e) => e.stopPropagation()}>
-            <div className="title">Подтвердите покупку QR-кода за {paymentAmount} € ?</div>
+            <div className="title">Подтвердите покупку QR-кода за {paymentAmount} ₽ ?</div>
             <Button func={handleConfirmPurchase} disabled={inProgress} className='yes' text='Подтверждаю' />
             <Button disabled={inProgress} className='no' text='Отмена' func={closeModal} />
             {showError()}

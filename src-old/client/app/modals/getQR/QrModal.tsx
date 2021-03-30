@@ -60,7 +60,7 @@ export const QrModal = () => {
                         ...prev,
                         img : second,
                         firstModal : false,
-                        enterEmail : 'Пополните Ваш баланс на 10 €',
+                        enterEmail : 'Пополните Ваш баланс на 10 ₽',
                         enterPassword : '',
                     }))
                     STATE_API.setAuthenticated(data)

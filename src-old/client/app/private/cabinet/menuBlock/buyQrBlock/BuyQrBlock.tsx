@@ -18,7 +18,7 @@ export const BuyQrBlock = () => {
                     <br/>
                     После покупки QR-код с интсрукцикй появится слева. Также мы продублируем его на вашу почту.
                 </div>
-                <Button className='buyQr' text='Купить QR-код за 3€'/>
+                <Button className='buyQr' text='Купить QR-код за 3₽'/>
             </div>
         </div>
     )

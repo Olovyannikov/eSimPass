@@ -9,7 +9,7 @@ import { ConnectQrCode } from '../../components/connectQrCode/ConnectQrCode';
 export const TopUpQr = () => {
     return (
         <div className="TopUpQr">
-            <ConnectQrCode stepImg={second} actionText='Пополните Ваш баланс на 10€' />
+            <ConnectQrCode stepImg={second} actionText='Пополните Ваш баланс на 10₽' />
             <Button func={() => closeModal()} className="supplementQr" text='Пополнить' />
         </div>
     )

@@ -80,7 +80,7 @@ export const CreateDevice = () => {
 
     return (
         <div className="CreateDevice" onClick={e => e.stopPropagation()}>
-            <div className="title">Добавить новое устройство за {paymentAmount} €?</div>
+            <div className="title">Добавить новое устройство за {paymentAmount} ₽?</div>
             <Button func={handleConfirmPurchase} disabled={inProgress} className='yes' text='Да' />
             <Button disabled={inProgress} className='no' text='Нет' func={closeModal} />
             {showError()}

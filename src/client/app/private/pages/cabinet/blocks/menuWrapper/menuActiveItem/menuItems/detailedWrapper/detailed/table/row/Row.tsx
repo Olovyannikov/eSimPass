@@ -59,7 +59,7 @@ export const Row = (props : RowModel) => {
                 <>
                     <span className="date">{convertMsToLocalDate(props.charge.date)}</span>
                     {renderChargesByType()}
-                    <span className="price"> {props.charge.total} €</span>
+                    <span className="price"> {props.charge.total} ₽</span>
                 </>
             )
         }

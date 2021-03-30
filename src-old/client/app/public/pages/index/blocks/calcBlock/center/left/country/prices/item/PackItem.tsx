@@ -12,7 +12,7 @@ export const PackItem = (props : {
     return (
         <div className="PackItem">
             <span className='pack-item__size'>{toMb(props.pack.quota)} MB</span>
-            <span className='pack-item__price'>{props.pack.price} €</span>
+            <span className='pack-item__price'>{props.pack.price} ₽</span>
         </div>
     )
 }

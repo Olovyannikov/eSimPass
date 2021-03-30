@@ -11,12 +11,7 @@ import { CONNECTION } from '../../../../../../../../../../../../Connection';
 
 
 
-export const PassportEdit = (props : PassportModel) => {
-    React.useEffect(() => {
-        console.log(+props.passportState?.birhday);
-        
-    }, [])
-    
+export const PassportEdit = (props : PassportModel) => {    
 
     const logger = new Logger('Passport edit');
 

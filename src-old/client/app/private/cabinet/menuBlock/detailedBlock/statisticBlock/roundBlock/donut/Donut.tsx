@@ -46,7 +46,7 @@ export const Donut = ({ percentage, date, money } : IDonut) => {
             />
 
             <text className="donut__money" dominantBaseline='central' x={51} y={40}>
-                {money} €
+                {money} ₽
             </text>
             <text className='donut__date'  dominantBaseline='central' x={50} y={55}>
                 {date} 

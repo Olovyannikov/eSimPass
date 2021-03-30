@@ -3,8 +3,10 @@
     background: $cabinetBG;
     height: 100%;
     overflow: auto;
+    overflow-x: hidden;
 
     @import './components/components.scss';
     @import './pages/PagesHolder.scss';
     @import './modals/Modal.scss';
 }
+

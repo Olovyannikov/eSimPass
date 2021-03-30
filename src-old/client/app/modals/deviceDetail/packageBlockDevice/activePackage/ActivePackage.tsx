@@ -31,7 +31,7 @@ export const ActivePackage = ({ currentPack } : CurrentPack) => {
                         <div className='spent'>{unit.used}</div>
                         <div className='total'>/ {unit.quota} {unit.unit}</div>
                     </div>
-                    <div className="price-amount">{currentPack.price}<span>€</span> </div>
+                    <div className="price-amount">{currentPack.price}<span>₽</span> </div>
                 </div>
             </div>
         )

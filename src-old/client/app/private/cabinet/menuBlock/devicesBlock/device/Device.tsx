@@ -39,7 +39,7 @@ export const Device = ({device} : IProps) => {
                 <WhoseDevice name={device.name.value} />
                 <RateInfo operatorName={device.currentPack.rate.operatorName}/>
                 <div className="device__price">
-                    Стоимость {device.currentPack.price} €
+                    Стоимость {device.currentPack.price} ₽
                 </div>
                 <div className="progressBar small-bar">
                     <div className='bar' style={{width:`${percentOfPackage(Number(device.currentPack.quota), Number(device.currentPack.used))}%`, backgroundColor: setColorBar(percentOfPackage(Number(device.currentPack.quota), Number(device.currentPack.used)))}}></div>

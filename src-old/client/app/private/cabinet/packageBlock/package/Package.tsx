@@ -19,7 +19,7 @@ export const Package = ({device} : IProps) => {
             </div>
             <div className="package__price-block">
                 <div className="package__price-text">Стоимость</div>
-                <div className="package__price-amount">{device.currentPack.price}<span>€</span> </div>
+                <div className="package__price-amount">{device.currentPack.price}<span>₽</span> </div>
             </div>
             <BuyRate boughtDate={device.currentPack.boughtDate} duration={device.currentPack.duration} />
         </div>

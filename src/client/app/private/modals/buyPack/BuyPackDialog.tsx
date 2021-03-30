@@ -59,7 +59,7 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         else {
             return (
                 <>
-                    <div className="title">Подтвердите покупку пакета {props.pack.device.currentPack.rate.operatorName} за {props.pack.device.currentPack.price} € ?</div>
+                    <div className="title">Подтвердите покупку пакета {props.pack.device.currentPack.rate.operatorName} за {props.pack.device.currentPack.price} ₽ ?</div>
                     <Button disabled={inProgress} className='yes' text='Подтверждаю' func={handleBuyPack} />
                     <Button disabled={inProgress} className='no' text='Отмена' func={closeModal} />
                     <div className="response">{response}</div>

@@ -14,7 +14,7 @@ export const LoyaltyBlock = () => {
             <div className="loyalty-block__qr-block_right">
                 <div className="loyalty-block__title">Программа лояльности</div>
                 <div className="loyalty-block__text">
-                    Пополните баланс на 10 € и получи промокод на еще один QR код бесплатно!
+                    Пополните баланс на 10 ₽ и получи промокод на еще один QR код бесплатно!
                     <br/>
                     После пополнения баланса <span>промокод в виде QR-кода</span> появится слева. Его неоходимо будет просканировать через приложение eSIM TRAVEL в разделе “Программа лояльности”.
                 </div>
