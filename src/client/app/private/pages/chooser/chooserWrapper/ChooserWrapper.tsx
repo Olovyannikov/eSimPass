@@ -28,7 +28,7 @@ export const ChooserWrapper = () => {
             history.push('/cabinet')
         }
     }
-
+    //TODO arrow position ?
     return (
         <div className="ChooserWrapper">
             <div className="img-arrow-back" onClick={handleBackClick}>

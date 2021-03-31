@@ -1,38 +1,67 @@
 .PacksCarousel {
     float: left;
-    margin-left: -2.5vw;
-    margin-top: 2.8055vw;
-    width: 90vw;
+    margin-left: 2vw;
 
-    .button-left {
-
-        height: 11.1354vw;
-        width: 2vw;
-        cursor: pointer;
+    .relative {
+        position: relative!important;
+        width: 92vw;
+        height: 22vw;
         float: left;
-        padding-top: 7vw;
 
-        .arrow {
+        .slider {
             float: left;
-            width: 1.5625vw;
-            height: 2.6041vw;
+            margin-left: -2.5vw;
+            margin-top: 2.8055vw;
+            width: 92vw;
+            height: 22vw;
+        
+        }
+        .button-left {
+        
+            height: 11.1354vw;
+            width: 2vw;
+            cursor: pointer;
+            float: left;
+            padding-top: 7vw;
+            background: transparent;
+            border: none;
+            outline: none;
+            position: absolute;
+            left: -6vw;
+            top: 6vw;
+            padding: 0;
         }
         
-    }
-    
-    .button-right {
-
-        float: right;
-        cursor: pointer;
-        height: 11.1354vw;
-        width: 4vw;
-        padding-top: 7vw;
-
-        .arrow {
+            .arrow {
+                float: left;
+                width: 1.5625vw;
+                height: 2.6041vw;
+            }
+        
+        
+        .button-right {
+        
             float: right;
-            width: 1.5625vw;
-            height: 2.6041vw;
+            cursor: pointer;
+            height: 11.1354vw;
+            width: 4vw;
+            padding-top: 7vw;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 0;
+            position: absolute;
+            right: 6.5vw;
+            top: 6vw;
+        
+            .arrow {
+                float: right;
+                width: 1.5625vw;
+                height: 2.6041vw;
+            }
+        
+            
         }
-
     }
 }
+

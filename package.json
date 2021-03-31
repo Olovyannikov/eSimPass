@@ -33,6 +33,7 @@
         "less-loader": "8.0.0",
         "node-sass": "5.0.0",
         "normalize.css": "8.0.1",
+        "pure-react-carousel": "1.27.6",
         "react": "17.0.2",
         "react-datepicker": "3.6.0",
         "react-dom": "17.0.2",

@@ -130,3 +130,18 @@ export const convertDateUntilPackage = (date : string, duration? : PACK_DURATION
             break;
     }
 }
+
+export const convertDurationType = (amount : PACK_DURATION) => {
+    if (amount === PACK_DURATION.DAY) {
+        return '1 дн.'
+    }
+    else if (amount === PACK_DURATION.WEEK) {
+        return '7 дн.'
+    }
+    else if (amount === PACK_DURATION.TWO_WEEKS) {
+        return '14 дн.'
+    }
+    else if (amount === PACK_DURATION.MONTH) {
+        return '31 дн.'
+    }
+}
