@@ -1,8 +1,8 @@
 .PacksCarousel {
     float: left;
-    margin-left: 2vw;
+    margin-left: -1vw;
 
-    .relative {
+    .relative-wrapper {
         position: relative!important;
         width: 92vw;
         height: 22vw;
@@ -12,23 +12,22 @@
             float: left;
             margin-left: -2.5vw;
             margin-top: 2.8055vw;
-            width: 92vw;
+            width: 88vw;
             height: 22vw;
-        
+            
         }
+
         .button-left {
-        
-            height: 11.1354vw;
-            width: 2vw;
+            height: 18.1354vw;
+            width: 3vw;
             cursor: pointer;
             float: left;
-            padding-top: 7vw;
             background: transparent;
             border: none;
             outline: none;
             position: absolute;
-            left: -6vw;
-            top: 6vw;
+            left: -3.5vw;
+            top: 2vw;
             padding: 0;
         }
         
@@ -40,19 +39,17 @@
         
         
         .button-right {
-        
             float: right;
             cursor: pointer;
-            height: 11.1354vw;
-            width: 4vw;
-            padding-top: 7vw;
+            height: 18.1354vw;
+            width: 3vw;
             background: transparent;
             border: none;
             outline: none;
             padding: 0;
             position: absolute;
-            right: 6.5vw;
-            top: 6vw;
+            right: 2vw;
+            top: 2vw;
         
             .arrow {
                 float: right;

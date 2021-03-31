@@ -28,28 +28,20 @@ export const PacksCarousel = (props : PacksCarouselModel) => {
                 return result
             }, [])
         }
-        // console.log('aarray',array);
-        
-        // setSlides(prev => prev = array)
     }
-
-    React.useEffect(() => {
-        reducePacksToSlides().length
-        
-    }, [])
 
     //TODO simplify render logic
 
     return (
 
         <CarouselProvider
-            totalSlides={reducePacksToSlides().length}
+            totalSlides={reducePacksToSlides().length || 0}
             naturalSlideHeight={10}
             naturalSlideWidth={10}
             className='PacksCarousel'
             infinite={true}
         >
-            <div className="relative">
+            <div className="relative-wrapper">
                 <Slider
                     className='slider'
                 >

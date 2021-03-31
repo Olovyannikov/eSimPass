@@ -5,6 +5,7 @@ import { CONNECTION } from '../../../../../../../../Connection';
 import { nothingToNull, waitForClose } from '../../../../../../../../utils';
 import { ListRatesResponse } from '../../../../../../../../generated/proto.web';
 import { RateCountry } from './rateCountry/RateCountry';
+import { Spinner } from '../../../../../../components/spinnerPayment/Spinner';
 
 interface RatesModel {
     showDefaultRates : boolean;
@@ -20,13 +21,15 @@ export const Rates = (props : RatesModel) => {
 
     const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
+    const [inProgress, setInProgress] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         CONNECTION.listRates({})
             .do(response => setAllRates (rates => rates = response.success.rates))
+            .do(() => setInProgress(prev => prev = false))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in received list rates'))
-
+        
     }, [])
 
     React.useEffect(() => {
@@ -39,13 +42,24 @@ export const Rates = (props : RatesModel) => {
             )
         }
         else {
-            setFilteredRates([])
+            // temporary for popular country 
+            const randomNumber = Math.floor(Math.random() * allRates.length)
+            setFilteredRates(filteredRates => filteredRates = allRates.slice(randomNumber, randomNumber + 8))
         }
+
         
     }, [props.filter, allRates])
 
     const renderRates = () => {
-        if (props.showDefaultRates) {
+        if (inProgress) {
+            return (
+                <>
+                    <div className="title">Популярные страны</div>
+                    <Spinner />
+                </>
+            )
+        }
+        else if (props.showDefaultRates) {
             return (
                 <>
                     <div className="title">Популярные страны</div>

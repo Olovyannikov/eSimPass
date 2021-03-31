@@ -1,0 +1,26 @@
+.FlagCountry {
+    float: left;
+    width: 21.3vw;
+    height: 17.1354vw;
+    margin-left: 4.2708vw;
+
+    .country {
+        font-weight: 600;
+        font-size: 2.6041vw;
+        color: $white;
+        float: left;
+        margin-top: 0.7vw;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 4vw;
+        width: 22vw;
+    }
+
+    .flag-img {
+        float: left;
+        width: 13.0208vw;
+        height: 8.3854vw;
+        margin-top: 2.3vw;
+    }
+}

@@ -9,7 +9,7 @@ export const ChooserWrapper = () => {
 
     const history = useHistory()
     
-    const [rate, setRate] = React.useState(() : ListRatesResponse.SuccessModel.RateModel => null)
+    const [rate, setRate] = React.useState(() : ListRatesResponse.SuccessModel.RateModel => null);
 
     const doRender = () => {
         if (rate) {
@@ -23,6 +23,7 @@ export const ChooserWrapper = () => {
     const handleBackClick = () => {
         if (rate) {
             setRate(null)
+            // setReturnFlag(false)
         }
         else {
             history.push('/cabinet')

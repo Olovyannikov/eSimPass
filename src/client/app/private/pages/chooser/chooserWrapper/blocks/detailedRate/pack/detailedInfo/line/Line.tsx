@@ -12,7 +12,7 @@ interface LineModel {
 
 export const Line = (props : LineModel) => {
 
-    // TODO : CHECK empy props
+    // TODO : CHECK empty props
 
     const doRender = () => {
         if (props.plain) {

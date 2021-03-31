@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { ListRatesResponse } from '../../../../../../../../../generated/proto.web';
 import { img_flagFrance } from '../../../../../../../../../resources/images';
 
 interface RateCountryModel {
