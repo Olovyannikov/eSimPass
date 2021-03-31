@@ -8,7 +8,6 @@ export const PagesHolder = () => {
     const location = useLocation()
 
     const renderActivePage = () => {
-        console.log(location.pathname);
         
         if (location.pathname === '/cabinet') {
             return <Cabinet />

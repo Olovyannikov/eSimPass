@@ -20,21 +20,19 @@ export const EmptyPackage = () => {
     const checkExistingDevice = () => {
 
         CONNECTION.listDevices({})
-
-        .do(response => {
-            if (!response.success.devices) {
-                STATE_API.showPrivateWizard('addDevice');
-            }
-            else {
-                //TODO : Buy Package
-                //redirect to other page?
-                history.push('/cabinet/chooseRates')
-                
-            }
-            setInProgress(prev => prev = false);
-        })
-        .takeUntil(closedSubject)
-        .subscribe(logger.rx.subscribe('Error in device response'))
+            .do(response => {
+                if (response.success.devices) {
+                    history.push('/cabinet/chooseRates');
+                }
+                else {
+                    STATE_API.showPrivateWizard('addDevice');
+                    //TODO : Buy Package
+                    //redirect to other page?
+                }
+                setInProgress(prev => prev = false);
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in device response'))
         
     }
 

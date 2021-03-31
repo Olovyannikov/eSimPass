@@ -124,7 +124,7 @@ export const PassportEdit = (props : PassportModel) => {
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={props.passportState?.birhday ? new Date(+props.passportState?.birhday) : new Date()} 
+                    selected={new Date(+props.passportState?.birhday)} 
                     onChange={(date) => handleInputChange('birhday', null , date)}
                 />
             </div>
@@ -153,7 +153,7 @@ export const PassportEdit = (props : PassportModel) => {
             <div className="yellow-text">
                 Гражданство: 
                 <input 
-                disabled={inProgress}
+                    disabled={inProgress}
                     // onChange={(e) => handleInputChange('citizenship', e)} 
                     // value={props.passportState.citizenship} 
                     className='input citizenship' 
@@ -180,7 +180,7 @@ export const PassportEdit = (props : PassportModel) => {
                     dropdownMode="select"
                     placeholderText='ДД.ММ.ГГГГ' 
                     className='input input-date' 
-                    selected={props.passportState?.issueDate ? new Date(+props.passportState?.issueDate) : new Date()} 
+                    selected={new Date(+props.passportState?.issueDate)} 
                     onChange={(date) => handleInputChange('issueDate', null ,date)}
                 />
             </div>

@@ -37,7 +37,10 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
         CONNECTION.getAbonent(createGetAbonentPassportRequest())
             .do(response => {
                 if (response.success) {
-                    setPassportState(response.success.document);
+                    setPassportState(prev =>({
+                        ...prev,
+                        ...response.success.document
+                    }));
                 }
             })
             .takeUntil(closedSubject)

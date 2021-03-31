@@ -52,10 +52,9 @@ export const ShowPasportImage = (props : PassportModel) => {
             }));
     }
 
-    const handleSuccessResponse = (response : GetDocumentPhotoResponse) => {
-
+    const handleSuccessResponse = (response : GetDocumentPhotoResponse) => {        
+        
         arrayBufferToBase64(response)
-
     }
 
     const returnBase64String = () => {

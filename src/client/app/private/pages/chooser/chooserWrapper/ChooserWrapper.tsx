@@ -23,7 +23,6 @@ export const ChooserWrapper = () => {
     const handleBackClick = () => {
         if (rate) {
             setRate(null)
-            // setReturnFlag(false)
         }
         else {
             history.push('/cabinet')

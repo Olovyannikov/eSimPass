@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 import { ListDevicesResponse } from '../../../../../../../../generated/proto.web';
 import { BuyPack } from '../../../../../../components/buyPack/BuyPack';
 import { ProgressBar } from '../../../../../../components/progressBar/ProgressBar';
