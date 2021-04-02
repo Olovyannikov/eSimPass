@@ -16,19 +16,35 @@ export const Detailed = (props : DetailedModel) => {
     const [tableView, setTableView] = React.useState<TableView>('expenses');
     const [currentPage, setCurrentPage] = React.useState<number>(0);
 
-    const filterChargesByTableView = (tableView : TableView) => {
-        
+    const filterChargesByTableView = () => {
         if (tableView === 'expenses') {
             return props.charges.filter(el => el.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT)
         }
         else return props.charges.filter(el => el.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS)
     }
 
+    const reduceChargesByPages = () => {
+        const filteredCharges = filterChargesByTableView();
+        const pageSize : number = 15;
+        if (filteredCharges) {
+            return filteredCharges.reduce((result : ListChargesResponse.SuccessModel.ChargeModel[][], item, index) => {
+                const chunkIndex = Math.floor(index / pageSize)
+
+                if (!result[chunkIndex]) {
+                    result[chunkIndex] = []
+                }
+                result[chunkIndex].push(item)
+
+                return result
+            }, [])
+        }
+    }
+
     return (
         <div className="Detailed">
-            <Header allPages={filterChargesByTableView(tableView).length} currentPage={currentPage} togglePage={setTableView} tableView={tableView} /> 
-            <Table charges={filterChargesByTableView(tableView)} />
-            <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} allPage={filterChargesByTableView(tableView).length + 1} />
+            <Header allPages={reduceChargesByPages().length} currentPage={currentPage} setCurrentPage={setCurrentPage} togglePage={setTableView} tableView={tableView} /> 
+            <Table charges={reduceChargesByPages()[currentPage]} />
+            <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} allPage={reduceChargesByPages().length} />
         </div>
     )
 }

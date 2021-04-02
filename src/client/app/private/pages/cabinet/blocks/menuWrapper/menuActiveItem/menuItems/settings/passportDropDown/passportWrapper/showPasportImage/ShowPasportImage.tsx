@@ -18,7 +18,7 @@ export const ShowPasportImage = (props : PassportModel) => {
  
     const passportClass = () => props.show ? 'active' : 'disabled';
 
-    const createGetDocumentPhotoRequest = () : GetDocumentPhotoRequest => ({})
+    const createGetDocumentPhotoRequest = () : GetDocumentPhotoRequest => ({});
 
     React.useEffect(() => {
 
@@ -26,6 +26,8 @@ export const ShowPasportImage = (props : PassportModel) => {
             .do((response) => {
 
                 if (response.success) {
+                    console.log(response);
+                    
                     handleSuccessResponse(response)
                 }
                 else if (response.documentIsNotLoaded) {
@@ -41,15 +43,29 @@ export const ShowPasportImage = (props : PassportModel) => {
     const arrayBufferToBase64 = ( response : any ) => {
         let binary = '';
         const bytes = new Uint8Array( response.success.data  );
-        const len = bytes.byteLength;
-        for (let i = 0; i < len; i++) {
+        const length = bytes.byteLength;
+
+        for (let i = 0; i < length; i++) {
             binary += String.fromCharCode( bytes[ i ] );
         }
+
+        // if (binary.includes('/9j/', 0)) {
+
+        //     props.setPassportState(prev => ({
+        //         ...prev,
+        //         photo : (binary as any) as Buffer
+        //     }));
+            
+        // }
+        // else {
             const base64 = btoa( binary );
             props.setPassportState(prev => ({
                 ...prev,
                 photo : (base64 as any) as Buffer
             }));
+
+        // }
+           
     }
 
     const handleSuccessResponse = (response : GetDocumentPhotoResponse) => {        
@@ -69,7 +85,7 @@ export const ShowPasportImage = (props : PassportModel) => {
             return <Spinner />    
         } 
         else if (props.passportState?.photo) {
-            return <img className='img' src={returnBase64String()} alt="Passport"/>
+            return <img className='img' src={returnBase64String()} alt="Passport image"/>
         }
         else if (!inProgress && !props.passportState?.photo) {
             return <div className="attention">Фотография паспорта отсутствует!</div>

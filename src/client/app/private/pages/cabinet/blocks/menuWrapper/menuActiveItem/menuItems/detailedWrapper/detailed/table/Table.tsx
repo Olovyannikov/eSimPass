@@ -11,7 +11,7 @@ export const Table = (props : TableModel) => {
 
     const checkEmptyTable = () => {
         
-        if (props.charges.length) {
+        if (props.charges?.length) {
             return (
                 props.charges.map((el, index : number) => (
                     <Row key={index} charge={el} />

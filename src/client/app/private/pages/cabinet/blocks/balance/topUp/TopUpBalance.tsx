@@ -75,7 +75,7 @@ export const TopUpBalance = () => {
             return <div className="text error">Не менее {minAmount}₽</div>
         } 
         else {
-            return <div className='text'>От {minAmount}₽ до 100₽</div>
+            return <div className='text'>От {minAmount}₽ до 10000₽</div>
         }
     }
 

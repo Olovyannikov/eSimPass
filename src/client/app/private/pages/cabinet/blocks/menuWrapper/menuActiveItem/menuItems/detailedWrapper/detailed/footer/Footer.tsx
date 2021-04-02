@@ -15,7 +15,7 @@ export const Footer = (props : FooterModel) => {
 
     const handlePageNavigator = () => {
         
-        if (props.allPage - 1 === 0) {
+        if (props.allPage - 1 < 0 || props.allPage - 1 === 0) {
             return <></>
         }
         else if (props.currentPage === 0) {

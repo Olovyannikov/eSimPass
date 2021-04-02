@@ -89,18 +89,6 @@ export const PassportEdit = (props : PassportModel) => {
             return <div className="error">Заполните все поля</div>
         }
     }
-
-    // const returnValidDate = (date : string) => {
-    //     if (props.passportState?.birhday && date === 'birhday') {
-    //         return new Date(+props.passportState.birhday)
-    //     }
-    //     else if (props.passportState?.issueDate && date === 'issueDate') {
-    //         return new Date(+props.passportState.issueDate)
-    //     }
-    //     else {
-    //         return new Date
-    //     }
-    // }
     
     return (
         <div className="PassportEdit">

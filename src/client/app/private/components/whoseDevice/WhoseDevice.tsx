@@ -19,7 +19,7 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
 
     const [showInput, setShowInput] = React.useState<boolean>(false);
     const [error, setError] = React.useState<string>(null);
-    const [deviceName, setDeviceName] = React.useState<string>(props.name || '');
+    const [deviceName, setDeviceName] = React.useState<string>(props.name || 'Мое Устройство');
     const [inProgress, setInProgress] = React.useState<boolean>(false)
 
     const doRender = () => {

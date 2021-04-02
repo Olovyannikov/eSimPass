@@ -29,7 +29,6 @@ export const Row = (props : RowModel) => {
 
         if (props.charge.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT) {
 
-
             return (
                 <>
                     <span className="rate">{chargesUnit?.quota} {chargesUnit?.unit} по тарифу <span>Имя тарифа</span></span>
