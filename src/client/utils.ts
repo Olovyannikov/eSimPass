@@ -89,6 +89,8 @@ export type Unit = 'МБ' | 'ГБ';
 export const unitConventer = (quota : number, used? : number) : ConventerUnitModel => {
     let restQuota = quota - used
     let unit : Unit;
+    
+    
 
     if (quota >= 1048576000) {
         unit = 'ГБ'
@@ -101,6 +103,7 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
         restQuota = convertToMB(restQuota)
     }
     used = restQuota
+    
 
     return {
         quota,

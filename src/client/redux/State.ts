@@ -1,4 +1,4 @@
-import { BuyPackRequest, ListDevicesResponse } from "../generated/proto.web";
+import { ListDevicesResponse } from "../generated/proto.web";
 
 export type SHOW_PUBLIC_WIZARD_MODE = 'login' | 'register' | 'verifyRegistration' | 'passwordRestore' | 'verifyPasswordRestore';
 export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment' | 'deleteDevice' | 'addDevice' | 'buyQrCode' | 'buyPack';

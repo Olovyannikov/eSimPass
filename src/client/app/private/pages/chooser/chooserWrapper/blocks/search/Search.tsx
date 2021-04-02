@@ -25,7 +25,7 @@ export const Search = (props : SearchModel) => {
 
     const onSelected = (rate : ListRatesResponse.SuccessModel.RateModel) => {
         props.setRate(rate);
-        setValue(prev => prev = rate.countryName);
+        // setValue(prev => prev = rate.countryName);
         setShowDefaultRates(show => show = false);
     }
 

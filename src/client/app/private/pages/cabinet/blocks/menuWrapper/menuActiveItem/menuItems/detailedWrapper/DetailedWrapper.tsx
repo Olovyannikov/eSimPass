@@ -6,6 +6,7 @@ import { waitForClose } from '../../../../../../../../../utils';
 import { Spinner } from '../../../../../../../../public/components/spinner/Spinner';
 import { ListChargesRequest, ListChargesResponse } from '../../../../../../../../../generated/proto.web';
 import { Detailed } from './detailed/Detailed';
+import { mockCharges } from '../../../../../../../../../mockData/mockCharges';
 
 export const DetailedWrapper = () => {
 

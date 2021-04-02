@@ -35,14 +35,17 @@
         .input:focus {
             border-color: $yellowLk;
         }
-
+        input:focus::placeholder {
+            color: transparent;
+        }
+        
         ::placeholder {
-            color: $yellowLk;
+            color: $yellowLkOpacity;
             font-family: 'TT Travels';
         }
 
         .input:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .text {
@@ -77,7 +80,7 @@
         }
 
         .button-top-up:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .payment-spinner {
