@@ -46,7 +46,7 @@ export const DetailedWrapper = () => {
             return <Spinner />
         }
         else if (charges) {
-            return <Detailed charges={charges}/> 
+            return <Detailed charges={charges} /> 
         }
         else {
             return <div className="empty-charges">Транзакции отсутствуют</div>
