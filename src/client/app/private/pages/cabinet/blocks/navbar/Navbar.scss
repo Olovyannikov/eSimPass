@@ -30,12 +30,13 @@
         
         .email {
             float: left;
-            font-size: 1.3020vw;
+            font-size: 1.1vw;
             margin-left: 1.6038vw;
             width: 20vw;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            margin-top: 0.1vw;
         }
 
         .img_person {
@@ -48,9 +49,10 @@
 
         .logout {
             float: right;
-            font-size: 1.3020vw;
+            font-size: 1.1vw;
             cursor: pointer;
             margin-right: 2vw;
+            margin-top: 0.1vw;
         }
 
         .logout:hover {

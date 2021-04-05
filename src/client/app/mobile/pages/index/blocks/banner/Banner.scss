@@ -1,0 +1,45 @@
+.Banner {
+    width: 100vw;
+    height: 26.53vw;
+    background: $yellowLk;
+    float: left;
+
+    .left-block {
+        float: left;
+        margin-left: 5.5702vw;
+        margin-top: 3.183vw;
+        width: 61.5384vw;
+
+        .text {
+            color: black;
+            font-weight: 500;
+            float: left;
+            font-size: 3.183vw;
+        }
+
+        .download {
+            float: left;
+            width: 19.8938vw;
+            height: 6.1vw;
+            margin-top: 4vw;
+        }
+    }
+
+    .phone-img {
+        margin-left: 3vw;
+        float: left;
+        width: 18.8328vw;
+        height: 22.8116vw;
+        margin-top: 3.6vw;
+    }
+
+    .cross-close {
+        float: right;
+        width: 4.244vw;
+        height: 4.244vw;
+        margin-top: 3vw;
+        margin-right: 3vw;
+    }
+
+    
+}

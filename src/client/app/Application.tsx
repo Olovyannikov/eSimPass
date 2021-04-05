@@ -5,7 +5,7 @@ import { State } from '../redux/State';
 import { STORAGE } from '../StorageAdapter';
 import { PublicApplication } from './public/PublicApplication';
 import { PrivateApplication } from "./private/PrivateApplication";
-import { Chooser } from './private/pages/chooser/Chooser';
+import { MobileApplication } from './mobile/MobileApplication';
 
 const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
@@ -38,6 +38,9 @@ const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 </Route>
                 <Route path='/cabinet/chooseRates'>
                     {() => checkAuthenticatedUser()}
+                </Route>
+                <Route exact path='/mobile'>
+                    <MobileApplication />
                 </Route>
                 <Route path='*' exact>
                     <Redirect to='/' />

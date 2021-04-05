@@ -15,6 +15,7 @@
     }
 
     .left-block {
+        position: relative;
         float: left;
         margin-left: 2vw;
 
@@ -30,6 +31,14 @@
             width: 2.2312vw;
             height: 2.2312vw;
         }
+
+        .yellow-block {
+            position: absolute;
+            width: 18.75vw;
+            height: 18.75vw;
+            left: -2vw;
+            top: -1vw;
+        }
     }
 
     .right-block {
@@ -39,10 +48,16 @@
         width: 60vw;
 
         .title {
+            // float: left;
+            // margin-bottom: 2vw;
+            // font-size: 2.0833vw;
+            // font-weight: 400;
             float: left;
+            margin-top: 6vw;
             margin-bottom: 2vw;
-            font-size: 2.0833vw;
+            font-size: 4.0833vw;
             font-weight: 400;
+            margin-left: 5vw;
         }
 
         .text {

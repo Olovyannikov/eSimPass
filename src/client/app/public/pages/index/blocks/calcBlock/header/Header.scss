@@ -10,7 +10,7 @@
         float: left;
     }
 
-    .header__plane {
+    .plane {
         position: relative;
         margin-left: 1.6666vw;
         width: 10.2vw;
@@ -27,7 +27,7 @@
         }
     }
 
-    .header__question {
+    .question {
         line-height: $height;
         color: #ffffff;
         font-size: 3.125vw;
@@ -36,7 +36,7 @@
         margin-left: 1vw;
     }
 
-    .header__divider {
+    .divider {
         margin-left: 1vw;
         
         img {
@@ -44,7 +44,7 @@
         }
     }
 
-    .header__input {
+    .input {
         margin-left: 1vw;
         font-size: 2.0833vw;    
         height : $height;

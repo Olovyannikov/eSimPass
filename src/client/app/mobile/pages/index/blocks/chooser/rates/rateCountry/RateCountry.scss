@@ -1,0 +1,30 @@
+.RateCountry {
+
+    float: left;
+    width: 92.3076vw;
+    height: 15.6498vw;
+    border: 0.025vw solid $white;
+    border-radius: 4vw;
+    margin-top: 4vw;
+
+    .country {
+        color: white;
+        float: left;
+        margin-top: 4.5vw;
+        margin-left: 5vw;
+        font-weight: 600;
+        font-size: 4.7745vw;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 65vw;
+    }
+
+    .img-flag {
+        float: right;
+        width: 14.8541vw;
+        height: 9.8143vw;
+        margin-top: 3vw;
+        margin-right: 5vw;
+    }
+}

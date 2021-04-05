@@ -1,0 +1,31 @@
+.Chooser {
+    
+    float: left;
+    margin-top: 4vw;
+    margin-left: 4vw;
+    width: 92vw;
+
+    .search {
+        width: 68vw;
+        height: 14.5888vw;
+        border: 0.25vw solid $white;
+        border-radius: 5vw;
+        outline: none;
+        background: transparent;
+        margin-top: 3vw;
+        background: url('./resources/img/lupa.png') no-repeat right;
+        background-size: 8vw;
+        background-position-x: 78vw;
+        padding: 0;
+        padding-left: 7vw;
+        padding-right: 16vw;
+        color: $white;
+        font-size: 6vw;
+    }
+
+    ::placeholder {
+        color: $white;
+    }
+
+    @import './rates/Rates.scss';
+}

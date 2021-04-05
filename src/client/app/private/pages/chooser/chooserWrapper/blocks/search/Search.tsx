@@ -14,7 +14,7 @@ export const Search = (props : SearchModel) => {
     const [filter, setFilter] = React.useState<string>(null);
     const [showDefaultRates, setShowDefaultRates] = React.useState<boolean>(true)
 
-    const handleChagneInput = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeInput = (e : React.ChangeEvent<HTMLInputElement>) => {
         setValue(prev => prev = e.target.value);
         setFilter(e.target.value);
         setShowDefaultRates(show => show = false);
@@ -32,7 +32,7 @@ export const Search = (props : SearchModel) => {
     return (
         <div className="Search">
             <div className="input-search-block">
-                <input className='search-input' value={value} onChange={handleChagneInput} placeholder='Выберите страну отправления' />
+                <input className='search-input' value={value} onChange={handleChangeInput} placeholder='Выберите страну отправления' />
                 <img className='search-lupa' src={img_chooserLupa} alt="Search"/>
             </div>
             <Rates showDefaultRates={showDefaultRates} filter={filter} selected={onSelected} />

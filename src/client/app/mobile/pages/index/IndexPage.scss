@@ -1,0 +1,13 @@
+.IndexPage {
+
+    margin: auto;
+    width: 430px;
+    // height: 100%;
+    background: rgba(71, 126, 144, 1);
+    float: left;
+
+    @import './blocks/header/Header.scss';
+    @import './blocks/download/Download.scss';
+    @import './blocks/chooser/Chooser.scss';
+    @import './blocks/banner/Banner.scss';
+}

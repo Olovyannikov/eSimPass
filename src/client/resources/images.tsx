@@ -55,7 +55,17 @@ import durationPack from './img/duration-pack.png';
 import ltePack from './img/lte-pack.png';
 import ratePack from './img/rate-pack.png';
 import wifiPack from './img/wifi-pack.png';
+import mobileAppStore from './img/mobile-appstore.png';
+import bannerIphone from './img/banner-iphone.png';
+import crossMobile from './img/cross-mobile.png';
+import yellowBlock from './img/yellow-block.png';
+import hiddenQr from './img/hidden-qr.png';
 
+export const img_hiddenQr = hiddenQr;
+export const img_yellowBlock = yellowBlock;
+export const img_crossMobile = crossMobile;
+export const img_bannerIphone = bannerIphone;
+export const img_mobileAppStore = mobileAppStore;
 export const img_durationPack = durationPack;
 export const img_ltePack = ltePack;
 export const img_ratePack = ratePack;

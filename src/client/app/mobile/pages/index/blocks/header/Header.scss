@@ -1,0 +1,23 @@
+.Header {
+    float: left;
+    margin-top: 10vw;
+    margin-left: 5.305vw;
+
+    .logo {
+        color: white;
+        font-size: 7.9575vw;
+        font-weight: 600;
+        margin-left: 24vw;
+        float: left;
+    }
+
+    .title {
+        float: left;
+        color: $white;
+        font-weight: 600;
+        font-size: 6.366vw;
+        margin-top: 5vw;
+        width: 92vw;
+    }
+}
+
