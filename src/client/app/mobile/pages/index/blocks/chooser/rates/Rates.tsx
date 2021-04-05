@@ -11,7 +11,8 @@ import { Button } from '../../../../../../private/components/buttons/Button';
 interface RatesModel {
     showDefaultRates : boolean;
     filter : string;
-    selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void
+    selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void;
+    setShowDefaultRates : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Rates = (props : RatesModel) => {
@@ -51,6 +52,11 @@ export const Rates = (props : RatesModel) => {
         
     }, [props.filter, allRates])
 
+    const showAllRates = () => {
+        props.setShowDefaultRates(prev => prev = false);
+        setFilteredRates(prev => prev = allRates);
+    }
+
     const renderRates = () => {
         if (inProgress) {
             return (
@@ -65,7 +71,7 @@ export const Rates = (props : RatesModel) => {
                 <>
                     <div className="title">Популярные страны</div>
                     {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
-                    <div className="show-all-countries">показать все страны</div>
+                    <div onClick={showAllRates} className="show-all-countries">показать все страны</div>
                     <Button text='Подключить eSIM' className='button-connect' />
                 </>
             )
@@ -75,7 +81,6 @@ export const Rates = (props : RatesModel) => {
                 <>
                     <div className="title">Поиск</div>
                     {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
-                    <div className="show-all-countries">показать все страны</div>
                     <Button text='Подключить eSIM' className='button-connect'/>
                 </>
             )

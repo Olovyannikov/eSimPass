@@ -10,7 +10,7 @@ interface RateCountryModel {
 export const RateCountry = (props : RateCountryModel) => {
 
     return (
-        <div className="RateCountry">
+        <div className="RateCountry" onClick={props.selected}>
             <div className="country">{props.country}</div>
             <img className='img-flag' src={img_flagFrance} alt={props.country}/>
         </div>

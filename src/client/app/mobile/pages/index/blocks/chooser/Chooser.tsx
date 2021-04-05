@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { ListRatesResponse } from '../../../../../../generated/proto.web';
+import { Rate } from './rate/Rate';
 import { Rates } from './rates/Rates';
 
 export const Chooser = () => {
@@ -24,10 +25,21 @@ export const Chooser = () => {
         setShowDefaultRates(show => show = false);
     }
 
+    const doRender = () => {
+        //add button back
+        if (rate) {
+            console.log(rate); 
+            return <Rate />
+        }
+        else {
+            return <Rates setShowDefaultRates={setShowDefaultRates} showDefaultRates={showDefaultRates} filter={filter} selected={onSelected} />
+        }
+    }
+
     return (
         <div className="Chooser">
             <input value={value} onChange={handleChangeInput}  className='search' type="text" placeholder='Найти страну'/>
-            <Rates showDefaultRates={showDefaultRates} filter={filter} selected={onSelected} />
+            {doRender()}
         </div>
     )
 }

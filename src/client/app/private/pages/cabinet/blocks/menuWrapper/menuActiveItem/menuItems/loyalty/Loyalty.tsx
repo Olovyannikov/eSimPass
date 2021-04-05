@@ -6,9 +6,6 @@ import { img_relation, img_bigQrActive, img_hiddenQr, img_yellowBlock } from '..
 export const Loyalty = () => {
 
     return (
-        // <div className="Loyalty">
-        //     <div className="title">Скоро появится!</div>
-        // </div>
         <div className="Loyalty">
             <div className='left-block'>
                 <img src={img_hiddenQr} className='img-qr' alt="QrCode"/>
