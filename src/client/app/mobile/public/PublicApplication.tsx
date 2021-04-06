@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { PagesHolder } from './pages/PagesHolder';
 
 export const PublicApplication = () => {
@@ -9,3 +10,4 @@ export const PublicApplication = () => {
         </div>
     )
 }
+

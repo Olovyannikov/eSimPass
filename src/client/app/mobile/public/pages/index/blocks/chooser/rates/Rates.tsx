@@ -7,6 +7,7 @@ import { waitForClose, nothingToNull } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../../../desktop/private/components/spinnerPayment/Spinner';
 import { RateCountry } from './rateCountry/RateCountry';
 import { Button } from '../../../../../../../desktop/private/components/buttons/Button';
+import { STATE_API } from '../../../../../../../../redux/StateApi';
 
 interface RatesModel {
     showDefaultRates : boolean;
@@ -57,6 +58,8 @@ export const Rates = (props : RatesModel) => {
         setFilteredRates(prev => prev = allRates);
     }
 
+    const handleConnect = () => STATE_API.showPublicWizard('register')
+
     const renderRates = () => {
         if (inProgress) {
             return (
@@ -72,7 +75,7 @@ export const Rates = (props : RatesModel) => {
                     <div className="title">Популярные страны</div>
                     {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                     <div onClick={showAllRates} className="show-all-countries">показать все страны</div>
-                    <Button text='Подключить eSIM' className='button-connect' />
+                    <Button func={handleConnect} text='Подключить eSIM' className='button-connect' />
                 </>
             )
         }
@@ -81,7 +84,7 @@ export const Rates = (props : RatesModel) => {
                 <>
                     <div className="title">Поиск</div>
                     {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
-                    <Button text='Подключить eSIM' className='button-connect'/>
+                    <Button func={handleConnect} text='Подключить eSIM' className='button-connect'/>
                 </>
             )
         }

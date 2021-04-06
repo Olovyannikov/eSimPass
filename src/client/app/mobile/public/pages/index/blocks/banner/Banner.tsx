@@ -8,7 +8,8 @@ export const Banner = () => {
     const handleCloseBanner = () => bannerRef.current.style.display = 'none';
 
     const returnStoreImg = () => {
-        if (window.navigator.userAgent.indexOf('AppleWebKit') > -1) {
+        
+        if (window.navigator.userAgent.indexOf('iPhone') > -1) {
             return img_appstore
         }
         else {
