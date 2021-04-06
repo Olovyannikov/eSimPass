@@ -27,5 +27,20 @@
         color: $white;
     }
 
+    .back {
+        color: white;
+        text-align: center;
+        font-size: 6vw;
+    }
+
+    .country {
+        color: white;
+        font-size: 8vw;
+        margin-top: 4vw;
+        font-weight: 600;
+        float: left;
+    }
+
+    @import './rate/Rate.scss';
     @import './rates/Rates.scss';
 }

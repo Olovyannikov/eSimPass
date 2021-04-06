@@ -25,20 +25,34 @@ export const Chooser = () => {
         setShowDefaultRates(show => show = false);
     }
 
+    const handlebackClick = () => {
+        setShowDefaultRates(prev => prev = true)
+        setRate(prev => prev = null)
+    }
+
     const doRender = () => {
-        //add button back
         if (rate) {
             console.log(rate); 
-            return <Rate />
+            return (
+                <>
+                    <div onClick={handlebackClick} className="back">Назад</div>
+                    <div className="country">{rate.countryName}</div>
+                    <Rate rate={rate} />
+                </>
+            )
         }
         else {
-            return <Rates setShowDefaultRates={setShowDefaultRates} showDefaultRates={showDefaultRates} filter={filter} selected={onSelected} />
+            return (
+                <>
+                    <input value={value} onChange={handleChangeInput}  className='search' type="text" placeholder='Найти страну'/>
+                    <Rates setShowDefaultRates={setShowDefaultRates} showDefaultRates={showDefaultRates} filter={filter} selected={onSelected} />
+                </>
+            ) 
         }
     }
 
     return (
         <div className="Chooser">
-            <input value={value} onChange={handleChangeInput}  className='search' type="text" placeholder='Найти страну'/>
             {doRender()}
         </div>
     )

@@ -21,6 +21,8 @@ export const DetailedWrapper = () => {
 
         CONNECTION.listCharges(createListChargesRequest())
             .do(response => {
+                console.log(response);
+                
                 if (response.success) {
                     handleSuccessResponse(response)
                 }

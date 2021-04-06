@@ -1,3 +1,82 @@
 .Rate {
     
+    margin-top: 5vw;
+    float: left;
+
+    .Pack {
+
+        float: left;
+        width: 90.7161vw;
+        height: 68.7002vw;
+        border-radius: 3.5vw;
+        border: 0.02vw solid $white;    
+        margin-bottom: 10vw;
+
+        .wrapper {
+            float: left;
+            margin: 3.4482vw;
+            color: $white;
+
+            .operator-name {
+                font-size: 6.366vw;
+                font-weight: 400;
+                float: left;
+                width: 100%;
+            }
+
+            .type {
+                width: 100%;
+                color: $yellowLk;
+                font-size: 3.7135vw;
+                float: left;
+                margin-top: 4vw;
+            }
+
+            .DetailedInfo {
+                float: left;
+                margin-top: 4.1618vw;
+
+                .button-buy {
+                    width: 85.1458vw;
+                    font-size: 4.244vw;
+                    border-radius: 3.5vw;
+                    outline: none;
+                    border: none;
+                    height: 14.0583vw;
+                    background: $yellowLk;
+                    float: left;
+                    color: black;
+                    font-weight: 500;
+                }
+
+                .Line {
+                    float: left;
+                    width: 100%;
+                    margin-bottom: 7vw;
+                
+                    .img-icon {
+                        width: 6.366vw;
+                        height: 6.366vw;
+                        float: left;
+                    }
+                
+                    .text {
+                        float: left;
+                        font-size: 4.7745vw;
+                        margin-left: 3.183vw;
+                        font-weight: 400;
+                    }
+                
+                    .amount {
+                        color: $yellowLk;
+                        float: right;
+                        font-size: 4.7745vw;
+                        font-weight: 500;
+                    }
+                
+                }
+                
+            }
+        }
+    }
 }
