@@ -27,7 +27,7 @@ export const DetailedInfo = (props : DetailedInfoModel) => {
                 <>
                     <Line img={img_ratePack} text='Трафик' quota={props.pack.quota} />
                     <Line img={img_durationPack} text='Срок действия' duration={props.pack.duration} />
-                    <Button className='button-buy' text={`${props.pack.price}₽ - Купить пакет`} />
+                    <Button className='button-buy' text={`${props.pack.price}₽ - Подключить пакет`} />
                 </>
             )
         }

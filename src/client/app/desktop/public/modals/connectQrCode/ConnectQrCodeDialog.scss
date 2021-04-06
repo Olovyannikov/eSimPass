@@ -12,11 +12,20 @@
     z-index: 100;
     border-radius: 3.125vw;
 
+    .close {
+        float: right;
+        width: 1vw;
+        height: 1vw;
+        margin-right: 2vw;
+        margin-top: 2vw;
+        cursor: pointer;
+    }
+
     .title {
         font-size: 1.3020vw;
         margin-top: 0.9728vw;
         font-weight: 700;
-        text-align: center;
+        margin-left: 17.3vw;
         color: white;
     }
 

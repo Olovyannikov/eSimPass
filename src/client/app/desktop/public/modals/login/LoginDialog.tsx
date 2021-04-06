@@ -2,7 +2,7 @@ import * as rx from "rxjs/Rx"
 import * as React from 'react';
 
 import { Spinner } from '../../components/spinner/Spinner';
-import { img_next, img_activeEye, img_disableEye } from '../../../../../resources/images';
+import { img_next, img_activeEye, img_disableEye, img_crossMobile } from '../../../../../resources/images';
 import { CONNECTION } from '../../../../../Connection';
 import { LoginRequest, LoginResponse } from '../../../../../generated/proto.web';
 import { Logger } from "@glonassmobile/codebase-web/Logger";
@@ -149,9 +149,12 @@ export const LoginDialog = () => {
 
     const handleRestorePasswordClick = () => STATE_API.showPublicWizard('passwordRestore');
 
+    const closeModal = () => STATE_API.hideAuthWizard()
+
     return (
         <div onKeyDown={handleEventEnter} className="LoginDialog" onClick={(e) => e.stopPropagation ()}>
             <div className="title">Войти в личный кабинет</div>
+            <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
             <div className="inputs-block">
                 <input ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
                 <input ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>

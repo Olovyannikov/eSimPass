@@ -5,7 +5,7 @@ import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../../Connection';
 import { RequestPasswordRestoreRequest, RequestPasswordRestoreResponse } from '../../../../../../generated/proto.web';
 import { convertEndingOfNoun, nothingToNull, waitForClose } from '../../../../../../utils';
-import { img_next } from '../../../../../../resources/images';
+import { img_crossMobile, img_next } from '../../../../../../resources/images';
 import { Spinner } from '../../../components/spinner/Spinner';
 import { STATE_API } from '../../../../../../redux/StateApi';
 
@@ -145,6 +145,7 @@ export const PasswordRestoreDialog = () => {
     return (
         <div onKeyDown={handleEventEnter} className="PasswordRestoreDialog" onClick={(e) => e.stopPropagation()}>
             <div className="title">Восстановление пароля</div>
+            <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
             {showSuccessResponse()}
         </div>
     )

@@ -1,10 +1,28 @@
 .Application {
     height: 100%;
 
+    .Mobile {
+        display: none;
+    }
+
+    .Desktop {
+        height: 100%;
+        display: block;
+    }
+
     @import './desktop/DesktopApplication.scss';
     
     @media (max-width: 420px) {
+        
+        .Mobile {
+            height: 100%;
+            display: block;
+        }
+        
+        .Desktop {
+            display: none;
+        }
         @import './mobile/MobileApplication.scss';
-    
     }
 }
+

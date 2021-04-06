@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Spinner } from '../../components/spinner/Spinner';
 import { STATE_API } from '../../../../../redux/StateApi';
-import {img_next, img_activeEye, img_disableEye, img_firstStep} from '../../../../../resources/images';
+import {img_next, img_activeEye, img_disableEye, img_firstStep, img_crossMobile} from '../../../../../resources/images';
 import { RegisterWebRequest, RegisterWebResponse } from '../../../../../generated/proto.web';
 import { CONNECTION } from '../../../../../Connection';
 import { Logger } from "@glonassmobile/codebase-web/Logger";
@@ -199,9 +199,12 @@ export const RegistrationDialog = () => {
         }
     }
 
+    const closeModal = () => STATE_API.hideAuthWizard()
+
     return (
         <div onKeyUp={handleEventEnter} className={`RegistrationDialog`} onClick={(e) => e.stopPropagation()}>
-            <div className="title">Регистрация</div>
+            <div className="title">Подключение QR-кода</div>
+            <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
             <div className="text-step">Всего два шага для подключения</div>
             <img className='img-step' src={img_firstStep} alt="First Step"/>
             <div className="text-action">Введите свою электронную почту, на нее мы отправми QR-код <br/> Также мы создадим личный кабинет, привязанный к этой почте</div>
