@@ -1,1 +1,10 @@
+.Application {
+    height: 100%;
 
+    @import './desktop/DesktopApplication.scss';
+    
+    @media (max-width: 420px) {
+        @import './mobile/MobileApplication.scss';
+    
+    }
+}

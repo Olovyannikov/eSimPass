@@ -1,57 +1,36 @@
 import * as React from 'react';
-import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { State } from '../redux/State';
-import { STORAGE } from '../StorageAdapter';
-import { PublicApplication } from './public/PublicApplication';
-import { PrivateApplication } from "./private/PrivateApplication";
+
+import { DesktopApplication } from './desktop/DesktopApplication';
 import { MobileApplication } from './mobile/MobileApplication';
 
-const ApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
+export const Application = () => {
 
-    const checkAuthenticatedUser = () => {
-        if (STORAGE.getToken()) {
-            return <PrivateApplication />
+    const [windowWidth, setWindowWidth] = React.useState<number>(window.innerWidth);
+
+    const handleWindowWidth = () => setWindowWidth(width => width = window.innerWidth);
+    
+    React.useEffect(() => {
+        
+        window.addEventListener('resize',handleWindowWidth);
+
+        return () => window.removeEventListener('resize', handleWindowWidth);
+        
+    }, [])
+
+    const handleTypeApp = () => {
+        
+        if (windowWidth >= 420) {
+            return <DesktopApplication />
         }
         else {
-            return <Redirect to='/' />
+            return <MobileApplication />
         }
     }
 
     return (
-        <Router>
-            <Switch>
-                <Route exact path='/'>
-                    <PublicApplication />
-                </Route>
-                <Route exact path='/verifyRegistrationEmail/:tokenVerify'>
-                    <PublicApplication />
-                </Route>
-                <Route exact path='/restorePassword/:tokenRestore'>
-                    <PublicApplication />
-                </Route>
-                <Route path='/cabinet'>
-                    {() => checkAuthenticatedUser() }
-                </Route>
-                <Route path='/deeplink/payment/success'>
-                    {() => checkAuthenticatedUser()}
-                </Route>
-                <Route path='/cabinet/chooseRates'>
-                    {() => checkAuthenticatedUser()}
-                </Route>
-                <Route exact path='/mobile'>
-                    <MobileApplication />
-                </Route>
-                <Route path='*' exact>
-                    <Redirect to='/' />
-                </Route>
-            </Switch>
-        </Router>
+        <div className="Application">
+            {handleTypeApp()}
+        </div>
     )
+
 }
-
-const mapStateToProps = (state : State) => ({
-    authenticated : state.auth != null,
-})
-
-export const Application = connect(mapStateToProps)(ApplicationImpl);

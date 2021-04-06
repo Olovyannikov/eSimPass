@@ -2,9 +2,7 @@
 @import './resources/variables.scss';
 @import './resources/fonts.css';
 
-@import "./app/public/PublicApplication.scss";
-@import './app/private/PrivateApplication.scss';
-@import './app/mobile/MobileApplication.scss';
+@import './app/Application.scss';
 
 body, html { 
     height: 100%;
