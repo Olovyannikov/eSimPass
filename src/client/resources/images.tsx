@@ -60,7 +60,11 @@ import bannerIphone from './img/banner-iphone.png';
 import crossMobile from './img/cross-mobile.png';
 import yellowBlock from './img/yellow-block.png';
 import hiddenQr from './img/hidden-qr.png';
+import firstStep from './img/first-step.png';
+import secondStep from './img/second-step.png';
 
+export const img_firstStep = firstStep;
+export const img_secondStep = secondStep;
 export const img_hiddenQr = hiddenQr;
 export const img_yellowBlock = yellowBlock;
 export const img_crossMobile = crossMobile;

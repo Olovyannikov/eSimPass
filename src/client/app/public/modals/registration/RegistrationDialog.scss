@@ -1,6 +1,6 @@
 .RegistrationDialog {
     width: 50vw;
-    height: 20.525vw;
+    height: 32.8645vw;
     color: black;
     left: 25%;
     right: 28%;
@@ -18,6 +18,30 @@
         margin-top: 0.9728vw;
         font-weight: 700;
         text-align: center;
+    }
+
+    .text-step {
+        color: black;
+        font-size: 1.0416vw;
+        text-align: center;
+        margin-top: 0.5vw;
+    }
+
+    .img-step {
+        width: 7.8175vw;
+        height: 7.8175vw;
+        float: left;
+        margin-left: 21.2vw;
+        margin-top: 0.5vw;
+    }
+
+    .text-action {
+        float: left;
+        width: 100%;
+        text-align: center;
+        margin-top: 1vw;
+        font-size: 1.0416vw;
+        color: black;
     }
 
     .inputs-block {
