@@ -1,24 +1,24 @@
-import * as rx from "rxjs/Rx"
+import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
-
-import { Spinner } from '../../components/spinner/Spinner';
-import { STATE_API } from '../../../../../redux/StateApi';
-import {img_next, img_activeEye, img_disableEye, img_firstStep, img_crossMobile} from '../../../../../resources/images';
-import { RegisterWebRequest, RegisterWebResponse } from '../../../../../generated/proto.web';
+import * as rx from "rxjs/Rx"
+import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../Connection';
-import { Logger } from "@glonassmobile/codebase-web/Logger";
-import { waitForClose, convertEndingOfNoun } from '../../../../../utils';
+import { RegisterWebRequest, RegisterWebResponse } from '../../../../../generated/proto.web';
+import { img_activeEye, img_disableEye, img_firstStep, img_next } from '../../../../../resources/images';
+import { convertEndingOfNoun, waitForClose } from '../../../../../utils';
 
 interface PasswordViewModel {
     img : string;
     type : 'text' | 'password';
-}
+} 
 
-export const RegistrationDialog = () => {
+export const Registration = () => {
 
-    const logger = new Logger ('Registration Dialog');
+    const logger = new Logger ('Registration Dialog mobile');
 
     const closedSubject = waitForClose ();
+
+    const history = useHistory();
 
     const [successRegister, setSuccessRegister] = React.useState<boolean>(null)
     const [error, setError] = React.useState<string>('');
@@ -47,8 +47,6 @@ export const RegistrationDialog = () => {
             }))
         }
     }
-
-    const handleLoginClicked = () => STATE_API.showPublicWizard('login');
 
     const showError = () => {
         if (error) {
@@ -120,13 +118,14 @@ export const RegistrationDialog = () => {
     const handleSuccessResponse = (response : RegisterWebResponse) => {
         setInProgress(prev => prev = false);
         setSuccessRegister(prev => prev = true)
-        // STATE_API.showPublicWizard('connectQrCode')
     }
 
     const handlePlainError = (error : string) => {
         setError(prev => prev = error);
         setInProgress(prev => prev = false);
     }
+
+    const handleLoginClicked = () => history.push('/login')
 
     const handleToManyErrorAttemptsResponse = (response : RegisterWebResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyAttempts) / 1000)
@@ -150,36 +149,24 @@ export const RegistrationDialog = () => {
 
     const showInProgress = () => {
         if (inProgress) {
-            return <Spinner />
+            // return <Spinner />
         }
         else {
             return (
                 <>
-                    <img onClick={handleRegister} src={img_next} className='button-next' alt="Next"/>
                     <div onClick={handleLoginClicked} className="already-register">Уже зарегистрирован</div>
+                    <img onClick={toconnectEsim} src={img_next} className='button-next' alt="Next"/>
                 </>
             )
         }
     }
 
+    const toconnectEsim = () => history.push('/connectEsim')
+
     const createRegisterRequest = () : RegisterWebRequest => ({
         email : emailInput.current.value,
         password : passwordInput.current.value,
     })
-
-    const handleEventEnter = (e : React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
-            if (document.activeElement === emailInput.current) {
-                passwordInput.current.focus();
-            }
-            else if (document.activeElement === passwordInput.current) {
-                passwordRepeatInput.current.focus();
-            }
-            else if (document.activeElement === passwordRepeatInput.current) {
-                handleRegister()
-            }
-        }   
-    }
 
     const showSuccessRegister = () => {
 
@@ -198,16 +185,17 @@ export const RegistrationDialog = () => {
         }
     }
 
-    const closeModal = () => STATE_API.hideAuthWizard()
-
     return (
-        <div onKeyUp={handleEventEnter} className={`RegistrationDialog`} onClick={(e) => e.stopPropagation()}>
-            <div className="title">Подключение QR-кода</div>
-            <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
+        <div className="Registration">
+            <div className="title">Подключение eSIM</div>
             <div className="text-step">Всего два шага для подключения</div>
             <img className='img-step' src={img_firstStep} alt="First Step"/>
-            <div className="text-action">Введите свою электронную почту, на нее мы отправми QR-код <br/> Также мы создадим личный кабинет, привязанный к этой почте</div>
+            <div className="text-action">Зарегистрируйтесь в личном кабинете</div>
             <div className="inputs-block">
+                <div className="attention-block">
+                    <span>Внимание!</span>
+                    <div className="attention">На эту почту мы отправим Вам QR-код</div>
+                </div>
                 <input ref={emailInput} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
                 <input ref={passwordInput} disabled={inProgress} required name='password' className='input-password' placeholder='Пароль' type={passwordViewMode.type}/>
                 <div onClick={handlePasswordMode} className="img-password">

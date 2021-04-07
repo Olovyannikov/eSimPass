@@ -62,7 +62,9 @@ import yellowBlock from './img/yellow-block.png';
 import hiddenQr from './img/hidden-qr.png';
 import firstStep from './img/first-step.png';
 import secondStep from './img/second-step.png';
+import stepBack from './img/step-back.png';
 
+export const img_stepBack = stepBack;
 export const img_firstStep = firstStep;
 export const img_secondStep = secondStep;
 export const img_hiddenQr = hiddenQr;

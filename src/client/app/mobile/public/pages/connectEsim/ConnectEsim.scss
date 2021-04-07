@@ -1,0 +1,69 @@
+.ConnectEsim {
+
+    background: rgba(71, 126, 144, 1);
+    width: 100%;
+    float: left;
+    margin-top: 9.2838vw;
+    
+    .title {
+        font-size: 6.8965vw;
+        font-weight: 700;
+        text-align: center;
+        color: $yellowLk;
+    }
+
+    .text-step {
+        color: white;
+        font-size: 4.7745vw;
+        text-align: center;
+        margin-top: 4.2212vw;
+        font-weight: 400;
+    }
+
+    .img-step {
+        width: 26.5251vw;
+        height: 26.5251vw;
+        float: left;
+        margin-left: 35.2vw;
+        margin-top: 4.5vw;
+    }
+
+    .text-action {
+        float: left;
+        width: 100%;
+        text-align: center;
+        margin-top: 9vw;
+        font-size: 5.305vw;
+        color: $yellowLk;
+        font-weight: 500;
+    }
+
+    .button-buy {
+        font-size: 4.2312vw;
+        width: 73.4748vw;
+        height: 12.4668vw;
+        border-radius: 3.5vw;
+        outline: none;
+        border: none;
+        background: transparent;
+        float: left;
+        margin-top: 1vw;
+        color: white;
+        font-weight: 500;
+        border: 1vw solid white;
+        margin-left: 13.4vw;
+        margin-top: 6vw;
+    }
+
+    .button-back {
+        cursor: pointer;
+        z-index: 10;
+        width: 26.5251vw;
+        height: 26.5251vw;
+        display: block;
+        float: left;
+        margin-left: 8vw;
+        margin-top: 51.5vw;
+        margin-bottom: 3vw;
+    }
+}

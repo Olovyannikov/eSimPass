@@ -8,6 +8,7 @@ import { Spinner } from '../../../../../../../desktop/private/components/spinner
 import { RateCountry } from './rateCountry/RateCountry';
 import { Button } from '../../../../../../../desktop/private/components/buttons/Button';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
+import { useHistory } from 'react-router';
 
 interface RatesModel {
     showDefaultRates : boolean;
@@ -57,8 +58,8 @@ export const Rates = (props : RatesModel) => {
         props.setShowDefaultRates(prev => prev = false);
         setFilteredRates(prev => prev = allRates);
     }
-
-    const handleConnect = () => STATE_API.showPublicWizard('register')
+    const history = useHistory()
+    const handleConnect = () =>  history.push('/registration')
 
     const renderRates = () => {
         if (inProgress) {
