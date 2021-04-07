@@ -5,15 +5,18 @@ import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../Connection';
 import { RequestPasswordRestoreRequest, RequestPasswordRestoreResponse } from '../../../../../generated/proto.web';
 import { convertEndingOfNoun, nothingToNull, waitForClose } from '../../../../../utils';
-import { img_crossMobile, img_next } from '../../../../../resources/images';
+import { img_next } from '../../../../../resources/images';
 import { Spinner } from '../../components/spinner/Spinner';
-import { STATE_API } from '../../../../../redux/StateApi';
+import { useHistory } from 'react-router';
+import { Button } from '../../components/buttons/Button';
 
 export const RestorePassword = () => {
 
     const logger = new Logger ('Password Restore mobile');
 
     const closedSubject = waitForClose ();
+
+    const history = useHistory();
 
     const [email, setEmail] = React.useState<string>(null);
     const [inProgress, setInProgress] = React.useState<boolean>(false);
@@ -58,7 +61,7 @@ export const RestorePassword = () => {
         // }   
     }
 
-    const closeModal = () => STATE_API.hideAuthWizard();
+    const backToMainPage = () => history.push('/')
 
     const handlePlainErrorResponse = (error : string) => {
         setEmail(null);
@@ -111,16 +114,14 @@ export const RestorePassword = () => {
         }
     }
 
-    const handleBackToRegistration = () => STATE_API.showPublicWizard('register');
+    const handleBackToRegistration = () => history.push('/registration');
 
     const showSuccessResponse = () => {
         if (success) {
             return (
                 <>
                     <div className="title-success">Вам на почту отправленна ссылка для восстановления пароля!</div>
-                    <div onClick={closeModal} className="back-to-main-button">
-                        <div className="back-to-main-text">Назад</div>
-                    </div>
+                    <Button  func={backToMainPage} className="back-to-main-button" text='Назад' />
                 </>
             )
         } 
@@ -130,8 +131,8 @@ export const RestorePassword = () => {
                 <div className="inputs-block">
                     <input onChange={handleInputChange} disabled={inProgress} required name='email' className='input-email' placeholder='Эл.почта' type="text"/>
                     <div onClick={handleBackToRegistration} className="already-register">Зарегистрироваться</div>
-                    {showInProgress()}
                     {showError()}
+                    {showInProgress()}
                 </div>
             </>)
         }
@@ -140,7 +141,6 @@ export const RestorePassword = () => {
     return (
         <div className="RestorePassword">
             <div className="title">Восстановление пароля</div>
-            <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
             {showSuccessResponse()}
         </div>
     )
