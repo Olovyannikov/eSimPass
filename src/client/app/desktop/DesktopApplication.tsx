@@ -38,7 +38,7 @@ const DesktopApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 <Route path='/cabinet/chooseRates'>
                     {() => checkAuthenticatedUser()}
                 </Route>
-                <Route path='*'>
+                <Route exact path='*'>
                     <Redirect to='/' />
                 </Route>
             </Switch>

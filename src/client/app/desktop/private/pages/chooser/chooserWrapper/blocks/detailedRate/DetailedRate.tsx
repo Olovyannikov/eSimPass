@@ -6,7 +6,8 @@ import { Pack } from './pack/Pack';
 import { PacksCarousel } from './packsCarousel/PacksCarousel';
 
 interface DetailedRateModel {
-    rate: ListRatesResponse.SuccessModel.RateModel
+    rate: ListRatesResponse.SuccessModel.RateModel;
+    setChoosenPack? : Function;
 }
 
 export const DetailedRate = (props : DetailedRateModel) => {
@@ -16,7 +17,7 @@ export const DetailedRate = (props : DetailedRateModel) => {
             <FlagCountry rate={props.rate} />
             <Pack static={true} typeText='Дополнительные услги' rate={props.rate} />
             <Pack typeText='Помегабайтный тариф' rate={props.rate} />
-            <PacksCarousel rate={props.rate} />
+            <PacksCarousel action={props.setChoosenPack} rate={props.rate} />
         </div>
     )
 }

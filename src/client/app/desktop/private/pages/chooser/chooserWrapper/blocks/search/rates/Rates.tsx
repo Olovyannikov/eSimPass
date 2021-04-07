@@ -35,18 +35,19 @@ export const Rates = (props : RatesModel) => {
     React.useEffect(() => {
         
         const filter = nothingToNull(props.filter)
-
+        
         if (filter != null) {
             setFilteredRates (filteredRates => filteredRates = allRates
                 .filter (rate => rate.countryName.toLocaleLowerCase ().indexOf (filter.toLocaleLowerCase ()) >= 0)
-            )
-        }
+                )
+            }
         else {
             // temporary for popular country 
             const randomNumber = Math.floor(Math.random() * allRates.length)
             setFilteredRates(filteredRates => filteredRates = allRates.slice(randomNumber, randomNumber + 8))
         }
-
+            
+            console.log(filteredRates);
         
     }, [props.filter, allRates])
 
@@ -64,6 +65,14 @@ export const Rates = (props : RatesModel) => {
                 <>
                     <div className="title">Популярные страны</div>
                     {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                </>
+            )
+        }
+        else if (filteredRates.length === 0) {
+            return (
+                <>
+                    <div className="title">Поиск</div>
+                    <div className="no-matches">Нет совпадений</div>
                 </>
             )
         }

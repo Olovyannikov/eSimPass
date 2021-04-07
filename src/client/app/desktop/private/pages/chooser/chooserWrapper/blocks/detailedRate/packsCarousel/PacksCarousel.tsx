@@ -8,6 +8,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 
 interface PacksCarouselModel {
     rate : ListRatesResponse.SuccessModel.RateModel;
+    action? : Function;
 }
 
 export const PacksCarousel = (props : PacksCarouselModel) => {
@@ -49,7 +50,7 @@ export const PacksCarousel = (props : PacksCarouselModel) => {
                         <Slide key={index} index={index}>
                             {
                                 slide.map((pack, index) => (
-                                    <Pack typeText='Пакетный тариф' pack={pack} key={index} rate={props.rate}  />
+                                    <Pack action={props.action} typeText='Пакетный тариф' pack={pack} key={index} rate={props.rate}  />
                                 ))
                             }
                         </Slide>

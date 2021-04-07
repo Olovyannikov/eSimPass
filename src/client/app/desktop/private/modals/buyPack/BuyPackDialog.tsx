@@ -73,7 +73,7 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         duration : props.pack.device.currentPack.duration,
         price : props.pack.device.currentPack.price,
         quota : props.pack.device.currentPack.quota,
-        rateId : props.pack.device.currentPack.rate.rateId
+        rateId : props.pack.device.currentPack?.rate.rateId
     })
 
     return (

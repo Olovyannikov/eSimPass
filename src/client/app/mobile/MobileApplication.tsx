@@ -23,7 +23,7 @@ export const MobileApplication = () => {
                 <Route exact path='/restorePassword'>
                     <PublicApplication />
                 </Route>
-                <Route path='*' exact>
+                <Route path='*'>
                     <Redirect to='/' />
                 </Route>
             </Switch>

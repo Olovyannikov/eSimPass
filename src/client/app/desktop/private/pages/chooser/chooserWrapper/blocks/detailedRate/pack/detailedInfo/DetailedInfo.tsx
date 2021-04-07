@@ -8,6 +8,7 @@ import { Line } from './line/Line';
 interface DetailedInfoModel {
     static : boolean;
     pack? : ListRatesResponse.SuccessModel.RateModel.PackModel;
+    action? : Function
 }
 
 export const DetailedInfo = (props : DetailedInfoModel) => {
@@ -27,7 +28,7 @@ export const DetailedInfo = (props : DetailedInfoModel) => {
                 <>
                     <Line img={img_ratePack} text='Трафик' quota={props.pack.quota} />
                     <Line img={img_durationPack} text='Срок действия' duration={props.pack.duration} />
-                    <Button className='button-buy' text={`${props.pack.price}₽ - Подключить пакет`} />
+                    <Button func={() => props.action(props.pack)} className='button-buy' text={`${props.pack.price}₽ - Подключить пакет`} />
                 </>
             )
         }
