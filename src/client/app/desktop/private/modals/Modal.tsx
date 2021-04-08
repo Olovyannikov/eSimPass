@@ -7,6 +7,7 @@ import { ConfirmPurchase } from './confirmPurchase/ConfirmPurchase';
 import { CreateDevice } from './device/createDevice/CreateDevice';
 import { DeleteDevice } from './device/deleteDevice/DeleteDevice';
 import { WaitForPayment } from './waitForPayment/WaitForPayment';
+import { ConnectQrCodeDialog } from './connectQrCode/ConnectQrCodeDialog';
 
 interface PrivateStageModals {
     state : PrivateWizard;
@@ -29,6 +30,9 @@ export const Modal = (props : PrivateStageModals ) => {
         }
         else if (props.state.stage === 'buyPack') {
             return <BuyPackDialog pack={props.state.pack} />
+        }
+        else if (props.state.stage === 'connectQrCode') {
+            return <ConnectQrCodeDialog />
         }
     }
 

@@ -26,10 +26,7 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
     React.useEffect(() => {
 
         CONNECTION.listDevices({})
-
             .do(response => {
-                console.log(response);
-                
                 if (response.success) {
                     setPackages(prev => prev = response.success.devices)
                 }

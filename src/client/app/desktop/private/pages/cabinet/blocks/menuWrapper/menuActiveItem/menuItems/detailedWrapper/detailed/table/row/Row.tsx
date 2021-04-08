@@ -26,9 +26,6 @@ export const Row = (props : RowModel) => {
     }, [])
 
     const renderChargesByType = () => {
-        console.log(props.charge);
-        
-        console.log(chargesUnit);
         
         if (props.charge.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT) {
 

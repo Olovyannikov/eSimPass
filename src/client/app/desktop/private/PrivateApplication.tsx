@@ -6,13 +6,9 @@ import { connect } from 'react-redux';
 import { Modal } from './modals/Modal';
 import { STATE_API } from '../../../redux/StateApi';
 
-export interface PaymentIdModel {
-    paymentId : string;
-}
 
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
-    const { paymentId } = useParams<PaymentIdModel>();
     const { search } = useLocation();
 
     const showWizard = () => {

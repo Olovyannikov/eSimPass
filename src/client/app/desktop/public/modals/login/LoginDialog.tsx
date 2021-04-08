@@ -59,11 +59,16 @@ export const LoginDialog = () => {
         setInProgress(prev => prev = true);
         
         setError(null)
-
-        CONNECTION.login(createLoginRequest())
-            .do (parseLoginResponse)
-            .takeUntil (closedSubject)
-            .subscribe (logger.rx.subscribe ("Error logging in"))
+        if (checkValidEmail()) {
+            CONNECTION.login(createLoginRequest())
+                .do (parseLoginResponse)
+                .takeUntil (closedSubject)
+                .subscribe (logger.rx.subscribe ("Error logging in"))
+        }
+        else {
+            setError(prev => prev = 'Введите корректную почту')
+            setInProgress(prev => prev = false)
+        }
     }
 
     const handleRegisterClicked = () => STATE_API.showPublicWizard('register');
@@ -75,6 +80,7 @@ export const LoginDialog = () => {
     }
 
     const parseLoginResponse = (response : LoginResponse) => {
+
         if (response.invalidEmailOrPassword) {
             handleInvalidEmailOrPasswordResponse()
         } 
@@ -149,8 +155,15 @@ export const LoginDialog = () => {
 
     const handleRestorePasswordClick = () => STATE_API.showPublicWizard('passwordRestore');
 
-    const closeModal = () => STATE_API.hideAuthWizard()
+    const closeModal = () => STATE_API.hideAuthWizard();
 
+    const checkValidEmail = () => {
+        const regExpEmail = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,9}$/;
+        if (regExpEmail.test(emailInput.current.value)) {
+            return true
+        }
+    }
+ 
     return (
         <div onKeyDown={handleEventEnter} className="LoginDialog" onClick={(e) => e.stopPropagation ()}>
             <div className="title">Войти в личный кабинет</div>

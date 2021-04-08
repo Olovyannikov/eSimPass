@@ -8,7 +8,7 @@
     bottom: 15%;
     position: absolute;
     float: left;
-    background: linear-gradient(270deg, #FFF05A 0%, #FF785A 99.11%);
+    background: $cabinetBG;
     z-index: 100;
     border-radius: 3.125vw;
 
@@ -30,7 +30,7 @@
     }
 
     .text-step {
-        color: black;
+        color: white;
         font-size: 1.0416vw;
         text-align: center;
         margin-top: 1.5vw;
@@ -50,7 +50,7 @@
         text-align: center;
         margin-top: 1vw;
         font-size: 1.0416vw;
-        color: black;
+        color: white;
     }
 
     .button-topup {

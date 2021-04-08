@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Spinner } from '../../../components/spinner/Spinner';
 import {VerifyWebRegistrationRequest, VerifyWebRegistrationResponse } from '../../../../../../generated/proto.web';
 import { TokenModel } from '../../../PublicApplication';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { CONNECTION } from '../../../../../../Connection';
 import { waitForClose } from '../../../../../../utils';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
@@ -16,6 +16,8 @@ export const VerifyRegistrationDialog = () => {
     const logger = new Logger ('VerifyRegistrationDialog');
 
     const closedSubject = waitForClose ();
+
+    const history = useHistory();
 
     React.useEffect (() => {
         return () => closedSubject.next ()
@@ -56,8 +58,10 @@ export const VerifyRegistrationDialog = () => {
 
     const handleSuccessResponse = (response : VerifyWebRegistrationResponse) => {
         STORAGE.setToken(response.success.token);
-        setSuccess(prev => prev = 'Верификация успешно пройдена');
-        setInProgress(prev => prev = false);
+        hideWizard()
+        history.push('/cabinet');
+        // setSuccess(prev => prev = 'Верификация успешно пройдена');
+        // setInProgress(prev => prev = false);
     }
 
     const handlePlainErrorResponse = (error : string) => {
@@ -77,7 +81,7 @@ export const VerifyRegistrationDialog = () => {
             return (
                 <>
                     <div className="success">{value}</div>
-                    <div onClick={backToMainPage} className="back-to-main-button">
+                    <div onClick={hideWizard} className="back-to-main-button">
                         <div className="back-to-main-text">Назад</div>
                     </div>
                 </>
@@ -85,7 +89,7 @@ export const VerifyRegistrationDialog = () => {
         }
     }
 
-    const backToMainPage = () => STATE_API.hideAuthWizard();
+    const hideWizard = () => STATE_API.hideAuthWizard();
 
     return (
         <div className="VerifyRegistrationDialog" onClick={e => e.stopPropagation()}>

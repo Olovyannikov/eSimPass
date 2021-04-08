@@ -25,7 +25,7 @@ export const CreateDevice = () => {
                     handleSuccessDevicePaymentAmount(response)
                 }
                 else {
-                    handlePlainErrorResponse('Ошибка при получении цены устройства')
+                    handlePlainErrorResponse('Ошибка при получении стоимости устройства')
                 }
             })
             .takeUntil(closedSubject)

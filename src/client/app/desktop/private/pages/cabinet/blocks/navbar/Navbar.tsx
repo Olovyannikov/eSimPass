@@ -19,7 +19,7 @@ export const Navbar = () => {
     const [documentUploaded, setDocumentUploaded] = React.useState<boolean>(null)
 
     const handleLogout = () => {
-        STORAGE.deleteToken();
+        STORAGE.clear();
         window.location.reload();
     }
 

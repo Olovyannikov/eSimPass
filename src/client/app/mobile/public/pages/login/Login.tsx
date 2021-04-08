@@ -52,16 +52,28 @@ export const Login = () => {
         setInProgress(prev => prev = true);
         
         setError(null)
-
-        CONNECTION.login(createLoginRequest())
-            .do (parseLoginResponse)
-            .takeUntil (closedSubject)
-            .subscribe (logger.rx.subscribe ("Error logging in"))
+        if (checkValidEmail()) {
+            CONNECTION.login(createLoginRequest())
+                .do (parseLoginResponse)
+                .takeUntil (closedSubject)
+                .subscribe (logger.rx.subscribe ("Error logging in"))
+        }
+        else {
+            setError(prev => prev = 'Введите корректную почту')
+            setInProgress(prev => prev = false)
+        }
     }
 
     const showError = () => {
         if (error) {
             return <div className="error">{error}</div>
+        }
+    }
+
+    const checkValidEmail = () => {
+        const regExpEmail = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,9}$/;
+        if (regExpEmail.test(emailInput.current.value)) {
+            return true
         }
     }
 

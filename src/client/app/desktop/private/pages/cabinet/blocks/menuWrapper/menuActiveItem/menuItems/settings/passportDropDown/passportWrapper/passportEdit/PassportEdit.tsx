@@ -8,6 +8,7 @@ import { SetDocumentRequest } from '../../../../../../../../../../../../../gener
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../../Connection';
+import { STORAGE } from '../../../../../../../../../../../../../StorageAdapter';
 
 
 
@@ -17,7 +18,7 @@ export const PassportEdit = (props : PassportModel) => {
 
     const closedSubject = waitForClose();
 
-    const [error, setError] = React.useState<boolean>(null);
+    const [error, setError] = React.useState<string>(null);
 
     const radioMaleRef = React.useRef<HTMLInputElement>();
     const [inProgress, setInProgress] = React.useState<boolean>(false);
@@ -46,13 +47,31 @@ export const PassportEdit = (props : PassportModel) => {
     }
 
     const saveChanges = () => {
-        const {address, sn, issueDate, birhday, fio, photo} = props.passportState
+        const {address, sn, issueDate, birhday, fio, photo} = props.passportState;
 
-        if (address && sn && issueDate && birhday && fio) {
+        if (address && sn && issueDate && birhday && fio && photo) {
             handleSaveDocument();
         }
+        else if (!address) {
+            setError(prev => prev = 'Введите адрес')
+        }
+        else if (!sn) {
+            setError(prev => prev = 'Введите номер паспорта')
+        }
+        else if (!issueDate) {
+            setError(prev => prev = 'Введите дату')
+        }
+        else if (!birhday) {
+            setError(prev => prev = 'Введите дату рождения')
+        }
+        else if (!fio) {
+            setError(prev => prev = 'Заполните ФИО')
+        }
+        else if (!photo) {
+            setError(prev => prev = 'Загрузите фотографию')
+        }
         else {
-            setError(true)
+            setError(prev => prev = 'Заполните все поля')
         }
     }
 
@@ -73,10 +92,11 @@ export const PassportEdit = (props : PassportModel) => {
         CONNECTION.setDocument(createSetDocumentRequest())
             .do(response => {
                 if (response.success) {
+                    STORAGE.storeDocumentUploaded(true) // TODO hide the red reminder after filled a passport data
                     props.toggleMode(prev => !prev)
                 }
                 else {
-                    setError(true)
+                    setError('Неверные данные')
                 }
             })
             .do(() => setInProgress(prev => prev = false))
@@ -86,7 +106,7 @@ export const PassportEdit = (props : PassportModel) => {
 
     const renderError = () => {
         if (error) {
-            return <div className="error">Заполните все поля</div>
+            return <div className="error">{error}</div>
         }
     }
     
@@ -183,8 +203,8 @@ export const PassportEdit = (props : PassportModel) => {
                 />
             </div>
             <ImageUpload disabled={inProgress} passportImage={props.passportState?.photo} setPassportImage={props.setPassportState} />
-            <div onClick={saveChanges} className='edit'>Сохранить</div>
             {renderError()}
+            <div onClick={saveChanges} className='edit'>Сохранить</div>
         </div>
     )
 }

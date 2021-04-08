@@ -2,6 +2,7 @@ import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
 import { ListenBalanceResponse } from '../../../../../../../../generated/proto.web';
+import { STATE_API } from '../../../../../../../../redux/StateApi';
 
 import {WebSocketAdapter} from "./../../../../../../../../codebase/WebSocketAdapter";
 import {CONNECTION} from "./../../../../../../../../Connection";
@@ -10,6 +11,7 @@ import {waitForClose} from "./../../../../../../../../utils";
 export const CurrentBalance = () => {
 
     const [balance, setBalance] = React.useState ('0.00');
+    const [emptyDevice, setEmptyDevice] = React.useState<boolean>(null);
 
     const logger = new Logger ('CurrentBalance')
 
@@ -31,6 +33,31 @@ export const CurrentBalance = () => {
         .retryWhen (logger.rx.retry ("Reconnecting"))
         .subscribe (logger.rx.subscribe ("Listen balance"))
     })
+
+
+    React.useEffect(() => {
+
+        CONNECTION.listDevices({})
+            .do(response => {
+                if (response.success.devices) {
+                    setEmptyDevice(false)
+                }
+                else {
+                    setEmptyDevice(true)
+                }
+            })
+            .do(() => {
+                if (emptyDevice && parseInt(balance) <= 0) {
+                    console.log('show wizard');
+                    STATE_API.showPrivateWizard('connectQrCode')
+                }
+            })
+            .takeUntil(closer)
+            .subscribe(logger.rx.subscribe('Error in device response'))
+        
+        
+
+    }, [emptyDevice])
 
     const balanceConventer = (balance : string) : string => {
         return Number(balance).toFixed(2)

@@ -19,7 +19,7 @@ export const ChooserWrapper = () => {
     } 
 
     const doRender = () => {
-        if (rate && choosenPack ) {
+        if (rate && choosenPack) {
             return <ChooseDevice rate={rate} pack={choosenPack} />
         }
         else if (rate) {

@@ -84,6 +84,10 @@ class StorageAdapter {
     public getToken() : string {
         return window.localStorage.getItem('token')
     }
+
+    public clear() : void {
+        window.localStorage.clear()
+    }
 }
 
 export const STORAGE = new StorageAdapter();
