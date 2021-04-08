@@ -3,9 +3,11 @@ import * as React from 'react';
 import * as rx from "rxjs/Rx"
 import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../Connection';
-import { RegisterWebRequest, RegisterWebResponse } from '../../../../../generated/proto.web';
+import { RegisterMobileRequest, RegisterMobileResponse } from '../../../../../generated/proto.web';
 import { img_activeEye, img_disableEye, img_firstStep, img_next } from '../../../../../resources/images';
 import { convertEndingOfNoun, waitForClose } from '../../../../../utils';
+import { Spinner } from '../../components/spinner/Spinner';
+import { VerifyRegistration } from './verifyRegistration/VerifyRegistration';
 
 interface PasswordViewModel {
     img : string;
@@ -39,7 +41,8 @@ export const Registration = () => {
                 img : img_disableEye,
                 type : 'text',
             }))
-        } else {
+        } 
+        else {
             setPasswordViewMode(prev => ({
                 ...prev,
                 img : img_activeEye,
@@ -62,7 +65,7 @@ export const Registration = () => {
 
         if (checkEqualsPassword ()) {
 
-            CONNECTION.registerWeb(createRegisterRequest())
+            CONNECTION.registerMobile(createRegisterRequest())
                 .do(parseRegisterResponse)
                 .takeUntil(closedSubject)
                 .subscribe(logger.rx.subscribe('Error regist in'))
@@ -84,7 +87,7 @@ export const Registration = () => {
         }
     }
 
-    const parseRegisterResponse = (response : RegisterWebResponse) => {
+    const parseRegisterResponse = (response : RegisterMobileResponse) => {
         
         if (response.emailAlreadyUsed) {
             handlePlainError('Аккаунт уже используется')
@@ -104,6 +107,7 @@ export const Registration = () => {
         else if (response.success) {
             handleSuccessResponse(response)
         }
+        setInProgress(true)
     }
 
     const handleInvalidPasswordResponse = () => {
@@ -115,8 +119,8 @@ export const Registration = () => {
         }
     }
 
-    const handleSuccessResponse = (response : RegisterWebResponse) => {
-        setInProgress(prev => prev = false);
+    const handleSuccessResponse = (response : RegisterMobileResponse) => {
+        setInProgress(prev => prev = true);
         setSuccessRegister(prev => prev = true)
     }
 
@@ -127,7 +131,7 @@ export const Registration = () => {
 
     const handleLoginClicked = () => history.push('/login')
 
-    const handleToManyErrorAttemptsResponse = (response : RegisterWebResponse) => {
+    const handleToManyErrorAttemptsResponse = (response : RegisterMobileResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyAttempts) / 1000)
         
         rx.Observable.interval (1000)
@@ -149,21 +153,19 @@ export const Registration = () => {
 
     const showInProgress = () => {
         if (inProgress) {
-            // return <Spinner />
+            return <Spinner />
         }
         else {
             return (
                 <>
                     <div onClick={handleLoginClicked} className="already-register">Уже зарегистрирован</div>
-                    <img onClick={toconnectEsim} src={img_next} className='button-next' alt="Next"/>
+                    <img onClick={handleRegister} src={img_next} className='button-next' alt="Next"/>
                 </>
             )
         }
     }
 
-    const toconnectEsim = () => history.push('/connectEsim')
-
-    const createRegisterRequest = () : RegisterWebRequest => ({
+    const createRegisterRequest = () : RegisterMobileRequest => ({
         email : emailInput.current.value,
         password : passwordInput.current.value,
     })
@@ -171,14 +173,7 @@ export const Registration = () => {
     const showSuccessRegister = () => {
 
         if (successRegister) {
-            return (
-                <>
-                    <div className="title-success">Вам на почту отправлено письмо для подтверждения регистрации</div>
-                    <div onClick={handleRegister} className="verify-button">
-                        <div className="verify-text">Отправить еще раз</div>
-                    </div>
-                </>
-            )
+            return <VerifyRegistration handleRegistration={handleRegister} />
         }
         else {
             return showInProgress();
@@ -205,8 +200,8 @@ export const Registration = () => {
                 <div onClick={handlePasswordMode} className="img-password">
                     <img src={passwordViewMode.img} alt="Eye"/>
                 </div>
-                {showSuccessRegister()}
                 {showError()}
+                {showSuccessRegister()}
             </div>
         </div>
     )

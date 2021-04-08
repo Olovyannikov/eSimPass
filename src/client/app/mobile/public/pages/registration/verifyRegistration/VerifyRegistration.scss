@@ -1,0 +1,33 @@
+.VerifyRegistration {
+    
+    .title-success {
+        float: left;
+        width: 100%;
+        text-align: center;
+        font-size: 5.5vw;
+        color: white;
+        font-weight: 600;
+    }
+
+    .verify-button {
+        width: 80.6875vw;
+        float: left;
+        border-radius: 6.7vw;
+        margin-top: 5vw;
+        height: 10vw;
+        margin-left: 7vw;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border: 0.8vw solid white;
+        background: transparent;
+        margin-bottom: 5vw;
+
+        
+        div {
+            text-align: center;
+            color: white;
+            font-size: 4.2vw;
+        }
+    }
+}
