@@ -1,11 +1,13 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
+import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../../../../../Connection';
 
 import { BuyPackRequest, BuyPackResponse, ListDevicesResponse, ListRatesResponse } from '../../../../../../../../../generated/proto.web';
 import { img_iphone } from '../../../../../../../../../resources/images';
 import { convertDateUntilPackage, waitForClose } from '../../../../../../../../../utils';
 import { ProgressBar } from '../../../../../../components/progressBar/ProgressBar';
+import { Spinner } from '../../../../../../components/spinnerPayment/Spinner';
 
 interface DeviceModel {
     device : ListDevicesResponse.SuccessModel.DeviceModel;
@@ -19,18 +21,19 @@ export const Device = (props : DeviceModel) => {
 
     const closedSubject = waitForClose();
 
+    const history = useHistory()
+
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [response, setResponse] = React.useState<string>(null);
-    const [success, setSuccess] = React.useState<boolean>(false);
 
     const handleBuyPack = () => {
 
-        
+        setInProgress(prev => prev = true)
 
         CONNECTION.buyPack(createBuyPackRequest ())
             .do(parseBuyPackResponse)
-            // .delay(2000)
-            // .do(() => STATE_API.hideAuthWizard())
+            .delay(2500)
+            .do(() => history.push('/cabinet'))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
         
@@ -38,7 +41,7 @@ export const Device = (props : DeviceModel) => {
 
     const parseBuyPackResponse = (response : BuyPackResponse) => {
         if (response.success) {
-            setSuccess(prev => prev = true)
+            setResponse(prev => prev = 'Пакет успешно приобретен')
         }
         else if (response.packNotFound || response.rateNotFound) {
             setResponse(prev => prev = 'Пакет не найден')
@@ -49,6 +52,8 @@ export const Device = (props : DeviceModel) => {
         else if (response.deviceNotFound) {
             setResponse(prev => prev = 'Устройство не найдено')
         }
+
+        setInProgress(prev => prev = false)
     }
 
     const createBuyPackRequest = () : BuyPackRequest => ({
@@ -60,11 +65,11 @@ export const Device = (props : DeviceModel) => {
     })
 
     const doRender = () => {
-        if (success) {
-            return <div>Пакет приобретен</div>
+        if (inProgress) {
+            return <Spinner />
         }
         else if (response) {
-            return <div>{response}</div>
+            return <div className='response'>{response}</div>
         }
         else {
             return (

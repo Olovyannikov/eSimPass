@@ -29,16 +29,16 @@ const DesktopApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
                 <Route exact path='/restorePassword/:tokenRestore'>
                     <PublicApplication />
                 </Route>
-                <Route path='/cabinet'>
+                <Route exact path='/cabinet'>
                     {() => checkAuthenticatedUser() }
                 </Route>
-                <Route path='/deeplink/payment/success'>
+                <Route exact path='/deeplink/payment/success'>
                     {() => checkAuthenticatedUser()}
                 </Route>
-                <Route path='/cabinet/chooseRates'>
+                <Route exact path='/cabinet/chooseRates'>
                     {() => checkAuthenticatedUser()}
                 </Route>
-                <Route exact path='*'>
+                <Route path='*'>
                     <Redirect to='/' />
                 </Route>
             </Switch>

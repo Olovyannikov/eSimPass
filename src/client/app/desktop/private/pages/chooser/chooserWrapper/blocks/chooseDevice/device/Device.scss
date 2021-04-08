@@ -9,6 +9,19 @@
     margin-top: 3.9062vw;
     cursor: pointer;
 
+    .Spinner {
+        margin-top: 5.5vw;
+        margin-right: 23vw;
+    }
+
+    .response {
+        text-align: center;
+        font-weight: 600;
+        font-size: 3vw;
+        color: yellow;
+        margin-top: 5.5vw;
+    }
+
     .left-block {
         float: left;
         margin-top: 1.5625vw;
@@ -30,6 +43,7 @@
             color: white;
             font-size: 1.14vw;
             margin-top: 1.5vw;
+            width: 24vw;
         }
 
 

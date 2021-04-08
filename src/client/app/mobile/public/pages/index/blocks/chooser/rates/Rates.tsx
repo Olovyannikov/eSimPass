@@ -80,6 +80,14 @@ export const Rates = (props : RatesModel) => {
                 </>
             )
         }
+        else if (filteredRates.length === 0) {
+            return (
+                <>
+                    <div className="title">Поиск</div>
+                    <div className="no-matches">Нет совпадений</div>
+                </>
+            )
+        }
         else {
             return (
                 <>

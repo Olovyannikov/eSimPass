@@ -1,11 +1,13 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
+import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../../../../../Connection';
 
 import { ListDevicesResponse, ListRatesResponse, BuyPackRequest, BuyPackResponse } from '../../../../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../../../../redux/StateApi';
 import { img_iphone } from '../../../../../../../../../resources/images';
 import { waitForClose } from '../../../../../../../../../utils';
+import { Spinner } from '../../../../../../components/spinnerPayment/Spinner';
 
 interface DisabledDeviceModel {
     device : ListDevicesResponse.SuccessModel.DeviceModel;
@@ -19,16 +21,19 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
 
     const closedSubject = waitForClose();
 
+    const history = useHistory();
+
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [response, setResponse] = React.useState<string>(null);
-    const [success, setSuccess] = React.useState<boolean>(false);
 
     const handleBuyPack = () => {
 
+        setInProgress(prev => prev = true)
+
         CONNECTION.buyPack(createBuyPackRequest ())
             .do(parseBuyPackResponse)
-            // .delay(2000)
-            // .do(() => STATE_API.hideAuthWizard())
+            .delay(2500)
+            .do(() => history.push('/cabinet'))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
         
@@ -36,7 +41,7 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
 
     const parseBuyPackResponse = (response : BuyPackResponse) => {
         if (response.success) {
-            setSuccess(prev => prev = true)
+            setResponse(prev => prev = 'Пакет успешно приобретен')
         }
         else if (response.packNotFound || response.rateNotFound) {
             setResponse(prev => prev = 'Пакет не найден')
@@ -47,6 +52,7 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
         else if (response.deviceNotFound) {
             setResponse(prev => prev = 'Устройство не найдено')
         }
+        setInProgress(prev => prev = false)
     }
 
     const createBuyPackRequest = () : BuyPackRequest => ({
@@ -58,11 +64,11 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
     })
 
     const doRender = () => {
-        if (success) {
-            return <div>Пакет приобретен</div>
+        if (inProgress) {
+            return <Spinner />
         }
         else if (response) {
-            return <div>{response}</div>
+            return <div className='response'>{response}</div>
         }
         else {
             return (
