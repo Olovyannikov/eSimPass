@@ -18,14 +18,13 @@ export const DetailedWrapper = () => {
     const [inProgress, setInProgress] = React.useState<boolean>(true);
 
     React.useEffect(() => {
-
+        
         CONNECTION.listCharges(createListChargesRequest())
             .do(response => {
-                console.log(response);
-                
                 if (response.success) {
                     handleSuccessResponse(response)
                 }
+
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in charges response'))
@@ -39,7 +38,7 @@ export const DetailedWrapper = () => {
 
     const createListChargesRequest = () : ListChargesRequest => ({
         fromDate : {
-            value : 'some date'
+            value : String(Date.parse(String(new Date())))
         }
     })
 
