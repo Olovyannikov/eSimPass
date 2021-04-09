@@ -46,8 +46,7 @@ export const Rates = (props : RatesModel) => {
             const randomNumber = Math.floor(Math.random() * allRates.length)
             setFilteredRates(filteredRates => filteredRates = allRates.slice(randomNumber, randomNumber + 8))
         }
-            
-            console.log(filteredRates);
+        
         
     }, [props.filter, allRates])
 

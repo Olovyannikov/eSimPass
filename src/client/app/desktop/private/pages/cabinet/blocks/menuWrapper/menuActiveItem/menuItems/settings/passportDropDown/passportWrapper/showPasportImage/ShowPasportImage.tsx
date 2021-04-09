@@ -26,8 +26,6 @@ export const ShowPasportImage = (props : PassportModel) => {
             .do((response) => {
 
                 if (response.success) {
-                    console.log(response);
-                    
                     handleSuccessResponse(response)
                 }
                 else if (response.documentIsNotLoaded) {

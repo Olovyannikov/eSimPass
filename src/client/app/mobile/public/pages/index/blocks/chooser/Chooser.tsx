@@ -32,7 +32,6 @@ export const Chooser = () => {
 
     const doRender = () => {
         if (rate) {
-            console.log(rate); 
             return (
                 <>
                     <div onClick={handlebackClick} className="back">Назад</div>

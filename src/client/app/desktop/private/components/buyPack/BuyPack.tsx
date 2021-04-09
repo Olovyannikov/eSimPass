@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from 'react-router';
 
 import { ListDevicesResponse } from '../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../redux/StateApi';
@@ -12,7 +13,9 @@ export interface BuyRateModel {
 
 export const BuyPack = (props : BuyRateModel) => {
 
-    const handleBuyPack = () => STATE_API.buyPack({ device : props.device })
+    const history = useHistory();
+
+    const handleBuyPack = () => history.push('/cabinet/chooseRates')
 
     return (
         <div className="BuyPack">

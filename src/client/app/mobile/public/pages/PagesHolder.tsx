@@ -16,12 +16,6 @@ export const PagesHolder = () => {
         else if (window.location.pathname === '/connectEsim') {
             return <ConnectEsim />
         }
-        else if (window.location.pathname === '/login') {
-            return <Login />
-        }
-        else if (window.location.pathname === '/restorePassword') {
-            return <RestorePassword />
-        }
         else {
             return <IndexPage />
         }

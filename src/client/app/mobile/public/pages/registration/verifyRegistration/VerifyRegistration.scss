@@ -4,9 +4,61 @@
         float: left;
         width: 100%;
         text-align: center;
-        font-size: 5.5vw;
+        font-size: 4.5vw;
         color: white;
         font-weight: 600;
+        margin-bottom: 1vw;
+
+        span {
+            color: $yellowLk;
+        }
+
+    }
+
+    .input-code {
+        padding: 0.025vw;
+        float: left;
+        display: block;
+        color: yellow;
+        font-size: 8vw;
+        width: 63.7161vw;
+        height: 12.3846vw;
+        border: 1.1562vw solid white;
+        padding-left: 15vw;
+        border-radius: 3.7812vw;
+        border-left: 1.1562vw solid white;
+        outline: none;
+        background-color: transparent;
+        margin-left: 5vw;
+        margin-top: 3vw;
+        letter-spacing: 10vw;
+    }
+    .input-code:disabled {
+        opacity: 0.5;
+    }
+
+    .submit-button {
+        width: 80.6875vw;
+        float: left;
+        border-radius: 6.7vw;
+        margin-top: 5vw;
+        height: 10vw;
+        margin-left: 5vw;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border: 0.8vw solid #fff05a;
+        background: transparent;
+
+        
+        div {
+            text-align: center;
+            color: $yellowLk;
+            font-size: 4.2vw;
+        }
+    }
+    .submit-button:disabled {
+        opacity: 0.5;
     }
 
     .verify-button {
@@ -15,7 +67,7 @@
         border-radius: 6.7vw;
         margin-top: 5vw;
         height: 10vw;
-        margin-left: 7vw;
+        margin-left: 5vw;
         cursor: pointer;
         outline: none;
         border: none;
@@ -29,5 +81,19 @@
             color: white;
             font-size: 4.2vw;
         }
+    }
+    .verify-button:disabled {
+        opacity: 0.5;
+    }
+
+    .error {
+        width: 100%;
+        font-weight: 600;
+        color: red;
+        font-size: 4.25vw;
+        text-align: center;
+        float: left;
+        margin-top: 0vw;
+        margin-bottom: 0vw;
     }
 }

@@ -4,13 +4,6 @@ import { img_mobileAppStore, img_googlePlay } from '../../../../../../../resourc
 
 export const Download = () => {
 
-    React.useEffect(() => {
-        console.log(navigator.userAgent);
-        console.log(navigator.userAgent.toString().indexOf('iPhone'));
-        
-        
-    }, [])
-
     const checkDeviceOS = () => {
         if (navigator.userAgent.indexOf('iPhone') > -1) {
             return img_mobileAppStore

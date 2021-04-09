@@ -22,6 +22,7 @@ export const Registration = () => {
 
     const history = useHistory();
 
+    const [token, setToken] = React.useState<string>(null);
     const [successRegister, setSuccessRegister] = React.useState<boolean>(null)
     const [error, setError] = React.useState<string>('');
     const [inProgress, setInProgress] = React.useState<boolean>(false);
@@ -107,7 +108,7 @@ export const Registration = () => {
         else if (response.success) {
             handleSuccessResponse(response)
         }
-        setInProgress(true)
+        // setInProgress(true)
     }
 
     const handleInvalidPasswordResponse = () => {
@@ -120,8 +121,11 @@ export const Registration = () => {
     }
 
     const handleSuccessResponse = (response : RegisterMobileResponse) => {
-        setInProgress(prev => prev = true);
-        setSuccessRegister(prev => prev = true)
+        console.log(response.success.token);
+        
+        setToken(prev => prev = response.success.token);
+        setInProgress(prev => prev = false);
+        setSuccessRegister(prev => prev = true);
     }
 
     const handlePlainError = (error : string) => {
@@ -129,7 +133,8 @@ export const Registration = () => {
         setInProgress(prev => prev = false);
     }
 
-    const handleLoginClicked = () => history.push('/login')
+    // TODO redirect to store, download app
+    // const handleLoginClicked = () => history.push('/login');
 
     const handleToManyErrorAttemptsResponse = (response : RegisterMobileResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyAttempts) / 1000)
@@ -148,7 +153,7 @@ export const Registration = () => {
             })
             .takeWhile (secondsToWait => secondsToWait > 0)
             .takeUntil (closedSubject)
-            .subscribe (logger.rx.subscribe ("Error logging in"))
+            .subscribe (logger.rx.subscribe ("Error register mobile in"))
     } 
 
     const showInProgress = () => {
@@ -158,7 +163,7 @@ export const Registration = () => {
         else {
             return (
                 <>
-                    <div onClick={handleLoginClicked} className="already-register">Уже зарегистрирован</div>
+                    <div className="already-register">Уже зарегистрирован</div>
                     <img onClick={handleRegister} src={img_next} className='button-next' alt="Next"/>
                 </>
             )
@@ -173,7 +178,7 @@ export const Registration = () => {
     const showSuccessRegister = () => {
 
         if (successRegister) {
-            return <VerifyRegistration handleRegistration={handleRegister} />
+            return <VerifyRegistration token={token} email={emailInput.current.value} handleRegistration={handleRegister} />
         }
         else {
             return showInProgress();
@@ -206,3 +211,4 @@ export const Registration = () => {
         </div>
     )
 }
+ 

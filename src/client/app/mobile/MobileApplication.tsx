@@ -17,12 +17,6 @@ export const MobileApplication = () => {
                 <Route exact path='/connectEsim'>
                     <PublicApplication />
                 </Route>
-                <Route exact path='/login'>
-                    <PublicApplication />
-                </Route>
-                <Route exact path='/restorePassword'>
-                    <PublicApplication />
-                </Route>
                 <Route path='*'>
                     <Redirect to='/' />
                 </Route>

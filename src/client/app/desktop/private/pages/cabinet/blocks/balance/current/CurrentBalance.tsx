@@ -48,7 +48,6 @@ export const CurrentBalance = () => {
             })
             .do(() => {
                 if (emptyDevice && parseInt(balance) <= 0) {
-                    console.log('show wizard');
                     STATE_API.showPrivateWizard('connectQrCode')
                 }
             })
