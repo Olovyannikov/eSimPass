@@ -32,11 +32,12 @@ export const CurrentBalance = () => {
         .finally (() => ws.close ())
         .retryWhen (logger.rx.retry ("Reconnecting"))
         .subscribe (logger.rx.subscribe ("Listen balance"))
+        
     })
 
 
     React.useEffect(() => {
-
+        
         CONNECTION.listDevices({})
             .do(response => {
                 if (response.success.devices) {
@@ -53,8 +54,8 @@ export const CurrentBalance = () => {
             })
             .takeUntil(closer)
             .subscribe(logger.rx.subscribe('Error in device response'))
-        
-        
+            
+        return () => setBalance(prev => prev = null);  
 
     }, [emptyDevice])
 

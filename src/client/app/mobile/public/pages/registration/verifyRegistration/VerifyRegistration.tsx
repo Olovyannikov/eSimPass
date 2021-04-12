@@ -78,7 +78,6 @@ export const VerifyRegistration = (props : VerifyRegistrationModel) => {
 
             CONNECTION.verifyMobileCode(createVerifyRegisterRequest())
                 .do(parseVerifyRegisterMobileResponse)
-                .do(() => setInProgress(prev => prev = true))
                 .takeUntil(closedSubject)
                 .subscribe(logger.rx.subscribe('Error verify in'))
 
@@ -124,7 +123,6 @@ export const VerifyRegistration = (props : VerifyRegistrationModel) => {
             <input disabled={inProgress} placeholder='Введите код' ref={codeInput} className='input-code' pattern="\d*" type="text"/>
             <img src={img_retry} className='retry' onClick={props.handleRegistration} alt="Retry"/>
             {showError()}
-            {/* <Button disabled={inProgress} className='verify-button' func={props.handleRegistration} text='Отправить код еще раз' /> */}
             {showInProgress()}
         </div>
     )

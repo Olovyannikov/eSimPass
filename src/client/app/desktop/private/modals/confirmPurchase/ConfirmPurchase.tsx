@@ -50,7 +50,7 @@ export const ConfirmPurchase = () => {
 
         setInProgress(prev => prev = true);
 
-        CONNECTION.createDevicePayment(createDevicePaymentRequst())
+        CONNECTION.createDevicePayment(createDevicePaymentRequest())
             .do(response => {
                 if (response.success) {
                     handleSuccessResponse(response);
@@ -70,7 +70,7 @@ export const ConfirmPurchase = () => {
         window.open(response.success.url);
     }
 
-    const createDevicePaymentRequst = () : CreateDevicePaymentRequest => ({})
+    const createDevicePaymentRequest = () : CreateDevicePaymentRequest => ({})
 
     const showError = () => {
         if (error) {
