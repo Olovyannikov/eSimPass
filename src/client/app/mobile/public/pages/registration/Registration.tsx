@@ -108,7 +108,6 @@ export const Registration = () => {
         else if (response.success) {
             handleSuccessResponse(response)
         }
-        // setInProgress(true)
     }
 
     const handleInvalidPasswordResponse = () => {

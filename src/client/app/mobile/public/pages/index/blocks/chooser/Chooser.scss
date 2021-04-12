@@ -44,4 +44,31 @@
 
     @import './rate/Rate.scss';
     @import './rates/Rates.scss';
+
+    @media screen and (orientation:landscape) {
+
+        .search {
+            width: 76vw;
+            height: 8.5888vw;
+            border: 0.25vw solid white;
+            border-radius: 3vw;
+            margin-top: 1vw;
+            background-size: 5vw;
+            background-position-x: 84vw;
+            padding: 0;
+            padding-left: 7vw;
+            padding-right: 8vw;
+            font-size: 4vw;
+        }
+
+        .back {
+            font-size: 4vw;
+        }
+
+        .country {
+            font-size: 6vw;
+            text-align: center;
+            float: none;
+        }
+    }
 }

@@ -96,4 +96,24 @@
         margin-top: 0vw;
         margin-bottom: 0vw;
     }
+
+    @media screen and (orientation:landscape) {
+
+        .title-success {
+            font-size: 3.5vw;
+        }
+
+        .input-code {
+            border: 0.1562vw solid white;
+            border-left: 0.1562vw solid white;
+        }
+
+        .submit-button {
+            border: 0.3 solid $yellowLk;
+        }
+
+        .verify-button {
+            border: 0.3 solid white;
+        }
+    }
 }

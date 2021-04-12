@@ -98,4 +98,33 @@
     }
 
     @import './rateCountry/RateCountry.scss';
+
+    @media screen and (orientation:landscape) {
+
+        .title {
+            text-align: center;
+            font-size: 4.3412vw;
+        }
+
+        .show-all-countries {
+            margin-left: 31vw;
+            font-size: 2.7vw;
+        }
+
+        .button-connect {
+            height: 8.0583vw;
+            border-radius: 3.0833vw;
+            margin-bottom: 4vw;
+    
+            >div {
+                font-size: 3.244vw;
+            }
+        }
+
+        .no-matches {
+            font-size: 5vw;
+            margin-top: 3vw;
+            margin-bottom: 4vw;
+        }
+    }
 }

@@ -255,4 +255,141 @@
 
         @import './verifyRegistration/VerifyRegistration.scss';
     }
+
+    @media screen and (orientation:landscape) {
+
+        margin-top: 4vw;
+
+        .title {
+            font-size: 4.8965vw;
+        }
+
+        .text-step {
+            font-size: 2.7745vw;
+            margin-top: 2.2212vw;
+        }
+
+        .img-step {
+            height: 17.5251vw;
+            width: 17.5251vw;
+            margin-left: 42.2vw;
+            margin-top: 3.5vw;
+        }
+
+        .text-action {
+            margin-top: 6vw;
+            width: 100%;
+            font-size: 3.305vw;
+        }
+
+        .inputs-block {
+            margin-top: 5vw;
+
+            .attention-block {
+                font-size: 3.244vw;
+            }
+
+            .input-email {
+                height: 9.3846vw;
+                border: 0.1562vw solid white;
+                border-left: 0.1562vw solid white;
+                margin-bottom: 3.6923vw;
+                font-size: 3.7745vw;
+                background-size: 3.8355vw, 0.2vw 6.5vw;
+                padding-left: 10.6458vw;
+                background-position-x: 3vw, 9vw;
+            }
+
+            .input-password {
+                height: 9.3846vw;
+                border: 0.1562vw solid white;
+                border-left: 0.1562vw solid white;
+                margin-bottom: 3.6923vw;
+                font-size: 3.7745vw;
+                background-size: 3.8355vw, 0.2vw 6.5vw;
+                padding-left: 10.6458vw;
+                background-position-x: 3vw, 9vw;
+            }
+
+            .img-password {
+
+                margin-left: -8.8vw;
+                margin-top: 2.4vw;
+
+                img {
+                    width: 5.22228vw;
+                    height: 5.0397vw;
+                }
+            }
+
+            .error {
+                margin-top: 0vw;
+                margin-bottom: 1vw;
+                font-size: 3.5vw;
+            }
+
+            .already-register {
+                font-size: 3.2432vw;
+                margin-left: 28.5vw;
+            }
+
+            .button-next {
+                width: 13.5251vw;
+                height: 13.5251vw;
+                margin-top: 3.5vw;
+            }
+
+            .Spinner {
+                margin-top: 3.5vw;
+                margin-right: 0vw;
+                width: 15.2083vw;
+                height: 20.2083vw;
+
+            
+                .lds-ring {
+                    display: inline-block;
+                    position: relative;
+                    width: 5.2083vw;
+                    height: 5.2083vw;
+                }
+            
+                .lds-ring div {
+                    box-sizing: border-box;
+                    display: block;
+                    position: absolute;
+                    width: 13.8541vw;
+                    height: 13.8541vw;
+                    margin: 0.5208vw;
+                    border: 1vw solid #fff;
+                    border-radius: 50%;
+                    -moz-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                    -ms-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                    -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                    border-color: #fff rgba(255, 255, 255, 0.0) rgba(255, 255, 255, 0.0) rgba(255, 255, 255, 0.0);
+                }
+            
+                .lds-ring div:nth-child(1) {
+                    -moz-animation-delay: -0.45s;
+                    -ms-animation-delay: -0.45s;
+                    -webkit-animation-delay: -0.45s;
+                    animation-delay: -0.45s;
+                }
+            
+                .lds-ring div:nth-child(2) {
+                    -moz-animation-delay: -0.3s;
+                    -ms-animation-delay: -0.3s;
+                    -webkit-animation-delay: -0.3s;
+                    animation-delay: -0.3s;
+                }
+            
+                .lds-ring div:nth-child(3) {
+                    -moz-animation-delay: -0.15s;
+                    -ms-animation-delay: -0.15s;
+                    -webkit-animation-delay: -0.15s;
+                    animation-delay: -0.15s;
+                }
+            }
+        }
+    }
 }

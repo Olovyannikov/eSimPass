@@ -43,5 +43,38 @@
         margin-right: 3vw;
     }
 
-    
+    @media screen and (orientation:landscape) {
+        height: 11vw;   
+
+        .left-block {
+            margin-top: 1vw;
+            margin-left: 2.5vw;
+
+            .text {
+                font-size: 2vw;
+            }
+
+            .download {
+                width: 9.8938vw;
+                height: 3.1vw;
+                margin-top: 1vw;
+            }
+
+        }
+
+        .phone-img {
+            margin-left: 14vw;
+            float: left;
+            width: 10.8328vw;
+            height: 9.8116vw;
+            margin-top: 1.3vw;
+        }
+
+        .cross-close {
+            width: 2.244vw;
+            height: 2.244vw;
+            margin-top: 2vw;
+            margin-right: 2vw;
+        }
+    }
 }

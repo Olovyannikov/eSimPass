@@ -19,5 +19,20 @@
         margin-top: 5vw;
         width: 92vw;
     }
+
+    @media screen and (orientation:landscape) {
+        margin-top: 3vw;
+
+        .logo {
+            font-size: 6vw;
+            margin-left: 28vw;
+        }
+
+        .title {
+            text-align: center;
+            width: 90%;
+            font-size: 4.366vw;
+        }
+    }
 }
 

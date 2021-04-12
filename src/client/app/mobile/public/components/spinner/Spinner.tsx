@@ -1,13 +1,9 @@
 import * as React from 'react';
 
-interface SpinnerModel {
-    className? : string;
-}
-
-export const Spinner = (props : SpinnerModel) => {
+export const Spinner = () => {
     
     return (
-        <div className={`Spinner ${props.className}`}>
+        <div className='Spinner'>
             <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </div>
     )

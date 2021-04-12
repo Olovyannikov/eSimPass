@@ -25,5 +25,19 @@
         }
         @import './mobile/MobileApplication.scss';
     }
+
+    @media screen and (orientation:landscape) {
+        .Mobile {
+            height: 100%;
+            display: block;
+            background: rgba(71, 126, 144, 1);
+        }
+
+        .Desktop {
+            display: none;
+        }
+
+        @import './mobile/MobileApplication.scss';
+    }
 }
 

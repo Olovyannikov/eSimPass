@@ -79,4 +79,68 @@
             }
         }
     }
+
+    @media screen and (orientation:landscape) {
+
+        .Pack {
+
+            float: left;
+            width: 40.7161vw;
+            height: 30.7002vw;
+            border-radius: 3.5vw;
+            border: 0.02vw solid white;
+            margin-bottom: 5vw;
+            margin-left: 4vw;
+            
+            //add Pack class 
+
+            .wrapper {
+                margin: 2.4482vw;
+
+                .operator-name {
+                    font-size: 2.366vw;
+                    width: 75%;
+                }
+                .type {
+                    margin-top: 2vw;
+                    font-size: 1.7135vw;
+                    width: 62%;
+                }
+
+                .DetailedInfo {
+                    margin-top: 3.1618vw;
+
+                    .button-buy {
+                        width: 36vw;
+                        font-size: 2.244vw;
+                        border-radius: 3.5vw;
+                        outline: none;
+                        border: none;
+                        height: 5.0583vw;
+                        font-weight: 500;
+                    }
+
+                    .Line {
+
+                        width: 36vw;
+                        margin-bottom: 2vw;
+                        .img-icon {
+                            width: 3.366vw;
+                            height: 3.366vw;
+                        }
+
+                        .text {
+                            font-size: 2.7745vw;
+                            margin-left: 1.583vw;
+                        }
+
+                        .amount {
+                            font-size: 2.4vw;
+
+                        }
+                    }
+                }
+            }
+        }    
+    }
 }
