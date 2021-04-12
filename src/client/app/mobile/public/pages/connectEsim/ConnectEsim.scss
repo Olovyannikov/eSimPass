@@ -66,4 +66,46 @@
         margin-top: 51.5vw;
         margin-bottom: 3vw;
     }
+
+    @media (max-width:950px) and (max-height: 450px) and (orientation:landscape) {
+
+        margin-top: 5.2838vw;
+
+        .title {
+            font-size: 4.8965vw;
+        }
+
+        .text-step {
+            font-size: 3vw;
+            margin-top: 2.2212vw;
+        }
+
+        .img-step {
+            height: 17.5251vw;
+            width: 17.5251vw;
+            margin-left: 42.2vw;
+            margin-top: 3.5vw;
+        }
+
+        .text-action {
+            margin-top: 3vw;
+            font-size: 3.305vw;
+        }
+
+        .button-buy {
+            border: 0.5vw solid white;
+            height: 10vw;
+            font-size: 3.2312vw;
+            width: 60vw;
+            margin-left: 20.4vw;
+            margin-top: 3vw;
+        }
+
+        .button-back {
+            margin-left: 6vw;
+            margin-top: 2.5vw;
+            width: 14.5251vw;
+            height: 14.5251vw;
+        }
+    }
 }

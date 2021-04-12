@@ -97,7 +97,7 @@
         margin-bottom: 0vw;
     }
 
-    @media screen and (orientation:landscape) {
+    @media (max-width:950px) and (max-height: 450px) and (orientation:landscape) {
 
         .title-success {
             font-size: 3.5vw;

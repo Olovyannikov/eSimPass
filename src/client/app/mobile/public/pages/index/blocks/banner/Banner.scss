@@ -43,7 +43,7 @@
         margin-right: 3vw;
     }
 
-    @media screen and (orientation:landscape) {
+    @media (max-width:950px) and (max-height: 450px) and (orientation:landscape) {
         height: 11vw;   
 
         .left-block {

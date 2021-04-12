@@ -2,9 +2,7 @@ import * as React from 'react';
 import { ConnectEsim } from './connectEsim/ConnectEsim';
 
 import { IndexPage } from './index/IndexPage';
-import { Login } from './login/Login';
 import { Registration } from './registration/Registration';
-import { RestorePassword } from './restorePassword/RestorePassword';
 
 export const PagesHolder = () => {
 

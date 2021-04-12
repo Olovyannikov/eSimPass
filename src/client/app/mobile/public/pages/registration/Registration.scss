@@ -33,7 +33,7 @@
         width: 26.5251vw;
         height: 26.5251vw;
         float: left;
-        margin-left: 35.2vw;
+        margin-left: 37.2vw;
         margin-top: 4.5vw;
     }
 
@@ -256,7 +256,7 @@
         @import './verifyRegistration/VerifyRegistration.scss';
     }
 
-    @media screen and (orientation:landscape) {
+    @media (max-width:950px) and (max-height: 450px) and (orientation:landscape) {
 
         margin-top: 4vw;
 

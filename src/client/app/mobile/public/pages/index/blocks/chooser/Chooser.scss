@@ -45,7 +45,7 @@
     @import './rate/Rate.scss';
     @import './rates/Rates.scss';
 
-    @media screen and (orientation:landscape) {
+    @media (max-width:950px) and (max-height: 450px) and (orientation:landscape) {
 
         .search {
             width: 76vw;
