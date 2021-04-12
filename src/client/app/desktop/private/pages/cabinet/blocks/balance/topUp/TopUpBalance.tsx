@@ -15,7 +15,7 @@ export const TopUpBalance = () => {
     const inputBalance = React.useRef<HTMLInputElement>();
 
     const [inProgress, setInProgress] = React.useState<boolean>(true);
-    const [minAmount, setMinAmount] = React.useState<string>('5')
+    const [minAmount, setMinAmount] = React.useState<string>('5');
     const [error, setError] = React.useState<boolean>(false);
     
     const closedSubject = waitForClose ();
@@ -57,7 +57,7 @@ export const TopUpBalance = () => {
 
     const handleSuccessResponse = (response : CreateBalancePaymentResponse) => {
         setInProgress(prev => prev = false);
-        window.open(response.success.url)
+        window.open(response.success.url);
     }
 
     const createBalancePaymentRequest = () : CreateBalancePaymentRequest => ({
@@ -91,4 +91,4 @@ export const TopUpBalance = () => {
         </div>
     )
 }
-//https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615543967968X10094
+

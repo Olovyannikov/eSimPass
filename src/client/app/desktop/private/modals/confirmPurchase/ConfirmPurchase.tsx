@@ -87,5 +87,3 @@ export const ConfirmPurchase = () => {
         </div>
     )
 }
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616683325716X10282
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616683746500X10284
