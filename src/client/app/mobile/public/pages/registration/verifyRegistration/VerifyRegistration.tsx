@@ -8,6 +8,8 @@ import { Button } from '../../../components/buttons/Button';
 import { CONNECTION } from '../../../../../../Connection';
 import { useHistory } from 'react-router';
 import { STORAGE } from '../../../../../../StorageAdapter';
+import { img_next, img_retry } from '../../../../../../resources/images';
+import { Spinner } from '../../../components/spinner/Spinner';
 
 interface VerifyRegistrationModel {
     handleRegistration? : () => void;
@@ -76,8 +78,10 @@ export const VerifyRegistration = (props : VerifyRegistrationModel) => {
 
             CONNECTION.verifyMobileCode(createVerifyRegisterRequest())
                 .do(parseVerifyRegisterMobileResponse)
+                .do(() => setInProgress(prev => prev = true))
                 .takeUntil(closedSubject)
                 .subscribe(logger.rx.subscribe('Error verify in'))
+
         }
     }
 
@@ -105,13 +109,23 @@ export const VerifyRegistration = (props : VerifyRegistrationModel) => {
         if (error) return <div className="error">{error}</div>
     }
 
+    const showInProgress = () => {
+        if (inProgress) {
+            return <Spinner />
+        } 
+        else {
+            return <img onClick={handleVerifyRegisterModileCode} src={img_next} className='next-button' alt="Завершить регистрацию"/>
+        }
+    }
+
     return (
         <div className="VerifyRegistration">
             <div className="title-success">На <span>{props.email}</span> отправлено письмо с кодом для подтверждения регистрации</div>
+            <input disabled={inProgress} placeholder='Введите код' ref={codeInput} className='input-code' pattern="\d*" type="text"/>
+            <img src={img_retry} className='retry' onClick={props.handleRegistration} alt="Retry"/>
             {showError()}
-            <input disabled={inProgress} ref={codeInput} className='input-code' pattern="\d*" type="text"/>
-            <Button disabled={inProgress} func={handleVerifyRegisterModileCode} className='submit-button' text='Завершить регистрацию' />
-            <Button disabled={inProgress} className='verify-button' func={props.handleRegistration} text='Отправить код еще раз' />
+            {/* <Button disabled={inProgress} className='verify-button' func={props.handleRegistration} text='Отправить код еще раз' /> */}
+            {showInProgress()}
         </div>
     )
 }

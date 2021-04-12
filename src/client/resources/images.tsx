@@ -63,7 +63,10 @@ import hiddenQr from './img/hidden-qr.png';
 import firstStep from './img/first-step.png';
 import secondStep from './img/second-step.png';
 import stepBack from './img/step-back.png';
+import retry from './img/retry.png';
 
+
+export const img_retry = retry;
 export const img_stepBack = stepBack;
 export const img_firstStep = firstStep;
 export const img_secondStep = secondStep;
