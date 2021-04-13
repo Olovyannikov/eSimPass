@@ -11,15 +11,15 @@ export const MobileApplication = () => {
                 <Route exact path='/'>
                     <PublicApplication />
                 </Route>
-                <Route exact path='/registration'>
+                <Route path='/registration'>
                     <PublicApplication />
                 </Route>
-                <Route exact path='/connectEsim'>
+                <Route path='/connectEsim'>
                     <PublicApplication />
                 </Route>
-                {/* <Route path='*'>
-                    <Redirect to='/' />
-                </Route> */}
+                <Route path='*'>
+                    <PublicApplication />
+                </Route>
             </Switch>
         </Router>
     )

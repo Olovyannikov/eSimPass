@@ -3,6 +3,7 @@ import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { ListDevicesResponse, ListRatesResponse } from '../../../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
+import { STORAGE } from '../../../../../../../../StorageAdapter';
 import { waitForClose } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
 import { AddDevice } from './addDevice/AddDevice';
@@ -25,12 +26,30 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
 
     React.useEffect(() => {
 
-        CONNECTION.listDevices({})
-            .do(response => {
-                if (response.success) {
-                    setPackages(prev => prev = response.success.devices)
+        // CONNECTION.listDevices({})
+        //     .do(response => {
+        //         if (response.success) {
+        //             setPackages(prev => prev = response.success.devices)
+        //         }
+        //         setInProgress(prev => prev = false);
+        //     })
+        //     .takeUntil(closedSubject)
+        //     .subscribe(logger.rx.subscribe('Error in device response'))
+
+        STORAGE.getDevices()
+            .concat(CONNECTION.listDevices({})
+                .map(response => response.success.devices)
+            )
+            .do(devices => {
+                if (devices) {
+                    STORAGE.storeDevices(devices)
                 }
-                setInProgress(prev => prev = false);
+                else {
+                    STORAGE.storeDevices([])
+                }
+                setInProgress(prev => prev = false)
+                setPackages(prev => prev = devices)
+
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))

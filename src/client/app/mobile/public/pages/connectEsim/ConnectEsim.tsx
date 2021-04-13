@@ -30,10 +30,10 @@ export const ConnectEsim = () => {
                 console.log(response);
                 
                 if (response.success) {
-                    handlePlainError('Ошибка при пополнении баланса')
+                    handleSuccessResponse(response);
                 }   
                 else {
-                    handleSuccessResponse(response);
+                    handlePlainError('Ошибка при пополнении баланса')
                 }
             })
             .takeUntil(closedSubject)
