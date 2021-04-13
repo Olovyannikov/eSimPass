@@ -7,6 +7,7 @@ import { STATE_API } from '../../../../../../redux/StateApi';
 import { waitForClose } from '../../../../../../utils';
 
 import { Button } from '../../../components/buttons/Button';
+import { STORAGE } from '../../../../../../StorageAdapter';
 
 interface DeleteDeviceModel {
     deviceId? : string;
@@ -35,6 +36,7 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
                 
                 if (response.success) {
                     setResponse(prev => prev = `Устройство ${props.deviceName || ''} успешно удалено`)
+                    STORAGE.deleteDevice(props.deviceId)
                 }
                 else if (response.deviceNotFound) {
                     setResponse(prev => prev = `Устройство ${props.deviceName || ''} не найдено`)

@@ -17,9 +17,9 @@ export const MobileApplication = () => {
                 <Route exact path='/connectEsim'>
                     <PublicApplication />
                 </Route>
-                <Route path='*'>
+                {/* <Route path='*'>
                     <Redirect to='/' />
-                </Route>
+                </Route> */}
             </Switch>
         </Router>
     )

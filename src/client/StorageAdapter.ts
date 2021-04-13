@@ -31,6 +31,14 @@ class StorageAdapter {
         }
     }
 
+    public readonly deleteDevice = (deviceId : string) => {
+        const result = this.getFromStore<ListDevicesResponse.SuccessModel.DeviceModel[]>(this.STORE_DEVICES)
+
+        if (result) {
+            this.storeDevices(result.filter(el => el.deviceId !== deviceId))
+        }
+    }
+
     public readonly getEmail = () => {
         const result = this.getFromStore <string>(this.STORE_EMAIL);
 

@@ -5,6 +5,7 @@ import { State } from '../../../redux/State';
 import { connect } from 'react-redux';
 import { Modal } from './modals/Modal';
 import { STATE_API } from '../../../redux/StateApi';
+import { Navbar } from './pages/cabinet/blocks/navbar/Navbar';
 
 
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
@@ -27,6 +28,7 @@ const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
     return (
         <div className="PrivateApplication">
+            <Navbar />
             <PagesHolder />
             { showWizard() }
         </div>

@@ -7,11 +7,11 @@ export const Application = () => {
 
     return (
         <div className='Application'>
-            <div className="Mobile">
-                <MobileApplication />
-            </div>
             <div className="Desktop">
                 <DesktopApplication />
+            </div>
+            <div className="Mobile">
+                <MobileApplication />
             </div>
         </div>
     )

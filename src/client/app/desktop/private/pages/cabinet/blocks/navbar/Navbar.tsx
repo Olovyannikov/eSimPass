@@ -1,7 +1,7 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CONNECTION } from '../../../../../../../Connection';
 import { GetAbonentResponse } from '../../../../../../../generated/proto.web';
 import { img_person } from '../../../../../../../resources/images';
@@ -15,12 +15,14 @@ export const Navbar = () => {
     
     const closedSubject = waitForClose ();
 
+    const history = useHistory();
+
     const [email, setEmail] = React.useState<string>(null);
     const [documentUploaded, setDocumentUploaded] = React.useState<boolean>(null)
 
     const handleLogout = () => {
         STORAGE.clear();
-        window.location.reload();
+        history.push('/');
     }
 
     React.useEffect(() => {
