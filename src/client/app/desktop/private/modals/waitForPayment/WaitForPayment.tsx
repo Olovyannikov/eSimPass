@@ -8,6 +8,7 @@ import { GetPaymentRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
+import { STORAGE } from "../../../../../StorageAdapter";
 
 export enum WAIT_STATE {
     PAYMENT_NOT_FOUND,
@@ -59,7 +60,6 @@ export const WaitForPayment = () => {
                     return WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE
                 }
                 else if (response.success.deviceCreated) {
-                    
                     handlePaymentStatusResponse('Устройство создано');
                     return WAIT_STATE.DEVICE_CREATED
                 }

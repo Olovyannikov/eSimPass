@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PagesHolder } from './pages/PagesHolder';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { State } from '../../../redux/State';
 import { connect } from 'react-redux';
 import { Modal } from './modals/Modal';

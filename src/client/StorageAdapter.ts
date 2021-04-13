@@ -30,10 +30,6 @@ class StorageAdapter {
             return rx.Observable.empty()
         }
     }
-    
-    public readonly addDevice = () => {
-        
-    }
 
     public readonly deleteDevice = (deviceId : string) => {
         const result = this.getFromStore<ListDevicesResponse.SuccessModel.DeviceModel[]>(this.STORE_DEVICES)
