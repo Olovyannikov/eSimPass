@@ -1,6 +1,7 @@
 import * as rx from "rxjs/Rx"
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { nothingToNull } from "./utils";
+import { ListDevicesResponse } from './generated/proto.web';
 
 class StorageAdapter {
 
@@ -9,12 +10,26 @@ class StorageAdapter {
     public  readonly VERSION = "1.0.0-SNAPSHOT";
     private readonly STORE_EMAIL = 'email';
     private readonly DOCUMENT_UPLOADED = 'documentUploaded';
+    private readonly STORE_DEVICES = 'devices';
 
     private storage = new Map<string,any> ();
 
     public readonly storeEmail = (email : string) => this.store (this.STORE_EMAIL, email);
 
-    public readonly storeDocumentUploaded = (documentUploaded : boolean) => this.store (this.DOCUMENT_UPLOADED, documentUploaded)
+    public readonly storeDocumentUploaded = (documentUploaded : boolean) => this.store (this.DOCUMENT_UPLOADED, documentUploaded);
+
+    public readonly storeDevices = (devices : ListDevicesResponse.SuccessModel.DeviceModel[]) => this.store(this.STORE_DEVICES, devices);
+
+    public readonly getDevices = () => {
+        const result = this.getFromStore<ListDevicesResponse.SuccessModel.DeviceModel[]>(this.STORE_DEVICES);
+
+        if (result) {
+            return rx.Observable.of(result)
+        }
+        else {
+            return rx.Observable.empty()
+        }
+    }
 
     public readonly getEmail = () => {
         const result = this.getFromStore <string>(this.STORE_EMAIL);
@@ -73,19 +88,19 @@ class StorageAdapter {
         object : object
     })
 
-    public setToken(token : string) : void {
+    public setToken = (token : string) : void => {
         window.localStorage.setItem('token', token)
     }
 
-    public deleteToken() : void {
+    public deleteToken = () : void => {
         window.localStorage.removeItem('token')
     }
 
-    public getToken() : string {
+    public getToken = () : string => {
         return window.localStorage.getItem('token')
     }
 
-    public clear() : void {
+    public clear = () : void => {
         window.localStorage.clear()
     }
 }

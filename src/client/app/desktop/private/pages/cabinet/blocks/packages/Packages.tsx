@@ -9,6 +9,7 @@ import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../utils';
 import { PackageList } from './packageList/PackageList';
 import { devicesData } from '../../../../../../../mockData/mockDevices';
+import { STORAGE } from '../../../../../../../StorageAdapter';
 
 export const Packages = () => {
 
@@ -32,6 +33,21 @@ export const Packages = () => {
     }
 
     React.useEffect(() => {
+
+
+
+        // STORAGE.getDevices()
+        //     .concat(CONNECTION.listDevices({})
+        //         .map(response => response.success.devices)
+        //     )
+        //     .do(devices => {
+        //         STORAGE.storeDevices(devices)
+        //         setPackages(prev => prev = filterActivePackages(devices))
+        //         setInProgress(prev => prev = false)
+
+        //     })
+        //     .takeUntil(closedSubject)
+        //     .subscribe(logger.rx.subscribe('Error in device response'))
 
         CONNECTION.listDevices({})
 

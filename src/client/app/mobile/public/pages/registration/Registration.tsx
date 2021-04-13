@@ -162,6 +162,7 @@ export const Registration = () => {
         else {
             return (
                 <>
+                    {/* TODO link to download app */}
                     <div className="already-register">Уже зарегистрирован</div>
                     <img onClick={handleRegister} src={img_next} className='button-next' alt="Next"/>
                 </>
