@@ -63,7 +63,7 @@ export const RegistrationDialog = () => {
         setSuccessRegister(null)
 
         if (checkEqualsPassword ()) {
-
+            
             CONNECTION.registerWeb(createRegisterRequest())
                 .do(parseRegisterResponse)
                 .takeUntil(closedSubject)
