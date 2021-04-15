@@ -12,7 +12,7 @@ export const TutorialBlock = () => {
                     <h1 className='tutorial-block__title'>Как подключить eSIM?</h1>
                     <div className='tutorial-block__text'>Сразу после заявки вы получите QR код</div>
                     <div className='tutorial-block__text'>Необходимо отсканировать QR код смартфоном и следовать указаниям</div>
-                    <div className='tutorial-block__text'>Скачать приложение eSIM Travel на смартфон</div>
+                    <div className='tutorial-block__text'>Скачать приложение eSIM Pass на смартфон</div>
                     <div className='tutorial-block__text'>В приложение купить необходимый тариф</div>
                     </div>
                 <div className="tutorial-block__bottom">
@@ -31,7 +31,7 @@ export const TutorialBlock = () => {
                 </div>
             </div>
             <div className="tutorial-block__right">
-                <img className='tutorial-block__img_phone' src={img_phone} alt="eSim Travel"/>
+                <img className='tutorial-block__img_phone' src={img_phone} alt="eSim Pass"/>
             </div>
         </div>
     )

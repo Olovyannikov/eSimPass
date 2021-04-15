@@ -7,7 +7,7 @@ export const WhyBlock = () => {
         <div className="WhyBlock">
             <div className="why-block__left">
                 <div className="why-block__title">
-                    Почему eSIM Travel?
+                    Почему eSIM Pass?
                 </div>
                 <div className="why-block__imgs">
                     <div className="why-block__left-part">
@@ -19,7 +19,7 @@ export const WhyBlock = () => {
                         <div className="why-block__text">Легкое переключение между 200 операторов</div>
                     </div>
                     <div className="why-block__right-part">
-                        <img className='why-block__img_travel' src={img_travel} alt="eSIM Travel"/>
+                        <img className='why-block__img_travel' src={img_travel} alt="eSIM Pass"/>
                         <div className="why-block__text">Невозможно сломать/потерять, легко включить/отключить</div>
                     </div>
                 </div>
