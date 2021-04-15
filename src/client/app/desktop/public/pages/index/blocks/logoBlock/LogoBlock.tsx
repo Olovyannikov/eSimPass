@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { STATE_API } from "../../../../../../../redux/StateApi";
 import { img_girl1 } from "../../../../../../../resources/images";
-import { STORAGE } from "../../../../../../../StorageAdapter";
 
 
 export const LogoBlock = () => {

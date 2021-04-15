@@ -34,36 +34,35 @@ export const Packages = () => {
 
     React.useEffect(() => {
 
-        STORAGE.getDevices()
-            .concat(CONNECTION.listDevices({})
-                .map(response => response.success.devices)
-            )
-            .do(devices => {
-                if (devices) {
-                    STORAGE.storeDevices(devices)
-                }
-                else {
-                    STORAGE.storeDevices([])
-                }
-                setInProgress(prev => prev = false)
-                setPackages(prev => prev = filterActivePackages(devices))
-
-            })
-            .takeUntil(closedSubject)
-            .subscribe(logger.rx.subscribe('Error in device response'))
-
-
-            // STORAGE.deleteDevice('1')
-        // CONNECTION.listDevices({})
-
-        //     .do(response => {
-        //         if (response.success) {
-        //             setPackages(prev => prev = filterActivePackages(response.success.devices))
+        // STORAGE.getDevices()
+        //     .concat(CONNECTION.listDevices({})
+        //         .map(response => response.success.devices)
+        //     )
+        //     .do(devices => {
+        //         if (devices) {
+        //             STORAGE.storeDevices(devices)
+        //         }
+        //         else {
+        //             STORAGE.storeDevices([])
         //         }
         //         setInProgress(prev => prev = false)
+        //         setPackages(prev => prev = filterActivePackages(devices))
+
         //     })
         //     .takeUntil(closedSubject)
         //     .subscribe(logger.rx.subscribe('Error in device response'))
+
+
+        CONNECTION.listDevices({})
+
+            .do(response => {
+                if (response.success) {
+                    setPackages(prev => prev = filterActivePackages(response.success.devices))
+                }
+                setInProgress(prev => prev = false)
+            })
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [])
 

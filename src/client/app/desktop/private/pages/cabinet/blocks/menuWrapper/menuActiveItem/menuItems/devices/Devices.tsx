@@ -11,7 +11,7 @@ import { Device } from './device/Device';
 import { DisabledDevice } from './disabledDevice/DisabledDevice';
 import { ListDevicesResponse } from '../../../../../../../../../../generated/proto.web';
 import { Spinner } from '../../../../../../../../private/components/spinnerPayment/Spinner';
-import { STORAGE } from '../../../../../../../../../../StorageAdapter';
+// import { STORAGE } from '../../../../../../../../../../StorageAdapter';
 
 export const Devices = () => {
 
@@ -24,34 +24,34 @@ export const Devices = () => {
 
     React.useEffect(() => {
 
-        // CONNECTION.listDevices({})
+        CONNECTION.listDevices({})
 
-        //     .do(response => {
-        //         if (response.success) {
-        //             setPackages(prev => prev = response.success.devices)
-        //         }
-        //         setInProgress(prev => prev = false);
-        //     })
-        //     .takeUntil(closedSubject)
-        //     .subscribe(logger.rx.subscribe('Error in device response'))
-
-        STORAGE.getDevices()
-            .concat(CONNECTION.listDevices({})
-                .map(response => response.success.devices)
-            )
-            .do(devices => {
-                if (devices) {
-                    STORAGE.storeDevices(devices)
+            .do(response => {
+                if (response.success) {
+                    setPackages(prev => prev = response.success.devices)
                 }
-                else {
-                    STORAGE.storeDevices([])
-                }
-                setInProgress(prev => prev = false)
-                setPackages(prev => prev = devices)
-
+                setInProgress(prev => prev = false);
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
+
+        // STORAGE.getDevices()
+        //     .concat(CONNECTION.listDevices({})
+        //         .map(response => response.success.devices)
+        //     )
+        //     .do(devices => {
+        //         if (devices) {
+        //             STORAGE.storeDevices(devices)
+        //         }
+        //         else {
+        //             STORAGE.storeDevices([])
+        //         }
+        //         setInProgress(prev => prev = false)
+        //         setPackages(prev => prev = devices)
+
+        //     })
+        //     .takeUntil(closedSubject)
+        //     .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [])
 

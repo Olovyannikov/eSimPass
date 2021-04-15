@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import * as rx from "rxjs/Rx"
-import { VerifyMobileCodeRequest, VerifyMobileCodeResponse} from '../../../../../../generated/proto.web';
+import * as rx from "rxjs/Rx";
+import { VerifyMobileCodeRequest, VerifyMobileCodeResponse } from '../../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { convertEndingOfNoun, waitForClose } from '../../../../../../utils';
 import { Button } from '../../../components/buttons/Button';
