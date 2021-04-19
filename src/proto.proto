@@ -1,0 +1,580 @@
+syntax = "proto3";
+package api;
+
+
+
+
+service Abonent {
+    rpc listenBalance (stream Empty) returns (stream ListenBalanceResponse);
+    rpc getAbonent (Empty) returns (GetAbonentResponse);
+    rpc listCharges (ListChargesRequest) returns (ListChargesResponse);
+    rpc changePassword (ChangePasswordRequest) returns (ChangePasswordResponse);
+    rpc setDocument (SetDocumentRequest) returns (SetDocumentResponse);
+    rpc getDocumentPhoto (GetDocumentPhotoRequest) returns (GetDocumentPhotoResponse);
+}
+
+message ListenBalanceResponse {
+
+    message SuccessModel {
+        double balance = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        Empty unauthorized = 2;
+    }
+}
+
+message GetAbonentResponse {
+
+    message SuccessModel {
+        message DocumentModel {
+            string fio = 1;
+            string phone = 2;
+            string birhday = 3;
+            string address = 4;
+            string sn = 5;
+            string issueDate = 6;
+        }
+
+        string email = 1;
+        DocumentModel document = 2;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+    }
+}
+
+message ListChargesRequest {
+    Int64Value fromDate = 1;
+}
+
+message ListChargesResponse {
+
+    message SuccessModel {
+        message ChargeModel {
+
+            message TypeModel {
+
+                message DataUsedFromBalanceModel {
+                    int64 bytes = 1;
+                    string countryId = 2;
+                    string countryName = 3;
+                    string operatorName = 4;
+                    string deviceId = 5;
+                    StringValue deviceName = 6;
+                }
+
+                message BoughtRoamingPackModel {
+                    string countryId = 1;
+                    string countryName = 2;
+                    string operatorName = 3;
+                    DurationModel duration = 4; 
+                    string deviceId = 5;
+                    StringValue deviceName = 6;
+                }
+
+                oneof type {
+                    Empty addBalance = 1;
+                    DataUsedFromBalanceModel dataUsedFromBalance = 2;
+                    BoughtRoamingPackModel boughtRoamingPack = 3;
+                }                
+            }
+
+            int64 date = 1;
+            double total = 2;
+            TypeModel type = 3;
+        }
+
+        repeated ChargeModel charges = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+    }
+}
+
+message ChangePasswordRequest {
+    string password = 1;
+}
+
+
+message ChangePasswordResponse {
+
+    oneof result {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty invalidPassword = 3;
+        Empty unauthorized = 4;
+    }
+}
+
+message SetDocumentRequest {
+    string fio = 1;
+    string phone = 2;
+    string birhday = 3;
+    string address = 4;
+    string sn = 5;
+    string issueDate = 6;
+    bytes photo = 7;
+}
+
+message SetDocumentResponse {
+
+    oneof result {
+        Empty success = 1;
+        string invalidRequest = 2;
+    }    
+}
+
+message GetDocumentPhotoRequest {
+}
+
+message GetDocumentPhotoResponse {
+
+    oneof result {
+        bytes success = 1;
+        string invalidRequest = 2;
+        Empty documentIsNotLoaded = 3;
+    }
+}
+
+
+
+
+
+service Auth {
+    rpc login (LoginRequest) returns (LoginResponse);
+    rpc requestPasswordRestore (RequestPasswordRestoreRequest) returns (RequestPasswordRestoreResponse);
+    rpc verifyPasswordRestore (VerifyPasswordRestoreRequest) returns (VerifyPasswordRestoreResponse);
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmailOrPassword = 3;
+        int64 tooManyErrorAttempts = 4;
+    }
+}
+
+message RequestPasswordRestoreRequest {
+    string email = 1;
+}
+
+message RequestPasswordRestoreResponse {
+
+    oneof result {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmail = 3;
+        Empty accountNotFound = 4;
+        Empty expired = 5;
+        int64 tooManyErrorAttempts = 6;
+    }
+}
+
+message VerifyPasswordRestoreRequest {
+    string verificationToken = 1;
+}
+
+message VerifyPasswordRestoreResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof result {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty expired = 3;
+        Empty invalidToken = 4;
+    }
+}
+
+
+
+
+
+service Device {
+    rpc deleteDevice (DeleteDeviceRequest) returns (DeleteDeviceResponse);
+    rpc renameDevice (RenameDeviceRequest) returns (RenameDeviceResponse);
+    rpc listDevices (Empty) returns (ListDevicesResponse);
+}
+
+message DeleteDeviceRequest {
+    string deviceId = 1;
+}
+
+message DeleteDeviceResponse {
+
+    message SuccessModel {
+    }
+
+    oneof response {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+        Empty deviceNotFound = 4;
+        Empty deviceIsDeleted = 5;
+    }
+}
+
+message RenameDeviceRequest {
+    string deviceId = 1;
+
+    string name = 2;
+}
+
+message RenameDeviceResponse {
+
+    oneof response {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+        Empty deviceNotFound = 4;
+    }
+}
+
+message ListDevicesResponse {
+
+    message SuccessModel {
+
+        message DeviceModel {
+
+            message PackModel {
+                message ActivatedModel {
+                    int64 activated = 1;
+                    int64 finished = 2;
+                    int64 usedBytes = 3;
+                    int64 lastUsed = 4;
+                }
+
+                string countryId = 1;
+                string countryName = 2;
+                string operatorName = 3;
+                double price = 4;
+                DurationModel duration = 5;
+                int64 quota = 6;
+                int64 created = 7;
+                bool current = 8;
+                ActivatedModel activated = 9;
+            }
+
+            string deviceId = 1;
+            int64 created = 2;
+            StringValue name = 3;
+            string lpaUrl = 4;   
+            PackModel currentPack = 5;
+            repeated PackModel packs = 6;     
+        }
+
+        repeated DeviceModel devices = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        Empty unauthorized = 2;
+    }
+}
+
+
+
+
+
+service Payment {
+    rpc getMinBalancePaymentAmmount (Empty) returns (GetMinBalancePaymentAmmountRespoonse);
+    rpc createBalancePayment (CreateBalancePaymentRequest) returns (CreateBalancePaymentResponse);
+    rpc createDevicePayment (CreateDevicePaymentRequest) returns (CreateDevicePaymentResponse);
+    rpc buyPack (BuyPackRequest) returns (BuyPackResponse);
+    rpc getPayment (GetPaymentRequest) returns (GetPaymentResponse);
+    rpc getDevicePaymentAmmount (Empty) returns (GetDevicePaymentAmmountResponse);
+}
+
+message GetMinBalancePaymentAmmountRespoonse {
+    double ammount = 1;
+}
+
+message GetDevicePaymentAmmountResponse {
+
+    double ammount = 1;
+
+}
+
+message CreateBalancePaymentRequest {
+    double amount = 1;
+}
+
+message CreateBalancePaymentResponse {
+
+    message SuccessModel {
+        string url = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+        Empty ammountIsLessMinimal = 4;
+    }    
+}
+
+message CreateDevicePaymentRequest {
+}
+
+message CreateDevicePaymentResponse {
+
+    message SuccessModel {
+        string url = 1;
+        string token = 2;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+    }
+}
+
+message BuyPackRequest {
+    string deviceId = 1;
+    string countryId = 2;
+    DurationModel duration = 3;
+}
+
+message BuyPackResponse {
+
+    oneof response {
+        Empty success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+        Empty deviceNotFound = 4;
+        Empty countryNotFound = 5;
+        Empty packNotFound = 6;
+        Empty notEnoughFunds = 7;
+    }
+}
+
+message GetPaymentRequest {
+    string url = 1;
+}
+
+message GetPaymentResponse {
+    
+    message SuccessModel {
+        StringValue deviceId = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty unauthorized = 3;
+        Empty paymentNotFound = 4;
+        Empty notReady = 5;
+    }
+}
+
+
+
+
+service Rate {
+    rpc listRates (ListRatesRequest) returns (ListRatesResponse);
+}
+
+message ListRatesRequest {
+    Int64Value seq = 1;
+}
+
+message ListRatesResponse {
+
+    message SuccessModel {
+
+        message RateModel {
+            
+            message PackModel {
+                double price = 1;
+                int64 quota = 2;
+                DurationModel duration = 3;
+            }
+            
+            string countryId = 1;
+            string countryName = 2;
+            string operatorName = 3;
+            double price = 4;
+            Int32Value favoriteOrder = 5;
+            repeated PackModel packs = 6;
+        }
+
+        int64 seq = 1;
+        repeated RateModel rates = 2;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+    }
+}
+
+
+
+
+
+service Registration {
+    rpc registerMobile (RegisterMobileRequest) returns (RegisterMobileResponse);
+    rpc verifyMobileCode (VerifyMobileCodeRequest) returns (VerifyMobileCodeResponse);
+    
+    rpc registerWeb (RegisterWebRequest) returns (RegisterWebResponse);
+    rpc verifyWebRegistration (VerifyWebRegistrationRequest) returns (VerifyWebRegistrationResponse);
+}
+
+message RegisterMobileRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message RegisterMobileResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmail = 3;
+        Empty invalidPassword = 4;
+        Empty emailAlreadyUsed = 5;
+        int64 tooManyAttempts = 6;
+        Empty expired = 7;
+    }
+}
+message VerifyMobileCodeRequest {
+    string token = 1;
+    int32 mobileCode = 2;
+}
+
+message VerifyMobileCodeResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty expired = 3;
+        Empty invalidCode = 4;
+        int64 tooManyErrorAttempts = 5;
+    }
+}
+
+message RegisterWebRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message RegisterWebResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty invalidEmail = 3;
+        Empty invalidPassword = 4;
+        Empty emailAlreadyUsed = 5;
+        int64 tooManyAttempts = 6;
+        Empty expired = 7;
+    }
+}
+
+message VerifyWebRegistrationRequest {
+    string token = 1;
+}
+
+message VerifyWebRegistrationResponse {
+
+    message SuccessModel {
+        string token = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2;
+        Empty expired = 3;
+        Empty invalidToken = 4;
+    }
+}
+
+
+
+
+service System {
+    rpc checkVersion (CheckVersionRequest) returns (CheckVersionResponse);
+}
+
+message CheckVersionRequest {
+    string version = 1;
+}
+
+message CheckVersionResponse {
+
+    message SuccessModel {
+        bool match = 1;
+    }
+
+    oneof response {
+        SuccessModel success = 1;
+        string invalidRequest = 2; 
+    }
+}
+
+
+message Empty {
+    
+}
+
+message StringValue {
+    string value = 1;
+}
+
+message Int32Value {
+    int32 value = 1;
+}
+
+message Int64Value {
+    int64 value = 1;
+}
+
+message BoolValue {
+    bool value = 1;
+}
+
+enum DURATION_MEASURE {
+    DURATION_MEASURE_UNKNOWN = 0;
+    DAY = 1;
+    WEEK = 2;
+    MONTH = 4;
+}
+
+message DurationModel {
+    DURATION_MEASURE messure = 1;
+    int32 quantity = 2;
+}
