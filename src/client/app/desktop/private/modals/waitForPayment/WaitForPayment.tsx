@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../Connection';
 import { GetPaymentRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../utils';
+import { hasWebApi, waitForClose } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
 import { STORAGE } from "../../../../../StorageAdapter";
 

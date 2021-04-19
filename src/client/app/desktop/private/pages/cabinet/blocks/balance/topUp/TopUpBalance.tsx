@@ -4,7 +4,7 @@ import { Button } from '../../../../../components/buttons/Button';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { CreateBalancePaymentRequest, CreateBalancePaymentResponse } from '../../../../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../../../../utils';
+import { hasWebApi, waitForClose } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
 
 
@@ -57,7 +57,10 @@ export const TopUpBalance = () => {
 
     const handleSuccessResponse = (response : CreateBalancePaymentResponse) => {
         setInProgress(prev => prev = false);
-        window.open(response.success.url);
+        
+        if (hasWebApi()) {
+            window.open(response.success.url);
+        }
     }
 
     const createBalancePaymentRequest = () : CreateBalancePaymentRequest => ({

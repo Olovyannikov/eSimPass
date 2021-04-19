@@ -5,7 +5,7 @@ import { CONNECTION } from '../../../../../Connection';
 import { GetDevicePaymentAmmountResponse, CreateDevicePaymentResponse, CreateDevicePaymentRequest } from '../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../redux/StateApi';
 import { Button } from '../../components/buttons/Button';
-import { waitForClose } from "../../../../../utils";
+import { hasWebApi, waitForClose } from "../../../../../utils";
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 
 export const ConfirmPurchase = () => {
@@ -67,7 +67,9 @@ export const ConfirmPurchase = () => {
 
     const handleSuccessResponse = (response : CreateDevicePaymentResponse) => {
         setInProgress(prev => prev = false);
-        window.open(response.success.url);
+        if (hasWebApi()) {
+            window.open(response.success.url); 
+        }
     }
 
     const createDevicePaymentRequest = () : CreateDevicePaymentRequest => ({})

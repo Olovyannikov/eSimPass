@@ -2,6 +2,12 @@ import * as React from 'react';
 import * as rx from "rxjs/Rx"
 import { PACK_DURATION } from './generated/proto.web';
 
+export const hasWebApi = () => {
+    if (typeof window !== 'undefined') {
+        return true
+    }
+}
+
 export const nothingToNull = (value: string) : string => {
     if (value == null) {
         return null

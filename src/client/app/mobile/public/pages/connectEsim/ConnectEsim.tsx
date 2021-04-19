@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import { CreateDevicePaymentRequest, CreateDevicePaymentResponse } from '../../../../../generated/proto.web';
 import { CONNECTION } from '../../../../../Connection';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../utils';
+import { hasWebApi, waitForClose } from '../../../../../utils';
 
 export const ConnectEsim = () => {
 
@@ -43,7 +43,10 @@ export const ConnectEsim = () => {
 
     const handleSuccessResponse = (response : CreateDevicePaymentResponse) => {
         setInProgress(prev => prev = false);
-        window.open(response.success.url);
+
+        if (hasWebApi()) {
+            window.open(response.success.url);
+        }
     }
 
     const handlePlainError = (error : string) => {
