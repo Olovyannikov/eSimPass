@@ -6,12 +6,14 @@ export interface Props {
 }
 
 export const Header = (props : Props) => {
+
+
     return (
         <table className="Header" cellSpacing="0" cellPadding="0">
             <tbody>
                 <tr>
                     <td>
-                        <div className="flag-icon-background flag-icon-gr"/>
+                        <div className={`flag-icon-background flag-icon-${props.rate.countryId.toLowerCase()}`}/>
                     </td>
                     <td>
                         <div>

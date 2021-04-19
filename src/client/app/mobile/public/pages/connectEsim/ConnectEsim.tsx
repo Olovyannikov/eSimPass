@@ -27,8 +27,6 @@ export const ConnectEsim = () => {
 
         CONNECTION.createDevicePayment(createDevicePaymentRequest())
             .do(response => {
-                console.log(response);
-                
                 if (response.success) {
                     handleSuccessResponse(response);
                 }   

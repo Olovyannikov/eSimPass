@@ -7,6 +7,8 @@ import { Registration } from './registration/Registration';
 
 export const PagesHolder = () => {
 
+    // try to use useLocation
+
     const renderPage = () => {
         
         if (window.location.pathname === '/registration') {
