@@ -1,4 +1,3 @@
-/*
 import * as React from "react";
 
 import { PagesHolder } from "./pages/PagesHolder";
@@ -52,4 +51,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const PublicApplication = connect(mapStateToProps)(PublicApplicationImpl)
-*/
+

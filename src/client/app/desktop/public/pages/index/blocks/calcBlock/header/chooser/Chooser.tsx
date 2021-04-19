@@ -1,4 +1,3 @@
-/*
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { useEffectRx } from "@glonassmobile/codebase-web/useEffectRx";
 import * as React from "react";
@@ -50,8 +49,8 @@ export const Chooser = (props : Props) => {
 
     return (
         <div className="Chooser" style={{display : getDisplay ()}}>
-            {filteredRates.map (rate => <Country key={rate.rateId} model={rate} clicked={() => props.selected (rate)}/>)}
+            {filteredRates.map (rate => <Country key={rate.countryId} model={rate} clicked={() => props.selected (rate)}/>)}
         </div>
     )
 }
-*/
+
