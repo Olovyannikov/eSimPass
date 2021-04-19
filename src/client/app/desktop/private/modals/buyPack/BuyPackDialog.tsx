@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { Logger } from '@glonassmobile/codebase-web/Logger';
@@ -42,8 +41,11 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         if (response.success) {
             setSuccess(prev => prev = true)
         }
-        else if (response.packNotFound || response.rateNotFound) {
+        else if (response.packNotFound) {
             setResponse(prev => prev = 'Пакет не найден')
+        }
+        else if (response.countryNotFound) {    
+            setResponse(prev => prev = 'Страна не найден')
         }
         else if (response.notEnoughFunds) {
             setResponse(prev => prev = 'Недостаточно средств')
@@ -60,7 +62,7 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         else {
             return (
                 <>
-                    <div className="title">Подтвердите покупку пакета {props.pack.device.currentPack.rate.operatorName} за {props.pack.device.currentPack.price} ₽ ?</div>
+                    <div className="title">Подтвердите покупку пакета {props.pack.device.currentPack.operatorName} за {props.pack.device.currentPack.price} ₽ ?</div>
                     <Button disabled={inProgress} className='yes' text='Подтверждаю' func={handleBuyPack} />
                     <Button disabled={inProgress} className='no' text='Отмена' func={closeModal} />
                     <div className="response">{response}</div>
@@ -72,9 +74,7 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
     const createBuyPackRequest = () : BuyPackRequest => ({
         deviceId : props.pack.device.deviceId,
         duration : props.pack.device.currentPack.duration,
-        price : props.pack.device.currentPack.price,
-        quota : props.pack.device.currentPack.quota,
-        rateId : props.pack.device.currentPack?.rate.rateId
+        countryId : props.pack.device.currentPack.countryId,
     })
 
     return (
@@ -83,4 +83,4 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         </div>
     )
 }
-*/
+

@@ -1,10 +1,9 @@
-/*
 import * as React from 'react';
 import * as rx from 'rxjs/Rx';
 
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../../../../../../Connection';
-import { devicesData } from '../../../../../../../../../../mockData/mockDevices';
+// import { devicesData } from '../../../../../../../../../../mockData/mockDevices';
 import { waitForClose } from '../../../../../../../../../../utils';
 
 import { AddDevice } from './addDevice/AddDevice';
@@ -26,8 +25,8 @@ export const Devices = () => {
     React.useEffect(() => {
 
         CONNECTION.listDevices({})
-
-            .do(response => {
+        
+        .do(response => {
                 if (response.success) {
                     setPackages(prev => prev = response.success.devices)
                 }
@@ -87,4 +86,4 @@ export const Devices = () => {
         </div>
     )
 }
-*/
+

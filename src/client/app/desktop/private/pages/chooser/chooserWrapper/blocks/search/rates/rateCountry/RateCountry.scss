@@ -20,12 +20,14 @@
         overflow: hidden;
     }
 
-    .img-flag {
+    .flag-icon-background {
         float: left;
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
         width: 8.3333vw;
         height: 5.5729vw;
         margin-left: 3.4375vw;
         margin-top: 2.5vw;
     }
-
 }

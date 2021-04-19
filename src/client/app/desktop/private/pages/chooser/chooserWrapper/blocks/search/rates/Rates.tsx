@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 
@@ -64,7 +63,7 @@ export const Rates = (props : RatesModel) => {
             return (
                 <>
                     <div className="title">Популярные страны</div>
-                    {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                    {filteredRates.map (rate => <RateCountry countryFlag={rate.countryId} key={rate.countryId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                 </>
             )
         }
@@ -80,7 +79,7 @@ export const Rates = (props : RatesModel) => {
             return (
                 <>
                     <div className="title">Поиск</div>
-                    {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                    {filteredRates.map (rate => <RateCountry countryFlag={rate.countryId} key={rate.countryId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                 </>
             )
         }
@@ -92,4 +91,4 @@ export const Rates = (props : RatesModel) => {
         </div>
     )
 }
-*/
+

@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import {img_buyQr, img_activeDetail, img_activeSettings, img_activeLoyalty, img_activeDevices, img_activeSupport, img_settings, img_detail, img_support, img_loyalty, img_activeBuyQr, img_devices} from '../../../../../../../resources/images';
@@ -82,4 +81,4 @@ const menuButtons : MenuButtonModel[] = [{
     className : 'settings',
     active : false
 }]
-*/
+

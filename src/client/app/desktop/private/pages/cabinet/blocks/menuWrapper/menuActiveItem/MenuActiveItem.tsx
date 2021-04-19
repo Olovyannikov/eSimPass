@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { MenuButton } from '../MenuWrapper';
@@ -42,4 +41,4 @@ export const MenuActiveItem = (props : MenuActiveItemModel) => {
         </div>
     )
 }
-*/
+

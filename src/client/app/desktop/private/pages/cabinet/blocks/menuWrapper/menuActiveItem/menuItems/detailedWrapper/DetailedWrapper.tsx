@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { Logger } from '@glonassmobile/codebase-web/Logger';
@@ -7,7 +6,7 @@ import { waitForClose } from '../../../../../../../../../../utils';
 import { Spinner } from '../../../../../../../../public/components/spinner/Spinner';
 import { ListChargesRequest, ListChargesResponse } from '../../../../../../../../../../generated/proto.web';
 import { Detailed } from './detailed/Detailed';
-import { mockCharges } from '../../../../../../../../../../mockData/mockCharges';
+// import { mockCharges } from '../../../../../../../../../../mockData/mockCharges';
 
 export const DetailedWrapper = () => {
 
@@ -19,9 +18,12 @@ export const DetailedWrapper = () => {
     const [inProgress, setInProgress] = React.useState<boolean>(true);
 
     React.useEffect(() => {
+        console.log(String(Date.parse(String(new Date()))));
         
         CONNECTION.listCharges(createListChargesRequest())
             .do(response => {
+                console.log('CHARGES', response);
+                
                 if (response.success) {
                     handleSuccessResponse(response)
                 }
@@ -39,7 +41,7 @@ export const DetailedWrapper = () => {
 
     const createListChargesRequest = () : ListChargesRequest => ({
         fromDate : {
-            value : String(Date.parse(String(new Date())))
+            value : '1618041619000'
         }
     })
 
@@ -61,4 +63,3 @@ export const DetailedWrapper = () => {
         </div>
     )
 }
-*/

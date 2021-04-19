@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { ChooserWrapper } from './chooserWrapper/ChooserWrapper';
@@ -11,4 +10,3 @@ export const Chooser = () => {
         </div>
     )
 }
-*/

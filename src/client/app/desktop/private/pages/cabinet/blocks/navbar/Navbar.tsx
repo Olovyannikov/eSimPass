@@ -29,7 +29,7 @@ export const Navbar = () => {
 
         STORAGE.getEmail ()
             .concat (CONNECTION.getAbonent({})
-                .map (response => response.success.email)
+                .map (response => response.success.email )
             )
             .do(email => {
                 STORAGE.storeEmail (email)
@@ -79,3 +79,5 @@ export const Navbar = () => {
         </div>
     )
 }
+
+

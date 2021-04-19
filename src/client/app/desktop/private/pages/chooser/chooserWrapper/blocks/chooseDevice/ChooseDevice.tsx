@@ -1,10 +1,8 @@
-/*
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { ListDevicesResponse, ListRatesResponse } from '../../../../../../../../generated/proto.web';
-import { STATE_API } from '../../../../../../../../redux/StateApi';
-import { STORAGE } from '../../../../../../../../StorageAdapter';
+// import { STORAGE } from '../../../../../../../../StorageAdapter';
 import { waitForClose } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
 import { AddDevice } from './addDevice/AddDevice';
@@ -63,10 +61,10 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
             return packages.map((el, index : number) => {
                 
                 if (el.currentPack) {
-                    return <Device pack={props.pack} rateId={props.rate.rateId} device={el} key={index}/>
+                    return <Device pack={props.pack} countryId={props.rate.countryId} device={el} key={index}/>
                 } 
                 else {
-                    return <DisabledDevice pack={props.pack} rateId={props.rate.rateId} device={el} key={index}/>
+                    return <DisabledDevice pack={props.pack} countryId={props.rate.countryId} device={el} key={index}/>
                 }
             })
         }
@@ -90,4 +88,4 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
         </div>
     )
 }
-*/
+

@@ -111,29 +111,29 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
         unit
     }
 }
-/*
-export const convertDateUntilPackage = (date : string, duration? : PACK_DURATION) => {
-    
-    const boughtDate = new Date(Number(date))    
 
-    switch (duration) {
-        case PACK_DURATION.DAY:
-            return  new Date (boughtDate.setDate(boughtDate.getDate() + 1))
+// export const convertDateUntilPackage = (date : string, duration? : DurationModel) => {
     
-        case PACK_DURATION.WEEK:
-            return new Date (boughtDate.setDate(boughtDate.getDate() + 7))
+//     const boughtDate = new Date(Number(date))    
 
-        case PACK_DURATION.TWO_WEEKS:
-            return new Date (boughtDate.setDate(boughtDate.getDate() + 14))
+//     switch (duration.messure) {
+//         case DURATION_MEASURE.DAY:
+//             return  new Date (boughtDate.setDate(boughtDate.getDate() + 1))
+    
+//         case DURATION_MEASURE:
+//             return new Date (boughtDate.setDate(boughtDate.getDate() + 7))
+
+//         case DURATION_MEASURE:
+//             return new Date (boughtDate.setDate(boughtDate.getDate() + 14))
         
-        case PACK_DURATION.MONTH:
-            return new Date (boughtDate.setDate(boughtDate.getDate() + 31))
+//         case DURATION_MEASURE:
+//             return new Date (boughtDate.setDate(boughtDate.getDate() + 31))
 
-        default:
-            break;
-    }
-}
-*/
+//         default:
+//             break;
+//     }
+// }
+
 export const countDaysDyration = (duration : DurationModel) => {
     let countedDays : number = 1;
 
@@ -147,7 +147,7 @@ export const countDaysDyration = (duration : DurationModel) => {
         countedDays = 31 * duration.quantity
     }
     else if (duration.messure === DURATION_MEASURE.DURATION_MEASURE_UNKNOWN) {
-
+        countedDays = 1
     }
 
     return countedDays

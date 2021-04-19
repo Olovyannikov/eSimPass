@@ -1,11 +1,10 @@
-/*
 import * as React from 'react';
 import { useHistory } from 'react-router';
 
 import { ListDevicesResponse } from '../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../redux/StateApi';
 
-import { convertDateUntilPackage } from '../../../../../utils';
+// import { convertDateUntilPackage } from '../../../../../utils';
 import { Button } from '../buttons/Button';
 
 export interface BuyRateModel {
@@ -20,10 +19,10 @@ export const BuyPack = (props : BuyRateModel) => {
 
     return (
         <div className="BuyPack">
-            <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.boughtDate, props.device.currentPack.duration).toLocaleDateString()}</span></div>
+            {/* <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.activated.activated, props.device.currentPack.duration).toLocaleDateString()}</span></div> */}
+            
             <Button func={handleBuyPack} className='button-buy' text='Купить пакет' />
             <div className="off-rate">Отключить интернет</div>
         </div>
     )
 }
-*/

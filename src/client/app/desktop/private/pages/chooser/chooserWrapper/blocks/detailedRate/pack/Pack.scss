@@ -13,17 +13,17 @@
         color: $white;
 
         .operator-name {
-            font-size: 1.5625vw;
+            font-size: 1.35vw;
             font-weight: 400;
             float: left;
             width: 100%;
+            min-height: 4.6vw;
         }
 
         .type {
             width: 100%;
             font-size: 1.0415vw;
             float: left;
-            margin-top: 1vw;
         }
 
         @import './detailedInfo/DetailedInfo.scss';

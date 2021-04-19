@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { Balance } from './blocks/balance/Balance';
@@ -16,4 +15,3 @@ export const Cabinet = () => {
         </div>
     )
 }
-*/

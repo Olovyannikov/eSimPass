@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 import { PagesHolder } from './pages/PagesHolder';
 import { useLocation } from 'react-router-dom';
@@ -41,4 +40,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const PrivateApplication = connect(mapStateToProps)(PrivateApplicationImpl);
-*/
+

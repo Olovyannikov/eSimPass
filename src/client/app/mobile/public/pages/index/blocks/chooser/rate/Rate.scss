@@ -18,10 +18,11 @@
             color: $white;
 
             .operator-name {
-                font-size: 5.7vw;
+                font-size: 5.2vw;
                 font-weight: 400;
                 float: left;
                 width: 100%;
+                min-height: 19vw;
             }
 
             .type {
@@ -29,7 +30,6 @@
                 color: $yellowLk;
                 font-size: 3.7135vw;
                 float: left;
-                margin-top: 4vw;
             }
 
             .DetailedInfo {
@@ -98,15 +98,15 @@
 
                 .operator-name {
                     font-size: 2.366vw;
+                    min-height: 7.5vw;
                 }
                 .type {
-                    margin-top: 1.5vw;
                     font-size: 1.7135vw;
                     width: 62%;
                 }
 
                 .DetailedInfo {
-                    margin-top: 3.1618vw;
+                    margin-top: 2.1618vw;
 
                     .button-buy {
                         width: 36vw;

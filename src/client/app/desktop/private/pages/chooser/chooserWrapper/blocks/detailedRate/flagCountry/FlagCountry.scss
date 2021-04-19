@@ -17,10 +17,13 @@
         width: 22vw;
     }
 
-    .flag-img {
+    .flag-icon-background {
         float: left;
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
         width: 13.0208vw;
         height: 8.3854vw;
-        margin-top: 2.3vw;
+        margin-top: 2vw;
     }
 }

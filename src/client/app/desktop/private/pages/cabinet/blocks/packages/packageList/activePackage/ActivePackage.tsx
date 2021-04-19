@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { ListDevicesResponse } from '../../../../../../../../../generated/proto.web';
@@ -19,10 +18,10 @@ export const ActivePackage = (props : DeviceModel) => {
                 <WhoseDevice id={props.package.deviceId} name={props.package.name?.value} />
                 <div className="progress-block">
                     <div className="info-rate">
-                        <div className='country'>{props.package.currentPack.rate?.countryName}</div>
-                        <div className="rate-info">{props.package.currentPack.rate?.operatorName}</div>
+                        <div className='country'>{props.package.currentPack?.countryName}</div>
+                        <div className="rate-info">{props.package.currentPack?.operatorName}</div>
                     </div>
-                    <ProgressBar quota={props.package.currentPack.quota} used={props.package.currentPack.used} />
+                    <ProgressBar quota={props.package.currentPack.quota} used={props.package.currentPack.activated.usedBytes} />
                 </div>
             </div>
             <div className="price-block">
@@ -33,4 +32,4 @@ export const ActivePackage = (props : DeviceModel) => {
         </div>
     )
 }
-*/
+

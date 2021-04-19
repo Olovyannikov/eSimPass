@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { ListRatesResponse } from '../../../../../../../../../generated/proto.web';
@@ -15,7 +14,9 @@ interface PacksCarouselModel {
 export const PacksCarousel = (props : PacksCarouselModel) => {
 
     const reducePacksToSlides = () => {
+
         const slideSize : number = 3;
+        
         if (props.rate.packs) {
             return props.rate.packs.reduce((result : ListRatesResponse.SuccessModel.RateModel.PackModel[][], item, index) => {
     
@@ -35,7 +36,6 @@ export const PacksCarousel = (props : PacksCarouselModel) => {
     //TODO simplify render logic
 
     return (
-
         <CarouselProvider
             totalSlides={reducePacksToSlides().length || 0}
             naturalSlideHeight={10}
@@ -67,4 +67,3 @@ export const PacksCarousel = (props : PacksCarouselModel) => {
         </CarouselProvider>
     )
 }
-*/

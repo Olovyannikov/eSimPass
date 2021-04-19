@@ -17,7 +17,7 @@ export const Row = (props : RowModel) => {
 
     React.useEffect(() => {
         //TODO: fix charges conventer
-        if (props.charge?.bytes) {
+        if (props.charge.total) {
             setChargesUnit(prev => prev = unitConventer(+props.charge.bytes.value, +props.charge.total))
         }
         else {
@@ -28,11 +28,19 @@ export const Row = (props : RowModel) => {
 
     const renderChargesByType = () => {
         
-        if (props.charge.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT) {
+        if (props.charge.type.boughtRoamingPack) {
 
             return (
                 <>
-                    <span className="who">Имя девайса</span>
+                    <span className="who">{props.charge.type.boughtRoamingPack?.deviceName || 'Мое устройсто'}</span>
+                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>Имя тарифа</span></span>
+                </>
+            )
+        }
+        else if (props.charge.type.dataUsedFromBalance) {
+            return (
+                <>
+                    <span className="who">{props.charge.type.dataUsedFromBalance?.deviceName || 'Мое устройсто'}</span>
                     <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>Имя тарифа</span></span>
                 </>
             )
@@ -71,4 +79,5 @@ export const Row = (props : RowModel) => {
         </div>
     )
 }
+
 */

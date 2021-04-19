@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { State } from '../../redux/State';
 import { STORAGE } from '../../StorageAdapter';
 import { PublicApplication } from './public/PublicApplication';
-// import { PrivateApplication } from "./private/PrivateApplication";
+import { PrivateApplication } from "./private/PrivateApplication";
 
 const DesktopApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
     const checkAuthenticatedUser = () => {
         if (STORAGE.getToken()) {
-            // return <PrivateApplication />
+            return <PrivateApplication />
         }
         else {
             return <Redirect to='/' />
@@ -51,3 +51,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const DesktopApplication = connect(mapStateToProps)(DesktopApplicationImpl);
+// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1618837184461X10262

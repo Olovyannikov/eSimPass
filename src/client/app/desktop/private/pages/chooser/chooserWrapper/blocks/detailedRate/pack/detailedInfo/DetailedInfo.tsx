@@ -35,7 +35,7 @@ export const DetailedInfo = (props : DetailedInfoModel) => {
         else  {
             return (
                 <>
-                    <Line img={img_ratePack} text='Трафик' plain={'500 мб'} />
+                    <Line img={img_ratePack} text='Трафик' plain={'500 МБ'} />
                     <Line img={img_durationPack} text='Срок действия' plain={'7 дн.'} />
                     <Button className='button' text='Подключен автоматически' />
                 </>

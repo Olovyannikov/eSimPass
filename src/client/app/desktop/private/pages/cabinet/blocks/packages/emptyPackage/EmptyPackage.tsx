@@ -44,5 +44,3 @@ export const EmptyPackage = () => {
         </div>
     )
 }
-
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616746662254X10308

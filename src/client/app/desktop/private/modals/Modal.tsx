@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { BuyPackDialog } from './buyPack/BuyPackDialog';
@@ -49,4 +48,3 @@ export const Modal = (props : PrivateStageModals ) => {
         </div>
     )
 }
-*/
