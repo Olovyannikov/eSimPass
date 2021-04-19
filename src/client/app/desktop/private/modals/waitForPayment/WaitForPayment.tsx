@@ -1,3 +1,4 @@
+/*
 import * as rx from "rxjs/Rx"
 import * as React from 'react';
 
@@ -187,3 +188,4 @@ export const WaitForPayment = () => {
 
 //https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615558464422X10110
 //https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615790041178X10116
+*/

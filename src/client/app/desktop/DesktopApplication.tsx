@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
@@ -51,3 +52,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const DesktopApplication = connect(mapStateToProps)(DesktopApplicationImpl);
+*/

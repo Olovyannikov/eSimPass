@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import { Banner } from './blocks/banner/Banner';
 import { Chooser } from './blocks/chooser/Chooser';
@@ -14,3 +15,4 @@ export const IndexPage = () => {
         </div>
     )
 }
+*/

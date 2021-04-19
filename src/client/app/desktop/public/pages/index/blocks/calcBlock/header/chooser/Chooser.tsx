@@ -1,3 +1,4 @@
+/*
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { useEffectRx } from "@glonassmobile/codebase-web/useEffectRx";
 import * as React from "react";
@@ -53,3 +54,4 @@ export const Chooser = (props : Props) => {
         </div>
     )
 }
+*/

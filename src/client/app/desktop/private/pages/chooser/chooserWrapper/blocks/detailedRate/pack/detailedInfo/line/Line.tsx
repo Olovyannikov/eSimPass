@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import { convertDurationType, unitConventer } from '../../../../../../../../../../../utils';
 import { PACK_DURATION } from '../../../../../../../../../../../generated/proto.web';
@@ -37,3 +38,4 @@ export const Line = (props : LineModel) => {
         </div>
     )
 }
+*/

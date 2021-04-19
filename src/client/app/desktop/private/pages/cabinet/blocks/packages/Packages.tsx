@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
 
@@ -84,3 +85,4 @@ export const Packages = () => {
         </div>
     )
 }
+*/

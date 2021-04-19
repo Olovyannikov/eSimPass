@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 
 import { TableView } from '../Detailed';
@@ -34,3 +35,4 @@ export const Header = (props : HeaderModel) => {
         </div>
     )
 }
+*/

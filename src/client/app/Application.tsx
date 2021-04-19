@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 
 import { DesktopApplication } from './desktop/DesktopApplication';
@@ -17,3 +18,4 @@ export const Application = () => {
     )
 
 }
+*/

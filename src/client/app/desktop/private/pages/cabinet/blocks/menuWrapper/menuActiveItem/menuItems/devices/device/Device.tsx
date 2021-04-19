@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 
 import { ListDevicesResponse } from '../../../../../../../../../../../generated/proto.web';
@@ -47,3 +48,4 @@ export const Device = (props : DeviceModel) => {
         </div>
     )
 }
+*/

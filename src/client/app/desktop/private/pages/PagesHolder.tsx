@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import { Cabinet } from './cabinet/Cabinet';
 import { Chooser } from './chooser/Chooser';
@@ -23,3 +24,4 @@ export const PagesHolder = () => {
         </div>
     )
 }
+*/

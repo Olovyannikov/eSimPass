@@ -1,3 +1,4 @@
+/*
 import { ListDevicesResponse, PACK_DURATION } from "../generated/proto.web";
 
 
@@ -123,3 +124,4 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
     },
     packs : [],
 }]
+*/

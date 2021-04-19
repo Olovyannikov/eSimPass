@@ -1,3 +1,4 @@
+/*
 import * as React from "react";
 
 import { Chooser } from "./chooser/Chooser";
@@ -45,3 +46,4 @@ export const Header = (props : Props) => {
         </div>
     )
 }
+*/

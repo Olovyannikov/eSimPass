@@ -1,3 +1,4 @@
+/*
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 
@@ -105,3 +106,4 @@ export const Rates = (props : RatesModel) => {
         </div>
     )
 }
+*/

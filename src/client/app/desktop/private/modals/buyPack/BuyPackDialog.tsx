@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 
 import { Logger } from '@glonassmobile/codebase-web/Logger';
@@ -82,3 +83,4 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         </div>
     )
 }
+*/

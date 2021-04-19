@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import { ListRatesResponse } from '../../../../../../generated/proto.web';
 import { img_choserArrowBack } from '../../../../../../resources/images';
@@ -51,3 +52,4 @@ export const ChooserWrapper = () => {
         </div>
     )
 }
+*/

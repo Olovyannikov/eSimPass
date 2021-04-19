@@ -1,3 +1,4 @@
+/*
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { useHistory } from 'react-router';
@@ -106,3 +107,4 @@ export const Device = (props : DeviceModel) => {
         </div>
     )
 }
+*/

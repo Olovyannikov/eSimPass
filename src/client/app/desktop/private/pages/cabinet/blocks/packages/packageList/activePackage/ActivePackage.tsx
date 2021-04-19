@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 
 import { ListDevicesResponse } from '../../../../../../../../../generated/proto.web';
@@ -32,3 +33,4 @@ export const ActivePackage = (props : DeviceModel) => {
         </div>
     )
 }
+*/

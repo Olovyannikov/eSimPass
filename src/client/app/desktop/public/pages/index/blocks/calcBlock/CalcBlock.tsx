@@ -1,3 +1,4 @@
+/*
 import * as React from "react";
 import { ListRatesResponse } from "../../../../../../../generated/proto.web";
 
@@ -19,3 +20,4 @@ export const CalcBlock = () => {
     )
 }
 
+*/

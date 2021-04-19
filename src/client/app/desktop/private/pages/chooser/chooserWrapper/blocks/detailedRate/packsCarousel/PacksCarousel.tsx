@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 
 import { ListRatesResponse } from '../../../../../../../../../generated/proto.web';
@@ -66,3 +67,4 @@ export const PacksCarousel = (props : PacksCarouselModel) => {
         </CarouselProvider>
     )
 }
+*/

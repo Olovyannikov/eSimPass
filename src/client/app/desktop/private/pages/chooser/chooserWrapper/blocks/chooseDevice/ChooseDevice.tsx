@@ -1,3 +1,4 @@
+/*
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../Connection';
@@ -89,3 +90,4 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
         </div>
     )
 }
+*/

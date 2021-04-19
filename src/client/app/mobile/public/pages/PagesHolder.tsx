@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import { ConnectEsim } from './connectEsim/ConnectEsim';
 
@@ -25,3 +26,4 @@ export const PagesHolder = () => {
         </div>
     )
 }
+*/

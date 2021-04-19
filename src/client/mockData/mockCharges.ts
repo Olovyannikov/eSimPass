@@ -1,3 +1,4 @@
+/*
 import { ListChargesResponse } from "../generated/proto.web";
 
 export const mockCharges : ListChargesResponse.SuccessModel.ChargeModel[] = [{
@@ -158,3 +159,4 @@ export const mockCharges : ListChargesResponse.SuccessModel.ChargeModel[] = [{
     },
     total : '7'
 }]
+*/

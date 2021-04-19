@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
-import { PACK_DURATION } from './generated/proto.web';
 
 export const nothingToNull = (value: string) : string => {
     if (value == null) {
@@ -111,7 +110,7 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
         unit
     }
 }
-
+/*
 export const convertDateUntilPackage = (date : string, duration? : PACK_DURATION) => {
     
     const boughtDate = new Date(Number(date))    
@@ -148,3 +147,4 @@ export const convertDurationType = (amount : PACK_DURATION) => {
         return '31 дн.'
     }
 }
+*/

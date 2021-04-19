@@ -1,3 +1,4 @@
+/*
 import * as React from "react";
 import { HeaderBlock } from "./blocks/headerBlock/HeaderBlock";
 import { LogoBlock } from "./blocks/logoBlock/LogoBlock";
@@ -17,3 +18,4 @@ export const IndexPage = () => {
         </div>
     )
 }
+*/
