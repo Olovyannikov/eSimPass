@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
+import { DurationModel, DURATION_MEASURE } from './generated/proto.web';
 
 export const nothingToNull = (value: string) : string => {
     if (value == null) {
@@ -132,19 +133,22 @@ export const convertDateUntilPackage = (date : string, duration? : PACK_DURATION
             break;
     }
 }
-
-export const convertDurationType = (amount : PACK_DURATION) => {
-    if (amount === PACK_DURATION.DAY) {
-        return '1 дн.'
-    }
-    else if (amount === PACK_DURATION.WEEK) {
-        return '7 дн.'
-    }
-    else if (amount === PACK_DURATION.TWO_WEEKS) {
-        return '14 дн.'
-    }
-    else if (amount === PACK_DURATION.MONTH) {
-        return '31 дн.'
-    }
-}
 */
+export const countDaysDyration = (duration : DurationModel) => {
+    let countedDays : number = 1;
+
+    if (duration.messure === DURATION_MEASURE.DAY) {
+        countedDays = 1 * duration.quantity;
+    }
+    else if (duration.messure === DURATION_MEASURE.WEEK) {
+        countedDays = 7 * duration.quantity;
+    }
+    else if (duration.messure === DURATION_MEASURE.MONTH) {
+        countedDays = 31 * duration.quantity
+    }
+    else if (duration.messure === DURATION_MEASURE.DURATION_MEASURE_UNKNOWN) {
+
+    }
+
+    return countedDays
+}

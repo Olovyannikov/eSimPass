@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 import { ListRatesResponse } from '../../../../../../../../../generated/proto.web';
 import { DetailedInfo } from './detailedInfo/DetailedInfo';
@@ -23,4 +22,4 @@ export const Pack = (props : PackModel) => {
         </div>
     )
 }
-*/
+

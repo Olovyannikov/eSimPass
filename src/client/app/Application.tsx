@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DesktopApplication } from './desktop/DesktopApplication';
-// import { MobileApplication } from './mobile/MobileApplication';
+import { MobileApplication } from './mobile/MobileApplication';
 
 export const Application = () => {
 
@@ -10,9 +10,9 @@ export const Application = () => {
             <div className="Desktop">
                 <DesktopApplication />
             </div>
-            {/* <div className="Mobile">
+            <div className="Mobile">
                 <MobileApplication />
-            </div> */}
+            </div>
         </div>
     )
 

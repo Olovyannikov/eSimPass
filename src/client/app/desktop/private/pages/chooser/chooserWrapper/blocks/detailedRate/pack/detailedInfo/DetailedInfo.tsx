@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 import { ListRatesResponse } from '../../../../../../../../../../generated/proto.web';
 
@@ -50,4 +49,4 @@ export const DetailedInfo = (props : DetailedInfoModel) => {
         </div>
     )
 }
-*/
+

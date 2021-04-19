@@ -20,12 +20,15 @@
         width: 65vw;
     }
 
-    .img-flag {
+    .flag-icon-background {
         float: right;
-        width: 14.8541vw;
-        height: 9.8143vw;
-        margin-top: 3vw;
+        margin-top: 1vw;
         margin-right: 5vw;
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        width: 13vw;
+        height: 13vw;
     }
 
     @media (max-width:950px) and (max-height: 450px) and (orientation:landscape) {
@@ -43,6 +46,11 @@
             width: 9.8541vw;
             height: 5.8143vw;
             margin-top: 1.6vw;
+        }
+        .flag-icon-background {
+            margin-top: 1.6vw;
+            width: 9.8541vw;
+            height: 5.8143vw;
         }
     }
 }
