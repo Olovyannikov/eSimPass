@@ -56,7 +56,7 @@ export const PassportEdit = (props : PassportModel) => {
             setError(prev => prev = 'Введите адрес')
         }
         else if (!sn) {
-            setError(prev => prev = 'Введите номер паспорта')
+            setError(prev => prev = 'Введите серию и номер')
         }
         else if (!issueDate) {
             setError(prev => prev = 'Введите дату')

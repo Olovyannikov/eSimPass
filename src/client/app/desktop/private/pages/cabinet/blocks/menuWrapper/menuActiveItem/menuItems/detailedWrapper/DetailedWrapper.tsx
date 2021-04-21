@@ -18,11 +18,9 @@ export const DetailedWrapper = () => {
     const [inProgress, setInProgress] = React.useState<boolean>(true);
 
     React.useEffect(() => {
-        console.log(String(Date.parse(String(new Date()))));
         
         CONNECTION.listCharges(createListChargesRequest())
             .do(response => {
-                console.log('CHARGES', response);
                 
                 if (response.success) {
                     handleSuccessResponse(response)
@@ -38,10 +36,10 @@ export const DetailedWrapper = () => {
         setCharges(prev => prev = response.success.charges)
         setInProgress(prev => prev = false)
     }
-
+// TODO DATE CONVENTER 
     const createListChargesRequest = () : ListChargesRequest => ({
         fromDate : {
-            value : '1618041619000'
+            value : null
         }
     })
 

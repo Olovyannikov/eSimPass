@@ -90,8 +90,6 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
     let restQuota = quota - used
     let unit : Unit;
     
-    
-
     if (quota >= 1048576000) {
         unit = 'ГБ'
         quota = convertToGB(quota)
@@ -134,9 +132,9 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
 //     }
 // }
 
-export const countDaysDyration = (duration : DurationModel) => {
+export const countDaysDuration = (duration : DurationModel) => {
     let countedDays : number = 1;
-
+    
     if (duration.messure === DURATION_MEASURE.DAY) {
         countedDays = 1 * duration.quantity;
     }
@@ -144,10 +142,7 @@ export const countDaysDyration = (duration : DurationModel) => {
         countedDays = 7 * duration.quantity;
     }
     else if (duration.messure === DURATION_MEASURE.MONTH) {
-        countedDays = 31 * duration.quantity
-    }
-    else if (duration.messure === DURATION_MEASURE.DURATION_MEASURE_UNKNOWN) {
-        countedDays = 1
+        countedDays = 31 * duration.quantity;
     }
 
     return countedDays

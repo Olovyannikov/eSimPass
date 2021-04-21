@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { unitConventer, countDaysDyration } from '../../../../../../../../../../../utils';
+import { unitConventer, countDaysDuration } from '../../../../../../../../../../../utils';
 import { DurationModel } from '../../../../../../../../../../../generated/proto.web';
 
 interface LineModel {
@@ -19,7 +19,7 @@ export const Line = (props : LineModel) => {
             return <span className='amount'>{props.plain}</span>
         }
         else if (props.duration) {
-            return <span className='amount'>{countDaysDyration(props.duration)} дн.</span>  
+            return <span className='amount'>{countDaysDuration(props.duration)} дн.</span>  
         }
         else if (props.quota) {
             const convertedQuota = unitConventer(+props.quota);

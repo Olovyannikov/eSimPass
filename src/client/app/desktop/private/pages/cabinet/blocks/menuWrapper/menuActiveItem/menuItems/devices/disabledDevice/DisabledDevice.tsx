@@ -43,4 +43,3 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
         </div>
     )
 }
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616742440855X10302

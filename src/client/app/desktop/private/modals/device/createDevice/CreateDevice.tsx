@@ -52,7 +52,6 @@ export const CreateDevice = () => {
 
         
         .do(response => {
-                console.log('response',response);
                 if (response.success) {
                     handleSuccessResponse(response);
                 }

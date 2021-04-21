@@ -19,6 +19,7 @@ export const BuyPack = (props : BuyRateModel) => {
 
     return (
         <div className="BuyPack">
+            {/* TODO */}
             {/* <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.activated.activated, props.device.currentPack.duration).toLocaleDateString()}</span></div> */}
             
             <Button func={handleBuyPack} className='button-buy' text='Купить пакет' />

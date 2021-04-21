@@ -34,6 +34,7 @@ export const Device = (props : DeviceModel) => {
                     Стоимость {props.device.currentPack.price} ₽
                 </div>
                 <ProgressBar quota={props.device.currentPack.quota} used={props.device.currentPack.activated.usedBytes} />
+                {/* TODO !!! */}
                 {/* <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.activated.activated, props.device.currentPack.duration).toLocaleDateString()}</span></div> */}
             </div>
             <div className="right-block">

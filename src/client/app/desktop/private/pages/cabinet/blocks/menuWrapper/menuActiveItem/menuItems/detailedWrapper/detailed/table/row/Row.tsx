@@ -1,4 +1,3 @@
-/*
 import * as React from 'react';
 
 import { unitConventer, ConventerUnitModel } from '../../../../../../../../../../../../../utils';
@@ -17,8 +16,10 @@ export const Row = (props : RowModel) => {
 
     React.useEffect(() => {
         //TODO: fix charges conventer
-        if (props.charge.total) {
-            setChargesUnit(prev => prev = unitConventer(+props.charge.bytes.value, +props.charge.total))
+        console.log('data',props.charge);
+        
+        if (props.charge.type.dataUsedFromBalance?.bytes) {
+            setChargesUnit(prev => prev = unitConventer(+props.charge.type.dataUsedFromBalance.bytes, +props.charge.total))
         }
         else {
             setChargesUnit(prev => prev = unitConventer(0, +props.charge?.total || 0))
@@ -32,16 +33,16 @@ export const Row = (props : RowModel) => {
 
             return (
                 <>
-                    <span className="who">{props.charge.type.boughtRoamingPack?.deviceName || 'Мое устройсто'}</span>
-                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>Имя тарифа</span></span>
+                    <span className="who">{props.charge.type.boughtRoamingPack?.deviceName.value || 'Мое устройсто'}</span>
+                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>{props.charge.type.boughtRoamingPack.operatorName}</span></span>
                 </>
             )
         }
         else if (props.charge.type.dataUsedFromBalance) {
             return (
                 <>
-                    <span className="who">{props.charge.type.dataUsedFromBalance?.deviceName || 'Мое устройсто'}</span>
-                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>Имя тарифа</span></span>
+                    <span className="who">{props.charge.type.dataUsedFromBalance?.deviceName.value || 'Мое устройсто'}</span>
+                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>{props.charge.type.dataUsedFromBalance.operatorName}</span></span>
                 </>
             )
         }
@@ -79,5 +80,3 @@ export const Row = (props : RowModel) => {
         </div>
     )
 }
-
-*/

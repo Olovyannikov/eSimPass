@@ -43,8 +43,6 @@ export const WaitForPayment = () => {
         rx.Observable.of ({})
             .concatMap (() => createGetPaymentResponse ()
             .map (response => {
-
-                console.log('RESPONSE', response);
                 
                 if (response.notReady) {
                     setPaymentStatus(prev => prev = 'Ожидается платеж')

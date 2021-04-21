@@ -1,5 +1,3 @@
-/*
-
 import * as React from 'react';
 import { ListChargesResponse } from '../../../../../../../../../../../../generated/proto.web';
 
@@ -12,6 +10,7 @@ interface TableModel {
 export const Table = (props : TableModel) => {
 
     const checkEmptyTable = () => {
+        console.log('CHARGES',props.charges);
         
         if (props.charges?.length) {
             return (
@@ -31,5 +30,3 @@ export const Table = (props : TableModel) => {
         </div>
     )
 }
-
-*/

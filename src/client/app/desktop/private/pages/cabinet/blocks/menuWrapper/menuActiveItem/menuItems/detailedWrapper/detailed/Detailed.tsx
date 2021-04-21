@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Header } from './header/Header';
-// import { Table } from './table/Table';
+import { Table } from './table/Table';
 import { ListChargesResponse } from '../../../../../../../../../../../generated/proto.web';
 import { Footer } from './footer/Footer';
 
@@ -24,6 +24,7 @@ export const Detailed = (props : DetailedModel) => {
     }
 
     const reduceChargesByPages = () => {
+        
         const filteredCharges = filterChargesByTableView();
         const pageSize : number = 15;
         if (filteredCharges) {
@@ -43,7 +44,7 @@ export const Detailed = (props : DetailedModel) => {
     return (
         <div className="Detailed">
             <Header allPages={reduceChargesByPages().length} currentPage={currentPage} setCurrentPage={setCurrentPage} togglePage={setTableView} tableView={tableView} /> 
-            {/* <Table charges={reduceChargesByPages()[currentPage]} /> */}
+            <Table charges={reduceChargesByPages()[currentPage]} />
             <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} allPage={reduceChargesByPages().length} />
         </div>
     )
