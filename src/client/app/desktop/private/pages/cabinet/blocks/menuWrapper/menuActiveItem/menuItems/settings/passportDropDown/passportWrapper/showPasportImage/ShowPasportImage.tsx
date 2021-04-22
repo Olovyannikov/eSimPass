@@ -78,7 +78,6 @@ export const ShowPasportImage = (props : PassportModel) => {
     }
 
     const renderImage = () => {
-        // TODO! Check props
         if (inProgress) {
             return <Spinner />    
         } 

@@ -10,7 +10,6 @@ interface TableModel {
 export const Table = (props : TableModel) => {
 
     const checkEmptyTable = () => {
-        console.log('CHARGES',props.charges);
         
         if (props.charges?.length) {
             return (

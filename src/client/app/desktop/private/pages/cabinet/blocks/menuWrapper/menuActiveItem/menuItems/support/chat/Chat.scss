@@ -40,7 +40,11 @@
             .link-to-mail {
                 text-decoration: none;
                 color: $yellowLk;
-
+            }
+            
+            .blur-text {
+                color: transparent;
+                text-shadow: 0 0 5px rgba(116, 107, 107, 0.5);
             }
         }
     }

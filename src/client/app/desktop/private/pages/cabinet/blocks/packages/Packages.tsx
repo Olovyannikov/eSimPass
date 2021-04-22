@@ -56,7 +56,6 @@ export const Packages = () => {
         CONNECTION.listDevices({})
             .do(response => {
                 if (response.success) {
-                    console.log('DEIVCES',response.success.devices);
                     
                     setPackages(prev => prev = filterActivePackages(response.success.devices))
                 }

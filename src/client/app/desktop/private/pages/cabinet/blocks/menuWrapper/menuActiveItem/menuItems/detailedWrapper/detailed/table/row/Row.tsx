@@ -19,7 +19,6 @@ export const Row = (props : RowModel) => {
         if (props.charge) {
 
             if (props.charge.type?.dataUsedFromBalance?.bytes) {
-                console.log(props.charge.type.dataUsedFromBalance.bytes);
                 
                 setChargesUnit(prev => prev = unitConventer(+props.charge.type.dataUsedFromBalance.bytes))
             }
