@@ -8,7 +8,7 @@ import { Spinner } from '../../../../../public/components/spinner/Spinner';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../utils';
 import { PackageList } from './packageList/PackageList';
-// import { devicesData } from '../../../../../../../mockData/mockDevices';
+import { devicesData } from '../../../../../../../mockData/mockDevices';
 import { STORAGE } from '../../../../../../../StorageAdapter';
 
 export const Packages = () => {
@@ -54,9 +54,10 @@ export const Packages = () => {
 
 
         CONNECTION.listDevices({})
-
             .do(response => {
                 if (response.success) {
+                    console.log('DEIVCES',response.success.devices);
+                    
                     setPackages(prev => prev = filterActivePackages(response.success.devices))
                 }
                 setInProgress(prev => prev = false)

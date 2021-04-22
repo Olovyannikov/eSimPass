@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Cabinet } from './cabinet/Cabinet';
 import { Chooser } from './chooser/Chooser';
-import { useLocation } from 'react-router-dom'
+import { useLocation, useRouteMatch } from 'react-router-dom'
 
 export const PagesHolder = () => {
 
-    const location = useLocation()
+    const location = useLocation();
 
     const renderActivePage = () => {
         

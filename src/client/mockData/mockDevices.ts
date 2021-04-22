@@ -1,127 +1,73 @@
-/*
-import { ListDevicesResponse, PACK_DURATION } from "../generated/proto.web";
+import { ListDevicesResponse, DURATION_MEASURE } from "../generated/proto.web";
 
 
 export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
-    deviceId : '1',
     created : "1616503481367",
+    deviceId : '1',
     name : {
         value : 'Я',
     },
     packs : [{
-        boughtDate : "1616503481367",
-        current : '',
-        duration : PACK_DURATION.WEEK,
-        price : '7',
-        quota : '524288000',
-        rate : {
-            rateId : '1',
-            price : '0.01',
-            countryName : 'Австралия',
-            operatorName : 'Operator5',
-            countryCode : '61'
+        countryId : 'DZ',
+        countryName : 'Алжир',
+        operatorName : "ALGERIA WATANIYA MOBILE - Wataniya Telecom Algerie",
+        price : '448.5',
+        duration : {
+            messure : DURATION_MEASURE.WEEK,
+            quantity : 2,
         },
-        used : '157286400',
+        quota : "104857600",
+        created : "1619000501802",
+        current : false,
     },{
-        boughtDate : "1616503481367",
-        current : '',
-        duration : PACK_DURATION.DAY,
-        price : '1.5',
-        quota : '104857600',
-        rate : {
-            rateId : '21',
-            price : '0.01',
-            countryName : 'Алжир',
-            operatorName : 'Operator25',
-            countryCode : '213'
+        countryId : 'PA',
+        countryName : 'Панама',
+        operatorName : "PANAMA DIGICEL MOBILE - Digicel",
+        price : '351',
+        duration : {
+            messure : DURATION_MEASURE.MONTH,
+            quantity : 1,
         },
-        used : '104857600',
+        quota : "1619006136786",
+        created : "1619001558260",
+        current : false,
     },{
-        boughtDate : "1616503481367",
-        current : '',
-        duration : PACK_DURATION.TWO_WEEKS,
-        price : '13.31',
-        quota : '1073741824',
-        rate : {
-            rateId : '536',
-            price : '0.01',
-            countryName : 'Марокко',
-            operatorName : 'Operator540',
-            countryCode : '212'
+        countryId : 'ZA',
+        countryName : 'Южнаая Африка',
+        operatorName : 'SOUTH AFRICA MTN MOBILE - MTN',
+        price : '205.5',
+        duration : {
+            messure : DURATION_MEASURE.MONTH,
+            quantity : 1,
         },
-        used : '2147483648',
+        quota : "1204857600",
+        created : "1618839789984",
+        current : true,
+        activated : {
+            activated : '1619074847000',
+            finished : '1619194847000',
+            lastUsed : '1619084847000',
+            usedBytes : '92428800',
+        }
     }],
-    lpaUrl : 'lpa-3',
+    lpaUrl : 'lPA10001',
     currentPack : {
-        boughtDate : "1616503481367",
-        current : '',
-        duration : PACK_DURATION.MONTH,
-        price : '58.88',
-        quota : '5368709120',
-        rate : {
-            rateId : '346',
-            price : '0.01',
-            countryName : 'Италия',
-            operatorName : 'Mama mia',
-            countryCode : '39'
+        countryId : 'ZA',
+        countryName : 'Южнаая Африка',
+        operatorName : 'SOUTH AFRICA MTN MOBILE - MTN',
+        price : '205.5',
+        duration : {
+            messure : DURATION_MEASURE.MONTH,
+            quantity : 1,
         },
-        used : '1174405120',
+        quota : "12404857600",
+        created : "1618839789984",
+        current : true,
+        activated : {
+            activated : '1619074847000',
+            finished : '1619194847000',
+            lastUsed : '1619084847000',
+            usedBytes : '93432428800',
+        }
     }
-},{
-    deviceId : '2',
-    created : "1616503481367",
-    currentPack : {
-        boughtDate : "1616503481367",
-        current : '',
-        duration : PACK_DURATION.WEEK,
-        price : '7',
-        quota : '524288000',
-        rate : {
-            rateId : '1011',
-            countryCode : '7',
-            countryName : 'Россия',
-            operatorName : 'Megafon',
-            price : '5888',
-        },
-        used : '514288000',
-    },
-    lpaUrl : 'lpaUrl-2',
-    name : {
-        value : 'Сын'
-    },
-    packs : [],
-},
-{
-    deviceId : '3',
-    created : "1616503481367",
-    lpaUrl : 'lpaUrl-1',
-    name : {
-        value : 'Супруга',
-    },
-    packs : [],
-}
-,{
-    deviceId : '4',
-    created : "1616503481367",
-    currentPack : {
-        boughtDate : "1616503481367",
-        current : '',
-        duration : PACK_DURATION.TWO_WEEKS,
-        price : '1.5',
-        quota : '104857600',
-        rate : {
-            rateId : '1011',
-            countryCode : '7',
-            countryName : 'Россия',
-            operatorName : 'Megafon',
-            price : '5888',
-        },
-        used : '58424000',
-    },
-    lpaUrl : 'lpaUrl-2',
-    name : {
-        value : 'Брат'
-    },
-    packs : [],
 }]
-*/

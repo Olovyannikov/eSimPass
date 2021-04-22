@@ -26,8 +26,7 @@ export const EmptyPackage = () => {
                 }
                 else {
                     STATE_API.showPrivateWizard('addDevice');
-                    //TODO : Buy Package
-                    //redirect to other page?
+                    //TODO : add disabled block
                 }
                 setInProgress(prev => prev = false);
             })
