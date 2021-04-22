@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { img_pen } from '../../../../../resources/images';
 import { CONNECTION } from '../../../../../Connection';
-import { RenameDeviceRequest, RenameDeviceResponse } from '../../../../../generated/proto.web';
+import { RenameDeviceRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { nothingToNull, waitForClose } from '../../../../../utils';
 
@@ -69,20 +69,17 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
                     })
                     .takeUntil(closedSubject)
                     .subscribe(logger.rx.subscribe('Error in device response'))
-    
             }
-
         }
         else {
             setPrevState()
         }
-
     }
 
     const setPrevState = () => {
         setDeviceName(prev => prev = props.name);
-        setError(null)
-        toggleInput()
+        setError(null);
+        toggleInput();
     }
 
     const handleSuccessDeviceNameChange = () => {
@@ -93,8 +90,8 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
     const handleDeviceNotFound = () => {
         setError(prev => prev = 'Устройство не найдено');
         setInProgress(prev => prev = false);
-        setShowInput(prev => prev = false)
-        setDeviceName(prev => prev = props.name)
+        setShowInput(prev => prev = false);
+        setDeviceName(prev => prev = props.name);
     }
 
     const createRenameDeviceRequest = () : RenameDeviceRequest => ({

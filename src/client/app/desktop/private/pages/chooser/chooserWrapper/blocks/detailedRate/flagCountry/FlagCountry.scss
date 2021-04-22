@@ -10,10 +10,10 @@
         color: $white;
         float: left;
         margin-top: 0.7vw;
-        white-space: nowrap;
+        // white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        height: 4vw;
+        height: 8vw;
         width: 22vw;
     }
 
@@ -22,8 +22,8 @@
         background-size: contain;
         background-position: 50%;
         background-repeat: no-repeat;
-        width: 13.0208vw;
+        width: 11.0208vw;
         height: 8.3854vw;
-        margin-top: 2vw;
+        // margin-top: 2vw;
     }
 }

@@ -49,6 +49,9 @@ export const restPercentOfPackageQuota = (quota : number, used : number) : numbe
     if (restQuota >= quota) {
         return 100
     } 
+    else if (percent <= 0) {
+        return 0
+    }
     else if (percent <= 5) {
         return 6.5
     } 
@@ -71,10 +74,16 @@ export const setColorBar = (percent : number) => {
 }
 
 export const convertToGB = (quota : number) : number => {
+    if (quota <= 0) {
+        return 0
+    }
     return Number((quota / 1024 / 1024 / 1000).toFixed(0))
 }
 
 export const convertToMB = (quota : number) : number => {
+    if (quota <= 0) {
+        return 0
+    }
     return Number((quota / 1024 / 1024).toFixed(0))
 }
 
@@ -134,16 +143,25 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
 
 export const countDaysDuration = (duration : DurationModel) => {
     let countedDays : number = 1;
-    
+    //TODO, ask how to render hours and minutes
+
     if (duration.messure === DURATION_MEASURE.DAY) {
         countedDays = 1 * duration.quantity;
+        return `${countedDays} дн.`
     }
     else if (duration.messure === DURATION_MEASURE.WEEK) {
         countedDays = 7 * duration.quantity;
+        return `${countedDays} дн.`
     }
     else if (duration.messure === DURATION_MEASURE.MONTH) {
         countedDays = 31 * duration.quantity;
+        return `${countedDays} дн.`
     }
-
-    return countedDays
+    else if (duration.messure === DURATION_MEASURE.YEAR) {
+        countedDays = 365 * duration.quantity;
+        return `${countedDays} дн.`
+    }
+    else {
+        return `${countedDays} дн.`
+    }
 }

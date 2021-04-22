@@ -8,6 +8,7 @@ import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
 import { AddDevice } from './addDevice/AddDevice';
 import { Device } from './device/Device';
 import { DisabledDevice } from './disabledDevice/DisabledDevice';
+// import { devicesData } from '../../../../../../../../mockData/mockDevices';
 
 interface ChooseDeviceModel {
     rate? : ListRatesResponse.SuccessModel.RateModel;

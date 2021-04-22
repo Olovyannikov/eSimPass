@@ -15,12 +15,14 @@ export const BuyPack = (props : BuyRateModel) => {
 
     const history = useHistory();
 
-    const handleBuyPack = () => history.push('/cabinet/chooseRates')
+    const handleBuyPack = () => history.push('/cabinet/chooseRates');
+
+    const handleDateUntul = (finished : string) => new Date(+finished).toLocaleDateString();
 
     return (
         <div className="BuyPack">
             {/* TODO */}
-            {/* <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.activated.activated, props.device.currentPack.duration).toLocaleDateString()}</span></div> */}
+            <div className="until">Действует до <span className='date'>{handleDateUntul(props.device.currentPack.activated.finished)}</span></div>
             
             <Button func={handleBuyPack} className='button-buy' text='Купить пакет' />
             {/* TODO спроситть про отключение */}

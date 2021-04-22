@@ -26,6 +26,8 @@ export const Device = (props : DeviceModel) => {
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [response, setResponse] = React.useState<string>(null);
 
+    const handleDateUntul = (finished : string) => new Date(+finished).toLocaleDateString();
+
     const handleBuyPack = () => {
 
         setInProgress(prev => prev = true)
@@ -90,7 +92,7 @@ export const Device = (props : DeviceModel) => {
                         </div>
                         <ProgressBar quota={props.device.currentPack.quota} used={props.device.currentPack.activated.usedBytes} />
                         {/* TODO change date conventer */}
-                        {/* <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.boughtDate, props.device.currentPack.duration).toLocaleDateString()}</span></div> */}
+                        <div className="until">Действует до <span className='date'>{handleDateUntul(props.device.currentPack.activated.finished)}</span></div>
                     </div>
                     <div className="right-block">
                         <div className='iphone'>

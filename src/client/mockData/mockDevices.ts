@@ -67,7 +67,8 @@ export const devicesData : ListDevicesResponse.SuccessModel.DeviceModel[] = [{
             activated : '1619074847000',
             finished : '1619194847000',
             lastUsed : '1619084847000',
-            usedBytes : '93432428800',
+            usedBytes : '692428800',
         }
     }
 }]
+
