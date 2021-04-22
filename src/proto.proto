@@ -148,6 +148,7 @@ message GetDocumentPhotoResponse {
 
 
 
+
 service Auth {
     rpc login (LoginRequest) returns (LoginResponse);
     rpc requestPasswordRestore (RequestPasswordRestoreRequest) returns (RequestPasswordRestoreResponse);
@@ -397,7 +398,6 @@ service Rate {
 }
 
 message ListRatesRequest {
-    Int64Value seq = 1;
 }
 
 message ListRatesResponse {
@@ -416,12 +416,11 @@ message ListRatesResponse {
             string countryName = 2;
             string operatorName = 3;
             double price = 4;
-            Int32Value favoriteOrder = 5;
+            Int32Value favorite = 5;
             repeated PackModel packs = 6;
         }
 
-        int64 seq = 1;
-        repeated RateModel rates = 2;
+        repeated RateModel rates = 1;
     }
 
     oneof response {
@@ -526,8 +525,10 @@ message VerifyWebRegistrationResponse {
 
 
 
+
 service System {
     rpc checkVersion (CheckVersionRequest) returns (CheckVersionResponse);
+    rpc getSupportEmail (Empty) returns (GetSupportEmailResponse);
 }
 
 message CheckVersionRequest {
@@ -545,6 +546,11 @@ message CheckVersionResponse {
         string invalidRequest = 2; 
     }
 }
+
+message GetSupportEmailResponse {
+    string email = 1;
+}
+
 
 
 message Empty {
@@ -569,9 +575,12 @@ message BoolValue {
 
 enum DURATION_MEASURE {
     DURATION_MEASURE_UNKNOWN = 0;
-    DAY = 1;
-    WEEK = 2;
-    MONTH = 4;
+    MINUTE = 1;
+    HOUR = 2;
+    DAY = 3;
+    WEEK = 4;
+    MONTH = 5;
+    YEAR = 6;
 }
 
 message DurationModel {
