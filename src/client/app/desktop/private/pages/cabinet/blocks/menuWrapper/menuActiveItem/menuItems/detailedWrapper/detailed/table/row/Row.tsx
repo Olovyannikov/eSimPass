@@ -19,12 +19,10 @@ export const Row = (props : RowModel) => {
         if (props.charge) {
 
             if (props.charge.type?.dataUsedFromBalance?.bytes) {
-                setChargesUnit(prev => prev = unitConventer(+props.charge.type.dataUsedFromBalance.bytes, +props.charge.total))
+                console.log(props.charge.type.dataUsedFromBalance.bytes);
+                
+                setChargesUnit(prev => prev = unitConventer(+props.charge.type.dataUsedFromBalance.bytes))
             }
-            else {
-                setChargesUnit(prev => prev = unitConventer(0, +props.charge?.total || 0))
-            }
-
         }
         
     }, [])
@@ -36,7 +34,7 @@ export const Row = (props : RowModel) => {
             return (
                 <>
                     <span className="who">{props.charge.type.boughtRoamingPack?.deviceName?.value || 'Мое устройсто'}</span>
-                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>{props.charge.type.boughtRoamingPack.operatorName}</span></span>
+                    <span className="rate"> Покупка тарифа  <span> {props.charge.type.boughtRoamingPack.operatorName}</span></span>
                 </>
             )
         }
@@ -44,7 +42,7 @@ export const Row = (props : RowModel) => {
             return (
                 <>
                     <span className="who">{props.charge.type.dataUsedFromBalance?.deviceName?.value || 'Мое устройсто'}</span>
-                    <span className="rate">{chargesUnit?.used} {chargesUnit?.unit} по тарифу <span>{props.charge.type.dataUsedFromBalance.operatorName}</span></span>
+                    <span className="rate">{chargesUnit?.quota} {chargesUnit?.unit} по тарифу <span>{props.charge.type.dataUsedFromBalance.operatorName}</span></span>
                 </>
             )
         }

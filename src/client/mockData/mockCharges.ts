@@ -1,162 +1,78 @@
-/*
-import { ListChargesResponse } from "../generated/proto.web";
+import { DURATION_MEASURE, ListChargesResponse } from "../generated/proto.web";
 
 export const mockCharges : ListChargesResponse.SuccessModel.ChargeModel[] = [{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/25/2021',
-    bytes : {
-        value : '104857600'
+    date : "1619091512038",
+    total : '160.5',
+    type : {
+        boughtRoamingPack : {
+            countryId : 'MW',
+            countryName : 'Малави',
+            deviceId : '10091',
+            deviceName : {
+                value : 'Test',
+            },
+            duration : {
+                messure : DURATION_MEASURE.DAY,
+                quantity : 1,
+            },
+            operatorName : 'MALAWI ZAIN MOBILE - CELTEL - ZAIN'
+        }
+    }
+}, {
+    date : "1619091512038",
+    total : '193.54',
+    type : {
+        boughtRoamingPack : {
+            countryId : 'FI',
+            countryName : 'Финляндия',
+            deviceId : '10098',
+            deviceName : {
+                value : 'MOEK',
+            },
+            duration : {
+                messure : DURATION_MEASURE.WEEK,
+                quantity : 1,
+            },
+            operatorName : 'FINLAND MOBILE - (DNA FINNET NETWORKS)'
+        }
+    }
+}, {
+    date: "1619002420680",
+    total: '333.9',
+    type: {
+        boughtRoamingPack: {
+            countryId: "SE",
+            countryName: "Швеция",
+            deviceId: "10091",
+            deviceName: {
+                value: "Test",
+            },
+            duration: {
+                messure: DURATION_MEASURE.DAY,
+                quantity: 1,
+            },
+            operatorName: "SWEDEN COMVIQ MOBILE - Tele2 (COMVIQ)",
+        }
     },
-    total : '7'
+}, {
+    date: "1619002420680",
+    total: '333.9',
+    type: {
+        dataUsedFromBalance: {
+            countryId: "SE",
+            countryName: "Швеция",
+            deviceId: "10091",
+            deviceName: {
+                value: "Test",
+            },
+            bytes : '52496728800',
+            operatorName: "SWEDEN COMVIQ MOBILE - Tele2 (COMVIQ)",
+        }
+    },
 },{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '08/19/2020',
-    bytes : {
-        value : '104857600'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '06/10/2021',
-    bytes : {
-        value : '1073741824'
-    },
-    total : '13.31'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/11/2020',
-    bytes : {
-        value : '5368709120'
-    },
-    total : '1.5'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/25/2021',
-    bytes : {
-        value : '104857600'
-    },
-    total : '58.88'
-},
-{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/15/2020',
-    bytes : {
-        value : '524288000'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '08/20/2020',
-    bytes : {
-        value : '104857600'
-    },
-    total : '1.5'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/15/2021',
-    bytes : {
-        value : '104857600'
-    },
-    total : '13.31'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '11/05/2020',
-    bytes : {
-        value : '5368709120'
-    },
-    total : '58.88'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/25/2021',
-    bytes : {
-        value : '524288000'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/25/2021',
-    bytes : {
-        value : '524288000'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '08/20/2020',
-    bytes : {
-        value : '104857600'
-    },
-    total : '1.5'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '01/25/2021',
-    bytes : {
-        value : '1073741824'
-    },
-    total : '13.31'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT,
-    date : '11/05/2020',
-    bytes : {
-        value : '5368709120'
-    },
-    total : '58.88'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '01/25/2021',
-    bytes : {
-        value : '524288000'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '01/25/2021',
-    bytes : {
-        value : '104857600'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '08/20/2020',
-    bytes : {
-        value : '104857600'
-    },
-    total : '1.5'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '01/25/2021',
-    bytes : {
-        value : '524288000'
-    },
-    total : '13.31'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '11/05/2020',
-    bytes : {
-        value : '104857600'
-    },
-    total : '58.88'
-},{
-    
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '01/25/2021',
-    bytes : {
-        value : '5368709120'
-    },
-    total : '7'
-},{
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '11/05/2020',
-    bytes : {
-        value : '5368709120'
-    },
-    total : '58.88'
-},{
-    
-    type : ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS,
-    date : '01/25/2021',
-    bytes : {
-        value : '524288000'
-    },
-    total : '7'
-}]
-*/
+    date: "1619002420680",
+    total: '333.9',
+    type : {
+        addBalance : {}
+    }
+},]
