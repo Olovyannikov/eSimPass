@@ -16,8 +16,8 @@ export const Chooser = (props : Props) => {
 
     const logger = new Logger ("Chooser");
 
-    const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
-    const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
+    const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
+    const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
 
     useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
         .do (response => setAllRates (rates => rates = response.success.rates))

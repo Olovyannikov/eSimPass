@@ -1,7 +1,7 @@
 import * as rx from "rxjs/Rx"
 import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { nothingToNull } from "./utils";
-import { ListDevicesResponse } from './generated/proto.web';
+import { ListDevicesResponse, GetAbonentResponse } from './generated/proto.web';
 
 class StorageAdapter {
 
@@ -11,6 +11,7 @@ class StorageAdapter {
     private readonly STORE_EMAIL = 'email';
     private readonly DOCUMENT_UPLOADED = 'documentUploaded';
     private readonly STORE_DEVICES = 'devices';
+    private readonly STORE_ABONENT_INFO = 'abonentInfo';
 
     private storage = new Map<string,any> ();
 
@@ -19,6 +20,19 @@ class StorageAdapter {
     public readonly storeDocumentUploaded = (documentUploaded : boolean) => this.store (this.DOCUMENT_UPLOADED, documentUploaded);
 
     public readonly storeDevices = (devices : ListDevicesResponse.SuccessModel.DeviceModel[]) => this.store(this.STORE_DEVICES, devices);
+
+    public readonly storeAbonentInfo = (info : GetAbonentResponse.SuccessModel) => this.store(this.STORE_ABONENT_INFO, info);
+
+    public readonly getAbonentInfo = () => {
+        const result = this.getFromStore<GetAbonentResponse.SuccessModel>(this.STORE_ABONENT_INFO);
+
+        if (result) {
+            return rx.Observable.of(result)
+        }
+        else {
+            return rx.Observable.empty()
+        }
+    }
 
     public readonly getDevices = () => {
         const result = this.getFromStore<ListDevicesResponse.SuccessModel.DeviceModel[]>(this.STORE_DEVICES);
@@ -30,7 +44,6 @@ class StorageAdapter {
             return rx.Observable.empty()
         }
     }
-
     public readonly deleteDevice = (deviceId : string) => {
         const result = this.getFromStore<ListDevicesResponse.SuccessModel.DeviceModel[]>(this.STORE_DEVICES)
 

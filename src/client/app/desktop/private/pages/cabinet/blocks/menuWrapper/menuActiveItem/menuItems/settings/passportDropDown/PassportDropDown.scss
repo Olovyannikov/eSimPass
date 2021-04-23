@@ -53,13 +53,17 @@
 
         &.show {
             transform: rotate(180deg);
-            transition: 0.3s all ease-in-out;
+            transition: 0.3s transform ease-in-out;
         }
     
         &.hidden {
             transform: rotate(360deg);
-            transition: 0.3s all ease-in-out;
+            transition: 0.3s transform ease-in-out;
         }
+    }
+
+    .arrow:hover {
+        opacity: 0.5;
     }
 
     @import './passportWrapper/PassportWrapper.scss';

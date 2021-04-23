@@ -14,7 +14,7 @@ export const CalcBlock = () => {
                 <Header selected={setRate}/>
             </div>
             <CenterBlock rate={rate}/>
-            <div className="calc-block__footer"/>
+            <div className="footer"/>
         </div>
     )
 }

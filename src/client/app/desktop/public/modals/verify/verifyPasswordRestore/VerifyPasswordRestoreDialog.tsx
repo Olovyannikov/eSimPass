@@ -24,14 +24,14 @@ export const VerifyPasswordRestoreDialog = () => {
     const verificationToken = tokenRestore;
 
     React.useEffect(() => {
-
+        
         CONNECTION.verifyPasswordRestore(createVerifyPasswordRestoreRequest())
         .do(parseVerifyPasswordRestoreResponse)
         .takeUntil(closedSubject)
         .subscribe(logger.rx.subscribe('Error verify in'))
         
     }, [])
-
+    
     const createVerifyPasswordRestoreRequest = () : VerifyPasswordRestoreRequest => ({ verificationToken })
 
     const parseVerifyPasswordRestoreResponse = (response : VerifyPasswordRestoreResponse) => {

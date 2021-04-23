@@ -13,11 +13,11 @@ export const LogoBlock = () => {
             <tbody>
                 <tr>
                     <td>                    
-                        <div className="logo-block__left">
+                        <div className="left">
                             <div>
-                                <div className="logo-block__text">eSIM карта для путешествий</div>
+                                <div className="text">eSIM карта для путешествий</div>
                             </div>
-                            <div className="logo-block__connect">
+                            <div className="connect">
                                 <a>
                                     <div onClick={handlerClickRegister}>
                                         Подключить
@@ -34,3 +34,4 @@ export const LogoBlock = () => {
         </table>
     )
 }
+

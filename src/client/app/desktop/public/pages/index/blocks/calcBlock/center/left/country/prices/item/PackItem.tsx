@@ -10,8 +10,8 @@ export const PackItem = (props : {
 
     return (
         <div className="PackItem">
-            <span className='pack-item__size'>{unitConventer(+props.pack.quota).quota} {unitConventer(+props.pack.quota).unit}</span>
-            <span className='pack-item__price'>{props.pack.price} ₽</span>
+            <span className='size'>{unitConventer(+props.pack.quota).quota} {unitConventer(+props.pack.quota).unit}</span>
+            <span className='price'>{props.pack.price} ₽</span>
         </div>
     )
 }
