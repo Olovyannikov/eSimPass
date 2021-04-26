@@ -24,7 +24,7 @@ export const Chooser = (props : Props) => {
     )
 
     React.useEffect (() => {
-
+        
         const filter = nothingToNull (props.filter)
         
         if (filter != null) {

@@ -8,6 +8,8 @@ export const CalcBlock = () => {
 
     const [rate, setRate] = React.useState (() : ListRatesResponse.SuccessModel.RateModel => null)
 
+    
+
     return (
         <div className="CalcBlock">
             <div>

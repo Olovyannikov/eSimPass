@@ -19,8 +19,7 @@ export const Header = (props : Props) => {
         setFilter (e.target.value)
     }
 
-    const onSelected = (rate : ListRatesResponse.SuccessModel.RateModel) => {
-
+    const onSelected = (rate : ListRatesResponse.SuccessModel.RateModel) => {  
         props.selected (rate);
         
         setValue (value => value = rate.countryName);

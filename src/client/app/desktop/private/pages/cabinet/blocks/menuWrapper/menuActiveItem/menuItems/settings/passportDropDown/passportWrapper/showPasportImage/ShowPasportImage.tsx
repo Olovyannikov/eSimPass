@@ -21,7 +21,7 @@ export const ShowPasportImage = (props : PassportModel) => {
     const createGetDocumentPhotoRequest = () : GetDocumentPhotoRequest => ({});
 
     React.useEffect(() => {
-
+        
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
             .do((response) => {
 
