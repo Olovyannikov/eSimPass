@@ -49,7 +49,9 @@ export const CreateDevice = () => {
         setInProgress(prev => prev = true);
 
         CONNECTION.createDevicePayment(createDevicePaymentRequst())
-            .do(response => {
+
+        
+        .do(response => {
                 if (response.success) {
                     handleSuccessResponse(response);
                 }

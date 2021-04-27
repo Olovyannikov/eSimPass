@@ -18,10 +18,11 @@
             color: $white;
 
             .operator-name {
-                font-size: 6.366vw;
+                font-size: 5.2vw;
                 font-weight: 400;
                 float: left;
                 width: 100%;
+                min-height: 19vw;
             }
 
             .type {
@@ -29,7 +30,6 @@
                 color: $yellowLk;
                 font-size: 3.7135vw;
                 float: left;
-                margin-top: 4vw;
             }
 
             .DetailedInfo {
@@ -42,7 +42,7 @@
                     border-radius: 3.5vw;
                     outline: none;
                     border: none;
-                    height: 14.0583vw;
+                    height: 10.0583vw;
                     background: $yellowLk;
                     float: left;
                     color: black;
@@ -52,7 +52,7 @@
                 .Line {
                     float: left;
                     width: 100%;
-                    margin-bottom: 7vw;
+                    margin-bottom: 6vw;
                 
                     .img-icon {
                         width: 6.366vw;
@@ -98,20 +98,19 @@
 
                 .operator-name {
                     font-size: 2.366vw;
-                    width: 75%;
+                    min-height: 7.5vw;
                 }
                 .type {
-                    margin-top: 2vw;
                     font-size: 1.7135vw;
                     width: 62%;
                 }
 
                 .DetailedInfo {
-                    margin-top: 3.1618vw;
+                    margin-top: 2.1618vw;
 
                     .button-buy {
                         width: 36vw;
-                        font-size: 2.244vw;
+                        font-size: 2vw;
                         border-radius: 3.5vw;
                         outline: none;
                         border: none;
@@ -122,7 +121,8 @@
                     .Line {
 
                         width: 36vw;
-                        margin-bottom: 2vw;
+                        margin-bottom: 1.5vw;
+
                         .img-icon {
                             width: 3.366vw;
                             height: 3.366vw;

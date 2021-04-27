@@ -3,33 +3,33 @@
     width: 79.1666vw;
     margin: auto;
 
-    .tutorial-block__left {
+    .left {
         float: left;
         width: 52.0833vw;
 
-        .tutorial-block__top {
+        .top {
 
-            .tutorial-block__title {
+            .title {
                 font-size: 3.125vw;
                 margin-bottom: 2.0798vw;
                 font-weight: 700;
             }
 
-            .tutorial-block__text {
+            .text {
                 margin-bottom: 1.1741vw;
                 font-size: 1.3020vw;
                 font-weight: 700;
             }
         }
 
-        .tutorial-block__bottom {
+        .bottom {
             margin-bottom: 2.1133vw;
 
-            .tutorial-block__left-qr {
+            .left-qr {
                 float: left;
                 margin-right: 3.0208vw; 
 
-                .tutorial-block__img_appstore {
+                .img_appstore {
                     margin-top: 0.9392vw;
                     width: 10.625vw;
                     height: 3.0462vw;
@@ -37,18 +37,18 @@
                     margin-bottom: 0.4696vw;
 
                 }
-                .tutorial-block__img_qr-img {
+                .img_qr-img {
                     width: 10.3645vw;
                     height: 10.3645vw;
                     display: block;
 
                 }
             }
-            .tutorial-block__qr {
+            .qr {
                 float: left;
                 margin-right: 3.0208vw;
 
-                .tutorial-block__img_googlePlay {
+                .img_googlePlay {
                     margin-top: 0.9392vw;
                     width: 10.625vw;
                     height: 3.0462vw;
@@ -56,7 +56,7 @@
                     margin-bottom: 0.4696vw;
 
                 }
-                .tutorial-block__img_qr-img {
+                .img_qr-img {
                     width: 10.3645vw;
                     height: 10.3645vw;
                     display: block;
@@ -66,11 +66,11 @@
         }
     }
 
-    .tutorial-block__right {
+    .right {
         float: right;
         width: 27.0833vw;
 
-        .tutorial-block__img_phone {
+        .img_phone {
             width: 13.4375vw;
             margin-left: 13.0208vw;
             height: 27.2187vw;

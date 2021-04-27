@@ -22,6 +22,9 @@
         font-size: 1.1458vw;
         width: 18.4687vw;
         float: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .top-up {
@@ -46,9 +49,8 @@
         color: $white;
         font-weight: 400;
         font-size: 1.0416vw;
-        margin-left: 2.7916vw;
         float: left;
-        width: 20vw;
+        width: 38vw;
         text-align: center;
 
         span {

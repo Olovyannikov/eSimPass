@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
-import { PACK_DURATION } from './generated/proto.web';
+import { DurationModel, DURATION_MEASURE } from './generated/proto.web';
 
 export const hasWebApi = () => {
     if (typeof window !== 'undefined') {
@@ -55,6 +55,9 @@ export const restPercentOfPackageQuota = (quota : number, used : number) : numbe
     if (restQuota >= quota) {
         return 100
     } 
+    else if (percent <= 0) {
+        return 0
+    }
     else if (percent <= 5) {
         return 6.5
     } 
@@ -77,10 +80,16 @@ export const setColorBar = (percent : number) => {
 }
 
 export const convertToGB = (quota : number) : number => {
+    if (quota <= 0) {
+        return 0
+    }
     return Number((quota / 1024 / 1024 / 1000).toFixed(0))
 }
 
 export const convertToMB = (quota : number) : number => {
+    if (quota <= 0) {
+        return 0
+    }
     return Number((quota / 1024 / 1024).toFixed(0))
 }
 
@@ -96,8 +105,6 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
     let restQuota = quota - used
     let unit : Unit;
     
-    
-
     if (quota >= 1048576000) {
         unit = 'ГБ'
         quota = convertToGB(quota)
@@ -118,39 +125,49 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
     }
 }
 
-export const convertDateUntilPackage = (date : string, duration? : PACK_DURATION) => {
+// export const convertDateUntilPackage = (date : string, duration? : DurationModel) => {
     
-    const boughtDate = new Date(Number(date))    
+//     const boughtDate = new Date(Number(date))    
 
-    switch (duration) {
-        case PACK_DURATION.DAY:
-            return  new Date (boughtDate.setDate(boughtDate.getDate() + 1))
+//     switch (duration.messure) {
+//         case DURATION_MEASURE.DAY:
+//             return  new Date (boughtDate.setDate(boughtDate.getDate() + 1))
     
-        case PACK_DURATION.WEEK:
-            return new Date (boughtDate.setDate(boughtDate.getDate() + 7))
+//         case DURATION_MEASURE:
+//             return new Date (boughtDate.setDate(boughtDate.getDate() + 7))
 
-        case PACK_DURATION.TWO_WEEKS:
-            return new Date (boughtDate.setDate(boughtDate.getDate() + 14))
+//         case DURATION_MEASURE:
+//             return new Date (boughtDate.setDate(boughtDate.getDate() + 14))
         
-        case PACK_DURATION.MONTH:
-            return new Date (boughtDate.setDate(boughtDate.getDate() + 31))
+//         case DURATION_MEASURE:
+//             return new Date (boughtDate.setDate(boughtDate.getDate() + 31))
 
-        default:
-            break;
-    }
-}
+//         default:
+//             break;
+//     }
+// }
 
-export const convertDurationType = (amount : PACK_DURATION) => {
-    if (amount === PACK_DURATION.DAY) {
-        return '1 дн.'
+export const countDaysDuration = (duration : DurationModel) => {
+    let countedDays : number = 1;
+    //TODO, ask how to render hours and minutes
+
+    if (duration.messure === DURATION_MEASURE.DAY) {
+        countedDays = 1 * duration.quantity;
+        return `${countedDays} дн.`
     }
-    else if (amount === PACK_DURATION.WEEK) {
-        return '7 дн.'
+    else if (duration.messure === DURATION_MEASURE.WEEK) {
+        countedDays = 7 * duration.quantity;
+        return `${countedDays} дн.`
     }
-    else if (amount === PACK_DURATION.TWO_WEEKS) {
-        return '14 дн.'
+    else if (duration.messure === DURATION_MEASURE.MONTH) {
+        countedDays = 31 * duration.quantity;
+        return `${countedDays} дн.`
     }
-    else if (amount === PACK_DURATION.MONTH) {
-        return '31 дн.'
+    else if (duration.messure === DURATION_MEASURE.YEAR) {
+        countedDays = 365 * duration.quantity;
+        return `${countedDays} дн.`
+    }
+    else {
+        return `${countedDays} дн.`
     }
 }

@@ -51,3 +51,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const DesktopApplication = connect(mapStateToProps)(DesktopApplicationImpl);
+// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1618837184461X10262

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { convertDurationType, unitConventer } from '../../../../../../../../../../../utils';
-import { PACK_DURATION } from '../../../../../../../../../../../generated/proto.web';
+import { unitConventer, countDaysDuration } from '../../../../../../../../../../../utils';
+import { DurationModel } from '../../../../../../../../../../../generated/proto.web';
 
 interface LineModel {
     img : string;
     text : string;
     quota? : string;
-    duration? : PACK_DURATION
+    duration? : DurationModel
     plain? : string;
 }
 
@@ -19,11 +19,11 @@ export const Line = (props : LineModel) => {
             return <span className='amount'>{props.plain}</span>
         }
         else if (props.duration) {
-            return <span className='amount'>{convertDurationType(props.duration)}</span>  
+            return <span className='amount'>{countDaysDuration(props.duration)} </span>  
         }
         else if (props.quota) {
             const convertedQuota = unitConventer(+props.quota);
-
+            
             return <span className='amount'>{convertedQuota.quota} {convertedQuota.unit}</span>  
         }
     }
@@ -37,3 +37,4 @@ export const Line = (props : LineModel) => {
         </div>
     )
 }
+

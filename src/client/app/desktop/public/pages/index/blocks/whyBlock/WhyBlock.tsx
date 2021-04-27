@@ -5,27 +5,27 @@ export const WhyBlock = () => {
     
     return (
         <div className="WhyBlock">
-            <div className="why-block__left">
-                <div className="why-block__title">
+            <div className="left">
+                <div className="title">
                     Почему eSIM Pass?
                 </div>
-                <div className="why-block__imgs">
-                    <div className="why-block__left-part">
-                        <img className='why-block__img_world' src={img_world} alt="World"/>
-                        <div className="why-block__text">Связь по местным операторским тарифам</div>
+                <div className="imgs">
+                    <div className="left-part">
+                        <img className='img_world' src={img_world} alt="World"/>
+                        <div className="text">Связь по местным операторским тарифам</div>
                     </div>
-                    <div className="why-block__center-part">
-                        <img className='why-block__img_touch' src={img_touch} alt="Touch"/>
-                        <div className="why-block__text">Легкое переключение между 200 операторов</div>
+                    <div className="center-part">
+                        <img className='img_touch' src={img_touch} alt="Touch"/>
+                        <div className="text">Легкое переключение между 200 операторов</div>
                     </div>
-                    <div className="why-block__right-part">
-                        <img className='why-block__img_travel' src={img_travel} alt="eSIM Pass"/>
-                        <div className="why-block__text">Невозможно сломать/потерять, легко включить/отключить</div>
+                    <div className="right-part">
+                        <img className='img_travel' src={img_travel} alt="eSIM Pass"/>
+                        <div className="text">Невозможно сломать/потерять, легко включить/отключить</div>
                     </div>
                 </div>
             </div>
-            <div className="why-block__right">
-                <img className='why-block__img_women' src={img_women} />
+            <div className="right">
+                <img className='img_women' src={img_women} />
             </div>
         </div>
     )

@@ -60,6 +60,10 @@
             float: right;
         }
 
+        .icon:hover {
+            opacity: 0.5;
+        }
+
         &.show {
             transform: rotate(180deg);
             transition: 0.3s all ease-in-out;

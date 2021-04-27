@@ -1,9 +1,43 @@
+import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
+import { CONNECTION } from '../../../../../../../../../../../Connection';
 import { img_supportImg } from '../../../../../../../../../../../resources/images';
-import { Button } from '../../../../../../../../components/buttons/Button';
+import { waitForClose } from '../../../../../../../../../../../utils';
 
 
 export const Chat = () => {
+
+    // TODO ask about support email 
+
+    // const [supportEmail, setSupportEmail] = React.useState<string>(null);
+
+    // const logger = new Logger('Logger in chat block');
+
+    // const closedSubject = waitForClose();
+
+    // React.useEffect(() => {
+
+    //     CONNECTION.getSupportEmail({})
+    //         .do(response => {
+    //             if (response.email) {
+    //                 setSupportEmail(prev => prev = response.email)
+    //             }
+    //         })
+    //         .takeUntil(closedSubject)
+    //         .subscribe(logger.rx.subscribe('Error get support email response'))
+
+    // }, [])
+
+
+    // const waitForEmail = () => {
+    //     if (supportEmail) {
+    //         return <a href={`mailto:${supportEmail}`} className='link-to-mail'>{supportEmail}</a>
+    //     }
+    //     else {
+    //         return <span className='blur-text'>support@esimpass.com</span>
+    //     }
+    // }
+
 
     return (
         <div className="Chat">

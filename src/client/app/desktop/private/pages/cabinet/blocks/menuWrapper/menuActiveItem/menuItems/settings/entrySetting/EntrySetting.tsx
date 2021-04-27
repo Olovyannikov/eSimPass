@@ -24,9 +24,9 @@ export const EntrySetting = () => {
 
     React.useEffect(() => {
 
-        STORAGE.getEmail()
-            .do(email => {
-                setEmail(prev => prev = email)
+        STORAGE.getAbonentInfo()
+            .do(info => {
+                setEmail(prev => prev = info.email)
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in Entry Setting'))

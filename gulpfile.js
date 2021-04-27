@@ -19,7 +19,7 @@ const clean = () => gulp.src([
 
 const createDirs = cb => fs.mkdir('src/client/generated', {recursive: true}, cb)
 
-const generateClientApi = cb => generateApi (cb, './src/proto', './src/client/generated', true);
+const generateClientApi = cb => generateApi (cb, './src/proto.proto', './src/client/generated', true);
 
 const compileWeb = cb => execute (cb, 'node ./node_modules/webpack/bin/webpack.js --no-stats --config src/client/webpack.config.js');
 

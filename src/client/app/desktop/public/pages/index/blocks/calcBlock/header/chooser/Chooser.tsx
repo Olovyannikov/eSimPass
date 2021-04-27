@@ -16,15 +16,15 @@ export const Chooser = (props : Props) => {
 
     const logger = new Logger ("Chooser");
 
-    const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
-    const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
+    const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
+    const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
 
     useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
         .do (response => setAllRates (rates => rates = response.success.rates))
     )
 
     React.useEffect (() => {
-
+        
         const filter = nothingToNull (props.filter)
         
         if (filter != null) {
@@ -49,7 +49,8 @@ export const Chooser = (props : Props) => {
 
     return (
         <div className="Chooser" style={{display : getDisplay ()}}>
-            {filteredRates.map (rate => <Country key={rate.rateId} model={rate} clicked={() => props.selected (rate)}/>)}
+            {filteredRates.map (rate => <Country key={rate.countryId} model={rate} clicked={() => props.selected (rate)}/>)}
         </div>
     )
 }
+

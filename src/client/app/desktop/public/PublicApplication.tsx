@@ -51,3 +51,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const PublicApplication = connect(mapStateToProps)(PublicApplicationImpl)
+

@@ -9,6 +9,7 @@ export interface Props {
 }
 
 export const CountryBlock = (props : Props) => {
+    
     return (
         <div className="CountryBlock">
             <Header rate={props.rate}/>

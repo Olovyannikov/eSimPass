@@ -8,7 +8,7 @@ import { SetDocumentRequest } from '../../../../../../../../../../../../../gener
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../../Connection';
-import { STORAGE } from '../../../../../../../../../../../../../StorageAdapter';
+// import { STORAGE } from '../../../../../../../../../../../../../StorageAdapter';
 
 
 
@@ -56,7 +56,7 @@ export const PassportEdit = (props : PassportModel) => {
             setError(prev => prev = 'Введите адрес')
         }
         else if (!sn) {
-            setError(prev => prev = 'Введите номер паспорта')
+            setError(prev => prev = 'Введите серию и номер')
         }
         else if (!issueDate) {
             setError(prev => prev = 'Введите дату')
@@ -92,7 +92,7 @@ export const PassportEdit = (props : PassportModel) => {
         CONNECTION.setDocument(createSetDocumentRequest())
             .do(response => {
                 if (response.success) {
-                    STORAGE.storeDocumentUploaded(true) // TODO hide the red reminder after filled a passport data
+                    // STORAGE.storeDocumentUploaded(true) // TODO hide the red reminder after filled a passport data
                     props.toggleMode(prev => !prev)
                 }
                 else {

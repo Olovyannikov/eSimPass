@@ -21,6 +21,7 @@ export const DetailedWrapper = () => {
         
         CONNECTION.listCharges(createListChargesRequest())
             .do(response => {
+                
                 if (response.success) {
                     handleSuccessResponse(response)
                 }
@@ -35,10 +36,10 @@ export const DetailedWrapper = () => {
         setCharges(prev => prev = response.success.charges)
         setInProgress(prev => prev = false)
     }
-
+    // TODO DATE CONVENTER 
     const createListChargesRequest = () : ListChargesRequest => ({
         fromDate : {
-            value : String(Date.parse(String(new Date())))
+            value : null
         }
     })
 

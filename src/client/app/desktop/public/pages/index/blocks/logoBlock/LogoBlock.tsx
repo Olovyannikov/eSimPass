@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { STATE_API } from "../../../../../../../redux/StateApi";
 import { img_girl1 } from "../../../../../../../resources/images";
-import { STORAGE } from "../../../../../../../StorageAdapter";
 
 
 export const LogoBlock = () => {
@@ -14,11 +13,11 @@ export const LogoBlock = () => {
             <tbody>
                 <tr>
                     <td>                    
-                        <div className="logo-block__left">
+                        <div className="left">
                             <div>
-                                <div className="logo-block__text">eSIM карта для путешествий</div>
+                                <div className="text">eSIM карта для путешествий</div>
                             </div>
-                            <div className="logo-block__connect">
+                            <div className="connect">
                                 <a>
                                     <div onClick={handlerClickRegister}>
                                         Подключить
@@ -35,3 +34,4 @@ export const LogoBlock = () => {
         </table>
     )
 }
+

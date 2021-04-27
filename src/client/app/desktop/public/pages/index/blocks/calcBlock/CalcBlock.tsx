@@ -8,14 +8,15 @@ export const CalcBlock = () => {
 
     const [rate, setRate] = React.useState (() : ListRatesResponse.SuccessModel.RateModel => null)
 
+    
+
     return (
         <div className="CalcBlock">
             <div>
                 <Header selected={setRate}/>
             </div>
             <CenterBlock rate={rate}/>
-            <div className="calc-block__footer"/>
+            <div className="footer"/>
         </div>
     )
 }
-

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../../../../../Connection';
 
 import { GetAbonentResponse, SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
+import { STORAGE } from '../../../../../../../../../../../../StorageAdapter';
 import { waitForClose } from '../../../../../../../../../../../../utils';
 import { PassportEdit } from './passportEdit/PassportEdit';
 import { PassportView } from './passportView/PassportView';
@@ -32,24 +33,6 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
     
     const [mode, setMode] = React.useState<boolean>(true);
 
-    React.useEffect(() => {
-
-        CONNECTION.getAbonent(createGetAbonentPassportRequest())
-            .do(response => {
-                if (response.success) {
-                    setPassportState(prev =>({
-                        ...prev,
-                        ...response.success.document
-                    }));
-                }
-            })
-            .takeUntil(closedSubject)
-            .subscribe(logger.rx.subscribe('Error in get abonent passport response'))
-
-    }, [])
-
-    const createGetAbonentPassportRequest = () : GetAbonentResponse => ({});
-
     const [passportState, setPassportState] = React.useState<PassportStateModel>({
         birhday : null,
         issueDate : null,
@@ -59,6 +42,37 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
         phone : '',
         photo : null,
     })
+
+    React.useEffect(() => {        
+
+        STORAGE.getAbonentInfo()
+            .concat(CONNECTION.getAbonent({})
+                .map(response => response.success))
+                .do(info => {
+                    if (info) {
+                        STORAGE.storeAbonentInfo(info)
+                        setPassportState(prev => ({
+                            ...prev, 
+                            ...info.document,
+                        }))
+                    }
+                })
+                .takeUntil(closedSubject)
+                .subscribe(logger.rx.subscribe('Error in get abonent passport response'))
+        
+        // CONNECTION.getAbonent({})
+        //     .do(response => {
+        //         if (response.success) {
+        //             setPassportState(prev =>({
+        //                 ...prev,
+        //                 ...response.success.document
+        //             }));
+        //         }
+        //     })
+        //     .takeUntil(closedSubject)
+        //     .subscribe(logger.rx.subscribe('Error in get abonent passport response'))
+
+    }, [])
     
     const passportClass = () => props.show ? 'active' : 'disabled';
 

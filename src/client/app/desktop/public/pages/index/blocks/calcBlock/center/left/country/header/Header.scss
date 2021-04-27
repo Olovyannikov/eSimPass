@@ -4,15 +4,15 @@
 
     .flag-icon-background {
         float: left;
-        width: 3vw;
-        height: 3vw;
+        width: 5vw;
+        height: 5vw;
     }
     
     td:nth-child(2) {
         width: 100%;
         
         >div {
-            padding-left: 1vw;
+            padding-left: 2vw;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;

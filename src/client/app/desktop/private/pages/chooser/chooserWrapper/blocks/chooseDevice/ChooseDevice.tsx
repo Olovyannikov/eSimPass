@@ -2,13 +2,13 @@ import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { ListDevicesResponse, ListRatesResponse } from '../../../../../../../../generated/proto.web';
-import { STATE_API } from '../../../../../../../../redux/StateApi';
-import { STORAGE } from '../../../../../../../../StorageAdapter';
+// import { STORAGE } from '../../../../../../../../StorageAdapter';
 import { waitForClose } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
 import { AddDevice } from './addDevice/AddDevice';
 import { Device } from './device/Device';
 import { DisabledDevice } from './disabledDevice/DisabledDevice';
+// import { devicesData } from '../../../../../../../../mockData/mockDevices';
 
 interface ChooseDeviceModel {
     rate? : ListRatesResponse.SuccessModel.RateModel;
@@ -26,33 +26,33 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
 
     React.useEffect(() => {
 
-        // CONNECTION.listDevices({})
-        //     .do(response => {
-        //         if (response.success) {
-        //             setPackages(prev => prev = response.success.devices)
-        //         }
-        //         setInProgress(prev => prev = false);
-        //     })
-        //     .takeUntil(closedSubject)
-        //     .subscribe(logger.rx.subscribe('Error in device response'))
-
-        STORAGE.getDevices()
-            .concat(CONNECTION.listDevices({})
-                .map(response => response.success.devices)
-            )
-            .do(devices => {
-                if (devices) {
-                    STORAGE.storeDevices(devices)
+        CONNECTION.listDevices({})
+            .do(response => {
+                if (response.success) {
+                    setPackages(prev => prev = response.success.devices)
                 }
-                else {
-                    STORAGE.storeDevices([])
-                }
-                setInProgress(prev => prev = false)
-                setPackages(prev => prev = devices)
-
+                setInProgress(prev => prev = false);
             })
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
+
+        // STORAGE.getDevices()
+        //     .concat(CONNECTION.listDevices({})
+        //         .map(response => response.success.devices)
+        //     )
+        //     .do(devices => {
+        //         if (devices) {
+        //             STORAGE.storeDevices(devices)
+        //         }
+        //         else {
+        //             STORAGE.storeDevices([])
+        //         }
+        //         setInProgress(prev => prev = false)
+        //         setPackages(prev => prev = devices)
+
+        //     })
+        //     .takeUntil(closedSubject)
+        //     .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [])
 
@@ -62,10 +62,10 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
             return packages.map((el, index : number) => {
                 
                 if (el.currentPack) {
-                    return <Device pack={props.pack} rateId={props.rate.rateId} device={el} key={index}/>
+                    return <Device pack={props.pack} countryId={props.rate.countryId} device={el} key={index}/>
                 } 
                 else {
-                    return <DisabledDevice pack={props.pack} rateId={props.rate.rateId} device={el} key={index}/>
+                    return <DisabledDevice pack={props.pack} countryId={props.rate.countryId} device={el} key={index}/>
                 }
             })
         }
@@ -89,3 +89,4 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
         </div>
     )
 }
+

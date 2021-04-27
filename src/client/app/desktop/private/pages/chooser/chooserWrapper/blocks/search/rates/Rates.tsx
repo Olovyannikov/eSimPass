@@ -13,7 +13,7 @@ interface RatesModel {
     selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void
 }
 
-export const Rates = (props : RatesModel) => {
+export const Rates = React.memo((props : RatesModel) => {
 
     const logger = new Logger ("Chooser Input Rates");
 
@@ -24,6 +24,7 @@ export const Rates = (props : RatesModel) => {
     const [inProgress, setInProgress] = React.useState<boolean>(true);
 
     React.useEffect(() => {
+
         CONNECTION.listRates({})
             .do(response => setAllRates (rates => rates = response.success.rates))
             .do(() => setInProgress(prev => prev = false))
@@ -63,7 +64,7 @@ export const Rates = (props : RatesModel) => {
             return (
                 <>
                     <div className="title">Популярные страны</div>
-                    {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                    {filteredRates.map (rate => <RateCountry countryFlag={rate.countryId} key={rate.countryId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                 </>
             )
         }
@@ -79,7 +80,7 @@ export const Rates = (props : RatesModel) => {
             return (
                 <>
                     <div className="title">Поиск</div>
-                    {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                    {filteredRates.map (rate => <RateCountry countryFlag={rate.countryId} key={rate.countryId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                 </>
             )
         }
@@ -90,4 +91,5 @@ export const Rates = (props : RatesModel) => {
             {renderRates()}
         </div>
     )
-}
+})
+

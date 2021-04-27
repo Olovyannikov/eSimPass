@@ -8,7 +8,6 @@ import { GetPaymentRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { hasWebApi, waitForClose } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
-import { STORAGE } from "../../../../../StorageAdapter";
 
 export enum WAIT_STATE {
     PAYMENT_NOT_FOUND,
@@ -44,27 +43,20 @@ export const WaitForPayment = () => {
         rx.Observable.of ({})
             .concatMap (() => createGetPaymentResponse ()
             .map (response => {
-
+                
                 if (response.notReady) {
                     setPaymentStatus(prev => prev = 'Ожидается платеж')
                     return WAIT_STATE.WAITING_FOR_PAYMENT
                 }
                 else if (response.paymentNotFound) {
-                    
                     handlePaymentStatusResponse('Платеж не найден');
                     return WAIT_STATE.PAYMENT_NOT_FOUND
                 }
-                else if (response.success.paymentReceived?.waitForDevice == true) {
-                    
-                    handlePaymentStatusResponse('Платеж получен, создаем устройство');
-                    return WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE
-                }
-                else if (response.success.deviceCreated) {
+                else if (response.success.deviceId?.value) {
                     handlePaymentStatusResponse('Устройство создано');
                     return WAIT_STATE.DEVICE_CREATED
                 }
-                else if (response.success.paymentReceived?.waitForDevice == false) {
-                    
+                else if (response.success) {
                     handlePaymentStatusResponse('Платеж получен');
                     return WAIT_STATE.PAYMENT_RECEIVED
                 }
@@ -78,7 +70,7 @@ export const WaitForPayment = () => {
             }))
             .delay (1000)
             .repeat (10)
-            .takeWhile (repeat => repeat == WAIT_STATE.WAITING_FOR_PAYMENT || repeat == WAIT_STATE.PAYMENT_RECEIVED_WAITING_DEVICE )
+            .takeWhile (repeat => repeat == WAIT_STATE.WAITING_FOR_PAYMENT)
             .takeUntil (rx.Observable.timer (3000))
             .defaultIfEmpty (lastState)
             .delay (1000)
@@ -188,3 +180,5 @@ export const WaitForPayment = () => {
 
 //https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615558464422X10110
 //https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615790041178X10116
+
+// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1618837356278X10269

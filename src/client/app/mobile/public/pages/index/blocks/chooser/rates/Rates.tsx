@@ -74,7 +74,7 @@ export const Rates = (props : RatesModel) => {
             return (
                 <>
                     <div className="title">Популярные страны</div>
-                    {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                    {filteredRates.map (rate => <RateCountry key={rate.countryId} countryFlag={rate.countryId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                     <div onClick={showAllRates} className="show-all-countries">показать все страны</div>
                     <Button func={handleConnect} text='Подключить eSIM' className='button-connect' />
                 </>
@@ -92,7 +92,7 @@ export const Rates = (props : RatesModel) => {
             return (
                 <>
                     <div className="title">Поиск</div>
-                    {filteredRates.map (rate => <RateCountry key={rate.rateId} country={rate.countryName} selected={() => props.selected (rate)} />)}
+                    {filteredRates.map (rate => <RateCountry key={rate.countryId} countryFlag={rate.countryId} country={rate.countryName} selected={() => props.selected (rate)} />)}
                     <Button func={handleConnect} text='Подключить eSIM' className='button-connect'/>
                 </>
             )

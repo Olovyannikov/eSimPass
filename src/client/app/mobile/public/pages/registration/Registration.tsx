@@ -120,8 +120,6 @@ export const Registration = () => {
     }
 
     const handleSuccessResponse = (response : RegisterMobileResponse) => {
-        console.log(response.success.token);
-        
         setToken(prev => prev = response.success.token);
         setInProgress(prev => prev = false);
         setSuccessRegister(prev => prev = true);

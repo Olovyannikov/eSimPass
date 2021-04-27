@@ -5,14 +5,14 @@ import { CONNECTION } from '../../../../../../../../../Connection';
 
 import { BuyPackRequest, BuyPackResponse, ListDevicesResponse, ListRatesResponse } from '../../../../../../../../../generated/proto.web';
 import { img_iphone } from '../../../../../../../../../resources/images';
-import { convertDateUntilPackage, waitForClose } from '../../../../../../../../../utils';
+import { waitForClose } from '../../../../../../../../../utils';
 import { ProgressBar } from '../../../../../../components/progressBar/ProgressBar';
 import { Spinner } from '../../../../../../components/spinnerPayment/Spinner';
 
 interface DeviceModel {
     device : ListDevicesResponse.SuccessModel.DeviceModel;
     pack? : ListRatesResponse.SuccessModel.RateModel.PackModel;
-    rateId? : string;
+    countryId? : string;
 }
 
 export const Device = (props : DeviceModel) => {
@@ -25,6 +25,8 @@ export const Device = (props : DeviceModel) => {
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [response, setResponse] = React.useState<string>(null);
+
+    const handleDateUntul = (finished : string) => new Date(+finished).toLocaleDateString();
 
     const handleBuyPack = () => {
 
@@ -43,8 +45,11 @@ export const Device = (props : DeviceModel) => {
         if (response.success) {
             setResponse(prev => prev = 'Пакет успешно приобретен')
         }
-        else if (response.packNotFound || response.rateNotFound) {
+        else if (response.packNotFound) {
             setResponse(prev => prev = 'Пакет не найден')
+        }
+        else if (response.countryNotFound) {
+            setResponse(prev => prev = 'Страна не найдена')
         }
         else if (response.notEnoughFunds) {
             setResponse(prev => prev = 'Недостаточно средств')
@@ -59,9 +64,7 @@ export const Device = (props : DeviceModel) => {
     const createBuyPackRequest = () : BuyPackRequest => ({
         deviceId : props.device.deviceId,
         duration : props.pack.duration,
-        price : props.pack.price,
-        quota : props.pack.quota,
-        rateId : props.rateId
+        countryId : props.countryId
     })
 
     const doRender = () => {
@@ -78,17 +81,17 @@ export const Device = (props : DeviceModel) => {
                         <div className="name"> <span>Устройство</span> {props.device.name?.value}</div>
                         <div className="rate-info">
                             <div className="rate">
-                                <div>eSIM {props.device.currentPack.rate.operatorName}</div>
+                                <div>eSIM {props.device.currentPack.operatorName}</div>
                             </div>
                             <div className="device-info">
                                 iPhone 11 Pro
                             </div>
                         </div>
                         <div className="country">
-                            {props.device.currentPack?.rate.countryName}
+                            {props.device.currentPack.countryName}
                         </div>
-                        <ProgressBar quota={props.device.currentPack.quota} used={props.device.currentPack.used} />
-                        <div className="until">Действует до <span className='date'>{convertDateUntilPackage(props.device.currentPack.boughtDate, props.device.currentPack.duration).toLocaleDateString()}</span></div>
+                        <ProgressBar quota={props.device.currentPack.quota} used={props.device.currentPack.activated.usedBytes} />
+                        <div className="until">Действует до <span className='date'>{handleDateUntul(props.device.currentPack.activated.finished)}</span></div>
                     </div>
                     <div className="right-block">
                         <div className='iphone'>

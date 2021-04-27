@@ -10,4 +10,3 @@ export const PublicApplication = () => {
         </div>
     )
 }
-

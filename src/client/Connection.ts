@@ -51,7 +51,7 @@ export class Connection extends WebClientBase {
         })
         .flatMap (response => {
             if (window.location.port == "9999") {
-                return rx.Observable.timer (1000)
+                return rx.Observable.timer (0)
                     .map (() => response)
             }
             else {

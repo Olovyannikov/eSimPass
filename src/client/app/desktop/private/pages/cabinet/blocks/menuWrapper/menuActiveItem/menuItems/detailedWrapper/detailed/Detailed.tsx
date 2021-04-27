@@ -17,13 +17,14 @@ export const Detailed = (props : DetailedModel) => {
     const [currentPage, setCurrentPage] = React.useState<number>(0);
 
     const filterChargesByTableView = () => {
-        if (tableView === 'expenses') {
-            return props.charges.filter(el => el.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.PACK_BOUGHT)
+        if (tableView === 'payments') {
+            return props.charges.filter(el => el.type.addBalance)
         }
-        else return props.charges.filter(el => el.type === ListChargesResponse.SuccessModel.ChargeModel.CHARGE_TYPE.ADD_FUNDS)
+        else return props.charges.filter(el => !el.type.addBalance)
     }
 
     const reduceChargesByPages = () => {
+        
         const filteredCharges = filterChargesByTableView();
         const pageSize : number = 15;
         if (filteredCharges) {
@@ -48,3 +49,4 @@ export const Detailed = (props : DetailedModel) => {
         </div>
     )
 }
+

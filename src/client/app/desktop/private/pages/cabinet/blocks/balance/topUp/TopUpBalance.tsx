@@ -15,7 +15,7 @@ export const TopUpBalance = () => {
     const inputBalance = React.useRef<HTMLInputElement>();
 
     const [inProgress, setInProgress] = React.useState<boolean>(true);
-    const [minAmount, setMinAmount] = React.useState<string>('5');
+    const [minAmount, setMinAmount] = React.useState<string>('100');
     const [error, setError] = React.useState<boolean>(false);
     
     const closedSubject = waitForClose ();
@@ -28,7 +28,7 @@ export const TopUpBalance = () => {
             })
             .takeUntil (closedSubject)
             .subscribe (logger.rx.subscribe ("Error in getMinBalancePaymentAmmount"))
-    }, [])
+    }, [minAmount])
 
     const handleBalancePayment = () => {
         setInProgress(prev => prev = true);

@@ -17,7 +17,7 @@ export const PassportDropDown = () => {
                 <div className='passport-img'><img src={img_passport} alt="Passport"/></div>
                 <div>Паспортные данные</div>
             </div>
-            <img onClick={toggleDropDown} src={img_arrowDown} alt="Arrow" className={`arrow ${setStyleForDropDown()}`}/>
+            <img onClick={toggleDropDown} src={img_arrowDown} alt="Arrow" className={`arrow ${setStyleForDropDown()}`} />
             <PassportWrapper show={dropDown} />
         </div>
     )

@@ -3,10 +3,10 @@
         float: left;
     }
 
-    .prices-block__prices {
+    .prices {
         @import "./item/PackItem.scss";
     }
-    .prices-block__planeBlock {
+    .planeBlock {
         margin-left: 1vw;
         margin-top: 1vw;
         
@@ -15,7 +15,7 @@
             height: 13.6947vw;
         }
 
-        .prices-block__connect {
+        .connect {
             margin-top: 0.5vw;
             margin-left: 1vw;
             

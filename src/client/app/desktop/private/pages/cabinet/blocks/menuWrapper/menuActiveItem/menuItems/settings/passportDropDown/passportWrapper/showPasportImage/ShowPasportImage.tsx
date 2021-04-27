@@ -21,7 +21,7 @@ export const ShowPasportImage = (props : PassportModel) => {
     const createGetDocumentPhotoRequest = () : GetDocumentPhotoRequest => ({});
 
     React.useEffect(() => {
-
+        
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
             .do((response) => {
 
@@ -78,12 +78,11 @@ export const ShowPasportImage = (props : PassportModel) => {
     }
 
     const renderImage = () => {
-        // TODO! Check props
         if (inProgress) {
             return <Spinner />    
         } 
         else if (props.passportState?.photo) {
-            return <img className='img' src={returnBase64String()} alt="Passport image"/>
+            return <img id='passport-image' className='img' src={returnBase64String()} alt="Passport image"/>
         }
         else if (!inProgress && !props.passportState?.photo) {
             return <div className="attention">Фотография паспорта отсутствует!</div>

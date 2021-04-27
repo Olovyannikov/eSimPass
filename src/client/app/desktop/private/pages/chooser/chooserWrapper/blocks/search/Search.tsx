@@ -39,3 +39,4 @@ export const Search = (props : SearchModel) => {
         </div>
     )
 }
+

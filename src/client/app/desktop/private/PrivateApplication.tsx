@@ -40,3 +40,4 @@ const mapStateToProps = (state : State) => ({
 })
 
 export const PrivateApplication = connect(mapStateToProps)(PrivateApplicationImpl);
+
