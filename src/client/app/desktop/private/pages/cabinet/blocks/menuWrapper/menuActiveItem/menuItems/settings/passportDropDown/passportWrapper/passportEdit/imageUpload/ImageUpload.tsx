@@ -8,6 +8,7 @@ interface ImageUploadModel {
     disabled? : boolean;
 }
 
+// Polyfill for canvas.toBlob
 if (!HTMLCanvasElement.prototype.toBlob) {
     Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
       value: function (callback : any, type : any, quality : any) {
@@ -28,7 +29,7 @@ if (!HTMLCanvasElement.prototype.toBlob) {
       }
     });
   }
-
+// polyfill for Uint8Array.reduce
 if (!Uint8Array.prototype.reduce) {
     Object.defineProperty(Uint8Array.prototype, 'reduce', {
       value: function(callback : any /*, initialValue*/) {
