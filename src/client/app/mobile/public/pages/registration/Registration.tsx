@@ -1,7 +1,6 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
-import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../Connection';
 import { RegisterMobileRequest, RegisterMobileResponse } from '../../../../../generated/proto.web';
 import { img_activeEye, img_disableEye, img_firstStep, img_next } from '../../../../../resources/images';
@@ -19,8 +18,6 @@ export const Registration = () => {
     const logger = new Logger ('Registration Dialog mobile');
 
     const closedSubject = waitForClose ();
-
-    const history = useHistory();
 
     const [token, setToken] = React.useState<string>(null);
     const [successRegister, setSuccessRegister] = React.useState<boolean>(null)

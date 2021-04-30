@@ -1,8 +1,4 @@
-@import "./../../node_modules/flag-icon-css/css/flag-icon.css";
-@import './resources/variables.scss';
-@import './resources/fonts.css';
 
-@import './app/Application.scss';
 
 body, html { 
     height: 100%;
@@ -15,8 +11,14 @@ body, html {
     overflow-x: hidden;
     background: linear-gradient(270deg, #FFF05A 0%, #FF785A 100%);
     
-    #root {
+    #__next {
         height: 100%;
+        @import "./../../node_modules/flag-icon-css/css/flag-icon.css";
+        @import './resources/variables.scss';
+        @import './resources/fonts.css';
+        @import './app/Application.scss';
+        // @import './app/desktop/DesktopApplication.scss';
+        // @import './app/desktop/public/pages/index/IndexPage.scss';
     }
 }
 

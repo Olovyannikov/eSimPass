@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 
 import { ListDevicesResponse } from '../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../redux/StateApi';
@@ -13,9 +13,7 @@ export interface BuyRateModel {
 
 export const BuyPack = (props : BuyRateModel) => {
 
-    const history = useHistory();
-
-    const handleBuyPack = () => history.push('/cabinet/chooseRates');
+    const handleBuyPack = () => Router.push('/cabinet/chooseRates');
 
     const handleDateUntul = (finished : string) => new Date(+finished).toLocaleDateString();
 

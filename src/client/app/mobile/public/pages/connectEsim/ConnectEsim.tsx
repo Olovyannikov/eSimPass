@@ -2,15 +2,13 @@ import * as React from 'react';
 
 import { Button } from '../../components/buttons/Button';
 import { img_secondStep, img_stepBack } from '../../../../../resources/images';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 import { CreateDevicePaymentRequest, CreateDevicePaymentResponse } from '../../../../../generated/proto.web';
 import { CONNECTION } from '../../../../../Connection';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { hasWebApi, waitForClose } from '../../../../../utils';
 
 export const ConnectEsim = () => {
-
-    const history = useHistory();
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [error, setError] = React.useState<string>(null);
@@ -19,7 +17,7 @@ export const ConnectEsim = () => {
 
     const closedSubject = waitForClose();
 
-    const backToregistration = () => history.push('/registration');
+    const backToregistration = () => Router.push('/registration');
 
     const handleConfirmPurchase = () => {
 

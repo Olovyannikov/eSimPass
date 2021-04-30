@@ -1,8 +1,7 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 import { CONNECTION } from '../../../../../../../../Connection';
-import { ListDevicesResponse } from '../../../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
 
 import { waitForClose } from '../../../../../../../../utils';
@@ -13,8 +12,6 @@ export const EmptyPackage = () => {
 
     const closedSubject = waitForClose();
 
-    const history = useHistory();
-
     const [inProgress, setInProgress] = React.useState<boolean>(false);
 
     const checkExistingDevice = () => {
@@ -22,7 +19,7 @@ export const EmptyPackage = () => {
         CONNECTION.listDevices({})
             .do(response => {
                 if (response.success.devices) {
-                    history.push('/cabinet/chooseRates');
+                    Router.push('/cabinet/chooseRates');
                 }
                 else {
                     STATE_API.showPrivateWizard('addDevice');

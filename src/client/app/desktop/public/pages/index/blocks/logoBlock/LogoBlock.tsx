@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import { STATE_API } from "../../../../../../../redux/StateApi";
-import { img_girl1 } from "../../../../../../../resources/images";
+import { img_girlMain } from "../../../../../../../resources/images";
+import Image from 'next/image';
 
 
 export const LogoBlock = () => {
@@ -27,7 +28,8 @@ export const LogoBlock = () => {
                         </div>
                     </td>
                     <td>  
-                        <img src={img_girl1}/>                  
+                        {/* <Image src={'/girl1.png'} width='' height='' /> */}
+                        <img src={img_girlMain} alt=""/>
                     </td>
                 </tr>
             </tbody>

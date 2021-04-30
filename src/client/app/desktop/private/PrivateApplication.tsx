@@ -10,7 +10,7 @@ import { Navbar } from './pages/cabinet/blocks/navbar/Navbar';
 
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
-    const { search } = useLocation();
+    // const { search } = useLocation();
 
     const showWizard = () => {
         if (props.privateWizard) {
@@ -18,13 +18,13 @@ const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
         }
     }
 
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
-        if (search) {
-            STATE_API.showPrivateWizard('waitForPayment');
-        } 
+    //     if () {
+    //         STATE_API.showPrivateWizard('waitForPayment');
+    //     } 
 
-    }, [])
+    // }, [])
 
     return (
         <div className="PrivateApplication">

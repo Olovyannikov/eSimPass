@@ -1,13 +1,14 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 
-import { Link, useHistory } from 'react-router-dom';
 import { CONNECTION } from '../../../../../../../Connection';
 import { GetAbonentResponse } from '../../../../../../../generated/proto.web';
 import { img_person } from '../../../../../../../resources/images';
 import { STORAGE } from '../../../../../../../StorageAdapter';
 import { nothingToNull, waitForClose } from '../../../../../../../utils';
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
+import Router from 'next/router';
+import Link from 'next/link';
 
 export const Navbar = () => {
 
@@ -15,7 +16,6 @@ export const Navbar = () => {
     
     const closedSubject = waitForClose ();
 
-    const history = useHistory();
 
     const [email, setEmail] = React.useState<string>(null);
     const [documentUploaded, setDocumentUploaded] = React.useState<boolean>(null)
@@ -24,7 +24,8 @@ export const Navbar = () => {
 
     const handleLogout = () => {
         STORAGE.clear();
-        history.push('/');
+        Router.push('/')
+
     }
 
     React.useEffect(() => {
@@ -82,7 +83,9 @@ export const Navbar = () => {
     return (
         <div className="Navbar">
             <div className="left-nav">
-                <Link className="logo" to='/'>LOGO</Link>
+                <Link href='/'>
+                    <a className="logo">LOGO</a>
+                </Link>
             </div>
             <div className="right-nav">
                 <img className='img_person' src={img_person} alt="User"/>

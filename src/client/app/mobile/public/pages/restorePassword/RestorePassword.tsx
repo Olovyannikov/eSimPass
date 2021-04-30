@@ -7,7 +7,7 @@ import { RequestPasswordRestoreRequest, RequestPasswordRestoreResponse } from '.
 import { convertEndingOfNoun, nothingToNull, waitForClose } from '../../../../../utils';
 import { img_next } from '../../../../../resources/images';
 import { Spinner } from '../../components/spinner/Spinner';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 import { Button } from '../../components/buttons/Button';
 
 export const RestorePassword = () => {
@@ -15,8 +15,6 @@ export const RestorePassword = () => {
     const logger = new Logger ('Password Restore mobile');
 
     const closedSubject = waitForClose ();
-
-    const history = useHistory();
 
     const [email, setEmail] = React.useState<string>(null);
     const [inProgress, setInProgress] = React.useState<boolean>(false);
@@ -61,7 +59,7 @@ export const RestorePassword = () => {
         // }   
     }
 
-    const backToMainPage = () => history.push('/')
+    const backToMainPage = () => Router.push('/');
 
     const handlePlainErrorResponse = (error : string) => {
         setEmail(null);
@@ -75,7 +73,7 @@ export const RestorePassword = () => {
 
     const handleToManyErrorAttemptsResponse = (response : RequestPasswordRestoreResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyErrorAttempts) / 1000)
-        
+
         rx.Observable.interval (1000)
             .map (r => secondsToWait - r)
             .do (secondsToWait => {
@@ -114,7 +112,7 @@ export const RestorePassword = () => {
         }
     }
 
-    const handleBackToRegistration = () => history.push('/registration');
+    const handleBackToRegistration = () => Router.push('/registration');
 
     const showSuccessResponse = () => {
         if (success) {
@@ -145,4 +143,3 @@ export const RestorePassword = () => {
         </div>
     )
 }
-

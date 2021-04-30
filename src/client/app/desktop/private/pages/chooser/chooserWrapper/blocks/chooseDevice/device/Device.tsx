@@ -1,6 +1,6 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 import { CONNECTION } from '../../../../../../../../../Connection';
 
 import { BuyPackRequest, BuyPackResponse, ListDevicesResponse, ListRatesResponse } from '../../../../../../../../../generated/proto.web';
@@ -21,8 +21,6 @@ export const Device = (props : DeviceModel) => {
 
     const closedSubject = waitForClose();
 
-    const history = useHistory()
-
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [response, setResponse] = React.useState<string>(null);
 
@@ -35,7 +33,7 @@ export const Device = (props : DeviceModel) => {
         CONNECTION.buyPack(createBuyPackRequest ())
             .do(parseBuyPackResponse)
             .delay(2500)
-            .do(() => history.push('/cabinet'))
+            .do(() => Router.push('/cabinet'))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
         

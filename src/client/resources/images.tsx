@@ -1,7 +1,7 @@
 /// <reference path="./images.d.ts" />
 
 import lk from './img/lk.png';
-import girl1 from './img/girl1.png';
+import girlMain from './img/girl1.png';
 import phone from './img/phone.png';
 import appstore from './img/appstore.png';
 import qr from './img/qr.png';
@@ -116,7 +116,7 @@ export const img_next = next;
 export const img_appGallery  = appGallery;
 export const img_lupa = lupa;
 export const img_lk = lk
-export const img_girl1 = girl1
+export const img_girlMain = girlMain
 export const img_phone = phone
 export const img_appstore = appstore
 export const img_qr = qr

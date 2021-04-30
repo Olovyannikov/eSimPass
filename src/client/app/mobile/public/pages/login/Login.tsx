@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { useHistory } from 'react-router';
 import { LoginRequest, LoginResponse } from '../../../../../generated/proto.web';
 import { img_activeEye, img_disableEye, img_next } from '../../../../../resources/images';
 import { STORAGE } from '../../../../../StorageAdapter';
 import { convertEndingOfNoun, waitForClose } from '../../../../../utils';
 import { CONNECTION } from '../../../../../Connection';
 import { Spinner } from '../../components/spinner/Spinner';
+import Router from 'next/router';
 
 interface PasswordViewModel {
     img : string;
@@ -19,8 +19,6 @@ export const Login = () => {
     const logger = new Logger ('Registration Dialog mobile');
 
     const closedSubject = waitForClose ();
-
-    const history = useHistory();
 
     const [error, setError] = React.useState<string>('');
     const [inProgress, setInProgress] = React.useState<boolean>(false);
@@ -117,7 +115,7 @@ export const Login = () => {
 
     const handleSuccessResponse = (response : LoginResponse) => {
         STORAGE.setToken(response.success.token);
-        history.push('/');
+        Router.push('/');
     }
 
     const createLoginRequest = () : LoginRequest => ({
@@ -140,9 +138,9 @@ export const Login = () => {
         }
     }
 
-    const handleToRestorePassword = () => history.push('/restorePassword')
+    const handleToRestorePassword = () => Router.push('/restorePassword')
 
-    const toRegister = () => history.push('/registration');
+    const toRegister = () => Router.push('/registration');
 
     return (
         <div className="Login">

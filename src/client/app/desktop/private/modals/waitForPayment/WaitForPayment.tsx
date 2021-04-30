@@ -2,12 +2,12 @@ import * as rx from "rxjs/Rx"
 import * as React from 'react';
 
 import { Spinner } from '../../components/spinnerPayment/Spinner';
-import { useHistory } from 'react-router';
 import { CONNECTION } from '../../../../../Connection';
 import { GetPaymentRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { hasWebApi, waitForClose } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
+import Router from 'next/router';
 
 export enum WAIT_STATE {
     PAYMENT_NOT_FOUND,
@@ -22,8 +22,6 @@ export const WaitForPayment = () => {
     const logger = new Logger ('WaitForPayment');
 
     const closedSubject = waitForClose ();
-
-    const history = useHistory();
 
     const location = window.location.href;
 
@@ -167,7 +165,7 @@ export const WaitForPayment = () => {
 
     const backToCabinet = () => {
         STATE_API.hideAuthWizard();
-        history.push('/cabinet')
+        Router.push('/cabinet')
     }
 
     return (

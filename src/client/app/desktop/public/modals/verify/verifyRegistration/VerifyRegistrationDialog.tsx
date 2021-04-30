@@ -17,8 +17,6 @@ export const VerifyRegistrationDialog = () => {
 
     const closedSubject = waitForClose ();
 
-    const history = useHistory();
-
     React.useEffect (() => {
         return () => closedSubject.next ()
     },[])
@@ -59,7 +57,7 @@ export const VerifyRegistrationDialog = () => {
     const handleSuccessResponse = (response : VerifyWebRegistrationResponse) => {
         STORAGE.setToken(response.success.token);
         hideWizard()
-        history.push('/cabinet');
+        Router.push('/cabinet');
         // setSuccess(prev => prev = 'Верификация успешно пройдена');
         // setInProgress(prev => prev = false);
     }

@@ -1,54 +1,57 @@
 import * as React from 'react';
-import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { State } from '../../redux/State';
+
 import { STORAGE } from '../../StorageAdapter';
 import { PublicApplication } from './public/PublicApplication';
 import { PrivateApplication } from "./private/PrivateApplication";
 
-const DesktopApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
+import Router from 'next/router';
+
+
+const DesktopApplication = () => {
 
     const checkAuthenticatedUser = () => {
-        if (STORAGE.getToken()) {
+        if (STORAGE.getToken() && Router.pathname === '/cabinet') {
             return <PrivateApplication />
         }
+        else if (STORAGE.getToken()) {
+            return <PublicApplication />
+        }
         else {
-            return <Redirect to='/' />
+            return <PublicApplication />
         }
     }
 
+
     return (
-        <Router>
-            <Switch>
-                <Route exact path='/'>
-                    <PublicApplication />
-                </Route>
-                <Route exact path='/verifyRegistrationEmail/:tokenVerify'>
-                    <PublicApplication />
-                </Route>
-                <Route exact path='/restorePassword/:tokenRestore'>
-                    <PublicApplication />
-                </Route>
-                <Route exact path='/cabinet'>
-                    {() => checkAuthenticatedUser() }
-                </Route>
-                <Route exact path='/deeplink/payment/success'>
-                    {() => checkAuthenticatedUser()}
-                </Route>
-                <Route exact path='/cabinet/chooseRates'>
-                    {() => checkAuthenticatedUser()}
-                </Route>
-                <Route path='*'>
-                    <Redirect to='/' />
-                </Route>
-            </Switch>
-        </Router>
+        // <PublicApplication />
+        checkAuthenticatedUser()
+            // checkAuthenticatedUser()
+        // <Router>
+        //     <Switch>
+        //         <Route exact path='/'>
+        //             <PublicApplication />
+        //         </Route>
+        //         <Route exact path='/verifyRegistrationEmail/:tokenVerify'>
+        //             <PublicApplication />
+        //         </Route>
+        //         <Route exact path='/restorePassword/:tokenRestore'>
+        //             <PublicApplication />
+        //         </Route>
+        //         <Route exact path='/cabinet'>
+        //             {() => checkAuthenticatedUser() }
+        //         </Route>
+        //         <Route exact path='/deeplink/payment/success'>
+        //             {() => checkAuthenticatedUser()}
+        //         </Route>
+        //         <Route exact path='/cabinet/chooseRates'>
+        //             {() => checkAuthenticatedUser()}
+        //         </Route>
+        //         <Route path='*'>
+        //             <Redirect to='/' />
+        //         </Route>
+        //     </Switch>
+        // </Router>
     )
 }
 
-const mapStateToProps = (state : State) => ({
-    authenticated : state.auth != null,
-})
-
-export const DesktopApplication = connect(mapStateToProps)(DesktopApplicationImpl);
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1618837184461X10262
+export default DesktopApplication

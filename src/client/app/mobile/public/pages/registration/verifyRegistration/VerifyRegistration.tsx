@@ -4,9 +4,8 @@ import * as rx from "rxjs/Rx";
 import { VerifyMobileCodeRequest, VerifyMobileCodeResponse } from '../../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { convertEndingOfNoun, waitForClose } from '../../../../../../utils';
-import { Button } from '../../../components/buttons/Button';
 import { CONNECTION } from '../../../../../../Connection';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 import { STORAGE } from '../../../../../../StorageAdapter';
 import { img_next, img_retry } from '../../../../../../resources/images';
 import { Spinner } from '../../../components/spinner/Spinner';
@@ -24,8 +23,6 @@ export const VerifyRegistration = (props : VerifyRegistrationModel) => {
     const closedSubject = waitForClose ();
 
     const codeInput = React.useRef<HTMLInputElement>();
-
-    const history = useHistory();
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     const [error, setError] = React.useState<string>('');
@@ -86,7 +83,7 @@ export const VerifyRegistration = (props : VerifyRegistrationModel) => {
 
     const handleSuccessResponse = (response : VerifyMobileCodeResponse) => {
         STORAGE.setToken(response.success.token)
-        history.push('/connectEsim')
+        Router.push('/connectEsim')
 
     }
 

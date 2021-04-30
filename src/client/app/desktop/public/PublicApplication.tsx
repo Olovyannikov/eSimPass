@@ -4,8 +4,11 @@ import { PagesHolder } from "./pages/PagesHolder";
 import { Modals } from './modals/Modals';
 import { connect } from "react-redux";
 import { State } from "../../../redux/State";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+
+import { useRouter } from 'next/router';
 import { STATE_API } from "../../../redux/StateApi";
+import Router from 'next/router';
 
 export interface TokenModel {
     tokenVerify : string;
@@ -20,22 +23,30 @@ export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>
         }
     }
 
-    const { tokenVerify, tokenRestore } = useParams<TokenModel>();
+    const router = useRouter()
 
-    const handlerTokenFromUrl = () => {
-        if (tokenVerify) {
-            STATE_API.showPublicWizard('verifyRegistration');
-        }
-        else if (tokenRestore) {
-            STATE_API.showPublicWizard('verifyPasswordRestore');
-        }
+    React.useEffect(() => console.log('routeer values',router), []);
+
+    const handleRouterPath = () => {
+
     }
 
-    React.useEffect(() =>  {
+    // const { tokenVerify, tokenRestore } = useParams<TokenModel>();
 
-        handlerTokenFromUrl()
+    // const handlerTokenFromUrl = () => {
+    //     if (tokenVerify) {
+    //         STATE_API.showPublicWizard('verifyRegistration');
+    //     }
+    //     else if (tokenRestore) {
+    //         STATE_API.showPublicWizard('verifyPasswordRestore');
+    //     }
+    // }
+
+    // React.useEffect(() =>  {
+
+    //     handlerTokenFromUrl()
         
-    }, [tokenVerify, tokenRestore])
+    // }, [tokenVerify, tokenRestore])
 
     return (
         <div className="PublicApplication">

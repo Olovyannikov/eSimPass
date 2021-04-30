@@ -7,17 +7,18 @@ import { waitForClose, nothingToNull } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../../../desktop/private/components/spinnerPayment/Spinner';
 import { RateCountry } from './rateCountry/RateCountry';
 import { Button } from '../../../../../../../desktop/private/components/buttons/Button';
-import { STATE_API } from '../../../../../../../../redux/StateApi';
-import { useHistory } from 'react-router';
+import Router from 'next/router';
+import { State } from '../../../../../../../../redux/State';
+import { connect } from 'react-redux';
 
-interface RatesModel {
+interface RatesModel extends ReturnType<typeof mapStateToProps> {
     showDefaultRates : boolean;
     filter : string;
     selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void;
     setShowDefaultRates : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Rates = (props : RatesModel) => {
+const RatesImpl = (props : RatesModel) => {
 
     const logger = new Logger ("Chooser Input Rates");
 
@@ -25,30 +26,35 @@ export const Rates = (props : RatesModel) => {
 
     const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
-    const [inProgress, setInProgress] = React.useState<boolean>(true);
+    const [inProgress, setInProgress] = React.useState<boolean>(false);
+    
+    // React.useEffect(() => {
+    //     CONNECTION.listRates({})
+    //         .do(response => setAllRates (rates => rates = response.success.rates))
+    //         .do(() => setInProgress(prev => prev = false))
+    //         .takeUntil(closedSubject)
+    //         .subscribe(logger.rx.subscribe('Error in received list rates'))
+        
+    // }, [])
 
     React.useEffect(() => {
-        CONNECTION.listRates({})
-            .do(response => setAllRates (rates => rates = response.success.rates))
-            .do(() => setInProgress(prev => prev = false))
-            .takeUntil(closedSubject)
-            .subscribe(logger.rx.subscribe('Error in received list rates'))
-        
-    }, [])
 
-    React.useEffect(() => {
-        
         const filter = nothingToNull(props.filter)
 
+        setAllRates(prev => prev = props.listRates)
+        
         if (filter != null) {
             setFilteredRates (filteredRates => filteredRates = allRates
                 .filter (rate => rate.countryName.toLocaleLowerCase ().indexOf (filter.toLocaleLowerCase ()) >= 0)
             )
         }
         else {
-            // temporary for popular country 
-            const randomNumber = Math.floor(Math.random() * allRates.length)
-            setFilteredRates(filteredRates => filteredRates = allRates.slice(randomNumber, randomNumber + 8))
+
+            if (allRates) {
+                // temporary for popular country 
+                const randomNumber = Math.floor(Math.random() * allRates.length)
+                setFilteredRates(filteredRates => filteredRates = allRates.slice(randomNumber, randomNumber + 8))
+            }
         }
 
         
@@ -58,8 +64,8 @@ export const Rates = (props : RatesModel) => {
         props.setShowDefaultRates(prev => prev = false);
         setFilteredRates(prev => prev = allRates);
     }
-    const history = useHistory()
-    const handleConnect = () =>  history.push('/registration')
+
+    const handleConnect = () =>  Router.push('/registration')
 
     const renderRates = () => {
         if (inProgress) {
@@ -105,3 +111,9 @@ export const Rates = (props : RatesModel) => {
         </div>
     )
 }
+
+const mapStateToProps = (state : State) => ({
+    listRates : state.listRates,
+})
+
+export const Rates = connect(mapStateToProps)(RatesImpl)

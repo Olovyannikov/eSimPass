@@ -4,28 +4,32 @@ import * as React from "react";
 import { ListRatesResponse } from "../../../../../../../../../generated/proto.web";
 import { Country } from "./country/Country";
 import { CONNECTION } from '../../../../../../../../../Connection'
-import { nothingToNull } from '../../../../../../../../../utils';
+import { nothingToNull, waitForClose } from '../../../../../../../../../utils';
+import { State } from "../../../../../../../../../redux/State";
+import { connect } from "react-redux";
 
-interface Props {
+
+interface Props extends ReturnType<typeof mapStateToProps> {
     filter : string,
     show : boolean,
-    selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void
+    selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void;
 }
 
-export const Chooser = (props : Props) => {
 
+
+export const ChooserImpl = (props : Props) => {
     const logger = new Logger ("Chooser");
-
+    
     const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
 
-    useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
-        .do (response => setAllRates (rates => rates = response.success.rates))
-    )
+    // useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
+    //     .do (response => setAllRates (rates => rates = response.success.rates))
+    // )
 
     React.useEffect (() => {
-        
         const filter = nothingToNull (props.filter)
+        setAllRates(prev => prev = props.listRates)
         
         if (filter != null) {
             setFilteredRates (filteredRates => filteredRates = allRates
@@ -49,8 +53,13 @@ export const Chooser = (props : Props) => {
 
     return (
         <div className="Chooser" style={{display : getDisplay ()}}>
-            {filteredRates.map (rate => <Country key={rate.countryId} model={rate} clicked={() => props.selected (rate)}/>)}
+            {filteredRates && filteredRates.map (rate => <Country key={rate.countryId} model={rate} clicked={() => props.selected (rate)}/>)}
         </div>
     )
 }
 
+const mapStateToProps = (state : State) => ({
+    listRates : state.listRates
+})
+
+export const Chooser = connect(mapStateToProps)(ChooserImpl)

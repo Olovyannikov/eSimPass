@@ -9,16 +9,20 @@ export const PagesHolder = () => {
     // try to use useLocation
 
     const renderPage = () => {
+
+        if (typeof window !== 'undefined') {
+            if (window.location.pathname === '/registration') {
+                return <Registration />
+            }
+            else if (window.location.pathname === '/connectEsim') {
+                return <ConnectEsim />
+            }
+            else {
+                return <IndexPage />
+            }
         
-        if (window.location.pathname === '/registration') {
-            return <Registration />
         }
-        else if (window.location.pathname === '/connectEsim') {
-            return <ConnectEsim />
-        }
-        else {
-            return <IndexPage />
-        }
+        
     }
 
     return (

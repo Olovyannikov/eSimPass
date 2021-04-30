@@ -3,15 +3,13 @@ import * as React from "react";
 import { STATE_API } from '../../../../../../../redux/StateApi';
 import { img_lk } from "../../../../../../../resources/images";
 import { STORAGE } from "../../../../../../../StorageAdapter";
-import { Redirect, useHistory } from "react-router-dom";
+import Router from 'next/router';
 
 export const HeaderBlock = () => {
 
-    const history = useHistory();
-
     const handlerClickCabinet = () => {
         if (STORAGE.getToken()) {
-            history.push('/cabinet')
+            Router.push('/cabinet')
         }
         else {
             return STATE_API.showPublicWizard('login');

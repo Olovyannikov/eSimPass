@@ -1,4 +1,4 @@
-import { ListDevicesResponse } from "../generated/proto.web";
+import { ListDevicesResponse, ListRatesResponse } from "../generated/proto.web";
 
 export type SHOW_PUBLIC_WIZARD_MODE = 'login' | 'register' | 'verifyRegistration' | 'passwordRestore' | 'verifyPasswordRestore';
 export type SHOW_PRIVATE_WIZARD_MODE = 'waitForPayment' | 'deleteDevice' | 'addDevice' | 'buyQrCode' | 'buyPack' | 'connectQrCode';
@@ -23,5 +23,6 @@ export interface State {
         email? : string;
     },
     publicWizard? : SHOW_PUBLIC_WIZARD_MODE;
-    privateWizard? : PrivateWizard
+    privateWizard? : PrivateWizard;
+    listRates? : ListRatesResponse.SuccessModel.RateModel[];
 }

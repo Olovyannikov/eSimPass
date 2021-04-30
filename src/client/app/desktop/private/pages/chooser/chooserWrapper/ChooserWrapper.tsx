@@ -3,13 +3,11 @@ import { ListRatesResponse } from '../../../../../../generated/proto.web';
 import { img_choserArrowBack } from '../../../../../../resources/images';
 import { Search } from './blocks/search/Search';
 import { DetailedRate } from './blocks/detailedRate/DetailedRate';
-import { useHistory } from 'react-router-dom';
+import Router from 'next/router';
 import { ChooseDevice } from './blocks/chooseDevice/ChooseDevice';
 
 
 export const ChooserWrapper = () => {
-
-    const history = useHistory()
     
     const [rate, setRate] = React.useState(() : ListRatesResponse.SuccessModel.RateModel => null);
     const [choosenPack, setChoosenPack] = React.useState<ListRatesResponse.SuccessModel.RateModel.PackModel>(null)
@@ -38,7 +36,7 @@ export const ChooserWrapper = () => {
             setRate(null)
         }
         else {
-            history.push('/cabinet')
+            Router.push('/cabinet')
         }
     }
 

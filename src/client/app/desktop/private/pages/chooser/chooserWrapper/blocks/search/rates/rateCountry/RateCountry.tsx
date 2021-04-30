@@ -8,10 +8,7 @@ interface RateCountryModel {
 }
 
 export const RateCountry = React.memo((props : RateCountryModel) => {
-    React.useEffect(() => {
-        console.log('rendered');
-        
-    }, [])
+
     return (
         <div className="RateCountry" onClick={props.selected}>
             <div className="country">{props.country}</div>

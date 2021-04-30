@@ -1,14 +1,20 @@
 import * as React from 'react';
 
-import { DesktopApplication } from './desktop/DesktopApplication';
+import  DesktopApplication  from './desktop/DesktopApplication';
 import { MobileApplication } from './mobile/MobileApplication';
 
-export const Application = () => {
+interface ApplicationModel {
+    children : React.ReactChild
+}
 
+
+const Application = (props : ApplicationModel) => {
+    
     return (
         <div className='Application'>
             <div className="Desktop">
-                <DesktopApplication />
+                {/* <DesktopApplication /> */}
+                {props.children}
             </div>
             <div className="Mobile">
                 <MobileApplication />
@@ -17,3 +23,4 @@ export const Application = () => {
     )
 
 }
+export default Application

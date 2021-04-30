@@ -8,27 +8,31 @@ interface ImageUploadModel {
     disabled? : boolean;
 }
 
+
+
 // Polyfill for canvas.toBlob
-if (!HTMLCanvasElement.prototype.toBlob) {
-    Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
-      value: function (callback : any, type : any, quality : any) {
-        var dataURL = this.toDataURL(type, quality).split(',')[1];
-        setTimeout(function() {
-  
-          var binStr = atob( dataURL ),
-              len = binStr.length,
-              arr = new Uint8Array(len);
-  
-          for (var i = 0; i < len; i++ ) {
-            arr[i] = binStr.charCodeAt(i);
+if (typeof window !== 'undefined') {
+    if (!window.HTMLCanvasElement.prototype.toBlob) {
+        Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+          value: function (callback : any, type : any, quality : any) {
+            var dataURL = this.toDataURL(type, quality).split(',')[1];
+            setTimeout(function() {
+      
+              var binStr = atob( dataURL ),
+                  len = binStr.length,
+                  arr = new Uint8Array(len);
+      
+              for (var i = 0; i < len; i++ ) {
+                arr[i] = binStr.charCodeAt(i);
+              }
+      
+              callback( new Blob( [arr], {type: type || 'image/jpeg'} ) );
+      
+            });
           }
-  
-          callback( new Blob( [arr], {type: type || 'image/jpeg'} ) );
-  
         });
       }
-    });
-  }
+}
 // polyfill for Uint8Array.reduce
 if (!Uint8Array.prototype.reduce) {
     Object.defineProperty(Uint8Array.prototype, 'reduce', {

@@ -9,7 +9,7 @@ import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { waitForClose, convertEndingOfNoun } from "../../../../../utils";
 import { STATE_API } from "../../../../../redux/StateApi";
 import { STORAGE } from "../../../../../StorageAdapter";
-import { useHistory } from 'react-router';
+import Router from 'next/router';
 
 interface PasswordViewModeModel {
     img : string;
@@ -32,8 +32,6 @@ export const LoginDialog = () => {
         img : img_activeEye,
         type : 'password'
     })
-
-    const history = useHistory();
 
     const emailInput = React.useRef<HTMLInputElement>()
     const passwordInput = React.useRef<HTMLInputElement>()
@@ -120,7 +118,7 @@ export const LoginDialog = () => {
     const handleSuccessResponse = (response : LoginResponse) => {
         STORAGE.setToken(response.success.token);
         STATE_API.hideAuthWizard();
-        history.push('/cabinet');
+        Router.push('/cabinet')
     }
 
     const showInProgress = () => {
