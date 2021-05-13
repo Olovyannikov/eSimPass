@@ -2,13 +2,12 @@ import * as React from 'react';
 
 import { Spinner } from '../../../components/spinner/Spinner';
 import {VerifyWebRegistrationRequest, VerifyWebRegistrationResponse } from '../../../../../../generated/proto.web';
-import { TokenModel } from '../../../PublicApplication';
-import { useHistory, useParams } from 'react-router-dom';
 import { CONNECTION } from '../../../../../../Connection';
 import { waitForClose } from '../../../../../../utils';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { STORAGE } from '../../../../../../StorageAdapter';
 import { STATE_API } from '../../../../../../redux/StateApi';
+import Router, { useRouter } from 'next/router';
 
 
 export const VerifyRegistrationDialog = () => {
@@ -17,32 +16,31 @@ export const VerifyRegistrationDialog = () => {
 
     const closedSubject = waitForClose ();
 
-    React.useEffect (() => {
-        return () => closedSubject.next ()
-    },[])
-
     const [inProgress, setInProgress] = React.useState<boolean>(true);
     const [error, setError] = React.useState<string>(null);
     const [success, setSuccess] = React.useState<string>(null);
 
-    const { tokenVerify } = useParams<TokenModel>();
-    const token = tokenVerify;
+    const router = useRouter();
+    const { tokenVerify } : any = router.query
+    const token = tokenVerify
 
-    
     React.useEffect(() => {
-        
+            
+        if (!token) {
+            return null
+        }
+
         CONNECTION.verifyWebRegistration(createVerifyRegisterRequest())
             .do(parseVerifyRegisterResponse)
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error verify in'))
         
-    }, [])
+    }, [token])
     
 
     const createVerifyRegisterRequest = () : VerifyWebRegistrationRequest => ({ token })
     
     const parseVerifyRegisterResponse = (response : VerifyWebRegistrationResponse) => {
-
         if (response.expired) {
             handlePlainErrorResponse('Ссылка устарела')
         }
@@ -66,7 +64,6 @@ export const VerifyRegistrationDialog = () => {
         setError(prev => prev = error)
         setInProgress(prev => prev = false);
     }
-
 
     const showInProgress = () => {
         if (inProgress) {

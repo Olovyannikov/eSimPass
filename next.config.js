@@ -26,10 +26,8 @@ require('amd-loader');
 // }
 
 module.exports = withCSS(withSass({
-    // sassOptions: {
-    //     includePaths: [path.join(__dirname, 'src/public')],
-    //   },
   webpack: function (config, {isServer}) {
+      
     config.module.rules.push({
       test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
       use: {
@@ -41,18 +39,6 @@ module.exports = withCSS(withSass({
         }
       }
     },
-    // {
-    //     test: /\.scss$/,
-    //     use: [
-    //         // {loader: 'style-loader'},
-    //         // {
-    //         //     loader: 'css-loader',
-    //         // },
-    //         {
-    //             loader: 'sass-loader'                        
-    //         }
-    //     ]
-    // },
     )
     return config
   }

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { PagesHolder } from './pages/PagesHolder';
-import { useLocation } from 'react-router-dom';
 import { State } from '../../../redux/State';
 import { connect } from 'react-redux';
 import { Modal } from './modals/Modal';
 import { STATE_API } from '../../../redux/StateApi';
 import { Navbar } from './pages/cabinet/blocks/navbar/Navbar';
+import { useRouter } from 'next/router';
 
 
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
-    // const { search } = useLocation();
+    const router = useRouter();
 
     const showWizard = () => {
         if (props.privateWizard) {
@@ -18,13 +18,17 @@ const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
         }
     }
 
-    // React.useEffect(() => {
+    React.useEffect(() => {
 
-    //     if () {
-    //         STATE_API.showPrivateWizard('waitForPayment');
-    //     } 
+        const { paymentId } = router.query;
 
-    // }, [])
+        if (paymentId) {
+            console.log(router.query);
+            
+            STATE_API.showPrivateWizard('waitForPayment');
+        }
+        
+    }, [])
 
     return (
         <div className="PrivateApplication">

@@ -3,26 +3,25 @@ import { ConnectEsim } from './connectEsim/ConnectEsim';
 
 import { IndexPage } from './index/IndexPage';
 import { Registration } from './registration/Registration';
+import { useRouter } from 'next/router';
 
 export const PagesHolder = () => {
 
-    // try to use useLocation
+    const router = useRouter();
 
     const renderPage = () => {
 
-        if (typeof window !== 'undefined') {
-            if (window.location.pathname === '/registration') {
-                return <Registration />
-            }
-            else if (window.location.pathname === '/connectEsim') {
-                return <ConnectEsim />
-            }
-            else {
-                return <IndexPage />
-            }
-        
+        if (router.pathname === '/registration') {
+            return <Registration />
         }
-        
+        else if (router.pathname === '/connectEsim') {
+            return <ConnectEsim />
+        }
+        else if (router.pathname === '/') {
+            return <IndexPage />
+        }
+        else return <></>
+
     }
 
     return (

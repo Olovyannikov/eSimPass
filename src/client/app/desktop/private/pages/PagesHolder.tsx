@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { Cabinet } from './cabinet/Cabinet';
 import { Chooser } from './chooser/Chooser';
+import { useRouter } from 'next/router';
 
 export const PagesHolder = () => {
 
-    // const location = useLocation();
+    const router = useRouter();
 
     const renderActivePage = () => {
 
         if (typeof window !== 'undefined') {
+
+            const { paymentId } = router.query;
             
-            if (window.location.pathname === '/cabinet') {
+            if (router.pathname === '/cabinet' || paymentId) {
                 return <Cabinet />
             }
-            else if (window.location.pathname === '/cabinet/chooseRates') {
+            else if (router.pathname === '/cabinet/chooseRates') {
                 return <Chooser />
             }
         }

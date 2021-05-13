@@ -5,7 +5,7 @@ import { Spinner } from '../../components/spinnerPayment/Spinner';
 import { CONNECTION } from '../../../../../Connection';
 import { GetPaymentRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { hasWebApi, waitForClose } from '../../../../../utils';
+import { waitForClose } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
 import Router from 'next/router';
 
@@ -165,7 +165,7 @@ export const WaitForPayment = () => {
 
     const backToCabinet = () => {
         STATE_API.hideAuthWizard();
-        Router.push('/cabinet')
+        Router.replace('/cabinet');
     }
 
     return (
@@ -175,8 +175,3 @@ export const WaitForPayment = () => {
         </div>
     )
 }
-
-//https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615558464422X10110
-//https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1615790041178X10116
-
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1618837356278X10269

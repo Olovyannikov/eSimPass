@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { useParams } from 'react-router-dom';
+
 import { CONNECTION } from '../../../../../../Connection';
 import { VerifyPasswordRestoreRequest, VerifyPasswordRestoreResponse } from '../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../redux/StateApi';
 import { STORAGE } from '../../../../../../StorageAdapter';
 import { waitForClose } from '../../../../../../utils';
 import { Spinner } from '../../../components/spinner/Spinner';
-import { TokenModel } from '../../../PublicApplication';
+
+import Router from 'next/router';
 
 export const VerifyPasswordRestoreDialog = () => {
 
@@ -20,7 +21,7 @@ export const VerifyPasswordRestoreDialog = () => {
     const [error, setError] = React.useState<string>(null);
     const [success, setSuccess] = React.useState<string>(null);
 
-    const { tokenRestore } = useParams<TokenModel>();
+    const { tokenRestore } : any = Router.query;
     const verificationToken = tokenRestore;
 
     React.useEffect(() => {

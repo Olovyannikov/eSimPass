@@ -1,22 +1,29 @@
 import * as React from 'react';
 
-import Router from 'next/router';
-import { PublicApplication } from '../../client/app/desktop/public/PublicApplication';
+import { useRouter } from 'next/router';
+import { STATE_API } from '../../client/redux/StateApi';
+import Main, { getServerSideProps as getListRates } from '..';
+import { GetServerSideProps } from 'next';
 
-const Index = () => {
+const Index = ({ listRates }) => {
 
-    const [onClient, setOnClient] = React.useState<boolean>(false)
+    const router = useRouter();
 
     React.useEffect(() => {
-        if (typeof window !== 'undefined') {
-            if (Router.query) {
-                console.log('fdasfda',Router.query)
-            }
+
+        if (router.query) {
+            STATE_API.showPublicWizard('verifyPasswordRestore');
         }
+
+        if (listRates) {
+            STATE_API.setListRates(listRates)
+        }
+
     }, [])
 
-    return <PublicApplication />
-
+    return <Main />
 }
+
+export const getServerSideProps : GetServerSideProps = getListRates
  
 export default Index

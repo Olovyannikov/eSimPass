@@ -8,6 +8,14 @@
     .Desktop {
         height: 100%;
         display: block;
+
+        .Registration {
+            display: none
+        }
+
+        .ConnectEsim {
+            display: none;
+        }
     }
 
     @import './desktop/DesktopApplication.scss';

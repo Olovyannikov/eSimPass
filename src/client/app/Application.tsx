@@ -7,13 +7,11 @@ interface ApplicationModel {
     children : React.ReactChild
 }
 
-
 const Application = (props : ApplicationModel) => {
     
     return (
         <div className='Application'>
             <div className="Desktop">
-                {/* <DesktopApplication /> */}
                 {props.children}
             </div>
             <div className="Mobile">

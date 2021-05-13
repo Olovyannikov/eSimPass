@@ -1,19 +1,21 @@
 import * as React from 'react';
 
 import { PrivateApplication } from '../../client/app/desktop/private/PrivateApplication';
-// import Application  from '../../client/app/Application';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
+import { STORAGE } from '../../client/StorageAdapter';
 
 
-export default () => {
+const Cabinet = () => {
+
+    const router = useRouter();
 
     const handleRoutindPage = () => {
         if (typeof window !== 'undefined') {
-            if (Router.pathname === '/cabinet') {
-                return (
-
-                    <PrivateApplication />
-                )
+            if (STORAGE.getToken() && router.pathname === '/cabinet') {
+                return <PrivateApplication />
+            }
+            else {
+                router.replace('/')
             }
         }
     }
@@ -28,5 +30,5 @@ export default () => {
     )
 
 }
-// https://toesim-dev.stand.gmdp.io/restorePassword/9c709481-d017-4c7d-aa2f-d1dbe79ca00a
 
+export default Cabinet
