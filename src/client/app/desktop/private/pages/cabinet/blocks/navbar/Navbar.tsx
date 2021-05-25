@@ -7,7 +7,7 @@ import { img_person } from '../../../../../../../resources/images';
 import { STORAGE } from '../../../../../../../StorageAdapter';
 import { nothingToNull, waitForClose } from '../../../../../../../utils';
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
-import Router from 'next/router';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 
 export const Navbar = () => {
@@ -22,14 +22,15 @@ export const Navbar = () => {
 
     const [abonentInfo, setAbonentInfo] = React.useState<GetAbonentResponse.SuccessModel>({});
 
+    const router = useRouter();
+
     const handleLogout = () => {
         STORAGE.clear();
-        Router.push('/')
+        router.push('/');
 
     }
 
     React.useEffect(() => {
-
         STORAGE.getAbonentInfo()
             .concat(CONNECTION.getAbonent({})
                 .map(response => response.success))

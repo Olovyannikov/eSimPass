@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { ListRatesResponse } from '../generated/proto.web';
+import { STATE_API } from '../redux/StateApi';
 
 import  DesktopApplication  from './desktop/DesktopApplication';
 import { MobileApplication } from './mobile/MobileApplication';
 
 interface ApplicationModel {
-    children : React.ReactChild
+    children? : React.ReactChild
 }
 
 const Application = (props : ApplicationModel) => {

@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = env => {
+
     return {
         target: ['web', 'es5'],
         entry: './src/client/index.tsx',
@@ -98,7 +99,7 @@ module.exports = env => {
             index: 'index.html',
             historyApiFallback: true,
             contentBase: './',
-            host: '0.0.0.0'
+            host: '0.0.0.0',
         }
     }
 };

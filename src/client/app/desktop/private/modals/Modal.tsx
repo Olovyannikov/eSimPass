@@ -34,6 +34,7 @@ export const Modal = (props : PrivateStageModals ) => {
         else if (props.state.stage === 'connectQrCode') {
             return <ConnectQrCodeDialog />
         }
+        else return null
     }
 
     const preventClosedWizard = () => {

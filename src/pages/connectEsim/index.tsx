@@ -1,6 +1,6 @@
-import { Logger } from "@glonassmobile/codebase-web/Logger";
-import React from "react";
+import * as React from "react";
 import Router from "next/router";
+import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { CONNECTION } from "../../client/Connection";
 import { CreateDevicePaymentResponse, CreateDevicePaymentRequest } from "../../client/generated/proto.web";
 import { img_secondStep, img_stepBack } from "../../client/resources/images";

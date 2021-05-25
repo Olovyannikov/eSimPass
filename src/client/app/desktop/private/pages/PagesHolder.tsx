@@ -19,7 +19,7 @@ export const PagesHolder = () => {
             else if (router.pathname === '/cabinet/chooseRates') {
                 return <Chooser />
             }
-        }
+        } 
     }
 
     return (

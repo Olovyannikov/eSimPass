@@ -11,20 +11,18 @@ import { useRouter } from 'next/router';
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 
     const router = useRouter();
-
+    
     const showWizard = () => {
         if (props.privateWizard) {
             return <Modal state={props.privateWizard} />
         }
     }
-
+    
     React.useEffect(() => {
-
         const { paymentId } = router.query;
 
         if (paymentId) {
             console.log(router.query);
-            
             STATE_API.showPrivateWizard('waitForPayment');
         }
         
@@ -34,7 +32,7 @@ const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
         <div className="PrivateApplication">
             <Navbar />
             <PagesHolder />
-            { showWizard() }
+            {showWizard()}
         </div>
     )
 }

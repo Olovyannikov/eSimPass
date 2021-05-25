@@ -9,7 +9,6 @@ import DesktopApplication from '../client/app/desktop/DesktopApplication';
 
 interface Props {
     listRates? : ListRatesResponse.SuccessModel.RateModel[];
-    // isMobileView? : boolean
 }
 
 const Main = ({listRates} : Props) => {
@@ -27,13 +26,7 @@ const Main = ({listRates} : Props) => {
 }
 
 export const getServerSideProps : GetServerSideProps = async (context : GetServerSidePropsContext) => {
-    
-    // const isMobileView = (context.req 
-    //     ? context.req.headers['user-agent']
-    //     : navigator.userAgent).match(
-    //         /Android|BlackBerry|iPhone|iPod|Opera Mini|IEMobile/i
-    //     )
-        
+
     const requestId = uuid().toString();
     const res = await axios.post<ListRatesResponse>('https://toesim-dev.stand.gmdp.io/http-api/api.Rate/listRates', {
         body: JSON.stringify({}),

@@ -18,17 +18,21 @@
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "baseUrl": "./src/client/app",
     "isolatedModules": true
   },
+  "files": [
+    "./src/pages/index.tsx"
+  ],
   "include": [
     "src/**/*.ts",
     "test/**/*.ts"
   ],
   "exclude": [
-    "src/**/*.proto"
+    "src/**/*.proto",
+    "node_modules"
   ]
 }

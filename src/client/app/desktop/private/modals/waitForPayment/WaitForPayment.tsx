@@ -7,7 +7,7 @@ import { GetPaymentRequest } from '../../../../../generated/proto.web';
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { waitForClose } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 export enum WAIT_STATE {
     PAYMENT_NOT_FOUND,
@@ -20,6 +20,8 @@ export enum WAIT_STATE {
 export const WaitForPayment = () => {
 
     const logger = new Logger ('WaitForPayment');
+
+    const router = useRouter();
 
     const closedSubject = waitForClose ();
 
@@ -165,7 +167,7 @@ export const WaitForPayment = () => {
 
     const backToCabinet = () => {
         STATE_API.hideAuthWizard();
-        Router.replace('/cabinet');
+        window.history.pushState({}, '', '/cabinet')
     }
 
     return (
