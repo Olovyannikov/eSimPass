@@ -18,31 +18,29 @@ const Cabinet = ({ listRates } : IndexModel) => {
 
     const router = useRouter();
 
-    const handleRoutindPage = () => {
-        if (typeof window !== 'undefined') {
-            if (STORAGE.getToken() && router.pathname === '/cabinet') {
-                return <PrivateApplication />
-            }
-            else {
-                router.replace('/')
-                // return <PublicApplication />
-            }
-        } 
-        // else return null
+    const [hasMounted, setHasMounted] = React.useState<boolean>(false);
+
+    const checkAuthenticatedUser = () => {
+        if (STORAGE.getToken() !== null && router.pathname === '/cabinet') {
+            return <PrivateApplication />
+        }
+        else {
+            router.replace('/')
+            return <></>
+        }
     }
 
     React.useEffect(() => {
+        setHasMounted(prev => prev = true);
+
         if (listRates) {
             STATE_API.setListRates(listRates)
         }
+
     }, [])
 
 
-    return (
-        <>
-           {handleRoutindPage()}
-        </>
-    )
+    return hasMounted && checkAuthenticatedUser()
 
 }
 

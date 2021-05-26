@@ -11,8 +11,6 @@ const Index = () => {
     React.useEffect(() => {
         if (router.query) {
             STATE_API.showPrivateWizard('waitForPayment')
-            console.log(router.query);
-            
         }
     }, [])
 

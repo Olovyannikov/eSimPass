@@ -119,9 +119,8 @@ class StorageAdapter {
 
     public getToken = () : string => {
         if (typeof window !== 'undefined') {
-            // You now have access to `window`
             return window.localStorage.getItem('token')
-          }
+        }
     }
 
     public clear = () : void => {

@@ -27,18 +27,18 @@ module.exports = withCSS(withSass({
                     },
                 },
             },
-        {
-            test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
-            use:{
-                loader: 'url-loader',
-                options: {
-                    name: '[name].[ext]',
-                    limit: 10000000,
-                    esModule : false,
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+                use:{
+                    loader: 'url-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        limit: 10000000,
+                        esModule : false,
+                    }
                 }
-            }
-        },
-    )
+            },
+        )
         return config
     }
 }))
