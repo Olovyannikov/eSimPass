@@ -1,8 +1,9 @@
 import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
+import Link from 'next/link';
 
 import { waitForClose } from '../../../../../../../../utils';
 
@@ -14,12 +15,14 @@ export const EmptyPackage = () => {
 
     const [inProgress, setInProgress] = React.useState<boolean>(false);
 
+    const router = useRouter();
+
     const checkExistingDevice = () => {
 
         CONNECTION.listDevices({})
             .do(response => {
                 if (response.success.devices) {
-                    Router.push('/cabinet/chooseRates');
+                    router.push('/cabinet/chooseRates');
                 }
                 else {
                     STATE_API.showPrivateWizard('addDevice');
@@ -34,9 +37,11 @@ export const EmptyPackage = () => {
 
     return (
         <div className="EmptyPackage">
-            <div className="dont-have-package" onClick={checkExistingDevice}>
-                <div className="buy-package">Купить пакет</div>
-            </div>
+            {/* <Link href='/cabinet/chooseRates'> */}
+                <div className="dont-have-package" onClick={checkExistingDevice}>
+                    <div className="buy-package">Купить пакет</div>
+                </div>
+            {/* </Link> */}
         </div>
     )
 }

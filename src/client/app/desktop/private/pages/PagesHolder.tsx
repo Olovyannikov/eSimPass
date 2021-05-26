@@ -3,6 +3,7 @@ import { Cabinet } from './cabinet/Cabinet';
 import { Chooser } from './chooser/Chooser';
 import { useRouter } from 'next/router';
 
+
 export const PagesHolder = () => {
 
     const router = useRouter();

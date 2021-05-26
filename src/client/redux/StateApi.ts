@@ -24,12 +24,11 @@ reducersMap [setAuthenticatedCode] = doSetAuthenticated;
 reducersMap [publicWizardCode] = doPublicWizard;
 reducersMap [hideAuthWizardCode] = doHideAuthWizard;
 reducersMap [privateWizardCode] = doPrivateWizard;
-reducersMap [setAuthenticatedCode] = doSetLitRates;
+reducersMap [setListRatesCode] = doSetLitRates;
 
 const reducer = (state = INITIAL_STATE, action: Action<any>) : State => {
 
     const actionReducer = reducersMap[action.type]
-    
     if (actionReducer) {
         return actionReducer (state, action);
     }

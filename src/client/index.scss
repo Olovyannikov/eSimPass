@@ -10,6 +10,12 @@ body, html {
     -ms-overflow-style: none;
     overflow-x: hidden;
     background: linear-gradient(270deg, #FFF05A 0%, #FF785A 100%);
+
+    // setup style of nprogress bar
+    #nprogress .bar {
+        background: #29d !important;
+        height: 0.2vw;
+    }
     
     #__next {
         height: 100%;

@@ -8,11 +8,15 @@ import { ListRatesResponse } from '../../client/generated/proto.web';
 import { getServerSideProps as getListRates } from '..';
 import { STATE_API } from '../../client/redux/StateApi';
 import { PublicApplication } from '../../client/app/desktop/public/PublicApplication';
+import { Navbar } from '../../client/app/desktop/private/pages/cabinet/blocks/navbar/Navbar';
+import { Cabinet as Cabinet1} from '../../client/app/desktop/private/pages/cabinet/Cabinet';
 
 interface IndexModel {
-    listRates : ListRatesResponse.SuccessModel.RateModel[]
+    listRates? : ListRatesResponse.SuccessModel.RateModel[]
 }
+// import dynamic from 'next/dynamic';
 
+// const DynamicPrivateApplication = dynamic(() => import('../../client/app/desktop/private/PrivateApplication') as any, {ssr : false})
 
 const Cabinet = ({ listRates } : IndexModel) => {
 
@@ -21,8 +25,10 @@ const Cabinet = ({ listRates } : IndexModel) => {
     const [hasMounted, setHasMounted] = React.useState<boolean>(false);
 
     const checkAuthenticatedUser = () => {
-        if (STORAGE.getToken() !== null && router.pathname === '/cabinet') {
-            return <PrivateApplication />
+        if (STORAGE.getToken() !== null) {
+            return (
+                <PrivateApplication />
+            )
         }
         else {
             router.replace('/')
@@ -37,13 +43,17 @@ const Cabinet = ({ listRates } : IndexModel) => {
             STATE_API.setListRates(listRates)
         }
 
+        
     }, [])
-
+    
+    // if (!hasMounted) {
+    //     return <h1>LOading</h1>
+    // }
 
     return hasMounted && checkAuthenticatedUser()
 
 }
 
-export const getServerSideProps : GetServerSideProps = getListRates
+export const getServerSideProps : GetServerSideProps = getListRates;
 
 export default Cabinet;

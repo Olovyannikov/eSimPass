@@ -7,6 +7,9 @@ import { STATE_API } from '../../../redux/StateApi';
 import { Navbar } from './pages/cabinet/blocks/navbar/Navbar';
 import { useRouter } from 'next/router';
 
+interface PrivateAppProps {
+    
+}
 
 const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
     
@@ -26,7 +29,7 @@ const PrivateApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 }
 
 const mapStateToProps = (state : State) => ({
-    privateWizard : state.privateWizard
+    privateWizard : state.privateWizard,
 })
 
 export const PrivateApplication = connect(mapStateToProps)(PrivateApplicationImpl);

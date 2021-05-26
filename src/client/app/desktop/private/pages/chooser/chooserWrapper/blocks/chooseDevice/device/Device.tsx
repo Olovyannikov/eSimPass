@@ -32,7 +32,7 @@ export const Device = (props : DeviceModel) => {
 
         CONNECTION.buyPack(createBuyPackRequest ())
             .do(parseBuyPackResponse)
-            .delay(2500)
+            .delay(500)
             .do(() => Router.push('/cabinet'))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
