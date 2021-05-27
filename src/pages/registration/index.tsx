@@ -127,9 +127,6 @@ export const Registration = () => {
         setInProgress(prev => prev = false);
     }
 
-    // TODO redirect to store, download app
-    // const handleLoginClicked = () => history.push('/login');
-
     const handleToManyErrorAttemptsResponse = (response : RegisterMobileResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyAttempts) / 1000)
         
@@ -157,7 +154,6 @@ export const Registration = () => {
         else {
             return (
                 <>
-                    {/* TODO link to download app */}
                     <div className="already-register">Уже зарегистрирован</div>
                     <img onClick={handleRegister} src={img_next} className='button-next' alt="Next"/>
                 </>

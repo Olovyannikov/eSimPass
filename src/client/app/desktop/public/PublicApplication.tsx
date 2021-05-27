@@ -4,13 +4,6 @@ import { PagesHolder } from "./pages/PagesHolder";
 import { Modals } from './modals/Modals';
 import { connect } from "react-redux";
 import { State } from "../../../redux/State";
-import { STATE_API } from "../../../redux/StateApi";
-import Router from 'next/router';
-
-export interface TokenModel {
-    tokenVerify? : string;
-    tokenRestore? : string;
-}
 
 export const PublicApplicationImpl = (props : ReturnType<typeof mapStateToProps>) => {
 

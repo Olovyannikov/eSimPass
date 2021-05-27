@@ -7,9 +7,18 @@ const webpack = require('webpack');
 const ES6Promise = require("es6-promise");
 ES6Promise.polyfill();
 
+if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
 
 module.exports = withCSS(withSass({
     webpack: function (config, options) {
+
+        // if (options.isServer) {
+        //     console.log('============isServer');
+        //     console.log(typeof define)
+        // }
+
         config.plugins.push(new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',

@@ -21,7 +21,7 @@
     "noEmit": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "baseUrl": "./src/client/app",
+    "baseUrl": "./src/client/",
     "isolatedModules": true
   },
   "files": [
@@ -29,7 +29,7 @@
   ],
   "include": [
     "src/**/*.ts",
-    "test/**/*.ts"
+    "src/**/*.tsx",
   ],
   "exclude": [
     "src/**/*.proto",
