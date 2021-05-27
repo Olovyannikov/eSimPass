@@ -1,12 +1,10 @@
 import * as React from 'react';
 
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../../../../../../Connection';
-import { waitForClose } from '../../../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../../../utils';
 import { Spinner } from '../../../../../../../../public/components/spinner/Spinner';
 import { ListChargesRequest, ListChargesResponse } from '../../../../../../../../../../generated/proto.web';
 import { Detailed } from './detailed/Detailed';
-import { mockCharges } from '../../../../../../../../../../mockData/mockCharges';
 
 export const DetailedWrapper = () => {
 

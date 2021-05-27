@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
+import * as rxo from "rxjs/operators"
 import { DurationModel, DURATION_MEASURE } from './generated/proto.web';
 
 export const hasWebApi = () => {
@@ -171,3 +172,28 @@ export const countDaysDuration = (duration : DurationModel) => {
         return `${countedDays} дн.`
     }
 }
+
+export class Logger {
+    
+    constructor (public readonly name : string) {
+        
+    }
+    
+    public readonly fatal = (message: string, error?: any, payload?: any) => console.error(this.name + ": " + message, error, payload)
+    
+    public readonly error = (message: string, error?: any, payload?: any) => console.error(this.name + ": " + message, error, payload)
+    
+    public readonly rx = {
+        retry : (message: string) => (errors: rx.Observable<Error>) => errors
+            .pipe (rxo.tap (error => this.error(message, error)))
+            .pipe (rxo.delay (1000)),
+        subscribe: (message : string) => {
+            return {
+                next: () => {},
+                complete: () => {},
+                error: (error: any) => this.fatal(message, error)
+            }
+        }
+    }
+}
+

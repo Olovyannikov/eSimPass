@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
 
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../Connection';
 import { RequestPasswordRestoreRequest, RequestPasswordRestoreResponse } from '../../../../../generated/proto.web';
-import { convertEndingOfNoun, nothingToNull, waitForClose } from '../../../../../utils';
+import { convertEndingOfNoun, nothingToNull, waitForClose, Logger } from '../../../../../utils';
 import { img_next } from '../../../../../resources/images';
 import { Spinner } from '../../components/spinner/Spinner';
 import Router from 'next/router';

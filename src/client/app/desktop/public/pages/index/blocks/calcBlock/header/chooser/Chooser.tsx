@@ -1,10 +1,7 @@
-import { Logger } from "@glonassmobile/codebase-web/Logger";
-import { useEffectRx } from "@glonassmobile/codebase-web/useEffectRx";
 import * as React from "react";
 import { ListRatesResponse } from "../../../../../../../../../generated/proto.web";
 import { Country } from "./country/Country";
-import { CONNECTION } from '../../../../../../../../../Connection'
-import { nothingToNull, waitForClose } from '../../../../../../../../../utils';
+import { nothingToNull } from '../../../../../../../../../utils';
 import { State } from "../../../../../../../../../redux/State";
 import { connect } from "react-redux";
 
@@ -18,14 +15,9 @@ interface Props extends ReturnType<typeof mapStateToProps> {
 
 
 export const ChooserImpl = (props : Props) => {
-    const logger = new Logger ("Chooser");
     
     const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
-
-    // useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
-    //     .do (response => setAllRates (rates => rates = response.success.rates))
-    // )
 
     React.useEffect (() => {
         const filter = nothingToNull (props.filter)

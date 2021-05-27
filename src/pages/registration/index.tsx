@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx";
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../client/Connection';
 import { RegisterMobileRequest, RegisterMobileResponse } from '../../client/generated/proto.web';
 import { img_activeEye, img_disableEye, img_firstStep, img_next } from '../../client/resources/images';
-import { convertEndingOfNoun, waitForClose } from '../../client/utils';
+import { convertEndingOfNoun, waitForClose, Logger } from '../../client/utils';
 import { Spinner } from '../../client/app/mobile/public/components/spinner/Spinner';
 import { VerifyRegistration } from '../../client/app/mobile/public/pages/registration/verifyRegistration/VerifyRegistration';
 
@@ -16,7 +15,7 @@ interface PasswordViewModel {
 export const Registration = () => {
 
     const logger = new Logger ('Registration Dialog mobile');
-
+    
     const closedSubject = waitForClose ();
 
     const [token, setToken] = React.useState<string>(null);

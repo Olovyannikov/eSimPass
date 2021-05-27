@@ -3,12 +3,10 @@ import * as React from 'react';
 import { Spinner } from '../../../components/spinner/Spinner';
 import {VerifyWebRegistrationRequest, VerifyWebRegistrationResponse } from '../../../../../../generated/proto.web';
 import { CONNECTION } from '../../../../../../Connection';
-import { waitForClose } from '../../../../../../utils';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
+import { waitForClose, Logger } from '../../../../../../utils';
 import { STORAGE } from '../../../../../../StorageAdapter';
 import { STATE_API } from '../../../../../../redux/StateApi';
 import Router, { useRouter } from 'next/router';
-
 
 export const VerifyRegistrationDialog = () => {
 

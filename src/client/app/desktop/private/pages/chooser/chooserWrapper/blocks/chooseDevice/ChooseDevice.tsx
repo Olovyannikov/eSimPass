@@ -1,14 +1,11 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { ListDevicesResponse, ListRatesResponse } from '../../../../../../../../generated/proto.web';
-// import { STORAGE } from '../../../../../../../../StorageAdapter';
-import { waitForClose } from '../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
 import { AddDevice } from './addDevice/AddDevice';
 import { Device } from './device/Device';
 import { DisabledDevice } from './disabledDevice/DisabledDevice';
-// import { devicesData } from '../../../../../../../../mockData/mockDevices';
 
 interface ChooseDeviceModel {
     rate? : ListRatesResponse.SuccessModel.RateModel;

@@ -5,8 +5,7 @@ import { img_secondStep, img_stepBack } from '../../../../../resources/images';
 import Router from 'next/router';
 import { CreateDevicePaymentRequest, CreateDevicePaymentResponse } from '../../../../../generated/proto.web';
 import { CONNECTION } from '../../../../../Connection';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { hasWebApi, waitForClose } from '../../../../../utils';
+import { hasWebApi, waitForClose, Logger } from '../../../../../utils';
 
 export const ConnectEsim = () => {
 

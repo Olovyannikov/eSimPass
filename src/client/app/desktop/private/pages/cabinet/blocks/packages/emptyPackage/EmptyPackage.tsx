@@ -1,11 +1,8 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
-import Link from 'next/link';
-
-import { waitForClose } from '../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../utils';
 
 export const EmptyPackage = () => {
 

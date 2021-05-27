@@ -1,5 +1,5 @@
 import { Action } from "@glonassmobile/codebase-web/Action";
-import { createAction } from "@glonassmobile/codebase-web/createAction";
+import { createAction } from "./createAction";
 import { ListRatesResponse } from "../../generated/proto.web";
 import { State } from "./../State";
 import { INITIAL_STATE } from "./../StateApi";

@@ -1,11 +1,10 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import Router from 'next/router';
 import { CONNECTION } from '../../../../../../../../../Connection';
 
 import { BuyPackRequest, BuyPackResponse, ListDevicesResponse, ListRatesResponse } from '../../../../../../../../../generated/proto.web';
 import { img_iphone } from '../../../../../../../../../resources/images';
-import { waitForClose } from '../../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../../utils';
 import { ProgressBar } from '../../../../../../components/progressBar/ProgressBar';
 import { Spinner } from '../../../../../../components/spinnerPayment/Spinner';
 

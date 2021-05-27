@@ -1,9 +1,9 @@
 import * as React from 'react';
-
+import * as rx from "rxjs/Rx"
 import { img_pen } from '../../../../../resources/images';
 import { CONNECTION } from '../../../../../Connection';
 import { RenameDeviceRequest } from '../../../../../generated/proto.web';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
+import { Logger } from '../../../../../utils';
 import { nothingToNull, waitForClose } from '../../../../../utils';
 
 interface WhoseDeviceModel {

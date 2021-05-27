@@ -1,4 +1,4 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
+// import { Logger } from '@glonassmobile/codebase/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../../../../Connection';
 import { img_supportImg } from '../../../../../../../../../../../resources/images';

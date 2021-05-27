@@ -1,10 +1,9 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../Connection';
 import { GetDevicePaymentAmmountResponse, CreateDevicePaymentResponse, CreateDevicePaymentRequest } from '../../../../../../generated/proto.web';
 
 import { STATE_API } from '../../../../../../redux/StateApi';
-import { hasWebApi, waitForClose } from '../../../../../../utils';
+import { hasWebApi, waitForClose, Logger } from '../../../../../../utils';
 import { Button } from '../../../components/buttons/Button';
 
 export const CreateDevice = () => {

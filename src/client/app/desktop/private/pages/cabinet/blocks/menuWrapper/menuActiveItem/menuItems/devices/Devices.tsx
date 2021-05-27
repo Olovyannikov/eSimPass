@@ -1,17 +1,14 @@
 import * as React from 'react';
 import * as rx from 'rxjs/Rx';
 
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../../../../../../Connection';
-// import { devicesData } from '../../../../../../../../../../mockData/mockDevices';
-import { waitForClose } from '../../../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../../../utils';
 
 import { AddDevice } from './addDevice/AddDevice';
 import { Device } from './device/Device';
 import { DisabledDevice } from './disabledDevice/DisabledDevice';
 import { ListDevicesResponse } from '../../../../../../../../../../generated/proto.web';
 import { Spinner } from '../../../../../../../../private/components/spinnerPayment/Spinner';
-// import { STORAGE } from '../../../../../../../../../../StorageAdapter';
 
 export const Devices = () => {
 

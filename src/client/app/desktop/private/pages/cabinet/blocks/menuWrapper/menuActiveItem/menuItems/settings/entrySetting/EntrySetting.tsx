@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { CONNECTION } from '../../../../../../../../../../../Connection';
 import { ChangePasswordRequest } from '../../../../../../../../../../../generated/proto.web';
 import { STORAGE } from '../../../../../../../../../../../StorageAdapter';
-import { nothingToNull, waitForClose } from '../../../../../../../../../../../utils';
+import { nothingToNull, waitForClose, Logger } from '../../../../../../../../../../../utils';
 import { Button } from '../../../../../../../../components/buttons/Button';
 
 export const EntrySetting = () => {

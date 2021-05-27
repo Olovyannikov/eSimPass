@@ -1,5 +1,5 @@
 import { Action } from "@glonassmobile/codebase-web/Action";
-import { createAction } from "@glonassmobile/codebase-web/createAction";
+import { createAction } from "./createAction";
 import { State, SHOW_PUBLIC_WIZARD_MODE } from "../State";
 import { INITIAL_STATE } from "../StateApi";
 

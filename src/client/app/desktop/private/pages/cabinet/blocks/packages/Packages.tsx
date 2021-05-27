@@ -5,16 +5,13 @@ import { ListDevicesResponse } from '../../../../../../../generated/proto.web';
 import { EmptyPackage } from './emptyPackage/EmptyPackage';
 import { CONNECTION } from '../../../../../../../Connection';
 import { Spinner } from '../../../../../public/components/spinner/Spinner';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../utils';
 import { PackageList } from './packageList/PackageList';
-// import { devicesData } from '../../../../../../../mockData/mockDevices';
-import { STORAGE } from '../../../../../../../StorageAdapter';
 
 export const Packages = () => {
 
     const logger = new Logger('Packages block');
-
+    
     const closedSubject = waitForClose();
 
     const [inProgress, setInProgress] = React.useState<boolean>(true);

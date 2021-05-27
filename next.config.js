@@ -7,18 +7,29 @@ const webpack = require('webpack');
 const ES6Promise = require("es6-promise");
 ES6Promise.polyfill();
 
-if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
+// if (typeof define !== 'function') {
+//     var define = require('amdefine')(module);
+// }
 
 module.exports = withCSS(withSass({
+    typescript: {
+        // !! WARN !!
+        // Dangerously allow production builds to successfully complete even if
+        // your project has type errors.
+        // !! WARN !!
+        ignoreBuildErrors: true,
+      },
     webpack: function (config, options) {
 
         // if (options.isServer) {
         //     console.log('============isServer');
         //     console.log(typeof define)
         // }
-
+        // if (options.isServer) {
+            // config.plugins.push(
+            //     new webpack.IgnorePlugin(/@glonassmobile/)
+            //   )
+        // }
         config.plugins.push(new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -32,7 +43,7 @@ module.exports = withCSS(withSass({
                 use: {
                     loader: "ts-loader",
                     options: {
-                        configFile: './tsconfig.json',
+                        configFile: './src/client/app/tsc.json',
                     },
                 },
             },

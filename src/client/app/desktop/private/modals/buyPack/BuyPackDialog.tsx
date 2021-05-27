@@ -1,11 +1,10 @@
 import * as React from 'react';
-
-import { Logger } from '@glonassmobile/codebase-web/Logger';
+import * as rx from "rxjs/Rx"
 import { CONNECTION } from '../../../../../Connection';
 import { BuyPackRequest, BuyPackResponse } from '../../../../../generated/proto.web';
 import { BuyPackWizard } from '../../../../../redux/State';
 import { STATE_API } from '../../../../../redux/StateApi';
-import { waitForClose } from '../../../../../utils';
+import { Logger, waitForClose } from '../../../../../utils';
 import { Button } from '../../components/buttons/Button';
 
 interface BuyPackDialogModel {

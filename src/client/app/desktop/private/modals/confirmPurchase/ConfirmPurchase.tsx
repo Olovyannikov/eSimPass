@@ -5,8 +5,7 @@ import { CONNECTION } from '../../../../../Connection';
 import { GetDevicePaymentAmmountResponse, CreateDevicePaymentResponse, CreateDevicePaymentRequest } from '../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../redux/StateApi';
 import { Button } from '../../components/buttons/Button';
-import { hasWebApi, waitForClose } from "../../../../../utils";
-import { Logger } from "@glonassmobile/codebase-web/Logger";
+import { hasWebApi, waitForClose, Logger } from "../../../../../utils";
 
 export const ConfirmPurchase = () => {
 

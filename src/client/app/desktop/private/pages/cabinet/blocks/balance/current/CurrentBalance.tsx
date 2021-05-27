@@ -1,12 +1,11 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
 import { ListenBalanceResponse } from '../../../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
 
-import {WebSocketAdapter} from "./../../../../../../../../codebase/WebSocketAdapter";
-import {CONNECTION} from "./../../../../../../../../Connection";
-import {waitForClose} from "./../../../../../../../../utils";
+import { WebSocketAdapter } from "./../../../../../../../../codebase/WebSocketAdapter";
+import { CONNECTION } from "./../../../../../../../../Connection";
+import { waitForClose, Logger} from "./../../../../../../../../utils";
 
 export const CurrentBalance = () => {
 

@@ -1,10 +1,9 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
 import { CONNECTION } from '../../../../../Connection';
 import { RegisterMobileRequest, RegisterMobileResponse } from '../../../../../generated/proto.web';
 import { img_activeEye, img_disableEye, img_firstStep, img_next } from '../../../../../resources/images';
-import { convertEndingOfNoun, waitForClose } from '../../../../../utils';
+import { convertEndingOfNoun, waitForClose, Logger } from '../../../../../utils';
 import { Spinner } from '../../components/spinner/Spinner';
 import { VerifyRegistration } from './verifyRegistration/VerifyRegistration';
 

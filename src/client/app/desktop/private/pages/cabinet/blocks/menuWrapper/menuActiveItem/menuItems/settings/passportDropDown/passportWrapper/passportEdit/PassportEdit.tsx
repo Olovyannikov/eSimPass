@@ -1,16 +1,12 @@
 import * as React from 'react';
-
+import * as rx from "rxjs/Rx"
 import { PassportModel } from '../PassportWrapper';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { ImageUpload } from './imageUpload/ImageUpload';
 import { SetDocumentRequest } from '../../../../../../../../../../../../../generated/proto.web';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../../Connection';
-// import { STORAGE } from '../../../../../../../../../../../../../StorageAdapter';
-
-
 
 export const PassportEdit = (props : PassportModel) => {    
 

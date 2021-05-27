@@ -1,14 +1,11 @@
 import * as React from 'react';
 
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-
 import { CONNECTION } from '../../../../../../Connection';
 import { VerifyPasswordRestoreRequest, VerifyPasswordRestoreResponse } from '../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../redux/StateApi';
 import { STORAGE } from '../../../../../../StorageAdapter';
-import { waitForClose } from '../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../utils';
 import { Spinner } from '../../../components/spinner/Spinner';
-
 import Router from 'next/router';
 
 export const VerifyPasswordRestoreDialog = () => {

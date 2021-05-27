@@ -1,19 +1,17 @@
 import * as React from 'react';
 
-import { Logger } from '@glonassmobile/codebase-web/Logger';
+
 import { CONNECTION } from '../../../../../../Connection';
 import { DeleteDeviceRequest } from '../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../redux/StateApi';
-import { waitForClose } from '../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../utils';
 
 import { Button } from '../../../components/buttons/Button';
-import { STORAGE } from '../../../../../../StorageAdapter';
 
 interface DeleteDeviceModel {
     deviceId? : string;
     deviceName? : string;
 }
-
 export const DeleteDevice = (props : DeleteDeviceModel) => {
 
     const logger = new Logger('Delete Device');

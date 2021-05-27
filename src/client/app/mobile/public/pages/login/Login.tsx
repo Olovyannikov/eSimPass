@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as rx from "rxjs/Rx"
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import { LoginRequest, LoginResponse } from '../../../../../generated/proto.web';
 import { img_activeEye, img_disableEye, img_next } from '../../../../../resources/images';
 import { STORAGE } from '../../../../../StorageAdapter';
-import { convertEndingOfNoun, waitForClose } from '../../../../../utils';
+import { convertEndingOfNoun, waitForClose, Logger } from '../../../../../utils';
+
 import { CONNECTION } from '../../../../../Connection';
 import { Spinner } from '../../components/spinner/Spinner';
 import Router from 'next/router';
+
 
 interface PasswordViewModel {
     img : string;

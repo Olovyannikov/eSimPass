@@ -1,5 +1,6 @@
 import { Action } from "@glonassmobile/codebase/client/Action";
-import {createAction} from "@glonassmobile/codebase/client/createAction"
+// import {createAction} from "@glonassmobile/codebase/client/createAction"
+let createAction : any
 import { ListDevicesResponse } from "../../generated/proto.web";
 import { State } from "./../State";
 import { INITIAL_STATE } from "./../StateApi";

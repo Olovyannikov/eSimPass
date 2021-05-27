@@ -1,13 +1,12 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 
 import { CONNECTION } from '../../../../../../../Connection';
 import { GetAbonentResponse } from '../../../../../../../generated/proto.web';
 import { img_person } from '../../../../../../../resources/images';
 import { STORAGE } from '../../../../../../../StorageAdapter';
-import { nothingToNull, waitForClose } from '../../../../../../../utils';
+import { nothingToNull, waitForClose, Logger } from '../../../../../../../utils';
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export const Navbar = () => {

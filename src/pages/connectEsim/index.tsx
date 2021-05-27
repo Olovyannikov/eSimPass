@@ -1,10 +1,9 @@
 import * as React from "react";
 import Router from "next/router";
-import { Logger } from "@glonassmobile/codebase-web/Logger";
 import { CONNECTION } from "../../client/Connection";
 import { CreateDevicePaymentResponse, CreateDevicePaymentRequest } from "../../client/generated/proto.web";
 import { img_secondStep, img_stepBack } from "../../client/resources/images";
-import { waitForClose, hasWebApi } from "../../client/utils";
+import { waitForClose, hasWebApi, Logger } from "../../client/utils";
 import { Button } from '../../client/app/mobile/public/components/buttons/Button';
 
 export const ConnectEsim = () => {

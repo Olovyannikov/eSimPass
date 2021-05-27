@@ -1,10 +1,9 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 import { CONNECTION } from '../../../../../../../../../../../../Connection';
 
-import { GetAbonentResponse, SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
+import { SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
 import { STORAGE } from '../../../../../../../../../../../../StorageAdapter';
-import { waitForClose } from '../../../../../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../../../../../utils';
 import { PassportEdit } from './passportEdit/PassportEdit';
 import { PassportView } from './passportView/PassportView';
 import { ShowPasportImage } from './showPasportImage/ShowPasportImage';
@@ -24,7 +23,6 @@ export interface PassportModel {
     setPassportState? : React.Dispatch<React.SetStateAction<PassportStateModel>>;
     show? : boolean;
 }
-
 export const PassportWrapper = (props : PassportWrapperModel) => {
 
     const logger = new Logger('Passport wrapper');

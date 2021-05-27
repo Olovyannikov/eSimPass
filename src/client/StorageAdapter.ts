@@ -1,6 +1,6 @@
 import * as rx from "rxjs/Rx"
-import { Logger } from "@glonassmobile/codebase-web/Logger";
-import { nothingToNull } from "./utils";
+
+import { nothingToNull, Logger } from "./utils";
 import { ListDevicesResponse, GetAbonentResponse } from './generated/proto.web';
 
 class StorageAdapter {

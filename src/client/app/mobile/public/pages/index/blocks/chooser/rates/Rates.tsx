@@ -1,9 +1,7 @@
-import { Logger } from '@glonassmobile/codebase-web/Logger';
 import * as React from 'react';
 
-import { CONNECTION } from '../../../../../../../../Connection';
 import { ListRatesResponse } from '../../../../../../../../generated/proto.web';
-import { waitForClose, nothingToNull } from '../../../../../../../../utils';
+import { waitForClose, nothingToNull, Logger } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../../../desktop/private/components/spinnerPayment/Spinner';
 import { RateCountry } from './rateCountry/RateCountry';
 import { Button } from '../../../../../../../desktop/private/components/buttons/Button';

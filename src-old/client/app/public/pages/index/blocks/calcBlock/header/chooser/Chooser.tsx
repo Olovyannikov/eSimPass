@@ -1,4 +1,3 @@
-import { Logger } from "@glonassmobile/codebase/client/Logger";
 import { useEffectRx } from "@glonassmobile/codebase/client/useEffectRx";
 import * as React from "react";
 import { nothingToNull } from "../../../../../../../../codebase/utils";
@@ -19,9 +18,9 @@ export const Chooser = (props : Props) => {
     const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
 
-    useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
-        .do (response => setAllRates (rates => rates = response.success.rates))
-    )
+    // useEffectRx (logger, "Error retrieving rates", CONNECTION.listRates ({})
+    //     .do (response => setAllRates (rates => rates = response.success.rates))
+    // )
 
     React.useEffect (() => {
 

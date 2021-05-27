@@ -4,8 +4,7 @@ import * as React from 'react';
 import { Spinner } from '../../components/spinnerPayment/Spinner';
 import { CONNECTION } from '../../../../../Connection';
 import { GetPaymentRequest } from '../../../../../generated/proto.web';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../utils';
+import { waitForClose, Logger } from '../../../../../utils';
 import { STATE_API } from "../../../../../redux/StateApi";
 import { useRouter } from 'next/router';
 
@@ -16,7 +15,6 @@ export enum WAIT_STATE {
     PAYMENT_RECEIVED_WAITING_DEVICE,
     DEVICE_CREATED,
 }
-
 export const WaitForPayment = () => {
 
     const logger = new Logger ('WaitForPayment');

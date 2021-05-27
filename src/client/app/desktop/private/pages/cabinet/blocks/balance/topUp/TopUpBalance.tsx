@@ -3,10 +3,8 @@ import * as React from 'react';
 import { Button } from '../../../../../components/buttons/Button';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { CreateBalancePaymentRequest, CreateBalancePaymentResponse } from '../../../../../../../../generated/proto.web';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { hasWebApi, waitForClose } from '../../../../../../../../utils';
+import { hasWebApi, waitForClose, Logger } from '../../../../../../../../utils';
 import { Spinner } from '../../../../../components/spinnerPayment/Spinner';
-
 
 export const TopUpBalance = () => {
 

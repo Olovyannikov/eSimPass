@@ -1,12 +1,10 @@
 import * as React from 'react';
 
 import { GetDocumentPhotoRequest, GetDocumentPhotoResponse } from '../../../../../../../../../../../../../generated/proto.web';
-import { Logger } from '@glonassmobile/codebase-web/Logger';
-import { waitForClose } from '../../../../../../../../../../../../../utils';
+import { waitForClose, Logger } from '../../../../../../../../../../../../../utils';
 import { CONNECTION } from '../../../../../../../../../../../../../Connection';
 import { Spinner } from '../../.../../../../../../../../../../components/spinnerPayment/Spinner';
 import { PassportModel } from '../PassportWrapper';
-
 
 export const ShowPasportImage = (props : PassportModel) => {
 

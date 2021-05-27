@@ -6,8 +6,7 @@ import { STATE_API } from '../../../../../redux/StateApi';
 import {img_next, img_activeEye, img_disableEye, img_firstStep, img_crossMobile} from '../../../../../resources/images';
 import { RegisterWebRequest, RegisterWebResponse } from '../../../../../generated/proto.web';
 import { CONNECTION } from '../../../../../Connection';
-import { Logger } from "@glonassmobile/codebase-web/Logger";
-import { waitForClose, convertEndingOfNoun } from '../../../../../utils';
+import { waitForClose, convertEndingOfNoun, Logger } from '../../../../../utils';
 
 interface PasswordViewModel {
     img : string;
@@ -17,7 +16,7 @@ interface PasswordViewModel {
 export const RegistrationDialog = () => {
 
     const logger = new Logger ('Registration Dialog');
-
+    console.log('===========', logger);
     const closedSubject = waitForClose ();
 
     const [successRegister, setSuccessRegister] = React.useState<boolean>(null)
