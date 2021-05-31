@@ -9,6 +9,7 @@ import { waitForClose, convertEndingOfNoun, Logger } from "../../../../../utils"
 import { STATE_API } from "../../../../../redux/StateApi";
 import { STORAGE } from "../../../../../StorageAdapter";
 import Router from 'next/router';
+import { useAuth } from "context/auth";
 
 interface PasswordViewModeModel {
     img : string;
@@ -20,6 +21,8 @@ export const LoginDialog = () => {
     const logger = new Logger ("LoginDialog")
 
     const closedSubject = waitForClose ();
+
+    const { login } = useAuth()
 
     React.useEffect (() => {
         return () => closedSubject.next ()
@@ -54,6 +57,7 @@ export const LoginDialog = () => {
 
     const handleLogin = () => {
         setInProgress(prev => prev = true);
+        login()
         
         setError(null)
         if (checkValidEmail()) {
@@ -117,7 +121,7 @@ export const LoginDialog = () => {
     const handleSuccessResponse = (response : LoginResponse) => {
         STORAGE.setToken(response.success.token);
         STATE_API.hideAuthWizard();
-        Router.push('/cabinet')
+        Router.push('/cabinet');
     }
 
     const showInProgress = () => {

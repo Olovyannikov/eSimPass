@@ -6,6 +6,7 @@ import axios from 'axios';
 import { v4 as uuid } from "uuid";
 import { STATE_API } from '../client/redux/StateApi';
 import DesktopApplication from '../client/app/desktop/DesktopApplication';
+import { PublicApplication } from 'app/desktop/public/PublicApplication';
 
 interface Props {
     listRates? : ListRatesResponse.SuccessModel.RateModel[];
@@ -13,6 +14,7 @@ interface Props {
 
 const Main = ({listRates} : Props) => {
 
+    // TODO - CHECK AUTH
 
     React.useEffect(() => {
         
@@ -22,7 +24,7 @@ const Main = ({listRates} : Props) => {
         
     }, [])
     
-    return <DesktopApplication />
+    return <PublicApplication />
 }
 
 export const getServerSideProps : GetServerSideProps = async (context : GetServerSidePropsContext) => {

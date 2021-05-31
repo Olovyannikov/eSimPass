@@ -9,7 +9,7 @@ export const CustomErrorPage : any = () : any => {
         router.push('/')
     })
 
-    return null
+    return <></>
 
 }
 

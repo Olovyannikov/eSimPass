@@ -16,7 +16,7 @@ interface PasswordViewModel {
 export const RegistrationDialog = () => {
 
     const logger = new Logger ('Registration Dialog');
-    console.log('===========', logger);
+
     const closedSubject = waitForClose ();
 
     const [successRegister, setSuccessRegister] = React.useState<boolean>(null)

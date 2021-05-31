@@ -8,23 +8,25 @@ import { nothingToNull, waitForClose, Logger } from '../../../../../../../utils'
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useAuth } from 'context/auth';
 
 export const Navbar = () => {
 
     const logger = new Logger ('Navbar');
+
+    const { logout } = useAuth();
     
     const closedSubject = waitForClose ();
 
-
-    const [email, setEmail] = React.useState<string>(null);
-    const [documentUploaded, setDocumentUploaded] = React.useState<boolean>(null)
-
     const [abonentInfo, setAbonentInfo] = React.useState<GetAbonentResponse.SuccessModel>({});
+
+    const [isMounted, setIsMounted] = React.useState<boolean>(false)
 
     const router = useRouter();
 
     const handleLogout = () => {
         STORAGE.clear();
+        // logout()
         router.push('/');
 
     }
@@ -42,6 +44,7 @@ export const Navbar = () => {
                 .takeUntil(closedSubject)
                 .subscribe(logger.rx.subscribe('Error in receiving abonent info'))
 
+            setIsMounted(true)
         // STORAGE.getEmail ()
         //     .concat (CONNECTION.getAbonent({})
         //         .map (response => response.success.email )
@@ -92,7 +95,7 @@ export const Navbar = () => {
                 <div className="email">{abonentInfo.email}</div>
                 <div onClick={handleLogout} className="logout">Выйти</div>
             </div>
-            {renderRedAttention()}
+            {isMounted && renderRedAttention()}
         </div>
     )
 }

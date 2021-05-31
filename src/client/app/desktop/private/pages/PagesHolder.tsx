@@ -8,24 +8,24 @@ export const PagesHolder = () => {
 
     const router = useRouter();
 
+    const [hasMounted, setHasMounted] = React.useState<boolean>(false);
+
+    React.useEffect(() => setHasMounted(true),[])
+
     const renderActivePage = () => {
-
-        if (typeof window !== 'undefined') {
-
-            const { paymentId } = router.query;
-            
-            if (router.pathname === '/cabinet' || paymentId) {
-                return <Cabinet />
-            }
-            else if (router.pathname === '/cabinet/chooseRates') {
-                return <Chooser />
-            }
-        } 
+        const { paymentId } = router.query;
+        
+        if (router.pathname === '/cabinet' || paymentId) {
+            return <Cabinet />
+        }
+        else if (router.pathname === '/cabinet/chooseRates') {
+            return <Chooser />
+        }
     }
 
     return (
         <div className="PagesHolder">
-            {renderActivePage()}
+            {hasMounted && renderActivePage()}
         </div>
     )
 }

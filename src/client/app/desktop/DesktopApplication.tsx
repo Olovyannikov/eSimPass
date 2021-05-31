@@ -10,23 +10,33 @@ const DesktopApplication = () => {
 
     const router = useRouter();
 
+    const [isAuth, setIsAuth] = React.useState(false);
+
+    React.useEffect(() => {
+        const token = STORAGE.getToken();
+        if (token) {
+            setIsAuth(true)
+        }
+        else {
+            setIsAuth(false)
+        }
+        
+        // setIsMounted(true)
+    }, [])
+
     const checkAuthenticatedUser = () => {
-        if (typeof window !== 'undefined') {
-            if (STORAGE.getToken() !== null && router.pathname === '/cabinet') {
+            if (router.pathname === '/cabinet' || router.pathname === '/cabinet/chooseRates') {
                 return <PrivateApplication />
             }
             else {
                 return <PublicApplication />
             }
-        }
-        else {
-            return <PublicApplication />
-        }
     }
 
-    return (
-        checkAuthenticatedUser()
-    )
+    // return (
+    //     isMounted && checkAuthenticatedUser()
+    // )
 }
 
 export default DesktopApplication
+ 

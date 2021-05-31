@@ -3,13 +3,18 @@ import * as React from "react";
 import { STATE_API } from '../../../../../../../redux/StateApi';
 import { img_lk } from "../../../../../../../resources/images";
 import { STORAGE } from "../../../../../../../StorageAdapter";
-import Router from 'next/router';
+import { useRouter } from 'next/router';
+import { useAuth } from "context/auth";
 
 export const HeaderBlock = () => {
 
+    // const { isAuth } = useAuth();
+
+    const router = useRouter();
+
     const handlerClickCabinet = () => {
         if (STORAGE.getToken()) {
-            Router.push('/cabinet')
+            router.push('/cabinet')
         }
         else {
             return STATE_API.showPublicWizard('login');
