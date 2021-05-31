@@ -5,7 +5,6 @@ import { STORE } from "../client/redux/StateApi";
 import Router from 'next/router';
 import Application from '../client/app/Application';
 import NProgress from 'nprogress';
-import { AuthProvider } from '../client/context/auth';
 import PrivateRoute from '../client/context/PrivateRouter';
 
 import "nprogress/nprogress.css";
@@ -25,23 +24,30 @@ interface AppModel {
 //     // minimum: 0.3,
 // });
 
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
-
 const App = ({Component, pageProps} : AppModel) => {
+    
+    React.useEffect(() => {
+        Router.events.on('routeChangeStart', () => NProgress.start());
+        Router.events.on('routeChangeComplete', () => NProgress.done());
+        Router.events.on('routeChangeError', () => NProgress.done());
+
+        return () => {
+            Router.events.off('routeChangeStart', () => NProgress.start());
+            Router.events.off('routeChangeComplete', () => NProgress.done());
+            Router.events.off('routeChangeError', () => NProgress.done());
+        }
+
+    }, [])
 
     const protectedRoutes = ['/cabinet', '/cabinet/chooseRates']
 
     return  ( 
         <Provider store={STORE}>
-            <AuthProvider>  
-                <PrivateRoute protectedRoutes={protectedRoutes}>
-                    <Application>
-                        <Component {...pageProps} />
-                    </Application>
-                </PrivateRoute>
-            </AuthProvider>
+            <PrivateRoute protectedRoutes={protectedRoutes}>
+                <Application>
+                    <Component {...pageProps} />
+                </Application>
+            </PrivateRoute>
         </Provider>
     )
 }

@@ -53,8 +53,6 @@ export const CurrentBalance = () => {
             })
             .takeUntil(closer)
             .subscribe(logger.rx.subscribe('Error in device response'))
-            
-        return () => setBalance(prev => prev = null);  
 
     }, [emptyDevice])
 

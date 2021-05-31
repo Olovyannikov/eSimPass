@@ -7,8 +7,8 @@ export default class MyDocument extends Document {
     return() {
         <Html>
         <Head>
-            <link rel="stylesheet" />
             <link href="./client/resources/fonts.css" as='font' rel="stylesheet"/>
+            <link rel="stylesheet" />
         </Head>
         <body>
           <Main />

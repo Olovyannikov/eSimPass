@@ -4,11 +4,9 @@ import { STATE_API } from '../../../../../../../redux/StateApi';
 import { img_lk } from "../../../../../../../resources/images";
 import { STORAGE } from "../../../../../../../StorageAdapter";
 import { useRouter } from 'next/router';
-import { useAuth } from "context/auth";
+
 
 export const HeaderBlock = () => {
-
-    // const { isAuth } = useAuth();
 
     const router = useRouter();
 

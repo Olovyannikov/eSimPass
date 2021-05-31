@@ -8,13 +8,10 @@ import { nothingToNull, waitForClose, Logger } from '../../../../../../../utils'
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useAuth } from 'context/auth';
 
 export const Navbar = () => {
 
     const logger = new Logger ('Navbar');
-
-    const { logout } = useAuth();
     
     const closedSubject = waitForClose ();
 
@@ -26,9 +23,7 @@ export const Navbar = () => {
 
     const handleLogout = () => {
         STORAGE.clear();
-        // logout()
         router.push('/');
-
     }
 
     React.useEffect(() => {
