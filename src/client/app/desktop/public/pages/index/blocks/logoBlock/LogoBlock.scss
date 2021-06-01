@@ -3,15 +3,25 @@
     width: 100%;
 
     td:nth-child(1) {
-        width: 100%;
-        div {
-            margin-left: 3vw;
+        // width: 100%;
+
+        .left {
+            margin-left: 9vw;
 
             .text {
-                color: #ffffff;
-                max-width: 40.8vw;
-                font-size: 4.16vw;
-                font-weight: 700;
+
+                .main-logo {
+                    width: 14.5833vw;
+                    height: 5.2083vw;
+                    float: left;
+                    margin-right: 2vw;
+                }
+                div {
+                    color: #ffffff;
+                    max-width: 40.8vw;
+                    font-size: 4.16vw;
+                    font-weight: 700;
+                }
             }
             
             .connect {

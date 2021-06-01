@@ -106,7 +106,8 @@ export const EntrySetting = () => {
                 </div>
                 <div className="right-block">
                     <div className='label'>E-mail</div>
-                    <input autoComplete='new-password' placeholder={email} className='input' type="email"/>
+                    {/* <input autoComplete='new-password' value={email} className='input' type="email"/> */}
+                    <div className="input">{email}</div>
                 </div>
             </div>
         </div>

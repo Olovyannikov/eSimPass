@@ -77,7 +77,7 @@ export const DisabledDevice = (props : DisabledDeviceModel) => {
                                 <div>eSIM</div>
                             </div>
                             <div className="device-info">
-                                iPhone 11 Pro
+                                SmartPhone
                             </div>
                         </div>
                         <div className="dont-text">

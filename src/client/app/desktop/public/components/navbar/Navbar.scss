@@ -1,0 +1,41 @@
+.Navbar {
+    float: left;
+    margin-top: 1.5vw;
+    width: 100%;
+
+    .logo {
+        width: 14.5833vw;
+        height: 5.2083vw;
+        float: left;
+        margin-right: 2vw;
+    }
+
+    .to-main {
+        text-decoration: none;
+        color: black;
+        display: table;
+        float: left;
+        border-bottom: 0.025vw solid black;
+        margin-top: 1.8vw;
+        cursor: pointer;
+        font-size: 1.302vw;
+    }
+    .to-main:hover {
+        opacity: 0.5;
+    }
+
+    .lk {
+        float: right;
+        height: 1.05vw; 
+    }
+    
+    .to-cabinet {
+        float: right;
+        cursor: pointer;
+        margin-left: 1vw;
+        font-size: 1.0416vw;
+    }
+    .to-cabinet:hover {
+        opacity: 0.5;
+    }
+}

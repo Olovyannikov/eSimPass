@@ -1,15 +1,17 @@
 import * as React from "react";
 
 import { img_visa, img_mir, img_masterCard } from "../../../../../../../resources/images";
+import Link from 'next/link';
 
 export const InfoBlock = () => {
 
     return (
         <div className="InfoBlock">
             <div className="left-info-block">
-                <p className="privacy">Политика конфиденциальности</p>
-                <p className="privacy">Условия оказания услуг связи</p>
+                <Link href='/terms_of_use'><a className="privacy">Пользовательское соглашение</a></Link>
                 <p className="privacy">Устройства поддерживающие eSIM</p>
+                <Link href='/refund_conditions'><a className="privacy">Условия возврата денежных средств</a></Link>
+                <Link href='/payment_security_rules'><a className="privacy">Правила оплаты и безопасность платежей</a></Link>
                 <p className="requisites">ООО “ГЛОНАСС МОБАЙЛ”</p>
                 <p className="requisites">ОГРН 1197746459460</p>
                 <p className="requisites">ИНН 7719494560</p>

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CONNECTION } from '../../../../../../../Connection';
 import { GetAbonentResponse } from '../../../../../../../generated/proto.web';
-import { img_person } from '../../../../../../../resources/images';
+import { img_cabinetLogo, img_person } from '../../../../../../../resources/images';
 import { STORAGE } from '../../../../../../../StorageAdapter';
 import { nothingToNull, waitForClose, Logger } from '../../../../../../../utils';
 import { WithoutPassportData } from './withoutPassportData/WithoutPassportData';
@@ -82,7 +82,7 @@ export const Navbar = () => {
         <div className="Navbar">
             <div className="left-nav">
                 <Link href='/'>
-                    <a className="logo">LOGO</a>
+                    <img src={img_cabinetLogo} alt='eSIM' className="logo" />
                 </Link>
             </div>
             <div className="right-nav">

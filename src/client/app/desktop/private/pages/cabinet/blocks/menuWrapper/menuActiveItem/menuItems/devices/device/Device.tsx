@@ -28,7 +28,7 @@ export const Device = (props : DeviceModel) => {
                         <div>eSIM {props.device.currentPack.operatorName}</div>
                     </div>
                     <div className="device-info">
-                        iPhone 11 Pro
+                        SmartPhone
                     </div>
                 </div>
                 <div className="price">

@@ -67,8 +67,11 @@ import retry from './img/retry.png';
 import mir from './img/mir.png';
 import visa from './img/visa.png';
 import masterCard from './img/master-card.png';
+import mainLogo from './img/main-logo.png';
+import cabinetLogo from './img/cabinet-logo.png';
 
-
+export const img_mainLogo = mainLogo;
+export const img_cabinetLogo = cabinetLogo;
 export const img_mir = mir;
 export const img_visa = visa;
 export const img_masterCard = masterCard;

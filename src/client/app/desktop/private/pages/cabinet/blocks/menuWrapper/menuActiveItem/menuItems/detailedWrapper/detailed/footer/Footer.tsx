@@ -38,7 +38,7 @@ export const Footer = (props : FooterModel) => {
     
     return (
         <div className="Footer">
-            <OrderDetalization />
+            {/* <OrderDetalization /> */}
             <div className="navigation">
                 {handlePageNavigator()}
             </div>

@@ -11,14 +11,17 @@
 
         float: left;
         margin-left: 6.9791vw;
-        margin-top: 1vw;
 
         .logo {
+            // float: left;
+            // border-right: 0.1041vw solid rgba(255, 255, 255, 0.1);
+            // font-size: 1.5625vw;
+            // text-decoration: none;
+            // color: $textNavLk;
             float: left;
-            border-right: 0.1041vw solid rgba(255, 255, 255, 0.1);
-            font-size: 1.5625vw;
-            text-decoration: none;
-            color: $textNavLk;
+            width: 9.0625vw;
+            height: 3.6458vw;
+            cursor: pointer;
         }
     }
 
