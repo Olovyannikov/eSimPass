@@ -3,6 +3,10 @@
     margin-left: 8.5316vw;
     margin-top: 1.5vw;
 
+    &.disabled {
+        opacity: 0.5;
+    }
+
     .dont-have-package {
         width: 82.8125vw;
         height: 10.1562vw;

@@ -15,6 +15,8 @@ export const EmptyPackage = () => {
     const router = useRouter();
 
     const checkExistingDevice = () => {
+        
+        setInProgress(prev => prev = true)
 
         CONNECTION.listDevices({})
             .do(response => {
@@ -25,20 +27,19 @@ export const EmptyPackage = () => {
                     STATE_API.showPrivateWizard('addDevice');
                     //TODO : add disabled block
                 }
-                setInProgress(prev => prev = false);
+                
             })
+            .do(() => setInProgress(prev => prev = false))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
         
     }
 
     return (
-        <div className="EmptyPackage">
-            {/* <Link href='/cabinet/chooseRates'> */}
-                <div className="dont-have-package" onClick={checkExistingDevice}>
-                    <div className="buy-package">Купить пакет</div>
-                </div>
-            {/* </Link> */}
+        <div className={`EmptyPackage ${inProgress ? 'disabled' : ''}`}>
+            <div className="dont-have-package" onClick={checkExistingDevice}>
+                <div className="buy-package">Купить пакет</div>
+            </div>
         </div>
     )
 }
