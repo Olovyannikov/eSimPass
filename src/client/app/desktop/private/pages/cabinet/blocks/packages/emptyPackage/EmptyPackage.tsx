@@ -24,12 +24,13 @@ export const EmptyPackage = () => {
                     router.push('/cabinet/chooseRates');
                 }
                 else {
+                    setInProgress(false)
                     STATE_API.showPrivateWizard('addDevice');
                     //TODO : add disabled block
                 }
                 
             })
-            .do(() => setInProgress(prev => prev = false))
+            // .do(() => setInProgress(prev => prev = false))
             .takeUntil(closedSubject)
             .subscribe(logger.rx.subscribe('Error in device response'))
         

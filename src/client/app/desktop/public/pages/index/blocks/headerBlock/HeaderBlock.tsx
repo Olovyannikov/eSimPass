@@ -12,7 +12,7 @@ export const HeaderBlock = () => {
 
     const handlerClickCabinet = () => {
         if (STORAGE.getToken()) {
-            router.push('/cabinet')
+            router.push('/cabinet');
         }
         else {
             return STATE_API.showPublicWizard('login');

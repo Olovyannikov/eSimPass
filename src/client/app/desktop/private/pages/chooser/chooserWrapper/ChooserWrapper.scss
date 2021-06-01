@@ -8,6 +8,9 @@
         float: left;
         cursor: pointer;
         margin-top: 1vw;
+        :hover {
+            opacity: 0.5;
+        }
 
         img {
             float: left;

@@ -12,7 +12,7 @@
             float: left;
             margin-left: -2.5vw;
             margin-top: 2.8055vw;
-            width: 88vw;
+            width: 90vw;
             height: 22vw;
             
         }
@@ -29,13 +29,18 @@
             left: -3.5vw;
             top: 2vw;
             padding: 0;
+
+            :hover {
+                opacity: 0.5;
+            }
+        }
+        .arrow {
+            float: left;
+            width: 1.5625vw;
+            height: 2.6041vw;
+
         }
         
-            .arrow {
-                float: left;
-                width: 1.5625vw;
-                height: 2.6041vw;
-            }
         
         
         .button-right {
@@ -51,6 +56,10 @@
             right: 2vw;
             top: 2vw;
         
+            :hover {
+                opacity: 0.5;
+            }
+
             .arrow {
                 float: right;
                 width: 1.5625vw;
