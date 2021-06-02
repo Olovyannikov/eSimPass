@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { STATE_API } from 'redux/StateApi';
 import { img_crossMobile } from 'resources/images';
+import { CheckBtn } from './checkBtn/CheckBtn';
+import { Select } from './select/Select';
 
 export const CheckDevice = () => {
 
@@ -11,7 +13,13 @@ export const CheckDevice = () => {
         <div onClick={(e) => e.stopPropagation ()} className="CheckDevice">
             <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
             <h2 className="title">eSIM и мое устройство совместимы? </h2>
-            <h4 className='parametrs-title'>Укажите параметры устройтсва</h4>
+            <div className='parameters-title'>Укажите параметры устройтсва</div>
+            <div className="selects-block">
+                <Select text='Выбери тип устройства' />
+                <Select disabled text='Выбери производителя' />
+                <Select disabled text='Выбери модель' />
+                <CheckBtn />
+            </div>
         </div>
     )
 }

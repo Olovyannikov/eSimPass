@@ -1,0 +1,32 @@
+.Select {
+
+    cursor: pointer;
+    width: 18.5416vw;
+    height: 4.1145vw;
+    border: 0.025vw solid white;
+    border-radius: 1.0416vw;
+    float: left;
+    margin-right: 1vw;
+
+    &.disabled {
+        opacity: 0.5;
+    }
+    
+    .device-type {
+        text-align: center;
+        width: 13.5416vw;
+        margin-left: 1.8229vw;
+        float: left;
+        font-size: 1.0416vw;
+        font-weight: 500;
+        color: white;
+        margin-top: 1.5vw;
+    }
+
+    .arrow-down {
+        width: 1vw;
+        margin-right: 0.927vw;
+        margin-top: 1.92708vw;
+        float: right;
+    }
+}

@@ -17,14 +17,7 @@
         text-align: center;
         margin-top: 1.1vw;
         font-size: 1.5625vw;
-        // .old-text {
-        //     opacity: 1;
-        //     display: block;
-        // }
-        // .new-text {
-        //     display: none;
-        //     opacity: 0;
-        // }
+        white-space: nowrap; 
     }
 }
 
@@ -32,21 +25,10 @@
     width: 37.0833vw;
     transition: all 0.5s ease;
 
-    // .text:hover {
-    //     .old-text {
-    //         opacity: 0;
-    //         display: none;
-    //     }
-    //     .new-text {
-    //         opacity: 1;
-    //         display: block;
-    //     }
-    // }
     span {
         display: none;
     }
     ::after {
-        // display: none;
         content: 'eSIM и мое устройство совместимы?';
     }
 
