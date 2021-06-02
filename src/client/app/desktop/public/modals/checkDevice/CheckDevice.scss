@@ -1,0 +1,41 @@
+.CheckDevice {
+    width: 71.875vw;
+    height: 24.7395vw;
+    color: black;
+    left: 13.5%;
+    right: 25%;
+    top: 30%;
+    bottom: 15%;
+    position: absolute;
+    float: left;
+    background: $cabinetBG;
+    z-index: 100;
+    border-radius: 1.125vw;
+    color: white;
+
+    .close {
+        float: right;
+        width: 1vw;
+        height: 1vw;
+        margin-right: 1vw;
+        margin-top: 1vw;
+        cursor: pointer;
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: 3.125vw;
+        text-align: center;
+        width: 100%;
+        margin-top: 3vw;
+        margin-bottom: 0;
+    }
+
+    .parametrs-title {
+        margin-top: 3vw;
+        font-weight: 600;
+        font-size: 1.302vw;
+        margin-left: 3vw;
+        float: left;
+    }
+}

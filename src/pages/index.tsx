@@ -14,8 +14,6 @@ interface Props {
 
 const Main = ({listRates} : Props) => {
 
-    // TODO - CHECK AUTH
-
     React.useEffect(() => {
         
         if (listRates) {

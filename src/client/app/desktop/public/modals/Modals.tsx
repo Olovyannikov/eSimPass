@@ -7,6 +7,7 @@ import { RegistrationDialog } from './registration/RegistrationDialog';
 import { VerifyRegistrationDialog } from './verify/verifyRegistration/VerifyRegistrationDialog';
 import { PasswordRestoreDialog } from './restore/passwordRestore/PasswordRestoreDialog';
 import { VerifyPasswordRestoreDialog } from './verify/verifyPasswordRestore/VerifyPasswordRestoreDialog';
+import { CheckDevice } from './checkDevice/CheckDevice';
 
 export const Modals = (props : {mode : SHOW_PUBLIC_WIZARD_MODE} ) => {
 
@@ -25,6 +26,9 @@ export const Modals = (props : {mode : SHOW_PUBLIC_WIZARD_MODE} ) => {
         }
         else if (props.mode === 'verifyPasswordRestore') {
             return <VerifyPasswordRestoreDialog />
+        }
+        else if (props.mode === 'checkDevice') {
+            return <CheckDevice />
         }
     }
 
