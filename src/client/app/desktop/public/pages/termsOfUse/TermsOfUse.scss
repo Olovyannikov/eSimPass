@@ -3,7 +3,36 @@
     @import '../../components/components.scss';
     @import '../../pages/index/blocks/infoBlock/InfoBlock.scss';
 
-    
+    float: left;
+    margin-left: 9.5312vw;
+    margin-right: 6.927vw;
+    padding-bottom: 2vw;
+
+    .main-title {
+        float: left;
+        text-align: center;
+        width: 100%;
+        font-size: 2.6041vw;
+        font-weight: 500;
+    }
+
+    .title {
+        float: left;
+        width: 100%;
+        font-size: 2vw;
+        font-weight: 700;
+        margin-top: 0;
+    }
+
+    .text {
+        font-weight: 400;
+        font-size: 1.5625vw;
+        float: left;
+        line-height: 1.875vw;
+        margin-bottom: 2vw;
+        color: rgba(25, 25, 25, 1);
+    }
+
     
     .InfoBlock {
         margin-left: 0;
