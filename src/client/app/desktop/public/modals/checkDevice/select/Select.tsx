@@ -23,15 +23,31 @@ export const Select = (props : SelectProps) => {
         setChoosenType(prev => prev = text)
     }
 
-    const renderArrow = () : string => isOpen ? img_activeArrowDown : img_arrowDown;
+    const renderArrowImg = () : string => isOpen ? img_activeArrowDown : img_arrowDown;
 
     const renderText = () => hasChoose ? choosenType : props.text;
 
+    const renderMainClass = () => {
+        if (props.disabled) {
+            return 'Select disabled'
+        }
+        else if (!props.disabled && isOpen) {
+            return 'Select open'
+        }
+        else return 'Select'
+    }
+
+    const activeDropDownEvent = () => {
+        if (!props.disabled) {
+            dropDownEvent()
+        }
+    }
+
     return (
-        <div className={`Select ${props.disabled ? 'disabled' : ''} ${isOpen ? 'open' : ''}`}>
-            <div onClick={props.disabled ? null : dropDownEvent} className="choose-type">
+        <div className={renderMainClass()}>
+            <div onClick={activeDropDownEvent} className="choose-type">
                 <div className='device-type'>{renderText()}</div>
-                <img className='arrow-down' src={renderArrow()} alt="Down" />
+                <img className='arrow-down' src={renderArrowImg()} alt="Down" />
             </div>
             <div className='options'>
                 {props.options && props.options.map((el, index) => (
