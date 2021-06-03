@@ -69,7 +69,9 @@ import visa from './img/visa.png';
 import masterCard from './img/master-card.png';
 import mainLogo from './img/main-logo.png';
 import cabinetLogo from './img/cabinet-logo.png';
+import activeArrowDown from './img/active-arrow-down.png';
 
+export const img_activeArrowDown = activeArrowDown;
 export const img_mainLogo = mainLogo;
 export const img_cabinetLogo = cabinetLogo;
 export const img_mir = mir;

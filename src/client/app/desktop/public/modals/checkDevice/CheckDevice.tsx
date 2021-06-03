@@ -12,14 +12,15 @@ export const CheckDevice = () => {
     return (
         <div onClick={(e) => e.stopPropagation ()} className="CheckDevice">
             <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
-            <h2 className="title">eSIM и мое устройство совместимы? </h2>
+            <h2 className="title">eSIM и мое устройство совместимы?</h2>
             <div className='parameters-title'>Укажите параметры устройтсва</div>
             <div className="selects-block">
-                <Select text='Выбери тип устройства' />
+                <Select options={['iPhone Xs', 'iPhone Xs Max','iPhone Xr', 'iPhone 11', 'iPhone 11 Pro', 'iPhone 11 Max', 'iPhone SE (2020)', 'iPhone 12', 'iPhone 12 Pro', 'iPhone 12 Mini', 'iPhone 12 Pro Max']} text='Выбери тип устройства' />
                 <Select disabled text='Выбери производителя' />
                 <Select disabled text='Выбери модель' />
                 <CheckBtn />
             </div>
+            <div className="text-below">Если устройства нет среди предложенных вариантов, то уточни наличие eSIM у своего производителя</div>
         </div>
     )
 }

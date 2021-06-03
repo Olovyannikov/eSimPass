@@ -25,28 +25,28 @@ const Main = ({listRates} : Props) => {
     return <PublicApplication />
 }
 
-export const getServerSideProps : GetServerSideProps = async (context : GetServerSidePropsContext) => {
+// export const getServerSideProps : GetServerSideProps = async (context : GetServerSidePropsContext) => {
 
-    const requestId = uuid().toString();
-    const res = await axios.post<ListRatesResponse>('https://toesim-dev.stand.gmdp.io/http-api/api.Rate/listRates', {
-        body: JSON.stringify({}),
-    },{
-        headers: {
-            'Content-Type': 'application/json',
-            authorization: null,
-            'x-request-id': requestId,
-            'x-partner-id': 'gm',
-            'x-client-platform': 'web',
-            'x-client-version': '1.0.0'
-        },
-    })
-    const listRates = res.data.success.rates
+//     const requestId = uuid().toString();
+//     const res = await axios.post<ListRatesResponse>('https://toesim-dev.stand.gmdp.io/http-api/api.Rate/listRates', {
+//         body: JSON.stringify({}),
+//     },{
+//         headers: {
+//             'Content-Type': 'application/json',
+//             authorization: null,
+//             'x-request-id': requestId,
+//             'x-partner-id': 'gm',
+//             'x-client-platform': 'web',
+//             'x-client-version': '1.0.0'
+//         },
+//     })
+//     const listRates = res.data.success.rates
     
-    return {
-        props : {
-            listRates,
-        }
-    }
-}
+//     return {
+//         props : {
+//             listRates,
+//         }
+//     }
+// }
 
 export default Main;

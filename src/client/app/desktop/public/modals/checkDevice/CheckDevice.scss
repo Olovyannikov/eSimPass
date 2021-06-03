@@ -3,8 +3,9 @@
     @import './checkBtn/CheckBtn.scss';
 
     width: 72.875vw;
-    height: 24.7395vw;
-    color: black;
+    // height: 32.7395vw!important;
+    height: fit-content;
+    transition: width 0.4s ease;
     left: 13.5%;
     right: 25%;
     top: 30%;
@@ -50,5 +51,21 @@
 
         float: left;
         margin-left: 3vw;
+    }
+
+    .text-below {
+        margin-top: 2vw;
+        font-weight: 600;
+        font-size: 1.0416vw;
+        margin-left: 3vw;
+        float: left;
+        width: 100%;
+        margin-bottom: 1.5vw;
+    }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .CheckDevice {
+        height: 32.7395vw!important;
     }
 }

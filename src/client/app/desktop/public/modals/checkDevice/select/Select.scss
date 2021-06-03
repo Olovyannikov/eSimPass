@@ -1,32 +1,87 @@
 .Select {
 
-    cursor: pointer;
     width: 18.5416vw;
     height: 4.1145vw;
     border: 0.025vw solid white;
     border-radius: 1.0416vw;
     float: left;
     margin-right: 1vw;
-
+    transition: all 0.3s ease;
+    
+    
     &.disabled {
         opacity: 0.5;
+
+        .choose-type {
+            cursor: not-allowed;
+        }
     }
     
-    .device-type {
-        text-align: center;
-        width: 13.5416vw;
-        margin-left: 1.8229vw;
+    &.open {
+        height: 16vw;
+
+        .choose-type {
+            
+            border-bottom: 0.025vw solid white;
+
+            .device-type {
+                color: $yellowLk;
+            }
+        } 
+
+        .options {
+            // display: block;
+            overflow-y: auto;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    
+    .choose-type {
+        cursor: pointer;
+        width: 18.5416vw;
+        height: 4.1145vw;
         float: left;
-        font-size: 1.0416vw;
-        font-weight: 500;
-        color: white;
-        margin-top: 1.5vw;
+
+
+        .device-type {
+            text-align: center;
+            width: 13.5416vw;
+            margin-left: 1.8229vw;
+            float: left;
+            font-size: 1.0416vw;
+            font-weight: 500;
+            color: white;
+            margin-top: 1.5vw;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+    
+        }
+    
+        .arrow-down {
+            width: 1vw;
+            margin-right: 0.927vw;
+            margin-top: 1.92708vw;
+            float: right;
+        }
     }
 
-    .arrow-down {
-        width: 1vw;
-        margin-right: 0.927vw;
-        margin-top: 1.92708vw;
-        float: right;
+    .options {
+
+        @import './option/Option.scss';
+
+        height: 11.8vw;
+        overflow-y: hidden;
+        // display: none;
+        visibility: hidden;
+        opacity: 0;
+        float: left;
+        transition: all 0.3s ease;
+
+        :last-child {
+            border-bottom: none;
+        }
+
     }
 }
