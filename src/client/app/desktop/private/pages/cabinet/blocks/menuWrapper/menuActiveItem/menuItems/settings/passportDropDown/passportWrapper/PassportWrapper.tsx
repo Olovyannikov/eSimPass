@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { CONNECTION } from '../../../../../../../../../../../../Connection';
 
 import { SetDocumentRequest } from '../../../../../../../../../../../../generated/proto.web';
@@ -43,19 +45,24 @@ export const PassportWrapper = (props : PassportWrapperModel) => {
 
     React.useEffect(() => {        
 
-        STORAGE.getAbonentInfo()
-            .concat(CONNECTION.getAbonent({})
-                .map(response => response.success))
-                .do(info => {
-                    if (info) {
-                        STORAGE.storeAbonentInfo(info)
-                        setPassportState(prev => ({
-                            ...prev, 
-                            ...info.document,
-                        }))
-                    }
-                })
-                .takeUntil(closedSubject)
+        rx.concat (
+            STORAGE.getAbonentInfo(),
+            CONNECTION.getAbonent({})
+                .pipe (
+                    ro.map(response => response.success),
+                    ro.tap(info => {
+                        if (info) {
+                            STORAGE.storeAbonentInfo(info)
+                            setPassportState(prev => ({
+                                ...prev, 
+                                ...info.document,
+                            }))
+                        }
+                    }),
+                    ro.takeUntil(closedSubject)
+    
+                )
+        )
                 .subscribe(logger.rx.subscribe('Error in get abonent passport response'))
         
         // CONNECTION.getAbonent({})

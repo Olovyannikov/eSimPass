@@ -1,18 +1,23 @@
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 export class WebSocketAdapter<R,T> {
     private readonly errorObservable = new rx.ReplaySubject<void> (1);
     private readonly closeObservable = new rx.ReplaySubject<void> (1);
     
-    public readonly getErrorObservable = () => this.errorObservable.flatMap (error => rx.Observable.throwError (error))
-    public readonly getCloseObservable = () => this.closeObservable.take (1);
-    public readonly getMessageObservable = () => rx.Observable.fromEvent<MessageEvent> (this.socket, 'message')
-        .map (event => event.data)
+    public readonly getErrorObservable = () => this.errorObservable
+        .pipe (ro.mergeMap (error => rx.throwError (() => error)))
     
-        public readonly getResponseObservable = () => rx.Observable.fromEvent<MessageEvent> (this.socket, 'message')
-        .map (event => JSON.parse (event.data) as T)
+    public readonly getCloseObservable = () => this.closeObservable
+        .pipe (ro.first ())
 
-    constructor (public readonly socket : WebSocket, responseCheker  : (response : T) => rx.Observable<T> = response => rx.Observable.of (response)) {
+    public readonly getMessageObservable = () => rx.fromEvent<MessageEvent> (this.socket, 'message')
+        .pipe (ro.map (event => event.data))
+    
+    public readonly getResponseObservable = () => rx.fromEvent<MessageEvent> (this.socket, 'message')
+        .pipe (ro.map (event => JSON.parse (event.data) as T))
+
+    constructor (public readonly socket : WebSocket, responseCheker  : (response : T) => rx.Observable<T> = response => rx.of (response)) {
         this.socket.addEventListener ('error', (event : ErrorEvent) => this.onError(event.error))
         this.socket.addEventListener ('close', () => this.closeObservable.next ())
 
@@ -35,12 +40,14 @@ export class WebSocketAdapter<R,T> {
         })
     }
 
-    public readonly connect = () => rx.Observable.merge (
-            rx.Observable.fromEvent (this.socket, 'open'),
+    public readonly connect = () => rx.merge (
+            rx.fromEvent (this.socket, 'open'),
             this.getErrorObservable ()
         )
-        .take (1)
-        .map (() => {})
+        .pipe (
+            ro.take (1),
+            ro.map (() => {})
+        )
 
 
     public readonly send = (request: R) => this.socket.send (JSON.stringify (request))

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { CONNECTION } from '../../../../../../../../Connection';
 import { ListDevicesResponse, ListRatesResponse } from '../../../../../../../../generated/proto.web';
 import { waitForClose, Logger } from '../../../../../../../../utils';
@@ -24,13 +26,15 @@ export const ChooseDevice = (props : ChooseDeviceModel) => {
     React.useEffect(() => {
 
         CONNECTION.listDevices({})
-            .do(response => {
-                if (response.success) {
-                    setPackages(prev => prev = response.success.devices)
-                }
-                setInProgress(prev => prev = false);
-            })
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success) {
+                        setPackages(prev => prev = response.success.devices)
+                    }
+                    setInProgress(prev => prev = false);
+                }),
+                ro.takeUntil(closedSubject)    
+            )
             .subscribe(logger.rx.subscribe('Error in device response'))
 
         // STORAGE.getDevices()

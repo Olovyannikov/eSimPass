@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { img_pen } from '../../../../../resources/images';
 import { CONNECTION } from '../../../../../Connection';
 import { RenameDeviceRequest } from '../../../../../generated/proto.web';
@@ -59,15 +60,17 @@ export const WhoseDevice = (props : WhoseDeviceModel) => {
                 setInProgress(prev => prev = true)
 
                 CONNECTION.renameDevice(createRenameDeviceRequest())
-                    .do(response => {
-                        if (response.success) {
-                            handleSuccessDeviceNameChange()
-                        }
-                        else if (response.deviceNotFound) {
-                            handleDeviceNotFound()
-                        }
-                    })
-                    .takeUntil(closedSubject)
+                    .pipe (
+                        ro.tap(response => {
+                            if (response.success) {
+                                handleSuccessDeviceNameChange()
+                            }
+                            else if (response.deviceNotFound) {
+                                handleDeviceNotFound()
+                            }
+                        }),
+                        ro.takeUntil(closedSubject)
+                    )
                     .subscribe(logger.rx.subscribe('Error in device response'))
             }
         }

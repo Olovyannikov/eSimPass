@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { CONNECTION } from '../../../../../Connection';
 import { BuyPackRequest, BuyPackResponse } from '../../../../../generated/proto.web';
 import { BuyPackWizard } from '../../../../../redux/State';
@@ -28,10 +29,12 @@ export const BuyPackDialog = (props : BuyPackDialogModel) => {
         setInProgress(prev => prev = true);
 
         CONNECTION.buyPack(createBuyPackRequest())
-            .do(parseBuyPackResponse)
-            .delay(2000)
-            .do(() => STATE_API.hideAuthWizard())
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(parseBuyPackResponse),
+                ro.delay(2000),
+                ro.tap(() => STATE_API.hideAuthWizard()),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error buy pack in'))
 
     }

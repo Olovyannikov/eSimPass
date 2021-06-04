@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { CONNECTION } from '../../../../../../Connection';
 import { GetDevicePaymentAmmountResponse, CreateDevicePaymentResponse, CreateDevicePaymentRequest } from '../../../../../../generated/proto.web';
 
@@ -19,15 +21,17 @@ export const CreateDevice = () => {
     React.useEffect(() => {
 
         CONNECTION.getDevicePaymentAmmount({})
-            .do(response => {
-                if (response.ammount) {
-                    handleSuccessDevicePaymentAmount(response)
-                }
-                else {
-                    handlePlainErrorResponse('Ошибка при получении стоимости устройства')
-                }
-            })
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.ammount) {
+                        handleSuccessDevicePaymentAmount(response)
+                    }
+                    else {
+                        handlePlainErrorResponse('Ошибка при получении стоимости устройства')
+                    }
+                }),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in get device payment amount'));
 
     }, [])
@@ -48,19 +52,20 @@ export const CreateDevice = () => {
         setInProgress(prev => prev = true);
 
         CONNECTION.createDevicePayment(createDevicePaymentRequst())
-
-        
-        .do(response => {
-                if (response.success) {
-                    handleSuccessResponse(response);
-                }
-                else {
-                    handlePlainErrorResponse('Ошибка!')
-                }
-            })
-            .delay(2000)
-            .do(closeModal)
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success) {
+                        handleSuccessResponse(response);
+                    }
+                    else {
+                        handlePlainErrorResponse('Ошибка!')
+                    }
+                }),
+                ro.delay(2000),
+                ro.tap(closeModal),
+                ro.takeUntil(closedSubject)
+    
+            )
             .subscribe(logger.rx.subscribe('Error in create device payment request'))
     }
 

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { CONNECTION } from '../../../../../../../Connection';
 import { GetAbonentResponse } from '../../../../../../../generated/proto.web';
@@ -27,17 +29,21 @@ export const Navbar = () => {
     }
 
     React.useEffect(() => {
-        STORAGE.getAbonentInfo()
-            .concat(CONNECTION.getAbonent({})
-                .map(response => response.success))
-                .do(info => {
-                    if (info) {
-                        STORAGE.storeAbonentInfo(info)
-                        setAbonentInfo(prev => prev = info)
-                    }
-                })
-                .takeUntil(closedSubject)
-                .subscribe(logger.rx.subscribe('Error in receiving abonent info'))
+        rx.concat (
+            STORAGE.getAbonentInfo(),
+            CONNECTION.getAbonent({})
+                .pipe (
+                    ro.map(response => response.success),
+                    ro.tap(info => {
+                        if (info) {
+                            STORAGE.storeAbonentInfo(info)
+                            setAbonentInfo(prev => prev = info)
+                        }
+                    }),
+                    ro.takeUntil(closedSubject)
+                )
+        )
+        .subscribe(logger.rx.subscribe('Error in receiving abonent info'))
 
             setIsMounted(true)
         // STORAGE.getEmail ()

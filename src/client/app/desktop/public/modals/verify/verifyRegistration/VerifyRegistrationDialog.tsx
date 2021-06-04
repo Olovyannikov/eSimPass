@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { Spinner } from '../../../components/spinner/Spinner';
 import {VerifyWebRegistrationRequest, VerifyWebRegistrationResponse } from '../../../../../../generated/proto.web';
@@ -29,8 +31,10 @@ export const VerifyRegistrationDialog = () => {
         }
 
         CONNECTION.verifyWebRegistration(createVerifyRegisterRequest())
-            .do(parseVerifyRegisterResponse)
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(parseVerifyRegisterResponse),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error verify in'))
         
     }, [token])

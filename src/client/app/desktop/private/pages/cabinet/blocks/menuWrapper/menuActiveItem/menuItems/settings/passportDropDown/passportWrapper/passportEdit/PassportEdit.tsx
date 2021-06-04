@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { PassportModel } from '../PassportWrapper';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -86,17 +87,19 @@ export const PassportEdit = (props : PassportModel) => {
         setInProgress(prev => prev = true);
 
         CONNECTION.setDocument(createSetDocumentRequest())
-            .do(response => {
-                if (response.success) {
-                    // STORAGE.storeDocumentUploaded(true) // TODO hide the red reminder after filled a passport data
-                    props.toggleMode(prev => !prev)
-                }
-                else {
-                    setError('Неверные данные')
-                }
-            })
-            .do(() => setInProgress(prev => prev = false))
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success) {
+                        // STORAGE.storeDocumentUploaded(true) // TODO hide the red reminder after filled a passport data
+                        props.toggleMode(prev => !prev)
+                    }
+                    else {
+                        setError('Неверные данные')
+                    }
+                }),
+                ro.tap(() => setInProgress(prev => prev = false)),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in create set document response'))
     }
 
