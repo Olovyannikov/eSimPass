@@ -28,7 +28,7 @@ const Main = ({listRates} : Props) => {
 export const getServerSideProps : GetServerSideProps = async (context : GetServerSidePropsContext) => {
 
     const requestId = uuid().toString();
-    const res = await axios.post<ListRatesResponse>('https://toesim-dev.stand.gmdp.io/http-api/api.Rate/listRates', {
+    const res = await axios.post<ListRatesResponse>('https://esimpass-dev.stand.gmdp.io/http-api/api.Rate/listRates', {
         body: JSON.stringify({}),
     },{
         headers: {

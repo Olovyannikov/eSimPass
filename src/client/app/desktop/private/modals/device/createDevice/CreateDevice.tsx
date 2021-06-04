@@ -96,4 +96,4 @@ export const CreateDevice = () => {
         </div>
     )
 }
-// https://toesim-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616741320782X10300
+// https://esimpass-dev.stand.gmdp.io/deeplink/payment/success?paymentId=1616741320782X10300

@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: toesim-web
+    name: web
     labels:
-        app: toesim-web
+        app: web
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: toesim-web
+            app: web
     template:
         metadata:
             labels:
-                app: toesim-web
+                app: web
         spec:
             terminationGracePeriodSeconds: 0
             imagePullSecrets:
               - name: regcred
             containers:
-              - name: toesim-web
-                image: "registry.gmdp.io/glonassmobile/toesim/web:{{ .Values.version }}"
+              - name: web
+                image: "registry.gmdp.io/glonassmobile/mvne/project/esimpass/web:{{ .Values.version }}"
                 imagePullPolicy: Always            
                 env:
 {{- if .Values.reload }}
