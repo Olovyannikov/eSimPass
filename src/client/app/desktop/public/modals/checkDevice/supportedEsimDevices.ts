@@ -4,7 +4,7 @@ interface SupportedEsimDevicesModel {
     'Смартфон' : Brands[]
 }
 
-interface Brands {
+export interface Brands {
     brand : string;
     devices : string[];
 }

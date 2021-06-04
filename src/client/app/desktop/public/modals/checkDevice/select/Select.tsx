@@ -9,7 +9,6 @@ interface SelectProps {
     defaultText : string;
     options?: string[];
     setValue? : React.Dispatch<React.SetStateAction<string>>
-
 }
 
 export const Select = (props : SelectProps) => {

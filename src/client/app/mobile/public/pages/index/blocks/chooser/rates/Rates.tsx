@@ -7,16 +7,17 @@ import { RateCountry } from './rateCountry/RateCountry';
 import { Button } from '../../../../../../../desktop/private/components/buttons/Button';
 import Router from 'next/router';
 import { State } from '../../../../../../../../redux/State';
-import { connect } from 'react-redux';
 
-interface RatesModel extends ReturnType<typeof mapStateToProps> {
+import { CONNECTION } from 'Connection';
+
+interface RatesModel {
     showDefaultRates : boolean;
     filter : string;
     selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void;
     setShowDefaultRates : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const RatesImpl = (props : RatesModel) => {
+export const Rates = (props : RatesModel) => {
 
     const logger = new Logger ("Chooser Input Rates");
 
@@ -26,20 +27,20 @@ const RatesImpl = (props : RatesModel) => {
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => [])
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     
-    // React.useEffect(() => {
-    //     CONNECTION.listRates({})
-    //         .do(response => setAllRates (rates => rates = response.success.rates))
-    //         .do(() => setInProgress(prev => prev = false))
-    //         .takeUntil(closedSubject)
-    //         .subscribe(logger.rx.subscribe('Error in received list rates'))
+    React.useEffect(() => {
+        CONNECTION.listRates({})
+            .do(response => setAllRates (rates => rates = response.success.rates))
+            .do(() => setInProgress(prev => prev = false))
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in received list rates'))
         
-    // }, [])
+    }, [])
 
     React.useEffect(() => {
 
         const filter = nothingToNull(props.filter)
 
-        setAllRates(prev => prev = props.listRates)
+        // setAllRates(prev => prev = props.listRates)
         
         if (filter != null) {
             setFilteredRates (filteredRates => filteredRates = allRates
@@ -109,9 +110,3 @@ const RatesImpl = (props : RatesModel) => {
         </div>
     )
 }
-
-const mapStateToProps = (state : State) => ({
-    listRates : state.listRates,
-})
-
-export const Rates = connect(mapStateToProps)(RatesImpl)

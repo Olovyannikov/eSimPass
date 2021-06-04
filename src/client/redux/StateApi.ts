@@ -11,7 +11,6 @@ import { buyPackAction, buyPackCode, doBuyPack} from './actions/buyPackWizard';
 import { Action } from "@glonassmobile/codebase-web/Action";
 import { ListRatesResponse } from "../generated/proto.web";
 
-
 export const INITIAL_STATE : State = {
     auth : {},
 }

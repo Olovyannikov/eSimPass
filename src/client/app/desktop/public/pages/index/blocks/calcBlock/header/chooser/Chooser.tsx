@@ -1,12 +1,12 @@
 import * as React from "react";
 import { ListRatesResponse } from "../../../../../../../../../generated/proto.web";
 import { Country } from "./country/Country";
-import { nothingToNull } from '../../../../../../../../../utils';
-import { State } from "../../../../../../../../../redux/State";
-import { connect } from "react-redux";
+import { Logger, nothingToNull, waitForClose } from '../../../../../../../../../utils';
+import { CONNECTION } from "Connection";
+import { STATE_API } from "redux/StateApi";
 
 
-interface Props extends ReturnType<typeof mapStateToProps> {
+interface Props {
     filter : string,
     show : boolean,
     selected : (rate : ListRatesResponse.SuccessModel.RateModel) => void;
@@ -14,14 +14,24 @@ interface Props extends ReturnType<typeof mapStateToProps> {
 
 
 
-export const ChooserImpl = (props : Props) => {
+export const Chooser = (props : Props) => {
     
     const [allRates, setAllRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
     const [filteredRates, setFilteredRates] = React.useState (() : ListRatesResponse.SuccessModel.RateModel [] => []);
 
+    const logger = new Logger ("Chooser Input Rates");
+    const closedSubject = waitForClose();
+
+    React.useEffect(() => {
+        CONNECTION.listRates({})
+            .do(response => setAllRates(prev => prev = response.success.rates))
+            .takeUntil(closedSubject)
+            .subscribe(logger.rx.subscribe('Error in received list rates'))
+
+    }, [])
+
     React.useEffect (() => {
         const filter = nothingToNull (props.filter)
-        setAllRates(prev => prev = props.listRates)
         
         if (filter != null) {
             setFilteredRates (filteredRates => filteredRates = allRates
@@ -50,8 +60,3 @@ export const ChooserImpl = (props : Props) => {
     )
 }
 
-const mapStateToProps = (state : State) => ({
-    listRates : state.listRates
-})
-
-export const Chooser = connect(mapStateToProps)(ChooserImpl)

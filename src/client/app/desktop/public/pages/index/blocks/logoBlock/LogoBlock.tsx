@@ -2,12 +2,22 @@ import * as React from "react";
 
 import { STATE_API } from "../../../../../../../redux/StateApi";
 import { img_girlMain, img_mainLogo } from "../../../../../../../resources/images";
-import Image from 'next/image';
+import { STORAGE } from "StorageAdapter";
+import { useRouter } from 'next/router';
 
 
 export const LogoBlock = () => {
 
-    const handlerClickRegister = () => STATE_API.showPublicWizard('register');
+    const router = useRouter();
+
+    const handlerClickRegister = () => {
+        if (STORAGE.getToken()) {
+            router.push('/cabinet')
+        }
+        else {
+            STATE_API.showPublicWizard('register');
+        }
+    } 
 
     return (
         <table className="LogoBlock" cellSpacing="0" cellPadding="0">

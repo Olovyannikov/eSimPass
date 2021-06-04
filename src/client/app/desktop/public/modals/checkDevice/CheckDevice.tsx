@@ -4,7 +4,7 @@ import { STATE_API } from 'redux/StateApi';
 import { img_crossMobile } from 'resources/images';
 import { CheckBtn } from './checkBtn/CheckBtn';
 import { Select } from './select/Select';
-import { supportedEsimDevices } from './supportedEsimDevices';
+import { supportedEsimDevices, Brands } from './supportedEsimDevices';
 
 export const CheckDevice = () => {
 
@@ -15,32 +15,31 @@ export const CheckDevice = () => {
 
     React.useEffect(() => {
         setBrand(null);
+        setChecked(false);
     }, [type])
 
     React.useEffect(() => {
         setDevice(null);
-    }, [brand])
-    
-    React.useEffect(() => {
         setChecked(false);
-    }, [type, brand, device])
+    }, [brand])
+
 
     const closeModal = () => STATE_API.hideAuthWizard();
 
-    const handleBrandByType = () => {
+    const handleBrandByType = () : string[] => {
         if (type) {
             return supportedEsimDevices[type].reduce((acc : string[], value : any) => {
-                return [...acc, value.brand]
+                return [...acc, value.brand];
             }, [])
         }
     }
 
-    const handleDeviceByBrandType = () => {
+    const handleDeviceByBrandType = () : string[] => {
         if (brand && type) {
-            
-            const arrayDevices = supportedEsimDevices[type].find((el : any) => el.brand === brand)
+            const arrayDevices : Brands = supportedEsimDevices[type].find((el : Brands) => el.brand === brand);
+
             if (arrayDevices) {
-                return [...arrayDevices.devices]
+                return [...arrayDevices.devices];
             }
         }
     }
