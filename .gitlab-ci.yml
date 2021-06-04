@@ -38,7 +38,7 @@ publish_master:
     script:
         - cd build
         - export DOCKER_TAG=$TAG:latest
-        - docker build -t $DOCKER_TAG .
+        - docker build --build-arg NPMRC="$npmrc" -t $DOCKER_TAG .
         - docker push $DOCKER_TAG
 
 publish_release:
@@ -52,7 +52,7 @@ publish_release:
         - version="${CI_BUILD_REF_NAME/release\//}"    
         - cd build
         - export DOCKER_TAG=$TAG:$version
-        - docker build -t $DOCKER_TAG .
+        - docker build --build-arg NPMRC="$npmrc" -t $DOCKER_TAG .
         - docker push $DOCKER_TAG
 
 deploy_master:
