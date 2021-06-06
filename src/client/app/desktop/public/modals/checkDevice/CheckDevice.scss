@@ -5,6 +5,8 @@
     width: 72.875vw;
     // height: 32.7395vw!important;
     height: fit-content;
+    // height: -moz-fit-content;
+    // height: 25.5vw;
     transition: width 0.4s ease;
     left: 13.5%;
     right: 25%;
@@ -16,6 +18,11 @@
     z-index: 100;
     border-radius: 1.125vw;
     color: white;
+    transition: all 0.3s ease;
+
+    &.open {
+        height: 33vw;
+    }
 
     .close {
         float: right;
@@ -55,7 +62,7 @@
     }
 
     .text-below {
-        margin-top: 2vw;
+        // margin-top: 1vw;
         font-weight: 600;
         font-size: 1.0416vw;
         margin-left: 3vw;

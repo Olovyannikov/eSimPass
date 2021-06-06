@@ -23,8 +23,9 @@ export const CheckDevice = () => {
         setChecked(false);
     }, [brand])
 
-
     const closeModal = () => STATE_API.hideAuthWizard();
+
+    // const isOpen = () => type || brand || device ? true : false;
 
     const handleBrandByType = () : string[] => {
         if (type) {
@@ -65,7 +66,7 @@ export const CheckDevice = () => {
     }
 
     return (
-        <div onClick={(e) => e.stopPropagation ()} className="CheckDevice">
+        <div onClick={(e) => e.stopPropagation ()} className={`CheckDevice`}>
             <img onClick={closeModal} className='close' src={img_crossMobile} alt="Close"/>
             <h2 className="title">eSIM и мое устройство совместимы?</h2>
             <div className='parameters-title'>Укажите параметры устройтсва</div>
