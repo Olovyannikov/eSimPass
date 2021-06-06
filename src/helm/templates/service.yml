@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: toesim-web
+    name: web
     labels:
-        app: toesim-web
+        app: web
 spec:
     type: ClusterIP
     clusterIP: None
     selector:
-        app: toesim-web
+        app: web
     ports:
       - protocol: TCP
         name: http
-        port: 8080
-        targetPort: 8080
+        port: 3000
+        targetPort: 3000

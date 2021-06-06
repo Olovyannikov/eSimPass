@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { ListenBalanceResponse } from '../../../../../../../../generated/proto.web';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
 
@@ -19,17 +20,21 @@ export const CurrentBalance = () => {
     React.useEffect (() => {
         const ws = new WebSocketAdapter<any, ListenBalanceResponse> (CONNECTION.listenBalance ())
 
-        const sub = rx.Observable.merge (
-            ws.connect ().ignoreElements (),
+        const sub = rx.merge (
+            ws.connect ()
+                .pipe (ro.ignoreElements ()),
             ws.getErrorObservable (),
-            ws.getCloseObservable ().flatMap (() => rx.Observable.throwError ("Closed")),
+            ws.getCloseObservable ()
+                .pipe (ro.mergeMap (() => rx.throwError (() => "Closed"))),
             ws.getResponseObservable ()
         )
-        .flatMap (CONNECTION.checkStreamResponse)
-        .do (response => setBalance (prev => prev = balanceConventer(response.success.balance)))
-        .takeUntil (closer)
-        .finally (() => ws.close ())
-        .retryWhen (logger.rx.retry ("Reconnecting"))
+        .pipe (
+            ro.mergeMap (CONNECTION.checkStreamResponse),
+            ro.tap (response => setBalance (prev => prev = balanceConventer(response.success.balance))),
+            ro.takeUntil (closer),
+            ro.finalize (() => ws.close ()),
+            ro.retryWhen (logger.rx.retry ("Reconnecting"))
+        )
         .subscribe (logger.rx.subscribe ("Listen balance"))
         
     })
@@ -38,20 +43,22 @@ export const CurrentBalance = () => {
     React.useEffect(() => {
         
         CONNECTION.listDevices({})
-            .do(response => {
-                if (response.success.devices) {
-                    setEmptyDevice(false)
-                }
-                else {
-                    setEmptyDevice(true)
-                }
-            })
-            .do(() => {
-                if (emptyDevice && parseInt(balance) <= 0) {
-                    STATE_API.showPrivateWizard('connectQrCode')
-                }
-            })
-            .takeUntil(closer)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success.devices) {
+                        setEmptyDevice(false)
+                    }
+                    else {
+                        setEmptyDevice(true)
+                    }
+                }),
+                ro.tap(() => {
+                    if (emptyDevice && parseInt(balance) <= 0) {
+                        STATE_API.showPrivateWizard('connectQrCode')
+                    }
+                }),
+                ro.takeUntil(closer)
+            )
             .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [emptyDevice])

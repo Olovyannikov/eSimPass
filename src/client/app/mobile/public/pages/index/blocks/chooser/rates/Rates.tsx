@@ -6,7 +6,7 @@ import { Spinner } from '../../../../../../../desktop/private/components/spinner
 import { RateCountry } from './rateCountry/RateCountry';
 import { Button } from '../../../../../../../desktop/private/components/buttons/Button';
 import Router from 'next/router';
-import { State } from '../../../../../../../../redux/State';
+import * as ro from "rxjs/operators"
 
 import { CONNECTION } from 'Connection';
 
@@ -29,9 +29,11 @@ export const Rates = (props : RatesModel) => {
     
     React.useEffect(() => {
         CONNECTION.listRates({})
-            .do(response => setAllRates (rates => rates = response.success.rates))
-            .do(() => setInProgress(prev => prev = false))
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => setAllRates (rates => rates = response.success.rates)),
+                ro.tap(() => setInProgress(prev => prev = false)),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in received list rates'))
         
     }, [])

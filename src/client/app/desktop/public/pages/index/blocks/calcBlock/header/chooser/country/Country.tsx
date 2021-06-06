@@ -1,7 +1,8 @@
-import * as rx from "rxjs/Rx"
 import * as React from "react";
-import { ListRatesResponse } from "../../../../../../../../../../generated/proto.web";
- 
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
+
+import { ListRatesResponse } from "../../../../../../../../../../generated/proto.web"; 
 
 interface Props {
     model : ListRatesResponse.SuccessModel.RateModel,

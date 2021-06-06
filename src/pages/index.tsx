@@ -9,7 +9,7 @@ const Main = () => {
 }
 
 export const getServerSideProps : GetServerSideProps = async (context : GetServerSidePropsContext) => {
-    
+
     return {
         props : {}
     }

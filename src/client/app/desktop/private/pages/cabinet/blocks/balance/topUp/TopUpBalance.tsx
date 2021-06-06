@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { Button } from '../../../../../components/buttons/Button';
 import { CONNECTION } from '../../../../../../../../Connection';
@@ -20,11 +22,13 @@ export const TopUpBalance = () => {
 
     React.useEffect(() => {
         CONNECTION.getMinBalancePaymentAmmount({})
-            .do(response => {
-                setInProgress(prev => prev = false);
-                setMinAmount(prev => prev = response.ammount)
-            })
-            .takeUntil (closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    setInProgress(prev => prev = false);
+                    setMinAmount(prev => prev = response.ammount)
+                }),
+                ro.takeUntil (closedSubject)
+            )
             .subscribe (logger.rx.subscribe ("Error in getMinBalancePaymentAmmount"))
     }, [minAmount])
 
@@ -33,8 +37,10 @@ export const TopUpBalance = () => {
         setError(null);
 
         CONNECTION.createBalancePayment(createBalancePaymentRequest())
-            .do(parseBalancePaymentResponse)
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(parseBalancePaymentResponse),
+                ro.takeUntil(closedSubject)    
+            )
             .subscribe(logger.rx.subscribe('Error balance payment'))
             
     }

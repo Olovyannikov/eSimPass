@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { CONNECTION } from '../../../../../../../../../../../Connection';
 import { ChangePasswordRequest } from '../../../../../../../../../../../generated/proto.web';
@@ -24,10 +26,12 @@ export const EntrySetting = () => {
     React.useEffect(() => {
 
         STORAGE.getAbonentInfo()
-            .do(info => {
-                setEmail(prev => prev = info.email)
-            })
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(info => {
+                    setEmail(prev => prev = info.email)
+                }),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in Entry Setting'))
 
     }, [])
@@ -57,14 +61,16 @@ export const EntrySetting = () => {
             setInProgress(prev => prev = true)
 
             CONNECTION.changePassword(createPasswordChangeRequest())
-                .do(response => {
-                    if (response.success) {
-                        handleSuccessResponse()
-                    }
-                })
-                .delay(2000)
-                .do(() => setStatus(prev => prev = null))
-                .takeUntil(closedSubject)
+                .pipe (
+                    ro.tap(response => {
+                        if (response.success) {
+                            handleSuccessResponse()
+                        }
+                    }),
+                    ro.delay(2000),
+                    ro.tap(() => setStatus(prev => prev = null)),
+                    ro.takeUntil(closedSubject)
+                )
                 .subscribe(logger.rx.subscribe('Error in Entry Setting'))
         }
 

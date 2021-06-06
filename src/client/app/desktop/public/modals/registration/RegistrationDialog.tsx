@@ -1,5 +1,6 @@
-import * as rx from "rxjs/Rx"
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { Spinner } from '../../components/spinner/Spinner';
 import { STATE_API } from '../../../../../redux/StateApi';
@@ -64,8 +65,10 @@ export const RegistrationDialog = () => {
         if (checkEqualsPassword ()) {
             
             CONNECTION.registerWeb(createRegisterRequest())
-                .do(parseRegisterResponse)
-                .takeUntil(closedSubject)
+                .pipe (
+                    ro.tap(parseRegisterResponse),
+                    ro.takeUntil(closedSubject)
+                )
                 .subscribe(logger.rx.subscribe('Error regist in'))
         }
 
@@ -130,20 +133,22 @@ export const RegistrationDialog = () => {
     const handleToManyErrorAttemptsResponse = (response : RegisterWebResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyAttempts) / 1000)
         
-        rx.Observable.interval (1000)
-            .map (r => secondsToWait - r)
-            .do (secondsToWait => {
-                
-                if (secondsToWait > 0) {
-                    setError(prev => prev = `Повторить можно через ${secondsToWait} ${convertEndingOfNoun(secondsToWait)}`);
-                }
-                else {
-                    setInProgress(prev => prev = false)
-                    setError(null)
-                }
-            })
-            .takeWhile (secondsToWait => secondsToWait > 0)
-            .takeUntil (closedSubject)
+        rx.interval (1000)
+            .pipe (
+                ro.map (r => secondsToWait - r),
+                ro.tap (secondsToWait => {
+                    
+                    if (secondsToWait > 0) {
+                        setError(prev => prev = `Повторить можно через ${secondsToWait} ${convertEndingOfNoun(secondsToWait)}`);
+                    }
+                    else {
+                        setInProgress(prev => prev = false)
+                        setError(null)
+                    }
+                }),
+                ro.takeWhile (secondsToWait => secondsToWait > 0),
+                ro.takeUntil (closedSubject)
+            )
             .subscribe (logger.rx.subscribe ("Error logging in"))
     } 
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
-
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { CONNECTION } from '../../../../../../Connection';
 import { DeleteDeviceRequest } from '../../../../../../generated/proto.web';
@@ -30,19 +31,20 @@ export const DeleteDevice = (props : DeleteDeviceModel) => {
         setInProgress(prev => prev = true)
 
         CONNECTION.deleteDevice(deleteDeviceRequest())
-            .do(response => {
+            .pipe (
+                ro.tap(response => {
                 
-                if (response.success) {
-                    setResponse(prev => prev = `Устройство ${props.deviceName || ''} успешно удалено`)
-                    // STORAGE.deleteDevice(props.deviceId)
-                }
-                else if (response.deviceNotFound) {
-                    setResponse(prev => prev = `Устройство ${props.deviceName || ''} не найдено`)
-                }
-            })
-            .delay(2000)
-            .do(() => closeModal())
-            .takeUntil(closedSubject)
+                    if (response.success) {
+                        setResponse(prev => prev = `Устройство ${props.deviceName || ''} успешно удалено`)
+                    }
+                    else if (response.deviceNotFound) {
+                        setResponse(prev => prev = `Устройство ${props.deviceName || ''} не найдено`)
+                    }
+                }),
+                ro.delay(2000),
+                ro.tap(() => closeModal()),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in deleting device'))
 
     }

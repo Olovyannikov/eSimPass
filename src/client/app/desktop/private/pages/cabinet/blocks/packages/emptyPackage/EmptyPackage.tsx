@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { useRouter } from 'next/router';
 import { CONNECTION } from '../../../../../../../../Connection';
 import { STATE_API } from '../../../../../../../../redux/StateApi';
@@ -19,19 +21,21 @@ export const EmptyPackage = () => {
         setInProgress(prev => prev = true)
 
         CONNECTION.listDevices({})
-            .do(response => {
-                if (response.success.devices) {
-                    router.push('/cabinet/chooseRates');
-                }
-                else {
-                    setInProgress(false)
-                    STATE_API.showPrivateWizard('addDevice');
-                    //TODO : add disabled block
-                }
-                
-            })
-            // .do(() => setInProgress(prev => prev = false))
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success.devices) {
+                        router.push('/cabinet/chooseRates');
+                    }
+                    else {
+                        setInProgress(false)
+                        STATE_API.showPrivateWizard('addDevice');
+                        //TODO : add disabled block
+                    }
+                    
+                }),
+                // .do(() => setInProgress(prev => prev = false))
+                ro.takeUntil(closedSubject)    
+            )
             .subscribe(logger.rx.subscribe('Error in device response'))
         
     }

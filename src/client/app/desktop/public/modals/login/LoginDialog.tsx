@@ -1,5 +1,6 @@
-import * as rx from "rxjs/Rx"
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { Spinner } from '../../components/spinner/Spinner';
 import { img_next, img_activeEye, img_disableEye, img_crossMobile } from '../../../../../resources/images';
@@ -59,8 +60,10 @@ export const LoginDialog = () => {
         setError(null)
         if (checkValidEmail()) {
             CONNECTION.login(createLoginRequest())
-                .do (parseLoginResponse)
-                .takeUntil (closedSubject)
+                .pipe (
+                    ro.tap (parseLoginResponse),
+                    ro.takeUntil (closedSubject)
+                )
                 .subscribe (logger.rx.subscribe ("Error logging in"))
         }
         else {
@@ -98,20 +101,22 @@ export const LoginDialog = () => {
     const handleToManyErrorAttemptsResponse = (response : LoginResponse) => {
         let secondsToWait = Math.round (parseInt (response.tooManyErrorAttempts) / 1000)
         
-        rx.Observable.interval (1000)
-            .map (r => secondsToWait - r)
-            .do (secondsToWait => {
-                
-                if (secondsToWait > 0) {
-                    setError(prev => prev = `Повторить можно через ${secondsToWait} ${convertEndingOfNoun(secondsToWait)}`);
-                }
-                else {
-                    setInProgress(prev => prev = false)
-                    setError(null)
-                }
-            })
-            .takeWhile (secondsToWait => secondsToWait > 0)
-            .takeUntil (closedSubject)
+        rx.interval (1000)
+            .pipe (
+                ro.map (r => secondsToWait - r),
+                ro.tap (secondsToWait => {
+                    
+                    if (secondsToWait > 0) {
+                        setError(prev => prev = `Повторить можно через ${secondsToWait} ${convertEndingOfNoun(secondsToWait)}`);
+                    }
+                    else {
+                        setInProgress(prev => prev = false)
+                        setError(null)
+                    }
+                }),
+                ro.takeWhile (secondsToWait => secondsToWait > 0),
+                ro.takeUntil (closedSubject)
+            )
             .subscribe (logger.rx.subscribe ("Error logging in"))
     }
 

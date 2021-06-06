@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as rx from "rxjs/Rx"
-import * as rxo from "rxjs/operators"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { DurationModel, DURATION_MEASURE } from './generated/proto.web';
 
 export const hasWebApi = () => {
@@ -185,8 +185,9 @@ export class Logger {
     
     public readonly rx = {
         retry : (message: string) => (errors: rx.Observable<Error>) => errors
-            .pipe (rxo.tap (error => this.error(message, error)))
-            .pipe (rxo.delay (1000)),
+            .pipe (ro.tap (error => this.error(message, error)))
+            .pipe (ro.delay (1000)
+        ),
         subscribe: (message : string) => {
             return {
                 next: () => {},

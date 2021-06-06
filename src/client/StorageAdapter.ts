@@ -1,4 +1,4 @@
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
 
 import { nothingToNull, Logger } from "./utils";
 import { ListDevicesResponse, GetAbonentResponse } from './generated/proto.web';
@@ -27,10 +27,10 @@ class StorageAdapter {
         const result = this.getFromStore<GetAbonentResponse.SuccessModel>(this.STORE_ABONENT_INFO);
 
         if (result) {
-            return rx.Observable.of(result)
+            return rx.of(result)
         }
         else {
-            return rx.Observable.empty()
+            return rx.EMPTY
         }
     }
 
@@ -38,10 +38,10 @@ class StorageAdapter {
         const result = this.getFromStore<ListDevicesResponse.SuccessModel.DeviceModel[]>(this.STORE_DEVICES);
 
         if (result) {
-            return rx.Observable.of(result)
+            return rx.of(result)
         }
         else {
-            return rx.Observable.empty()
+            return rx.EMPTY
         }
     }
     public readonly deleteDevice = (deviceId : string) => {
@@ -56,10 +56,10 @@ class StorageAdapter {
         const result = this.getFromStore <string>(this.STORE_EMAIL);
 
         if (result) {
-            return rx.Observable.of(result)
+            return rx.of(result)
         }
         else {
-            return rx.Observable.empty ()
+            return rx.EMPTY
         }
     }
 
@@ -67,10 +67,10 @@ class StorageAdapter {
         const result = this.getFromStore<boolean>(this.DOCUMENT_UPLOADED);
 
         if (result) {
-            return rx.Observable.of(result);
+            return rx.of(result);
         } 
         else {
-            return rx.Observable.empty();
+            return rx.EMPTY
         }
     }
 

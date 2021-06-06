@@ -1,5 +1,6 @@
-import * as rx from "rxjs/Rx"
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { Spinner } from '../../components/spinnerPayment/Spinner';
 import { CONNECTION } from '../../../../../Connection';
@@ -38,113 +39,49 @@ export const WaitForPayment = () => {
 
         let lastState = WAIT_STATE.WAITING_FOR_PAYMENT
         
-        rx.Observable.of ({})
-            .concatMap (() => createGetPaymentResponse ()
-            .map (response => {
-                
-                if (response.notReady) {
-                    setPaymentStatus(prev => prev = 'Ожидается платеж')
-                    return WAIT_STATE.WAITING_FOR_PAYMENT
-                }
-                else if (response.paymentNotFound) {
-                    handlePaymentStatusResponse('Платеж не найден');
-                    return WAIT_STATE.PAYMENT_NOT_FOUND
-                }
-                else if (response.success.deviceId?.value) {
-                    handlePaymentStatusResponse('Устройство создано');
-                    return WAIT_STATE.DEVICE_CREATED
-                }
-                else if (response.success) {
-                    handlePaymentStatusResponse('Платеж получен');
-                    return WAIT_STATE.PAYMENT_RECEIVED
-                }
-                else {
-                    setPaymentStatus(prev => prev = 'Ожидается платеж')
-                    return WAIT_STATE.WAITING_FOR_PAYMENT
-                }
-            })
-            .do (state => {
-                lastState = state
-            }))
-            .delay (1000)
-            .repeat (10)
-            .takeWhile (repeat => repeat == WAIT_STATE.WAITING_FOR_PAYMENT)
-            .takeUntil (rx.Observable.timer (3000))
-            .defaultIfEmpty (lastState)
-            .delay (1000)
-            .do (() => backToCabinet())
-            .takeUntil (closedSubject)
-            .subscribe(logger.rx.subscribe('Error in createGetPaymentRequest'))
+        rx.of ({})
+            .pipe (
+                ro.concatMap (() => createGetPaymentResponse ()
+                .pipe (
+                    ro.map (response => {
+                    
+                        if (response.notReady) {
+                            setPaymentStatus(prev => prev = 'Ожидается платеж')
+                            return WAIT_STATE.WAITING_FOR_PAYMENT
+                        }
+                        else if (response.paymentNotFound) {
+                            handlePaymentStatusResponse('Платеж не найден');
+                            return WAIT_STATE.PAYMENT_NOT_FOUND
+                        }
+                        else if (response.success.deviceId?.value) {
+                            handlePaymentStatusResponse('Устройство создано');
+                            return WAIT_STATE.DEVICE_CREATED
+                        }
+                        else if (response.success) {
+                            handlePaymentStatusResponse('Платеж получен');
+                            return WAIT_STATE.PAYMENT_RECEIVED
+                        }
+                        else {
+                            setPaymentStatus(prev => prev = 'Ожидается платеж')
+                            return WAIT_STATE.WAITING_FOR_PAYMENT
+                        }
+                    }),
+                    ro.tap (state => {
+                        lastState = state
+                    })
+                )
+            ),
+            ro.delay (1000),
+            ro.repeat (10),
+            ro.takeWhile (repeat => repeat == WAIT_STATE.WAITING_FOR_PAYMENT),
+            ro.takeUntil (rx.timer (3000)),
+            ro.defaultIfEmpty (lastState),
+            ro.delay (1000),
+            ro.tap (() => backToCabinet()),
+            ro.takeUntil (closedSubject)
+        )
+        .subscribe(logger.rx.subscribe('Error in createGetPaymentRequest'))
     }
-
-    // let attempt = 0;
-
-    // const getPaymentResponse = () => {
-
-    //     if (window.location.href.endsWith ("paymentNotFound")) {
-    //         const response : GetPaymentResponse = {
-    //             paymentNotFound : {},
-    //         }
-
-    //         return rx.Observable.of (response)
-    //             .delay (1000)
-    //     }
-
-    //     else if (window.location.href.endsWith ("balancePayment")) {
-    //         if (attempt === 0) {
-    //             const response : GetPaymentResponse = {
-    //                 notReady : {}
-    //             }
-    //             attempt++
-    //             return rx.Observable.of (response)
-    //         }
-    //         else {
-    //             const response : GetPaymentResponse = {
-    //                 success : {
-    //                     paymentReceived : {
-    //                         waitForDevice : false
-    //                     }
-    //                 }
-    //             }
-    //             return rx.Observable.of (response)
-    //         }
-    //     }
-    //     else if (window.location.href.endsWith ("devicePayment")) {
-    //         if (attempt == 0) {
-    //             const response : GetPaymentResponse = {
-    //                 notReady : {}
-    //             }
-    //             attempt++
-    //             return rx.Observable.of (response)
-    //         }
-    //         else if (attempt == 1) {
-    //             const response : GetPaymentResponse = {
-    //                 success : {
-    //                     paymentReceived : {
-    //                         waitForDevice : true
-    //                     }
-    //                 }
-    //             }
-    //             attempt++
-    //             return rx.Observable.of (response)
-    //         }
-    //         else {
-    //             const response : GetPaymentResponse = {
-    //                 success : {
-    //                     deviceCreated : {}
-    //                 }
-    //             }
-    //             attempt++
-    //             return rx.Observable.of (response)
-    //         }
-    //     } 
-    //     else {
-    //         const response : GetPaymentResponse = {
-    //             notReady : {}
-    //         }
-    //         return rx.Observable.of(response)
-    //     }
-    // }
 
     const createGetPaymentRequest = () : GetPaymentRequest => ({
         url : location

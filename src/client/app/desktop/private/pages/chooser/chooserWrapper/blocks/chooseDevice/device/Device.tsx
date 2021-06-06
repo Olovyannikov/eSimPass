@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import Router from 'next/router';
 import { CONNECTION } from '../../../../../../../../../Connection';
 
@@ -30,10 +32,12 @@ export const Device = (props : DeviceModel) => {
         setInProgress(prev => prev = true)
 
         CONNECTION.buyPack(createBuyPackRequest ())
-            .do(parseBuyPackResponse)
-            .delay(500)
-            .do(() => Router.push('/cabinet'))
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(parseBuyPackResponse),
+                ro.delay(500),
+                ro.tap(() => Router.push('/cabinet')),
+                ro.takeUntil(closedSubject) 
+            )
             .subscribe(logger.rx.subscribe('Error in device response'))
         
     }

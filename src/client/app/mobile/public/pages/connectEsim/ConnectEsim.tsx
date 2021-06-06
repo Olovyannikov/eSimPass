@@ -1,5 +1,6 @@
 import * as React from 'react';
-
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 import { Button } from '../../components/buttons/Button';
 import { img_secondStep, img_stepBack } from '../../../../../resources/images';
 import Router from 'next/router';
@@ -23,15 +24,17 @@ export const ConnectEsim = () => {
         setInProgress(prev => prev = true);
 
         CONNECTION.createDevicePayment(createDevicePaymentRequest())
-            .do(response => {
-                if (response.success) {
-                    handleSuccessResponse(response);
-                }   
-                else {
-                    handlePlainError('Ошибка при пополнении баланса')
-                }
-            })
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success) {
+                        handleSuccessResponse(response);
+                    }   
+                    else {
+                        handlePlainError('Ошибка при пополнении баланса')
+                    }
+                }),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in get device payment request'));
 
     }

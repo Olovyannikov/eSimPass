@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as rx from "rxjs/Rx"
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { ListDevicesResponse } from '../../../../../../../generated/proto.web';
 import { EmptyPackage } from './emptyPackage/EmptyPackage';
@@ -51,14 +52,16 @@ export const Packages = () => {
 
 
         CONNECTION.listDevices({})
-            .do(response => {
-                if (response.success) {
-                    
-                    setPackages(prev => prev = filterActivePackages(response.success.devices))
-                }
-                setInProgress(prev => prev = false)
-            })
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => {
+                    if (response.success) {
+                        
+                        setPackages(prev => prev = filterActivePackages(response.success.devices))
+                    }
+                    setInProgress(prev => prev = false)
+                }),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [])

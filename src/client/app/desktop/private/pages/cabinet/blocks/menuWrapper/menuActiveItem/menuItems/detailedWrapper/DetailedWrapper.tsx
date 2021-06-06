@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { CONNECTION } from '../../../../../../../../../../Connection';
 import { waitForClose, Logger } from '../../../../../../../../../../utils';
@@ -18,14 +20,16 @@ export const DetailedWrapper = () => {
     React.useEffect(() => {
         
         CONNECTION.listCharges(createListChargesRequest())
-            .do(response => {
+            .pipe (
+                ro.tap(response => {
                 
-                if (response.success) {
-                    handleSuccessResponse(response)
-                }
-
-            })
-            .takeUntil(closedSubject)
+                    if (response.success) {
+                        handleSuccessResponse(response)
+                    }
+    
+                }),
+                ro.takeUntil(closedSubject)                    
+            )
             .subscribe(logger.rx.subscribe('Error in charges response'))
             
     }, [])

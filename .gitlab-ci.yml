@@ -2,7 +2,7 @@ image: node:14.16.0-alpine3.11
 
 variables:
     CI: "use"
-    TAG: registry.gmdp.io/glonassmobile/toesim/web
+    TAG: registry.gmdp.io/glonassmobile/mvne/project/esimpass/web
 
 default:
   before_script:
@@ -38,7 +38,7 @@ publish_master:
     script:
         - cd build
         - export DOCKER_TAG=$TAG:latest
-        - docker build -t $DOCKER_TAG .
+        - docker build --build-arg NPMRC="$npmrc" -t $DOCKER_TAG .
         - docker push $DOCKER_TAG
 
 publish_release:
@@ -52,7 +52,7 @@ publish_release:
         - version="${CI_BUILD_REF_NAME/release\//}"    
         - cd build
         - export DOCKER_TAG=$TAG:$version
-        - docker build -t $DOCKER_TAG .
+        - docker build --build-arg NPMRC="$npmrc" -t $DOCKER_TAG .
         - docker push $DOCKER_TAG
 
 deploy_master:
@@ -67,8 +67,8 @@ deploy_master:
         - helm upgrade -i app
             --set reload=$(date -u +%Y-%m-%d_%H:%M:%S)
             --set version=latest
-            --set dns=toesim-dev.stand.gmdp.io
-            -n toesim-web-dev
+            --set dns=esimpass-dev.stand.gmdp.io
+            -n esimpass-web-dev
             ./src/helm
 
 deploy_release:
@@ -84,6 +84,6 @@ deploy_release:
         - helm upgrade -i app
             --set reload=$(date -u +%Y-%m-%d_%H:%M:%S)
             --set version=$version
-            --set dns=toesim-test.stand.gmdp.io
-            -n toesim-web-test
+            --set dns=esimpass-test.stand.gmdp.io
+            -n esimpass-web-test
             ./src/helm            

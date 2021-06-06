@@ -4,6 +4,7 @@ import { Country } from "./country/Country";
 import { Logger, nothingToNull, waitForClose } from '../../../../../../../../../utils';
 import { CONNECTION } from "Connection";
 import { STATE_API } from "redux/StateApi";
+import * as ro from "rxjs/operators"
 
 
 interface Props {
@@ -24,8 +25,10 @@ export const Chooser = (props : Props) => {
 
     React.useEffect(() => {
         CONNECTION.listRates({})
-            .do(response => setAllRates(prev => prev = response.success.rates))
-            .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(response => setAllRates (rates => rates = response.success.rates)),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in received list rates'))
 
     }, [])

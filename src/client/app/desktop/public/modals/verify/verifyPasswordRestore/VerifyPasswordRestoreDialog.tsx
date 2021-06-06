@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { CONNECTION } from '../../../../../../Connection';
 import { VerifyPasswordRestoreRequest, VerifyPasswordRestoreResponse } from '../../../../../../generated/proto.web';
@@ -24,8 +26,10 @@ export const VerifyPasswordRestoreDialog = () => {
     React.useEffect(() => {
         
         CONNECTION.verifyPasswordRestore(createVerifyPasswordRestoreRequest())
-        .do(parseVerifyPasswordRestoreResponse)
-        .takeUntil(closedSubject)
+            .pipe (
+                ro.tap(parseVerifyPasswordRestoreResponse),
+                ro.takeUntil(closedSubject)
+            )
         .subscribe(logger.rx.subscribe('Error verify in'))
         
     }, [])

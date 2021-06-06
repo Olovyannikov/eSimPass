@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as rx from "rxjs"
+import * as ro from "rxjs/operators"
 
 import { GetDocumentPhotoRequest, GetDocumentPhotoResponse } from '../../../../../../../../../../../../../generated/proto.web';
 import { waitForClose, Logger } from '../../../../../../../../../../../../../utils';
@@ -21,17 +23,19 @@ export const ShowPasportImage = (props : PassportModel) => {
     React.useEffect(() => {
         
         CONNECTION.getDocumentPhoto(createGetDocumentPhotoRequest())
-            .do((response) => {
+            .pipe (
+                ro.tap((response) => {
 
-                if (response.success) {
-                    handleSuccessResponse(response)
-                }
-                else if (response.documentIsNotLoaded) {
-                    //TODO!
-                }
-            })
-            .do(() => setInProgress(prev => prev = false))
-            .takeUntil(closedSubject)
+                    if (response.success) {
+                        handleSuccessResponse(response)
+                    }
+                    else if (response.documentIsNotLoaded) {
+                        //TODO!
+                    }
+                }),
+                ro.tap(() => setInProgress(prev => prev = false)),
+                ro.takeUntil(closedSubject)
+            )
             .subscribe(logger.rx.subscribe('Error in device response'))
 
     }, [])
