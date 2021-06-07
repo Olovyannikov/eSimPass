@@ -40,36 +40,11 @@ export const Navbar = () => {
                             setAbonentInfo(prev => prev = info)
                         }
                     }),
+                    ro.tap(() => setIsMounted(true)),
                     ro.takeUntil(closedSubject)
                 )
         )
         .subscribe(logger.rx.subscribe('Error in receiving abonent info'))
-
-            setIsMounted(true)
-        // STORAGE.getEmail ()
-        //     .concat (CONNECTION.getAbonent({})
-        //         .map (response => response.success.email )
-        //     )
-        //     .do(email => {
-        //         STORAGE.storeEmail (email)
-        //         setEmail(prev => prev = email)
-
-        //     })
-        //     .takeUntil(closedSubject)
-        //     .subscribe(logger.rx.subscribe('Error in navbar'))
-
-
-        // STORAGE.getDocumentUploaded()
-        //     .concat(CONNECTION.getAbonent({})
-        //         .map(response => checkFilledPassportData(response))
-        //     )
-        //     .do(documentUploaded => {
-        //         STORAGE.storeDocumentUploaded(documentUploaded)
-        //         setDocumentUploaded(prev => prev = documentUploaded)
-        //     })
-        //     .takeUntil(closedSubject)
-        //     .subscribe(logger.rx.subscribe('Error in navbar'))
-
             
     }, [])
 

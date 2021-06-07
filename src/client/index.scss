@@ -16,6 +16,10 @@ body, html {
         background: #29d !important;
         height: 0.2vw;
     }
+    ::-webkit-scrollbar { 
+        display: none;
+        width: 0;
+    }
     
     #__next {
         height: 100%;
@@ -25,8 +29,8 @@ body, html {
         @import './app/Application.scss';
         
     }
-}
 
+}
 
 // SPINNER
 

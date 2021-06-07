@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { STORAGE } from '../../StorageAdapter';
+// import { STORAGE } from '../../StorageAdapter';
 
-const DesktopApplication = () => {
+// const DesktopApplication = () => {
 
 //     const [isAuth, setIsAuth] = React.useState(false);
 
@@ -17,7 +17,7 @@ const DesktopApplication = () => {
         
 //     }, [])
    
-}
+// }
 
-export default DesktopApplication
+// export default DesktopApplication
  

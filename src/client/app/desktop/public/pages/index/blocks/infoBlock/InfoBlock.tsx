@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { img_visa, img_mir, img_masterCard } from "../../../../../../../resources/images";
 import Link from 'next/link';
+import { STATE_API } from "redux/StateApi";
 
 export const InfoBlock = () => {
 
@@ -9,7 +10,7 @@ export const InfoBlock = () => {
         <div className="InfoBlock">
             <div className="left-info-block">
                 <Link href='/terms_of_use'><a className="privacy">Пользовательское соглашение</a></Link>
-                <p className="privacy">Устройства поддерживающие eSIM</p>
+                <p onClick={() => STATE_API.showPublicWizard('checkDevice')} className="privacy">Устройства поддерживающие eSIM</p>
                 <Link href='/refund_conditions'><a className="privacy">Условия возврата денежных средств</a></Link>
                 <Link href='/payment_security_rules'><a className="privacy">Правила оплаты и безопасность платежей</a></Link>
                 <p className="requisites">ООО “ГЛОНАСС МОБАЙЛ”</p>
