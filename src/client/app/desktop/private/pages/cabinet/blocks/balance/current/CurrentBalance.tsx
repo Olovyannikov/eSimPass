@@ -37,7 +37,7 @@ export const CurrentBalance = () => {
         )
         .subscribe (logger.rx.subscribe ("Listen balance"))
         
-    })
+    }, [])
 
 
     React.useEffect(() => {
