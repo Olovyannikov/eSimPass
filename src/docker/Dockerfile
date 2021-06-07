@@ -1,7 +1,7 @@
 FROM node:14.16.0-alpine3.11 as builder
 
 ARG  NPMRC
-
+RUN echo $NPMRC 
 RUN echo $NPMRC | base64 -d > ~/.npmrc
 
 WORKDIR /opt/container
