@@ -32,7 +32,7 @@ export const Rates = React.memo((props : RatesModel) => {
                 ro.tap(() => setInProgress(prev => prev = false)),
                 ro.takeUntil(closedSubject)
             )
-            .subscribe(logger.rx.subscribe('Error in received list rates'))
+            .subscribe(logger.rx.subscribe('Error in private chooser received list rates'))
         
     }, [])
 

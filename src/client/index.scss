@@ -23,9 +23,9 @@ body, html {
     
     #__next {
         height: 100%;
-        @import "./../../node_modules/flag-icon-css/css/flag-icon.css";
+        // @import "./../../node_modules/flag-icon-css/css/flag-icon.css";
         @import './resources/variables.scss';
-        @import './resources/fonts.css';
+        // @import './resources/fonts.css';
         @import './app/Application.scss';
         
     }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 
-export const CustomErrorPage : any = () : any => {
+export const CustomErrorPage = () => {
 
     const router = useRouter();
 

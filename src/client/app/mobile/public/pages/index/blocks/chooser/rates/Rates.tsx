@@ -28,13 +28,18 @@ export const Rates = (props : RatesModel) => {
     const [inProgress, setInProgress] = React.useState<boolean>(false);
     
     React.useEffect(() => {
+
         CONNECTION.listRates({})
             .pipe (
-                ro.tap(response => setAllRates (rates => rates = response.success.rates)),
+                ro.tap(response => {
+                    if (response.success) {
+                        setAllRates (rates => rates = response.success.rates)
+                    }
+                }),
                 ro.tap(() => setInProgress(prev => prev = false)),
                 ro.takeUntil(closedSubject)
             )
-            .subscribe(logger.rx.subscribe('Error in received list rates'))
+            .subscribe(logger.rx.subscribe('Error in received mobile list rates'))
         
     }, [])
 
