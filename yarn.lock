@@ -46,15 +46,15 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@glonassmobile/codebase-web@1.2.125":
-  version "1.2.125"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-1.2.125.tgz#6b8530663e2e1a07ca49a46033dd2bcc9b96c114"
-  integrity sha512-kacaDv24tc67AMNQnydiAG5tjc13T/l0nA7rodc3ZkXw7XXuSMYlf1d5+eMeBRT//OHh7+rcttVlHeZcih0Npw==
+"@glonassmobile/codebase-web@1.2.126":
+  version "1.2.126"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase-web/-/codebase-web-1.2.126.tgz#54947d706f4dff3c8fce5200a88a76b26478fce4"
+  integrity sha512-LljyZp8KwMRkpembPs+vFrQIDizdGZNF74XVKiIv5wSxw7Uc11jZcIL0Udq+0vKliEmhYe4kfno3VfOIrAA9yw==
 
-"@glonassmobile/codebase@1.2.125":
-  version "1.2.125"
-  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.2.125.tgz#42cc00d8d7bf7a1f8f24f68c60d6378ee0220a8b"
-  integrity sha512-JPL5Q9bG8WOA0ZvboRQa89jWkbKPUdI5x8U9dERxYRBHlXr3+LmLjfOX8gSvt5pxpg0+Q92mVEfrRKwKCJy6cA==
+"@glonassmobile/codebase@1.2.126":
+  version "1.2.126"
+  resolved "https://nexus.gmdp.io/repository/npm/@glonassmobile/codebase/-/codebase-1.2.126.tgz#326f9fad63a8718d9b69599fe26f7261fd42a09c"
+  integrity sha512-YBAPLCC4crbASuHBq9fYyLJSNs7IIAhDdmJQxSd+I6nRLPN3yk0MovYEEUuF56N/cdwubvZBGpWsFxbcoh0JLQ==
   dependencies:
     "@grpc/proto-loader" "0.6.2"
     axios "0.21.1"
