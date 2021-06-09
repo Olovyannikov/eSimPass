@@ -8,11 +8,11 @@
         "start": "next start"
     },
     "devDependencies": {
-        "@types/react": "17.0.9",
+        "@types/react": "17.0.10",
         "@types/react-datepicker": "3.1.8",
-        "@types/react-dom": "17.0.6",
+        "@types/react-dom": "17.0.7",
         "@types/react-redux": "7.1.16",
-        "@types/react-router": "5.1.14",
+        "@types/react-router": "5.1.15",
         "@types/react-router-dom": "5.1.7",
         "@types/redux": "3.6.31",
         "@types/uuid": "8.3.0",
@@ -32,8 +32,8 @@
         "next-images": "1.7.0",
         "sass": "1.34.1",
 
-        "@glonassmobile/codebase": "1.2.122",
-        "@glonassmobile/codebase-web": "1.2.122",
+        "@glonassmobile/codebase": "1.2.125",
+        "@glonassmobile/codebase-web": "1.2.125",
         "typescript": "4.3.2",
 
         "nprogress": "0.2.0",
