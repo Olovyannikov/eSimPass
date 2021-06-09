@@ -56,7 +56,7 @@ export const LoginDialog = () => {
 
     const handleLogin = () => {
         setInProgress(prev => prev = true);
-        
+
         setError(null)
         if (checkValidEmail()) {
             CONNECTION.login(createLoginRequest())

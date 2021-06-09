@@ -35,6 +35,13 @@ export class Connection extends WebClientBase {
 
         const url = this.getUrl (path)
 
+        const jsonResultSelector = (res : unknown) => {
+            if(typeof res === 'string') {
+              return JSON.parse(res);
+            }
+            return res;
+        }
+
         return rxaj.ajax ({
             url,
             body: JSON.stringify(request),
@@ -74,7 +81,7 @@ export class Connection extends WebClientBase {
                         window.location.reload ()
                     }
                     else {
-                        return rx.of (response.response)
+                        return rx.of (jsonResultSelector(response.response))
                     }
                 }
                 else {

@@ -6,11 +6,7 @@ import Main, { getServerSideProps as getListRates } from '..';
 import { GetServerSideProps } from 'next';
 import { ListRatesResponse } from '../../client/generated/proto.web';
 
-interface IndexModel {
-    listRates : ListRatesResponse.SuccessModel.RateModel[]
-}
-
-const Index = ({ listRates } : IndexModel) => {
+const Index = () => {
 
     const router = useRouter();
 
@@ -18,10 +14,6 @@ const Index = ({ listRates } : IndexModel) => {
 
         if (router.query) {
             STATE_API.showPublicWizard('verifyPasswordRestore');
-        }
-
-        if (listRates) {
-            STATE_API.setListRates(listRates)
         }
 
     }, [])

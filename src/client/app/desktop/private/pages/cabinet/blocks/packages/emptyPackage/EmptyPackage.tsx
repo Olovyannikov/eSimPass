@@ -29,11 +29,9 @@ export const EmptyPackage = () => {
                     else {
                         setInProgress(false)
                         STATE_API.showPrivateWizard('addDevice');
-                        //TODO : add disabled block
                     }
                     
                 }),
-                // .do(() => setInProgress(prev => prev = false))
                 ro.takeUntil(closedSubject)    
             )
             .subscribe(logger.rx.subscribe('Error in device response'))

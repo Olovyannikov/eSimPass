@@ -6,26 +6,25 @@ import { img_arrowDown, img_activeArrowDown } from 'resources/images';
 interface SelectProps {
     disabled? : boolean;
     text : string;
+    defaultText : string;
     options?: string[];
+    setValue? : React.Dispatch<React.SetStateAction<string>>
 }
 
 export const Select = (props : SelectProps) => {
 
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
-    const [hasChoose, setHasChoose] = React.useState<boolean>(false);
-    const [choosenType, setChoosenType] = React.useState<string>(null)
 
     const dropDownEvent = () => setIsOpen(prev => prev = !prev);
 
     const handleClickOption = (text : string) => {
-        dropDownEvent()
-        setHasChoose(prev => prev = true);
-        setChoosenType(prev => prev = text)
+        dropDownEvent();
+        props.setValue(text);
     }
 
     const renderArrowImg = () : string => isOpen ? img_activeArrowDown : img_arrowDown;
 
-    const renderText = () => hasChoose ? choosenType : props.text;
+    const renderText = () => props.text ? props.text : props.defaultText;
 
     const renderMainClass = () => {
         if (props.disabled) {
@@ -39,7 +38,7 @@ export const Select = (props : SelectProps) => {
 
     const activeDropDownEvent = () => {
         if (!props.disabled) {
-            dropDownEvent()
+            dropDownEvent();
         }
     }
 

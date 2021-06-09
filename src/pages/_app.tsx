@@ -17,13 +17,6 @@ interface AppModel {
     pageProps : any;
 }
 
-// NProgress.configure({
-//     speed: 800,
-//     easing : 'ease',
-//     showSpinner: false,
-//     // minimum: 0.3,
-// });
-
 const App = ({Component, pageProps} : AppModel) => {
     
     React.useEffect(() => {
@@ -41,7 +34,7 @@ const App = ({Component, pageProps} : AppModel) => {
 
     const protectedRoutes = ['/cabinet', '/cabinet/chooseRates']
 
-    return  ( 
+    return ( 
         <Provider store={STORE}>
             <PrivateRoute protectedRoutes={protectedRoutes}>
                 <Application>

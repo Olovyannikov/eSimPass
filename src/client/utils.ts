@@ -126,31 +126,9 @@ export const unitConventer = (quota : number, used? : number) : ConventerUnitMod
     }
 }
 
-// export const convertDateUntilPackage = (date : string, duration? : DurationModel) => {
-    
-//     const boughtDate = new Date(Number(date))    
-
-//     switch (duration.messure) {
-//         case DURATION_MEASURE.DAY:
-//             return  new Date (boughtDate.setDate(boughtDate.getDate() + 1))
-    
-//         case DURATION_MEASURE:
-//             return new Date (boughtDate.setDate(boughtDate.getDate() + 7))
-
-//         case DURATION_MEASURE:
-//             return new Date (boughtDate.setDate(boughtDate.getDate() + 14))
-        
-//         case DURATION_MEASURE:
-//             return new Date (boughtDate.setDate(boughtDate.getDate() + 31))
-
-//         default:
-//             break;
-//     }
-// }
 
 export const countDaysDuration = (duration : DurationModel) => {
     let countedDays : number = 1;
-    //TODO, ask how to render hours and minutes
 
     if (duration.messure === DURATION_MEASURE.DAY) {
         countedDays = 1 * duration.quantity;

@@ -8,7 +8,6 @@ export default class MyDocument extends Document {
         <Html>
         <Head>
             <link href="./client/resources/fonts.css" as='font' rel="stylesheet"/>
-            <link rel="stylesheet" />
         </Head>
         <body>
           <Main />

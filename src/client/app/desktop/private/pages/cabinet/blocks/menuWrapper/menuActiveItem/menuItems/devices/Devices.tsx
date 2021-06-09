@@ -35,24 +35,6 @@ export const Devices = () => {
             )
             .subscribe(logger.rx.subscribe('Error in device response'))
 
-        // STORAGE.getDevices()
-        //     .concat(CONNECTION.listDevices({})
-        //         .map(response => response.success.devices)
-        //     )
-        //     .do(devices => {
-        //         if (devices) {
-        //             STORAGE.storeDevices(devices)
-        //         }
-        //         else {
-        //             STORAGE.storeDevices([])
-        //         }
-        //         setInProgress(prev => prev = false)
-        //         setPackages(prev => prev = devices)
-
-        //     })
-        //     .takeUntil(closedSubject)
-        //     .subscribe(logger.rx.subscribe('Error in device response'))
-
     }, [])
 
     const doRenderFilteredDevice = () => {
