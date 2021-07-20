@@ -1,0 +1,79 @@
+//$yellowLk: rgba(255, 240, 90, 1);
+//$yellowLkOpacity: rgba(250, 240, 90, 0.6);
+//$cabinetBG: linear-gradient(300.97deg, #C4FFF9 -24.36%, #003554 99.15%);
+//$textNavLk: rgba(0, 53, 84, 1);
+//$white: rgba(255, 255, 255, 1);
+//$bgTransparent: transparent;
+//$notActiveBg: rgba(26, 72, 85, 0.6);
+//$progressColorActive: rgba(214, 36, 36, 1);
+
+@import "mixins";
+
+/* Colors */
+
+$color-off-white: #fff;
+$color-background: #f7f7fc;
+$color-input: #eff0f7;
+$color-line: #d9dbe9;
+$color-placeholder: #b1b3c0;
+$color-label: #808192;
+$color-body: #5d5b66;
+$color-ash: #262626;
+$color-off-black: #000;
+
+$color-green-300: #b9f348;
+
+/* Offset */
+$container-width: 1280px;
+$gutter: 20px;
+$small-offset: 12px;
+$rare-offset: 16px;
+$middle-offset: 24px;
+$strong-offset: 32px;
+$big-offset: 40px;
+
+/* Fonts */
+$font-family: "Roboto", sans-serif;
+
+// Jumbo
+$font-jumbo-1: 900 rem-calc(80) / rem-calc(80) $font-family;
+$font-jumbo-2: 700 rem-calc(72) / rem-calc(78) $font-family;
+$font-jumbo-3: 700 rem-calc(56) / rem-calc(64) $font-family;
+
+// Heading
+$font-heading-1: 700 rem-calc(48) / rem-calc(56) $font-family;
+$font-heading-2: 700 rem-calc(40) / rem-calc(44) $font-family;
+$font-heading-3: 700 rem-calc(36) / rem-calc(40) $font-family;
+$font-heading-4: 700 rem-calc(32) / rem-calc(36) $font-family;
+$font-heading-5: 700 rem-calc(28) / rem-calc(32) $font-family;
+$font-heading-6: 700 rem-calc(24) / rem-calc(28) $font-family;
+
+// Subtitle
+$font-subtitle-l: 500 rem-calc(28) / rem-calc(40) $font-family;
+$font-subtitle-m: 500 rem-calc(24) / rem-calc(36) $font-family;
+$font-subtitle-s: 500 rem-calc(20) / rem-calc(28) $font-family;
+
+// Link
+$font-link-l: 700 rem-calc(18) / rem-calc(34) $font-family;
+$font-link-m: 700 rem-calc(16) / rem-calc(24) $font-family;
+$font-link-s: 700 rem-calc(14) / rem-calc(22) $font-family;
+
+// Body
+$font-body-regular-l: 400 rem-calc(18) / rem-calc(24) $font-family;
+$font-body-regular-m: 400 rem-calc(16) / rem-calc(22) $font-family;
+$font-body-regular-s: 400 rem-calc(14) / rem-calc(20) $font-family;
+$font-body-regular-xs: 400 rem-calc(12) / rem-calc(18) $font-family;
+$font-body-regular-xxs: 400 rem-calc(10) / rem-calc(16) $font-family;
+
+$font-body-medium-l: 500 rem-calc(18) / rem-calc(24) $font-family;
+$font-body-medium-m: 500 rem-calc(16) / rem-calc(24) $font-family;
+$font-body-medium-s: 500 rem-calc(14) / rem-calc(18) $font-family;
+$font-body-medium-xs: 500 rem-calc(12) / rem-calc(18) $font-family;
+$font-body-medium-xxs: 500 rem-calc(10) / rem-calc(16) $font-family;
+
+$font-body-bold-l: 700 rem-calc(18) / rem-calc(24) $font-family;
+$font-body-bold-m: 700 rem-calc(16) / rem-calc(22) $font-family;
+$font-body-bold-s: 700 rem-calc(14) / rem-calc(20) $font-family;
+$font-body-bold-xs: 700 rem-calc(12) / rem-calc(18) $font-family;
+$font-body-bold-xxs: 700 rem-calc(10) / rem-calc(16) $font-family;
+

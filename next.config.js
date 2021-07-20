@@ -2,12 +2,17 @@ const withImages = require('next-images');
 
 module.exports = withImages({
     distDir: 'build/.next',
-    future: {
-        webpack5: true
+    webpack5: true,
+    sassOptions: {
+        prependData: `
+        @import "./src/client/resources/styles/general/variables.scss";
+        @import "./src/client/resources/styles/general/mixins.scss";
+        `,
+        _indentWidth: 4
     },
     webpack: (config, { dev }) => {
 
-        var path = ''
+        let path = ''
         
         if (dev) {
             path = "pages/"

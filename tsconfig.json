@@ -4,7 +4,7 @@
     "emitDecoratorMetadata": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "ES6",
+    "target": "ES5",
     "moduleResolution": "Node",
     "sourceMap": true,
     "module": "commonjs",
@@ -22,7 +22,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "baseUrl": "./src/client/",
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "files": [
     "./src/pages/index.tsx"
@@ -30,9 +30,15 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "next-env.d.ts"
   ],
   "exclude": [
     "src/**/*.proto",
     "node_modules"
+  ],
+  "indent": [
+    true,
+    "spaces",
+    4
   ]
 }

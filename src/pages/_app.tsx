@@ -9,8 +9,7 @@ import PrivateRoute from '../client/context/PrivateRouter';
 
 import "nprogress/nprogress.css";
 import '../../node_modules/flag-icon-css/css/flag-icon.css';
-import '../client/index.scss';
-import '../client/resources/fonts.css';
+import '../client/resources/styles/style.scss';
 
 interface AppModel {
     Component : any;

@@ -1,0 +1,165 @@
+@use "sass:math";
+
+@mixin font-face($font-family, $url, $weight, $style) {
+  @font-face {
+    src: url("../fonts/#{$url}.woff2") format("woff2");
+    font-family: "#{$font-family}";
+    font-weight: #{$weight};
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@mixin xl-block {
+  @media (min-width: (1200px)) {
+    @content;
+  }
+}
+
+@mixin lg-block {
+  @media (min-width: (992px)) {
+    @content;
+  }
+}
+
+@mixin md-block {
+  @media (min-width: (768px)) {
+    @content;
+  }
+}
+
+@mixin sm-block {
+  @media (min-width: (576px)) {
+    @content;
+  }
+}
+
+@mixin custom-breakpoint($val) {
+  @media (min-width: $val) {
+    @content;
+  }
+}
+
+@mixin burger($burger-width, $burger-height, $burger-line-height) {
+  position: relative;
+  border: none;
+  padding: 0;
+  width: $burger-width;
+  height: $burger-height;
+  color: #000;
+  background-color: transparent;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: $burger-line-height;
+    background-color: currentColor;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    top: calc(100% - #{$burger-line-height});
+  }
+
+  &__line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: $burger-line-height;
+    background-color: currentColor;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &.active {
+    &::before {
+      top: 50%;
+      transform: rotate(45deg);
+      transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+    }
+
+    &::after {
+      top: 50%;
+      transform: rotate(-45deg);
+      transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+    }
+
+    .burger__line {
+      transform: scale(0);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+}
+
+@mixin bg-cover {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-v-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-h-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-all-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-all-sb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin btn-reset {
+  margin: 0;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+ 
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@function rem-calc($size) {
+  $remSize: math.div($size, 16);
+
+  @return #{$remSize}rem;
+}

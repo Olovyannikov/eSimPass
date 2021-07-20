@@ -1,2 +1,4 @@
-@import '../variables.scss';
-@import '../../index.scss';
+@import "general/fonts.css";
+@import "general/mixins";
+@import 'general/variables';
+@import 'general/scaffoldings';

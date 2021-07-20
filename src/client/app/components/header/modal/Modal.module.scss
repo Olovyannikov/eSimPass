@@ -1,0 +1,76 @@
+.appModal {
+  position: absolute;
+  padding-top: $small-offset;
+  z-index: 2;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #b9f348 linear-gradient(180deg, rgba(185, 243, 72, 0) 50%, #b9f348 77.54%);
+  display: block;
+  transform: translateY(1000%);
+  transition: transform 0.8s ease;
+
+  &.active {
+    transform: translateY(0);
+  }
+}
+
+.burger {
+  @include burger(14px, 14px, 2px);
+  position: absolute;
+  right: 20px;
+
+  &::before, &::after {
+    border-radius: 50px;
+  }
+}
+
+.modalTop {
+  display: flex;
+
+  p {
+    margin: 0;
+    margin-bottom: $strong-offset;
+    padding: 0 30px;
+    text-align: center;
+    font: $font-subtitle-s;
+    color: $color-ash;
+  }
+}
+
+.modalPhone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, $color-green-300 10%, transparent);
+  }
+}
+
+.appstores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  li {
+    margin-bottom: $rare-offset;
+
+    a {
+      display: flex;
+      align-items: center;
+      padding-left: $small-offset;
+      width: 159px;
+      height: 42px;
+      background-color: #000;
+      border-radius: 8px;
+    }
+  }
+}

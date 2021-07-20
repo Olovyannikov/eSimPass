@@ -1,0 +1,171 @@
+.header {
+  padding-top: 17px;
+  padding-bottom: 17px;
+
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include xl-block {
+      justify-content: flex-start;
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    @include xl-block {
+      margin-right: $big-offset;
+    }
+  }
+
+  .links {
+    li {
+      white-space: nowrap;
+      text-align: center;
+      padding-bottom: $middle-offset;
+
+      @include xl-block {
+        padding-bottom: 0;
+        text-align: left;
+        &:not(:last-child) {
+          margin-right: $big-offset;
+        }
+
+        &.last {
+          margin-right: $big-offset;
+
+          @include custom-breakpoint(1320px) {
+            margin-left: 22%;
+            a {
+              color: $color-ash;
+            }
+          }
+        }
+      }
+    }
+
+    a {
+      color: $color-ash;
+      font: $font-body-medium-m;
+
+      @include xl-block {
+        color: $color-placeholder;
+
+        &.active {
+          color: $color-ash;
+        }
+      }
+    }
+  }
+
+  .burger {
+    @include burger(24px, 14px, 2px);
+
+    &::before, &::after {
+      border-radius: 50px;
+    }
+
+    .burger__line {
+      border-radius: 50px;
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  width: calc(100% - #{$gutter * 2});
+  top: 230px;
+  left: 50%;
+  transform: translateX(-1000%);
+  transition: transform 0.8s ease-in-out;
+
+  a {
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    @include xl-block {
+      flex-direction: row;
+    }
+  }
+
+  &.active {
+    transform: translateX(-50%);
+  }
+
+  @include xl-block {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    transform: unset;
+  }
+}
+
+.about {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-top: 187px;
+  gap: 32px;
+
+  a {
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: $font-body-medium-m;
+    color: $color-ash;
+    background-color: $color-green-300;
+    width: 100%;
+    padding: $rare-offset $middle-offset;
+    border-radius: 12px;
+
+    svg {
+      margin-left: 5px;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    @include xl-block {
+      background-color: transparent;
+    }
+  }
+
+  button {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font: $font-body-medium-m;
+    color: $color-ash;
+
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  @include xl-block {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+.right {
+  @include xl-block {
+    display: none;
+  }
+}

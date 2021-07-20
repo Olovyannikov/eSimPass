@@ -1,0 +1,171 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.1;
+  font-family: 'Roboto', serif;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+  color: $color-off-black;
+  background: $color-background;
+
+  // setup style of nprogress bar
+  #nprogress .bar {
+    background: #29d !important;
+    height: 0.2vw;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  #__next {
+    height: 100%;
+  }
+}
+
+// SPINNER
+
+@keyframes lds-ring {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes lds-ring {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.list-reset {
+  @include list-reset;
+}
+
+.is-outer {
+  position: relative !important; // stylelint-disable-line declaration-no-important
+  left: -9999px !important; // stylelint-disable-line declaration-no-important
+}
+
+.site-container {
+  overflow: hidden;
+}
+
+.is-hidden {
+  display: none !important; // stylelint-disable-line declaration-no-important
+}
+.error {
+  border: 2px #ff4019 solid !important; // stylelint-disable-line declaration-no-important
+}
+
+.btn-reset {
+  @include btn-reset;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 $gutter;
+  max-width: calc(#{$container-width} + #{$gutter} * 2); // ширина контейнера от края до края 1280 + паддинги по 15px = 1280px
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  //gap: var(--grid-gap);
+  //
+  //@include mobile {
+  //  grid-template-columns: repeat(4, 1fr);
+  //}
+}
+
+//.title {
+//  margin: 0 0 var(--main-offset);
+//  font: var(--middle-high-bold);
+//  color: var(--color-main);
+//}
+
+@import "mixins";
+
+//.input {
+//  border: none;
+//  border-radius: 4px;
+//  padding: 0 var(--second-offset);
+//  width: 100%;
+//  height: 60px;
+//  font: var(--middle-book);
+//  color: var(--color-main);
+//  background-color: var(--color-white);
+//
+//  &::placeholder {
+//    color: var(--color-gray);
+//  }
+//}
+
+.form-label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.js-validate-error-label {
+  order: -1;
+}
