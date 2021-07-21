@@ -2,44 +2,74 @@
   position: absolute;
   padding-top: $small-offset;
   z-index: 2;
-  height: 100vh;
   top: 0;
   left: 0;
   right: 0;
+  height: 0;
   background: #b9f348 linear-gradient(180deg, rgba(185, 243, 72, 0) 50%, #b9f348 77.54%);
-  display: block;
-  transform: translateY(1000%);
+  transform: translateX(-1000%);
   transition: transform 0.8s ease;
 
   &.active {
-    transform: translateY(0);
+    transform: translateX(0);
+    height: 100vh;
+  }
+
+  @include xl-block {
+    padding-top: $strong-offset;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    border-radius: 22px;
+    overflow: hidden;
+
+    &.active {
+      max-width: 846px;
+      height: 348px;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @media (orientation: landscape) and (max-width: 592px) {
+    display: flex;
+  }
+}
+
+.container {
+  @include xl-block {
+    padding: $strong-offset 0 0;
+    display: flex;
+  }
+
+  @media (orientation: landscape) and (max-width: 592px) {
+    display: flex;
+    align-items: center;
   }
 }
 
 .burger {
-  @include burger(14px, 14px, 2px);
+  @include burger(18px, 18px, 2px);
   position: absolute;
-  right: 20px;
+  right: 10px;
+  top: 20px;
 
   &::before, &::after {
     border-radius: 50px;
+  }
+
+  @include xl-block {
+    top: $big-offset;
+    right: $big-offset;
   }
 }
 
 .modalTop {
   display: flex;
-
-  p {
-    margin: 0;
-    margin-bottom: $strong-offset;
-    padding: 0 30px;
-    text-align: center;
-    font: $font-subtitle-s;
-    color: $color-ash;
-  }
 }
 
 .modalPhone {
+  max-height: 580px;
+  padding-top: 100px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -52,7 +82,19 @@
     right: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, $color-green-300 10%, transparent);
+    background-image: linear-gradient(to top, $color-green-300 5%, rgba(185,243,72, 0)) ;
+
+    @include xl-block {
+      background: 0;
+    }
+  }
+
+  @include xl-block {
+    padding: 0 80px 0 60px;
+  }
+
+  @media (orientation: landscape) and (max-width: 592px) {
+    padding-top: 140px;
   }
 }
 
@@ -60,9 +102,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  li {
-    margin-bottom: $rare-offset;
 
+  li {
     a {
       display: flex;
       align-items: center;
@@ -72,5 +113,73 @@
       background-color: #000;
       border-radius: 8px;
     }
+
+    &:not(:last-child) {
+      margin-bottom: $rare-offset;
+    }
+  }
+
+  @include xl-block {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.modalMessage {
+  p {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0 30px;
+    padding-top: $small-offset;
+    text-align: center;
+    font: $font-subtitle-s;
+    color: $color-ash;
+    z-index: -1;
+
+    @include xl-block {
+      position: static;
+      display: block;
+      text-align: left;
+      padding: 0;
+      max-width: 328px;
+      margin-bottom: $rare-offset;
+    }
+  }
+
+  @include xl-block {
+    max-width: 50%;
+    padding-left: $middle-offset;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      width: 50%;
+      height: 100%;
+      background: $color-off-white;
+    }
+  }
+}
+
+.appDownload {
+  @include xl-block {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.qrcode {
+  display: none;
+  width: 180px;
+  height: 180px;
+  margin-right: $middle-offset;
+
+  @include xl-block {
+    display: block;
   }
 }

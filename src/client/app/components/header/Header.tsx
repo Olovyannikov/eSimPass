@@ -2,16 +2,25 @@ import {EIcon, Login, Logo} from "../icons";
 import s from './Header.module.scss';
 import Link from "next/link";
 import {Container} from "../container/Container";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Modal} from "./modal/Modal";
+import {Registration} from "./registration/Registration";
 
 export const Header = () => {
+
+    const firstRender = useRef(null);
 
     const [isActive, setActive] = useState<string>('');
     const [isAppModalActive, setAppModalActive] = useState<boolean>(false);
 
     const toggleModal = () => {
         setAppModalActive(!isAppModalActive);
+    }
+
+    const [isRegistrationActive, setRegistrationActive] = useState<boolean>(false);
+
+    const toggleRegistration = () => {
+        setRegistrationActive(!isRegistrationActive);
     }
 
     useEffect(() => {
@@ -35,30 +44,36 @@ export const Header = () => {
     }
 
     return (
-        <header className={s.header}>
-            <Container className={s.container}>
-                <div className={s.left}>
-                    <div className={s.logo}>
-                        <Logo/>
+        <>
+            <header ref={firstRender} className={s.header}>
+                <Container className={s.container}>
+                    <div className={s.left}>
+                        <Link href={'/'}>
+                            <a className={s.logo}>
+                                <Logo/>
+                            </a>
+                        </Link>
                     </div>
-                </div>
-                <div className={`${s.menu} ${isActive ? s.active : ''}`}>
-                    <ul className={`list-reset ${s.links}`}>
-                        <li><Link href="#"><a className={s.active}>Устройства и тарифы</a></Link></li>
-                        <li><Link href="#"><a>Как подключить?</a></Link></li>
-                        <li><Link href="#"><a>Особенности E-SIM</a></Link></li>
-                        <li className={s.last}><Link href="#"><a>О нас</a></Link></li>
-                    </ul>
-                    <div className={s.about}>
-                        <button onClick={toggleModal} className={'btn-reset'}><EIcon/>eSIM App</button>
-                        <Link href="#"><a>Личный кабинет<Login/></a></Link>
+                    <div className={`${s.menu} ${isActive ? s.active : ''}`}>
+                        <ul className={`list-reset ${s.links}`}>
+                            <li><Link href="#"><a className={s.active}>Устройства и тарифы</a></Link></li>
+                            <li><Link href="#"><a>Как подключить?</a></Link></li>
+                            <li><Link href="#"><a>Особенности E-SIM</a></Link></li>
+                            <li className={s.last}><Link href="#"><a>О нас</a></Link></li>
+                        </ul>
+                        <div className={s.about}>
+                            <button onClick={toggleModal} className={'btn-reset'}><EIcon/>eSIM App</button>
+                            <a onClick={toggleRegistration}><>Личный кабинет<Login/></>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div className={s.right}>
-                    <button onClick={toggleBurger} className={`${s.burger} ${isActive ? s.active : ''}`}><span className={s.burger__line}></span></button>
-                </div>
-            </Container>
+                    <div className={s.right}>
+                        <button onClick={toggleBurger} className={`${s.burger} ${isActive ? s.active : ''}`}><span
+                            className={s.burger__line}></span></button>
+                    </div>
+                </Container>
+            </header>
             <Modal isActive={isAppModalActive} toggle={toggleModal}/>
-        </header>
+            <Registration isActive={isRegistrationActive} toggle={toggleRegistration}/></>
     )
 }

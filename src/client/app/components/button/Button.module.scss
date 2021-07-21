@@ -1,0 +1,58 @@
+/* Button style */
+
+.btn {
+  @include btn-reset;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-ash;
+  border-radius: $small-offset;
+  gap: $small-offset;
+}
+
+/* Button colors */
+
+.primary {
+  background: $color-green-300;
+}
+
+.secondary {
+
+}
+
+/* Button sizes */
+
+.small {
+  padding: $small-offset 22px;
+  font: $font-link-s;
+  font-size: rem-calc(16);
+}
+
+.medium {
+  padding: $rare-offset $middle-offset;
+  font: $font-link-m;
+  font-size: rem-calc(18);
+}
+
+.large {
+  padding: $gutter $strong-offset;
+  font: $font-link-s;
+  font-size: rem-calc(16);
+}
+
+.huge {
+  padding: 19px 32px;
+  font: $font-link-l;
+  font-size: rem-calc(20);
+}
+
+/* disabled style */
+
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  color: $color-off-white;
+  background-color: $color-placeholder;
+}

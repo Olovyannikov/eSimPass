@@ -5,7 +5,5 @@ export const PagesHolder = () => {
 
     const router = useRouter();
 
-    if (router.pathname === '/') {
         return <Index/>
-    }
 }
