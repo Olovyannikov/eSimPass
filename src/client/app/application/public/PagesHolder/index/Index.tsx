@@ -1,3 +1,9 @@
+import {DeviceCheck} from "./deviceCheck/DeviceCheck";
+
 export const Index = () => {
-    return (<></>)
+    return (
+        <main className={'main'}>
+            <DeviceCheck/>
+        </main>
+    )
 }

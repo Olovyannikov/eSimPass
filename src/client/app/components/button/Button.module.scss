@@ -3,22 +3,32 @@
 .btn {
   @include btn-reset;
 
-  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: $color-ash;
+  justify-content: center;
   border-radius: $small-offset;
+  width: 100%;
+  color: $color-ash;
   gap: $small-offset;
+  transition: 0.3s ease-in-out;
 }
 
 /* Button colors */
 
 .primary {
   background: $color-green-300;
+
+  &:hover {
+    color: $color-green-300;
+    background: $color-ash;
+  }
 }
 
 .secondary {
+
+}
+
+.text {
 
 }
 
@@ -51,8 +61,8 @@
 /* disabled style */
 
 .btn[disabled] {
-  cursor: not-allowed;
-  opacity: 0.5;
   color: $color-off-white;
   background-color: $color-placeholder;
+  opacity: 0.5;
+  cursor: not-allowed;
 }

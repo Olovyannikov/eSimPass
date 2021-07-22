@@ -1,10 +1,11 @@
-import {EIcon, Login, Logo} from "../icons";
+import {EIcon, LoginIcon, Logo} from "../icons";
 import s from './Header.module.scss';
 import Link from "next/link";
 import {Container} from "../container/Container";
 import {useEffect, useRef, useState} from "react";
 import {Modal} from "./modal/Modal";
 import {Registration} from "./registration/Registration";
+import {Login} from "./login/Login";
 
 export const Header = () => {
 
@@ -12,16 +13,34 @@ export const Header = () => {
 
     const [isActive, setActive] = useState<string>('');
     const [isAppModalActive, setAppModalActive] = useState<boolean>(false);
+    const [isLogin, setLogin] = useState<boolean>(false);
 
     const toggleModal = () => {
         setAppModalActive(!isAppModalActive);
+        document.body.classList.toggle('overlay');
+    }
+
+    const toggleLogin = () => {
+        setLogin(!isLogin);
+        setRegistrationActive(false);
+
+        if (!isRegistrationActive) {
+            document.body.classList.toggle('overlay');
+        }
+    }
+
+    const backButton = () => {
+        setLogin(!isLogin);
+        setRegistrationActive(true);
     }
 
     const [isRegistrationActive, setRegistrationActive] = useState<boolean>(false);
 
     const toggleRegistration = () => {
         setRegistrationActive(!isRegistrationActive);
+        document.body.classList.toggle('overlay');
     }
+
 
     useEffect(() => {
         window.addEventListener('resize', () => {
@@ -29,6 +48,15 @@ export const Header = () => {
                 setActive('');
             }
         });
+
+        document.body.addEventListener('click', (e: any) => {
+            if (e.target.classList.contains('overlay')) {
+                setRegistrationActive(false);
+                setLogin(false);
+                setAppModalActive(false);
+                document.body.classList.remove('overlay');
+            }
+        })
     });
 
     const toggleBurger = () => {
@@ -63,17 +91,20 @@ export const Header = () => {
                         </ul>
                         <div className={s.about}>
                             <button onClick={toggleModal} className={'btn-reset'}><EIcon/>eSIM App</button>
-                            <a onClick={toggleRegistration}><>Личный кабинет<Login/></>
+                            <a onClick={toggleRegistration}><>Личный кабинет<LoginIcon/></>
                             </a>
                         </div>
                     </div>
                     <div className={s.right}>
-                        <button onClick={toggleBurger} className={`${s.burger} ${isActive ? s.active : ''}`}><span
-                            className={s.burger__line}></span></button>
+                        <button onClick={toggleBurger} className={`${s.burger} ${isActive ? s.active : ''}`}>
+                            <span className={s.burger__line}/>
+                        </button>
                     </div>
                 </Container>
             </header>
             <Modal isActive={isAppModalActive} toggle={toggleModal}/>
-            <Registration isActive={isRegistrationActive} toggle={toggleRegistration}/></>
+            <Registration isLogin={toggleLogin} isActive={isRegistrationActive} toggle={toggleRegistration}/>
+            <Login back={backButton} toggle={toggleLogin} isLogin={isLogin}/>
+        </>
     )
 }

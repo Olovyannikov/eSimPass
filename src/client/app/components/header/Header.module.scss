@@ -24,13 +24,14 @@
 
   .links {
     li {
+      padding-bottom: $middle-offset;
       white-space: nowrap;
       text-align: center;
-      padding-bottom: $middle-offset;
 
       @include xl-block {
         padding-bottom: 0;
         text-align: left;
+
         &:not(:last-child) {
           margin-right: $big-offset;
         }
@@ -40,6 +41,7 @@
 
           @include custom-breakpoint(1320px) {
             margin-left: 22%;
+
             a {
               color: $color-ash;
             }
@@ -49,8 +51,8 @@
     }
 
     a {
-      color: $color-ash;
       font: $font-body-medium-m;
+      color: $color-ash;
 
       @include xl-block {
         color: $color-placeholder;
@@ -65,7 +67,8 @@
   .burger {
     @include burger(24px, 14px, 2px);
 
-    &::before, &::after {
+    &::before,
+    &::after {
       border-radius: 50px;
     }
 
@@ -77,9 +80,9 @@
 
 .menu {
   position: absolute;
-  width: calc(100% - #{$gutter * 2});
-  top: 160px;
   left: 50%;
+  top: 160px;
+  width: calc(100% - #{$gutter * 2});
   transform: translateX(-1000%);
   transition: transform 0.8s ease-in-out;
 
@@ -97,20 +100,15 @@
   }
 
   &.active {
-    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 60vh;
+    transform: translateX(-50%);
   }
 
   @include sm-block {
     top: 230px;
-  }
-
-  @media (orientation: landscape) {
-    top: 40px;
-    height: auto;
   }
 
   @include xl-block {
@@ -119,7 +117,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    transform: unset;
+    transform: none;
+  }
+
+  @media (orientation: landscape) {
+    top: 40px;
+    height: auto;
   }
 }
 
@@ -129,19 +132,19 @@
   align-items: center;
 
   a {
-    cursor: pointer;
-    white-space: nowrap;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: $strong-offset;
+    border-radius: 12px;
+    padding: $rare-offset $middle-offset;
+    width: 100%;
     font: $font-body-medium-m;
+    white-space: nowrap;
+    text-align: center;
     color: $color-ash;
     background-color: $color-green-300;
-    width: 100%;
-    padding: $rare-offset $middle-offset;
-    border-radius: 12px;
-    margin-bottom: $strong-offset;
+    cursor: pointer;
 
     svg {
       margin-left: 5px;
@@ -152,16 +155,16 @@
     }
 
     @include xl-block {
-      background-color: transparent;
       margin-bottom: 0;
+      background-color: transparent;
     }
   }
 
   button {
-    white-space: nowrap;
     display: flex;
     align-items: center;
     font: $font-body-medium-m;
+    white-space: nowrap;
     color: $color-ash;
 
     svg {
@@ -170,9 +173,9 @@
   }
 
   @include xl-block {
-    margin: 0;
     display: flex;
     flex-direction: row;
+    margin: 0;
     gap: 40px;
   }
 }

@@ -21,7 +21,14 @@ $color-body: #5d5b66;
 $color-ash: #262626;
 $color-off-black: #000;
 
+// Tech colors
+
 $color-green-300: #b9f348;
+
+// Gradients
+
+$color-gradient-light: linear-gradient(90.2deg, #72eeff 11.9%, #e6ffb5 100%);
+$color-gradient-dark: linear-gradient(90.2deg, #53eaff 11.9%, #b9f348 100%);
 
 /* Offset */
 $container-width: 1280px;
@@ -65,15 +72,16 @@ $font-body-regular-s: 400 rem-calc(14) / rem-calc(20) $font-family;
 $font-body-regular-xs: 400 rem-calc(12) / rem-calc(18) $font-family;
 $font-body-regular-xxs: 400 rem-calc(10) / rem-calc(16) $font-family;
 
+// --medium
 $font-body-medium-l: 500 rem-calc(18) / rem-calc(24) $font-family;
 $font-body-medium-m: 500 rem-calc(16) / rem-calc(24) $font-family;
 $font-body-medium-s: 500 rem-calc(14) / rem-calc(18) $font-family;
 $font-body-medium-xs: 500 rem-calc(12) / rem-calc(18) $font-family;
 $font-body-medium-xxs: 500 rem-calc(10) / rem-calc(16) $font-family;
 
+// --bold
 $font-body-bold-l: 700 rem-calc(18) / rem-calc(24) $font-family;
 $font-body-bold-m: 700 rem-calc(16) / rem-calc(22) $font-family;
 $font-body-bold-s: 700 rem-calc(14) / rem-calc(20) $font-family;
 $font-body-bold-xs: 700 rem-calc(12) / rem-calc(18) $font-family;
 $font-body-bold-xxs: 700 rem-calc(10) / rem-calc(16) $font-family;
-

@@ -1,11 +1,12 @@
 import s from './Button.module.scss';
 import Link from "next/link";
+import {MouseEventHandler} from "react";
 
 interface ButtonModel {
     color?: string;
     size?: string;
     children?: JSX.Element | JSX.Element[] | string;
-    onClick?: VoidFunction;
+    onClick?: VoidFunction | MouseEventHandler;
     isLink?: boolean;
     href?: string;
     disabled?: boolean
@@ -18,6 +19,8 @@ export const Button = (props: ButtonModel) => {
         buttonClass = `${s.primary}`
     } else if (props.color === 'secondary') {
         buttonClass = `${s.secondary}`
+    } else if (props.color === 'text') {
+        buttonClass = `${s.text}`
     }
 
     if (props.size === 'large') {
