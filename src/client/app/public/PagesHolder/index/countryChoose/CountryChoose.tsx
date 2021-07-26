@@ -1,0 +1,129 @@
+import s from './CountryChoose.module.scss';
+import {Container} from "../../../../components/container/Container";
+import {BackArr, Chevron, Preloader} from "../../../../components/icons";
+import {Button} from "../../../../components/button/Button";
+import {useEffect, useState} from "react";
+
+interface CountryChooseModel {
+    title?: string
+}
+
+export const CountryChoose = (props: CountryChooseModel) => {
+
+
+    const [title, setTitle] = useState(props.title);
+    const [data, setData] = useState<any>({
+        "mb": 0,
+        "mbm": 0,
+        "gb": 0,
+        "gbm": 0
+    })
+
+    const [countries, setCountries] = useState([]);
+
+    useEffect(() => {
+        async function load() {
+            const response = await fetch(`http://localhost:4200/countries`)
+            const json = await response.json();
+
+            setTitle(localStorage.getItem('country') || json[0].name);
+            setCountries(json);
+        }
+
+        if (!props.title) {
+            load();
+        }
+    }, []);
+
+    const CountryList = () => {
+
+        return (
+            <ul className={`list-reset ${s.countryList}`}>
+                {countries.map(item =>
+                    <li className={title == item.name ? s.active : ''} key={item.name}>
+                        <button className={'btn-reset'}
+                                onClick={() => {
+                                    setData({
+                                        "mb": item.mb?.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '),
+                                        "mbm": item.mbm?.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '),
+                                        "gb": item.gb?.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '),
+                                        "gbm": item.gbm?.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
+                                    })
+                                    setTitle(item.name);
+                                    localStorage.setItem('country', item.name)
+                                }}>
+                            {item.name}
+                        </button>
+                    </li>
+                )}
+            </ul>
+        )
+    }
+
+    return (
+        <>
+            <section className={s.country}>
+                <Container className={s.container}>
+                    <button className={`btn-reset ${s.countryBtn}`}>
+                    <span className={s.text}>
+                        <span className={s.btnTitle}>Выберите страну</span>
+                        <p className={s.countryName}>{title ? title : <Preloader/>}</p>
+                    </span>
+                        <Chevron/>
+                    </button>
+                    <div className={s.tariffInfo}>
+                        <div className={s.tariffMain}>
+                            <div className={`${s.tariff} ${s.left}`}>
+                                <div className={s.col}>
+                                    <h4>Помегабайтный</h4>
+                                    <p>{data.mb ? data.mb : 0}₽</p>
+                                </div>
+                                <div className={s.col}>
+                                    <h4>100 мб</h4>
+                                    <p>{data.mbm ? data.mbm : 0} ₽</p>
+                                </div>
+                            </div>
+                            <div className={`${s.tariff} ${s.right}`}>
+                                <div className={s.col}>
+                                    <h4>1 гб</h4>
+                                    <p>{data.gb ? data.gb : 0} ₽</p>
+                                </div>
+                                <div className={s.col}>
+                                    <h4>10 гб</h4>
+                                    <p>{data.gbm ? data.gbm : 0} ₽</p>
+                                </div>
+                            </div>
+                        </div>
+                        <Button>Подключить</Button>
+                    </div>
+                    <p className={s.disclaimer}>
+                        Приведена предварительная стоимость без учета колебания курса рубля и euro, актуальные тарифы по
+                        операторам и странам указаны в приложении eSIM pass.
+                    </p>
+                </Container>
+            </section>
+
+            {/* Coutry choose modal */}
+
+            <section className={`${s.countryModal}`}>
+                <Container>
+                    <div className={s.top}>
+                        <div className={s.preheader}>
+                            <button className={`btn-reset`}><BackArr/></button>
+                            <h2>Выберите страну</h2>
+                        </div>
+                        <label>
+                            <input className={`input`} type="search" placeholder={'Найти страну'}/>
+                        </label>
+                    </div>
+                    <div className={s.main}>
+                        <h5 className={s.startLetter}>A</h5>
+                        {countries.length === 0 ? <Preloader/> : <CountryList/>}
+                    </div>
+                </Container>
+            </section>
+        </>
+    )
+}
+
+

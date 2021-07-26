@@ -8,9 +8,9 @@
   justify-content: center;
   border-radius: $small-offset;
   width: 100%;
+  transition: 0.3s ease-in-out;
   color: $color-ash;
   gap: $small-offset;
-  transition: 0.3s ease-in-out;
 }
 
 /* Button colors */
@@ -25,11 +25,18 @@
 }
 
 .secondary {
-
+  border: 1px solid $color-ash;
+  font: $font-body-medium-l;
+  color: $color-ash;
 }
 
 .text {
 
+}
+
+.dark {
+  color: $color-off-white;
+  background: $color-ash;
 }
 
 /* Button sizes */

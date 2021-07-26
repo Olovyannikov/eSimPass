@@ -1,14 +1,11 @@
-
 import * as React from 'react';
-
 import * as grpc from "grpc"
 
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { PublicApplication } from 'app/desktop/public/PublicApplication';
+import { PublicApplication } from 'app/public/PublicApplication';
 import {RateGrpcClient, ListRatesResponse} from "./../client/generated/proto";
 
 const Main = () => {
-
     return <PublicApplication />
 }
 

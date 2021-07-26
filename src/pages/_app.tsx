@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Provider } from "react-redux";
 import { STORE } from "../client/redux/StateApi";
 import Router from 'next/router';
-import Application from '../client/app/Application';
+import {Application} from '../client/app/Application';
 import NProgress from 'nprogress';
 import PrivateRoute from '../client/context/PrivateRouter';
 
@@ -17,7 +17,7 @@ interface AppModel {
 }
 
 const App = ({Component, pageProps} : AppModel) => {
-    
+
     React.useEffect(() => {
         Router.events.on('routeChangeStart', () => NProgress.start());
         Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -33,7 +33,7 @@ const App = ({Component, pageProps} : AppModel) => {
 
     const protectedRoutes = ['/cabinet', '/cabinet/chooseRates']
 
-    return ( 
+    return (
         <Provider store={STORE}>
             <PrivateRoute protectedRoutes={protectedRoutes}>
                 <Application>

@@ -1,0 +1,155 @@
+.device {
+  margin-bottom: 40px;
+  
+  @include xl-block {
+    margin-bottom: calc(60px + 70px);
+  }
+}
+
+.background {
+  position: relative;
+  left: -$gutter;
+  width: calc(100% + #{$gutter * 2});
+
+  img {
+    @include xl-block {
+      border-radius: $middle-offset;
+    }
+  }
+
+  @include xl-block {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    padding-right: $gutter;
+    padding-left: $gutter;
+    width: 100%;
+    max-width: calc(1280px + #{$gutter * 2});
+  }
+}
+
+.container {
+  position: relative;
+
+  @include xl-block {
+    padding-left: 109px;
+    height: 100vh;
+    max-height: 706px;
+  }
+}
+
+.title {
+  margin: 0 0 $middle-offset;
+  font: $font-heading-4;
+  line-height: rem-calc(40);
+  text-align: center;
+
+  @include xl-block {
+    display: none;
+  }
+}
+
+.titleDesktop {
+  display: none;
+  margin: 0 0 36px;
+  padding-top: 116px;
+  font: $font-jumbo-1;
+  line-height: rem-calc(72);
+  text-align: left;
+  color: $color-off-white;
+
+  @include xl-block {
+    display: block;
+  }
+}
+
+.descr {
+  @include xl-block {
+    display: none;
+  }
+}
+
+.descrDesktop {
+  display: none;
+  margin: 0;
+  margin-bottom: $strong-offset;
+  max-width: 626px;
+  font: $font-body-regular-l;
+  color: $color-off-white;
+
+  @include xl-block {
+    display: block;
+  }
+}
+
+.content {
+  @include xl-block {
+    padding-left: 109px;
+  }
+}
+
+.controls {
+  button:not(:last-child) {
+    margin-bottom: $gutter;
+
+    @include xl-block {
+      margin-right: $rare-offset;
+      margin-bottom: 0;
+      width: 202px;
+    }
+  }
+
+  button:last-of-type {
+    @include xl-block {
+      border-color: $color-off-white;
+      width: 302px;
+      color: $color-off-white;
+    }
+  }
+
+  @include xl-block {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.features {
+  display: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    width: 33.3%;
+
+    svg {
+      margin-right: $rare-offset;
+      border-radius: $rare-offset;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      max-width: 60px;
+      background-color: $color-line;
+      object-fit: contain;
+    }
+  }
+
+  span {
+    font: $font-body-regular-m;
+    line-height: rem-calc(24);
+    color: $color-off-black;
+  }
+
+  @include xl-block {
+    position: absolute;
+    left: calc(#{$gutter} + 108px);
+    right: calc(108px + #{$gutter});
+    bottom: -8%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: $rare-offset;
+    padding: $strong-offset;
+    box-shadow: 0 -3px 22px rgba(0, 0, 0, 0.15);
+    background: $color-background;
+  }
+}

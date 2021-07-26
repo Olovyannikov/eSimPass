@@ -210,7 +210,7 @@
 //
 // export default Registration
 
-import { PublicApplication } from 'app/application/public/PublicApplication';
+import { PublicApplication } from 'app/public/PublicApplication';
 import * as React from 'react';
 
 const Login = () => {

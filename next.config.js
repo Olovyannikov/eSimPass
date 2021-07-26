@@ -1,3 +1,4 @@
+require('dotenv').config();
 const withImages = require('next-images');
 
 module.exports = withImages({
@@ -10,10 +11,13 @@ module.exports = withImages({
         `,
         _indentWidth: 4
     },
+    env: {
+        API_URL: process.env.API_URL
+    },
     webpack: (config, { dev }) => {
 
         let path = ''
-        
+
         if (dev) {
             path = "pages/"
         }

@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import {Modal} from "./modal/Modal";
 import {Registration} from "./registration/Registration";
 import {Login} from "./login/Login";
+import {Restore} from "./restore/Restore";
 
 export const Header = () => {
 
@@ -14,6 +15,12 @@ export const Header = () => {
     const [isActive, setActive] = useState<string>('');
     const [isAppModalActive, setAppModalActive] = useState<boolean>(false);
     const [isLogin, setLogin] = useState<boolean>(false);
+    const [isRestoreActive, setRestoreActive] = useState<boolean>(false);
+
+    const toggleRestore = () => {
+        setLogin(!isLogin);
+        setRestoreActive(!isRestoreActive);
+    }
 
     const toggleModal = () => {
         setAppModalActive(!isAppModalActive);
@@ -30,7 +37,8 @@ export const Header = () => {
     }
 
     const backButton = () => {
-        setLogin(!isLogin);
+        setRestoreActive(false);
+        setLogin(false);
         setRegistrationActive(true);
     }
 
@@ -46,6 +54,8 @@ export const Header = () => {
         window.addEventListener('resize', () => {
             if (window.screen.availWidth < 1200) {
                 setActive('');
+                document.body.classList.remove('menu-active');
+                document.body.style.overflow = 'auto';
             }
         });
 
@@ -54,6 +64,7 @@ export const Header = () => {
                 setRegistrationActive(false);
                 setLogin(false);
                 setAppModalActive(false);
+                setRestoreActive(false);
                 document.body.classList.remove('overlay');
             }
         })
@@ -104,7 +115,8 @@ export const Header = () => {
             </header>
             <Modal isActive={isAppModalActive} toggle={toggleModal}/>
             <Registration isLogin={toggleLogin} isActive={isRegistrationActive} toggle={toggleRegistration}/>
-            <Login back={backButton} toggle={toggleLogin} isLogin={isLogin}/>
+            <Login isRestore={toggleRestore} back={backButton} toggle={toggleLogin} isLogin={isLogin}/>
+            <Restore isActive={isRestoreActive} toggle={toggleRestore} back={backButton}/>
         </>
     )
 }

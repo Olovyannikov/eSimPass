@@ -1,5 +1,4 @@
 import s from './Registration.module.scss';
-import Link from "next/link";
 import {Container} from "../../container/Container";
 import {Button} from "../../button/Button";
 import {MouseEventHandler, SetStateAction, useState} from "react";
@@ -13,15 +12,16 @@ interface RegistrationModel {
 
 export const useInput = (type: string, placeholder: string) => {
     const [value, setValue] = useState("");
-    const input = <input className={'input'} value={value} onChange={e => setValue(e.target.value)} placeholder={placeholder} type={type} />;
+    const input = <input className={'input'} value={value} onChange={e => setValue(e.target.value)}
+                         placeholder={placeholder} type={type}/>;
     return [value, input];
 }
 
- export const Registration = (props: RegistrationModel) => {
+export const Registration = (props: RegistrationModel) => {
 
-     const [email, setEmail] = useInput('email', 'Электронная почта');
-     const [password, setPassword] = useInput('password', 'Придумайте пароль');
-     const [passwordRepeat, setpasswordRepeat] = useInput('password', 'Повторите пароль');
+    const [email, setEmail] = useInput('email', 'Электронная почта');
+    const [password, setPassword] = useInput('password', 'Придумайте пароль');
+    const [passwordRepeat, setpasswordRepeat] = useInput('password', 'Повторите пароль');
 
     return (
         <section className={`${s.registration} ${props.isActive ? s.active : ''}`}>
@@ -31,9 +31,9 @@ export const useInput = (type: string, placeholder: string) => {
                     Регистрация и получение виртуальной eSIM
                     <span>Всего за 2 шага!</span>
                 </h2>
-                <Link href={'/'}>
-                    <button onClick={props.toggle} className={`${s.burger} ${s.active}`} aria-label={'Вернуться на главную'}/>
-                </Link>
+                <button onClick={props.toggle} className={`${s.burger} ${s.active}`}
+                        aria-label={'Вернуться на главную'}/>
+
             </div>
             <Container className={s.container}>
                 <p className={s.descr}>

@@ -1,4 +1,4 @@
-.login {
+.restore {
   position: absolute;
   left: 0;
   right: 0;
@@ -26,7 +26,7 @@
     overflow: hidden;
     border-radius: $middle-offset;
     padding-top: 0;
-    height: 466px;
+    height: 406px;
     max-width: 628px;
   }
 }
@@ -69,6 +69,21 @@
 .main {
   padding-top: $middle-offset;
 
+  p {
+    margin: 0 0 $strong-offset;
+    font: $font-body-regular-m;
+    line-height: rem-calc(24);
+    text-align: center;
+    color: $color-off-black;
+
+    @include xl-block {
+      margin-right: auto;
+      margin-bottom: $middle-offset;
+      margin-left: auto;
+      max-width: 484px;
+    }
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -83,7 +98,7 @@
       }
 
       &:last-of-type {
-        margin-bottom: $strong-offset;
+        margin-bottom: $middle-offset;
       }
     }
 

@@ -1,0 +1,146 @@
+.country {
+  padding-bottom: 64px;
+}
+
+.countryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $middle-offset;
+  border-radius: $rare-offset;
+  padding: 9px 27px 8px 20px;
+  width: 100%;
+  text-align: left;
+  background-color: $color-input;
+
+  .btnTitle {
+    display: block;
+    margin-bottom: 1px;
+    font: $font-body-regular-xs;
+    color: $color-label;
+  }
+
+  .countryName {
+    margin: 0;
+    font: $font-body-medium-l;
+    color: $color-ash;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  svg {
+    color: $color-placeholder;
+  }
+}
+
+.tariffMain {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $strong-offset;
+  width: 270px;
+}
+
+.tariff {
+  display: flex;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: $middle-offset;
+  }
+}
+
+.col {
+  min-width: 100px;
+
+  h4 {
+    margin: 0 0 6px;
+    font: $font-body-regular-l;
+    color: $color-ash;
+    opacity: 0.5;
+  }
+
+  p {
+    margin: 0;
+    font: $font-subtitle-m;
+    color: $color-ash;
+  }
+}
+
+.disclaimer {
+  margin: 0;
+  margin-top: $gutter;
+  font: $font-body-regular-xs;
+  color: $color-ash;
+}
+
+/* Modal styles */
+
+.countryModal {
+  .top {
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -$gutter;
+      bottom: 0;
+      width: calc(100% + #{$gutter * 2});
+      height: 1px;
+      background-color: $color-line;
+    }
+  }
+}
+
+.preheader {
+  position: relative;
+  display: flex;
+
+  h2 {
+    margin: 0;
+    margin-bottom: $rare-offset;
+    width: 100%;
+    font: $font-subtitle-s;
+    text-align: center;
+  }
+}
+
+.main {
+  svg {
+    margin: auto;
+    width: 40px;
+    height: 40px;
+  }
+
+  h5 {
+    margin: $middle-offset 0 $small-offset;
+    font: $font-body-regular-l;
+    color: $color-label;
+  }
+
+  .countryList {
+    li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: $rare-offset;
+      height: 48px;
+      margin-bottom: 8px;
+      background-color: $color-off-white;
+
+      button {
+        font: $font-body-medium-l;
+      }
+
+      &.active {
+      }
+      
+      &::after {
+        position: relative;
+      }
+    }
+  }
+}

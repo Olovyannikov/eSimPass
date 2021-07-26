@@ -1,9 +1,11 @@
 .header {
+  margin-bottom: $middle-offset;
   padding-top: 17px;
   padding-bottom: 17px;
 
   .container {
     position: relative;
+    z-index: 3;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -75,6 +77,10 @@
     .burger__line {
       border-radius: 50px;
     }
+  }
+
+  @include xl-block {
+    margin-bottom: $strong-offset;
   }
 }
 

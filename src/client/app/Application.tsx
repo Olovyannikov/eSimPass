@@ -1,28 +1,18 @@
+import s from './Application.module.scss';
+
 import * as React from 'react';
-
-import { MobileApplication } from './mobile/MobileApplication';
 import {Header} from "./components/header/Header";
-import {PagesHolder} from "./application/public/PagesHolder/PagesHolder";
-import {PublicApplication} from "./application/public/PublicApplication";
-
+// import {Footer} from "./components/footer/Footer";
 
 interface ApplicationModel {
-    children? : React.ReactChild
+    children?: React.ReactChild
 }
 
-const Application = (props : ApplicationModel) => {
-
+export const Application = (props: ApplicationModel) => {
     return (
-        <div className='Application'>
-            {/*<div className="Desktop">*/}
-            {/*    {props.children}*/}
-            {/*</div>*/}
-            {/*<div className="Mobile">*/}
-            {/*    <MobileApplication />*/}
-            {/*</div>*/}
-            <PublicApplication/>
+        <div className={s.Application}>
+            <Header/>
+            {props.children}
         </div>
     )
-
 }
-export default Application

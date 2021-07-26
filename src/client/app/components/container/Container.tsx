@@ -5,3 +5,7 @@ export const Container = (props: {children?: JSX.Element|JSX.Element[], classNam
         <div className={`container ${props.className}`}>{props.children}</div>
     )
 }
+
+Container.defaultProps = {
+    className: ''
+}

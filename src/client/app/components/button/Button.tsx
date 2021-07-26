@@ -21,6 +21,8 @@ export const Button = (props: ButtonModel) => {
         buttonClass = `${s.secondary}`
     } else if (props.color === 'text') {
         buttonClass = `${s.text}`
+    } else if (props.color === 'dark') {
+        buttonClass = `${s.dark}`
     }
 
     if (props.size === 'large') {
@@ -51,5 +53,6 @@ export const Button = (props: ButtonModel) => {
 Button.defaultProps = {
     isLink: false,
     size: 'medium',
-    disabled: false
+    disabled: false,
+    color: 'primary'
 }

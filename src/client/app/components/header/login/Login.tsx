@@ -7,6 +7,7 @@ import {useInput} from "../registration/Registration";
 
 interface LoginModel {
     isLogin?: VoidFunction | MouseEventHandler | boolean;
+    isRestore?: MouseEventHandler;
     toggle?: MouseEventHandler;
     back?: MouseEventHandler;
 }
@@ -35,7 +36,7 @@ export const Login = (props: LoginModel) => {
                                 {setPassword}
                             </label>
                             <Button size={'large'} disabled={email == ''} color={'primary'}>Войти в аккаунт</Button>
-                            <Button color={'link'}>Забыли пароль?</Button>
+                            <Button onClick={props.isRestore} color={'link'}>Забыли пароль?</Button>
                         </form>
                     </Container>
                 </div>
