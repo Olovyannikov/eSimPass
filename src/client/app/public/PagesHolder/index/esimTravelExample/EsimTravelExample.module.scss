@@ -188,9 +188,14 @@
   background: $color-ash;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
   transform: translateY(-50%);
+  transition: 0.3s ease-in-out;
 
   svg {
     stroke: $color-off-white;
+  }
+
+  &[disabled] {
+    background-color: $color-label;
   }
 
   @include xl-block {

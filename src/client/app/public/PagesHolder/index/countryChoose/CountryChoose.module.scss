@@ -34,6 +34,10 @@
   svg {
     color: $color-placeholder;
   }
+
+  @include xl-block {
+    display: none;
+  }
 }
 
 .tariffMain {
@@ -41,6 +45,11 @@
   flex-direction: column;
   margin-bottom: $strong-offset;
   width: 270px;
+
+  @include xl-block {
+    padding-right: 109px;
+    width: 100%;
+  }
 }
 
 .tariff {
@@ -49,6 +58,10 @@
 
   &:not(:last-child) {
     margin-bottom: $middle-offset;
+  }
+
+  @include xl-block {
+    width: 350px;
   }
 }
 
@@ -70,15 +83,48 @@
 }
 
 .disclaimer {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    @include xl-block {
+      margin-right: $middle-offset;
+      width: 202px;
+      color: $color-off-white;
+      background: $color-ash;
+    }
+  }
+
+  @include xl-block {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.disclaimerText {
   margin: 0;
   margin-top: $gutter;
   font: $font-body-regular-xs;
   color: $color-ash;
+
+  @include xl-block {
+    margin-top: 0;
+    width: 352px;
+  }
 }
 
 /* Modal styles */
 
 .countryModal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  padding-top: 25px;
+  background: $color-background;
+  transform: translateX(-200%);
+  transition: transform 0.8s ease-in-out;
+
   .top {
     position: relative;
     padding-bottom: 10px;
@@ -92,6 +138,10 @@
       height: 1px;
       background-color: $color-line;
     }
+  }
+
+  &.active {
+    transform: translateX(0);
   }
 }
 
@@ -109,6 +159,9 @@
 }
 
 .main {
+  overflow: scroll;
+  height: 100vh;
+
   svg {
     margin: auto;
     width: 40px;
@@ -126,21 +179,96 @@
       position: relative;
       display: flex;
       align-items: center;
-      padding-left: $rare-offset;
-      height: 48px;
       margin-bottom: 8px;
+      padding-left: $rare-offset;
       background-color: $color-off-white;
 
+      &::after {
+        content: "";
+        position: absolute;
+        right: $rare-offset;
+        border: 1px solid $color-placeholder;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+      }
+
       button {
+        width: 100%;
+        height: 48px;
         font: $font-body-medium-l;
+        text-align: left;
       }
 
       &.active {
-      }
-      
-      &::after {
-        position: relative;
+        &::after {
+          border-width: 6px;
+          border-color: $color-ash;
+        }
       }
     }
+  }
+}
+
+/* Desktop only */
+
+.tariffDesktopTitle {
+  display: none;
+  margin: 0 0 $middle-offset;
+  padding-top: 72px;
+  font: $font-heading-2;
+  color: $color-ash;
+
+  svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  @include xl-block {
+    display: block;
+  }
+}
+
+.container {
+  > svg {
+    position: absolute;
+    z-index: -1;
+    display: none;
+
+    @include xl-block {
+      display: block;
+    }
+  }
+
+  @include xl-block {
+    position: relative;
+    display: flex;
+  }
+}
+
+.desktopList {
+  display: none;
+  margin-right: 183px;
+  padding-left: 109px;
+
+  :global {
+    .input[type="search"] {
+      margin-top: 49px;
+      border: 1px dashed $color-label;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      padding-left: 64px;
+      font: $font-body-regular-l;
+      background-position: 24px 14px;
+      background-color: $color-input;
+
+      &::placeholder {
+        color: $color-label;
+      }
+    }
+  }
+
+  @include xl-block {
+    display: block;
   }
 }

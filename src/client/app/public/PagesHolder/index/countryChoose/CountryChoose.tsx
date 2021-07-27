@@ -1,6 +1,6 @@
 import s from './CountryChoose.module.scss';
 import {Container} from "../../../../components/container/Container";
-import {BackArr, Chevron, Preloader} from "../../../../components/icons";
+import {BackArr, Chevron, Preloader, Ticket} from "../../../../components/icons";
 import {Button} from "../../../../components/button/Button";
 import {useEffect, useState} from "react";
 
@@ -9,6 +9,18 @@ interface CountryChooseModel {
 }
 
 export const CountryChoose = (props: CountryChooseModel) => {
+
+    /* Modal start */
+
+    const [isActive, setActive] = useState<boolean>(false);
+    const toggleModal = () => {
+        setActive(!isActive);
+        window.scrollTo(0,0);
+        document.body.style.overflow = isActive ? '' : 'hidden';
+        isActive ? document.getElementById('country').scrollIntoView() : '';
+    }
+
+    /* Modal end */
 
 
     const [title, setTitle] = useState(props.title);
@@ -22,17 +34,22 @@ export const CountryChoose = (props: CountryChooseModel) => {
     const [countries, setCountries] = useState([]);
 
     useEffect(() => {
-        async function load() {
-            const response = await fetch(`http://localhost:4200/countries`)
-            const json = await response.json();
 
-            setTitle(localStorage.getItem('country') || json[0].name);
-            setCountries(json);
+        try {
+            const load = async () => {
+                const response = await fetch(`http://localhost:4200/countries`)
+                const json = await response.json();
+
+                setTitle(localStorage.getItem('country') || json[0].name);
+                setCountries(json);
+            }
+
+            if (!props.title) {
+                load();
+            }
+        } catch (e) {
         }
 
-        if (!props.title) {
-            load();
-        }
     }, []);
 
     const CountryList = () => {
@@ -61,55 +78,61 @@ export const CountryChoose = (props: CountryChooseModel) => {
     }
 
     return (
-        <>
-            <section className={s.country}>
-                <Container className={s.container}>
-                    <button className={`btn-reset ${s.countryBtn}`}>
+        <section id="country" className={s.country}>
+            <Container className={s.container}>
+                <Ticket/>
+
+                <div className={s.desktopList}>
+                    <input className={`input ${s.desktopSearch}`} type="search" placeholder={'Найти страну'}/>
+
+                </div>
+
+                <button onClick={toggleModal} className={`btn-reset ${s.countryBtn}`}>
                     <span className={s.text}>
                         <span className={s.btnTitle}>Выберите страну</span>
                         <p className={s.countryName}>{title ? title : <Preloader/>}</p>
                     </span>
-                        <Chevron/>
-                    </button>
-                    <div className={s.tariffInfo}>
-                        <div className={s.tariffMain}>
-                            <div className={`${s.tariff} ${s.left}`}>
-                                <div className={s.col}>
-                                    <h4>Помегабайтный</h4>
-                                    <p>{data.mb ? data.mb : 0}₽</p>
-                                </div>
-                                <div className={s.col}>
-                                    <h4>100 мб</h4>
-                                    <p>{data.mbm ? data.mbm : 0} ₽</p>
-                                </div>
+                    <Chevron/>
+                </button>
+                <div className={s.tariffInfo}>
+                    <div className={s.tariffMain}>
+                        <h3 className={s.tariffDesktopTitle}>{title ? title : <Preloader/>}</h3>
+                        <div className={`${s.tariff} ${s.left}`}>
+                            <div className={s.col}>
+                                <h4>Помегабайтный</h4>
+                                <p>{data.mb ? data.mb : 0}₽</p>
                             </div>
-                            <div className={`${s.tariff} ${s.right}`}>
-                                <div className={s.col}>
-                                    <h4>1 гб</h4>
-                                    <p>{data.gb ? data.gb : 0} ₽</p>
-                                </div>
-                                <div className={s.col}>
-                                    <h4>10 гб</h4>
-                                    <p>{data.gbm ? data.gbm : 0} ₽</p>
-                                </div>
+                            <div className={s.col}>
+                                <h4>100 мб</h4>
+                                <p>{data.mbm ? data.mbm : 0} ₽</p>
                             </div>
                         </div>
-                        <Button>Подключить</Button>
+                        <div className={`${s.tariff} ${s.right}`}>
+                            <div className={s.col}>
+                                <h4>1 гб</h4>
+                                <p>{data.gb ? data.gb : 0} ₽</p>
+                            </div>
+                            <div className={s.col}>
+                                <h4>10 гб</h4>
+                                <p>{data.gbm ? data.gbm : 0} ₽</p>
+                            </div>
+                        </div>
                     </div>
-                    <p className={s.disclaimer}>
-                        Приведена предварительная стоимость без учета колебания курса рубля и euro, актуальные тарифы по
-                        операторам и странам указаны в приложении eSIM pass.
-                    </p>
-                </Container>
-            </section>
+                    <div className={s.disclaimer}>
+                        <Button>Подключить</Button>
+                        <p className={s.disclaimerText}>
+                            Приведена предварительная стоимость без учета колебания курса рубля и euro, актуальные тарифы по
+                            операторам и странам указаны в приложении eSIM pass.
+                        </p>
+                    </div>
+                </div>
 
-            {/* Coutry choose modal */}
-
-            <section className={`${s.countryModal}`}>
+            </Container>
+            <div className={`${s.countryModal} ${isActive ? s.active : ''}`}>
                 <Container>
                     <div className={s.top}>
                         <div className={s.preheader}>
-                            <button className={`btn-reset`}><BackArr/></button>
+                            <button onClick={toggleModal} className={`btn-reset`}><BackArr/></button>
                             <h2>Выберите страну</h2>
                         </div>
                         <label>
@@ -121,8 +144,8 @@ export const CountryChoose = (props: CountryChooseModel) => {
                         {countries.length === 0 ? <Preloader/> : <CountryList/>}
                     </div>
                 </Container>
-            </section>
-        </>
+            </div>
+        </section>
     )
 }
 
