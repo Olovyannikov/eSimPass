@@ -6,7 +6,7 @@ import { CONNECTION } from "../../client/Connection";
 import { CreateDevicePaymentResponse, CreateDevicePaymentRequest } from "../../client/generated/proto.web";
 import { img_secondStep, img_stepBack } from "../../client/resources/images";
 import { waitForClose, hasWebApi, Logger } from "../../client/utils";
-import { Button } from '../../client/app/mobile/public/components/buttons/Button';
+// import { Button } from '../../client/app/public/components/buttons/Button';
 
 export const ConnectEsim = () => {
 
@@ -28,7 +28,7 @@ export const ConnectEsim = () => {
                 ro.tap(response => {
                     if (response.success) {
                         handleSuccessResponse(response);
-                    }   
+                    }
                     else {
                         handlePlainError('Ошибка при пополнении баланса')
                     }
@@ -66,7 +66,7 @@ export const ConnectEsim = () => {
             <div className="text-step">Всего два шага для подключения</div>
             <img className='img-step' src={img_secondStep} alt="First Step"/>
             <div className="text-action">Пополните счет на 10₽</div>
-            <Button disabled={inProgress} func={handleConfirmPurchase} className='button-buy' text='Пополнить'/>
+            {/*<Button disabled={inProgress} func={handleConfirmPurchase} className='button-buy' text='Пополнить'/>*/}
             {showError()}
             <img onClick={backToregistration} className='button-back' src={img_stepBack} alt="Back to register"/>
         </div>
