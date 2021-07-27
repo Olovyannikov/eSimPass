@@ -5,12 +5,31 @@ import {Button} from "../../../../components/button/Button";
 import background from '../../../../../resources/img/MainImage@2x.jpg';
 import {FastInternetIcon, Globe, PhoneIcon} from "../../../../components/icons";
 import {Modal} from "./Modal/Modal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const DeviceCheck = () => {
 
     const [isActive, setActive] = useState<boolean>(false);
-    const toggleModal = () => setActive(!isActive);
+    const toggleModal = () => {
+        setActive(!isActive);
+        document.body.classList.toggle('overlay');
+    };
+
+    const [isDeviceModal, setDeviceModal] = useState<boolean>(false);
+    const toggleDevice = () => setDeviceModal(!isDeviceModal);
+
+    const [device, setDevice] = useState<string>('');
+
+    console.log(device)
+
+    useEffect(() => {
+        document.body.addEventListener('click', (e: any) => {
+            if (e.target.classList.contains('overlay')) {
+                setActive(false);
+                document.body.classList.remove('overlay');
+            }
+        })
+    });
 
     return (
         <section className={s.device}>
@@ -55,7 +74,10 @@ export const DeviceCheck = () => {
                     </li>
                 </ul>
             </Container>
-            <Modal toggleModal={toggleModal} isActive={isActive}/>
+            <Modal device={device} setDevice={(e: any) => {
+                setDevice(e.currentTarget.textContent);
+                setDeviceModal(false);
+            }} isDeviceModal={isDeviceModal} toggleDeviceModal={toggleDevice} toggleModal={toggleModal} isActive={isActive}/>
         </section>
     )
 }

@@ -15,6 +15,11 @@
     }
   }
 
+  .left {
+    position: relative;
+    z-index: 2;
+  }
+
   .logo {
     display: flex;
     align-items: center;
@@ -91,6 +96,21 @@
   width: calc(100% - #{$gutter * 2});
   transform: translateX(-1000%);
   transition: transform 0.8s ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -$gutter;
+    top: -30%;
+    z-index: -1;
+    width: calc(100% + #{$gutter * 2});
+    height: 100vh;
+    background: $color-background;
+
+    @include xl-block {
+      display: none;
+    }
+  }
 
   a {
     text-align: center;
