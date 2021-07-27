@@ -1,8 +1,9 @@
 import s from './CountryChoose.module.scss';
 import {Container} from "../../../../components/container/Container";
-import {BackArr, Chevron, Preloader, Ticket} from "../../../../components/icons";
+import {Chevron, Preloader, Ticket} from "../../../../components/icons";
 import {Button} from "../../../../components/button/Button";
 import {useEffect, useState} from "react";
+import {Modal} from "./modal/Modal";
 
 interface CountryChooseModel {
     title?: string
@@ -15,7 +16,7 @@ export const CountryChoose = (props: CountryChooseModel) => {
     const [isActive, setActive] = useState<boolean>(false);
     const toggleModal = () => {
         setActive(!isActive);
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         document.body.style.overflow = isActive ? '' : 'hidden';
         isActive ? document.getElementById('country').scrollIntoView() : '';
     }
@@ -84,7 +85,10 @@ export const CountryChoose = (props: CountryChooseModel) => {
 
                 <div className={s.desktopList}>
                     <input className={`input ${s.desktopSearch}`} type="search" placeholder={'Найти страну'}/>
-
+                    <div className={s.main}>
+                        <h5 className={s.startLetter}>A</h5>
+                        {countries.length === 0 ? <Preloader/> : <CountryList/>}
+                    </div>
                 </div>
 
                 <button onClick={toggleModal} className={`btn-reset ${s.countryBtn}`}>
@@ -121,30 +125,18 @@ export const CountryChoose = (props: CountryChooseModel) => {
                     <div className={s.disclaimer}>
                         <Button>Подключить</Button>
                         <p className={s.disclaimerText}>
-                            Приведена предварительная стоимость без учета колебания курса рубля и euro, актуальные тарифы по
+                            Приведена предварительная стоимость без учета колебания курса рубля и euro, актуальные
+                            тарифы по
                             операторам и странам указаны в приложении eSIM pass.
                         </p>
                     </div>
                 </div>
 
             </Container>
-            <div className={`${s.countryModal} ${isActive ? s.active : ''}`}>
-                <Container>
-                    <div className={s.top}>
-                        <div className={s.preheader}>
-                            <button onClick={toggleModal} className={`btn-reset`}><BackArr/></button>
-                            <h2>Выберите страну</h2>
-                        </div>
-                        <label>
-                            <input className={`input`} type="search" placeholder={'Найти страну'}/>
-                        </label>
-                    </div>
-                    <div className={s.main}>
-                        <h5 className={s.startLetter}>A</h5>
-                        {countries.length === 0 ? <Preloader/> : <CountryList/>}
-                    </div>
-                </Container>
-            </div>
+            <Modal toggleModal={toggleModal}
+                   isActive={isActive}
+                   countryList={<CountryList/>}
+                   countries={countries}/>
         </section>
     )
 }

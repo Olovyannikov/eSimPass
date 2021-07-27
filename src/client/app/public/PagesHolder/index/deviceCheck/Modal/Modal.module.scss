@@ -1,0 +1,9 @@
+.deviceModal {
+  position: absolute;
+  transform: translateX(-200%);
+  transition: 0.8s ease-in-out;
+
+  &.active {
+    transform: translateX(0);
+  }
+}

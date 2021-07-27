@@ -4,8 +4,14 @@ import {Button} from "../../../../components/button/Button";
 // @ts-ignore
 import background from '../../../../../resources/img/MainImage@2x.jpg';
 import {FastInternetIcon, Globe, PhoneIcon} from "../../../../components/icons";
+import {Modal} from "./Modal/Modal";
+import {useState} from "react";
 
 export const DeviceCheck = () => {
+
+    const [isActive, setActive] = useState<boolean>(false);
+    const toggleModal = () => setActive(!isActive);
+
     return (
         <section className={s.device}>
             <Container className={s.container}>
@@ -31,7 +37,7 @@ export const DeviceCheck = () => {
                     </p>
                     <div className={s.controls}>
                         <Button color={'primary'}>Подключить</Button>
-                        <Button color={'secondary'}>Моё устройство подойдёт?</Button>
+                        <Button onClick={toggleModal} color={'secondary'}>Моё устройство подойдёт?</Button>
                     </div>
                 </div>
                 <ul className={`list-reset ${s.features}`}>
@@ -49,6 +55,7 @@ export const DeviceCheck = () => {
                     </li>
                 </ul>
             </Container>
+            <Modal toggleModal={toggleModal} isActive={isActive}/>
         </section>
     )
 }

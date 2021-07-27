@@ -1,0 +1,60 @@
+.countryModal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  padding-top: 25px;
+  width: 100%;
+  background: $color-background;
+  transform: translateX(-200%);
+  transition: transform 0.8s ease-in-out;
+
+  .top {
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -$gutter;
+      bottom: 0;
+      width: calc(100% + #{$gutter * 2});
+      height: 1px;
+      background-color: $color-line;
+    }
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.preheader {
+  position: relative;
+  display: flex;
+
+  h2 {
+    margin: 0;
+    margin-bottom: $rare-offset;
+    width: 100%;
+    font: $font-subtitle-s;
+    text-align: center;
+  }
+}
+
+.main {
+  overflow: scroll;
+  height: 100vh;
+
+  svg {
+    margin: auto;
+    width: 40px;
+    height: 40px;
+  }
+
+  h5 {
+    margin: $middle-offset 0 $small-offset;
+    font: $font-body-regular-l;
+    color: $color-label;
+  }
+}

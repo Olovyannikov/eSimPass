@@ -195,7 +195,7 @@
   }
 
   &[disabled] {
-    background-color: $color-label;
+    opacity: 0.3;
   }
 
   @include xl-block {

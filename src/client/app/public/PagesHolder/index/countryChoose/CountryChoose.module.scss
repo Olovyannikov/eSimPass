@@ -1,5 +1,9 @@
 .country {
   padding-bottom: 64px;
+
+  @include xl-block {
+    padding-bottom: 156px;
+  }
 }
 
 .countryBtn {
@@ -114,13 +118,13 @@
 }
 
 /* Modal styles */
-
 .countryModal {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 3;
   padding-top: 25px;
+  width: 100%;
   background: $color-background;
   transform: translateX(-200%);
   transition: transform 0.8s ease-in-out;
@@ -173,38 +177,38 @@
     font: $font-body-regular-l;
     color: $color-label;
   }
+}
 
-  .countryList {
-    li {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-      padding-left: $rare-offset;
-      background-color: $color-off-white;
+.countryList {
+  li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-left: $rare-offset;
+    background-color: $color-off-white;
 
+    &::after {
+      content: "";
+      position: absolute;
+      right: $rare-offset;
+      border: 1px solid $color-placeholder;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+    }
+
+    button {
+      width: 100%;
+      height: 48px;
+      font: $font-body-medium-l;
+      text-align: left;
+    }
+
+    &.active {
       &::after {
-        content: "";
-        position: absolute;
-        right: $rare-offset;
-        border: 1px solid $color-placeholder;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-      }
-
-      button {
-        width: 100%;
-        height: 48px;
-        font: $font-body-medium-l;
-        text-align: left;
-      }
-
-      &.active {
-        &::after {
-          border-width: 6px;
-          border-color: $color-ash;
-        }
+        border-width: 6px;
+        border-color: $color-ash;
       }
     }
   }
@@ -234,6 +238,7 @@
     position: absolute;
     z-index: -1;
     display: none;
+    width: calc(100% - #{$gutter * 2});
 
     @include xl-block {
       display: block;
@@ -248,12 +253,16 @@
 
 .desktopList {
   display: none;
+  overflow: hidden;
   margin-right: 183px;
   padding-left: 109px;
+  width: calc(302px + 109px);
+  height: 470px;
 
   :global {
     .input[type="search"] {
       margin-top: 49px;
+      margin-bottom: 32px;
       border: 1px dashed $color-label;
       padding-top: 14px;
       padding-bottom: 14px;
@@ -264,6 +273,57 @@
 
       &::placeholder {
         color: $color-label;
+      }
+    }
+  }
+
+  .main {
+    h5 {
+      margin: 0;
+      margin-bottom: 20px;
+      font: $font-heading-6;
+      color: $color-ash;
+    }
+
+    li {
+      margin-bottom: 20px;
+      padding-left: 0;
+      background: transparent;
+
+      &::after {
+        display: none;
+      }
+
+      button {
+        height: 32px;
+        font: $font-subtitle-s;
+        line-height: rem-calc(32);
+        color: $color-label;
+      }
+
+      &.active {
+        width: fit-content;
+
+        &::after {
+          position: absolute;
+          right: -30px;
+          top: 50%;
+          display: block;
+          border: 0;
+          border-radius: 0;
+          background-image: url("data:image/svg+xml,%0A%3Csvg width='13' height='16' viewBox='0 0 13 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM1 9H13V7H1V9Z' fill='black'/%3E%3C/svg%3E%0A");
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          transform: translateY(-50%);
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          width: auto;
+          height: 32px;
+          color: $color-ash;
+        }
       }
     }
   }
