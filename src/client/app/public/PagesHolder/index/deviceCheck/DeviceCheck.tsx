@@ -10,26 +10,21 @@ import {useEffect, useState} from "react";
 export const DeviceCheck = () => {
 
     const [isActive, setActive] = useState<boolean>(false);
-    const toggleModal = () => {
+    const toggleModal = (e: any) => {
+        window.scrollTo(0, 0);
         setActive(!isActive);
         document.body.classList.toggle('overlay');
-    };
-
-    const [isDeviceModal, setDeviceModal] = useState<boolean>(false);
-    const toggleDevice = () => setDeviceModal(!isDeviceModal);
-
-    const [device, setDevice] = useState<string>('');
-
-    console.log(device)
-
-    useEffect(() => {
+        // if (e.target.classList.contains())
         document.body.addEventListener('click', (e: any) => {
-            if (e.target.classList.contains('overlay')) {
+            if (e.target.tagName === 'BODY') {
                 setActive(false);
-                document.body.classList.remove('overlay');
             }
         })
-    });
+    };
+
+
+
+    const [device, setDevice] = useState<string>('');
 
     return (
         <section className={s.device}>
@@ -74,10 +69,14 @@ export const DeviceCheck = () => {
                     </li>
                 </ul>
             </Container>
-            <Modal device={device} setDevice={(e: any) => {
-                setDevice(e.currentTarget.textContent);
-                setDeviceModal(false);
-            }} isDeviceModal={isDeviceModal} toggleDeviceModal={toggleDevice} toggleModal={toggleModal} isActive={isActive}/>
+            <Modal
+                device={device}
+                isActive={isActive}
+                toggleModal={toggleModal}
+                setDevice={(e: any) => {
+                    setDevice(e.currentTarget.textContent);
+                }}
+            />
         </section>
     )
 }

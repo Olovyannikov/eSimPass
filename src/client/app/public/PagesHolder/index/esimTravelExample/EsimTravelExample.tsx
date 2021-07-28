@@ -2,11 +2,8 @@ import s from './EsimTravelExample.module.scss';
 import {Container} from "../../../../components/container/Container";
 import SwiperCore, {Navigation, Pagination} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
-// @ts-ignore
 import sliderImage1 from '../../../../../resources/img/slider-1@2x.jpg';
-// @ts-ignore
 import sliderImage2 from '../../../../../resources/img/slider-2@2x.jpg';
-// @ts-ignore
 import sliderImage4 from '../../../../../resources/img/slider-4@2x.jpg';
 import {Button} from "../../../../components/button/Button";
 import {BackArr} from "../../../../components/icons";
