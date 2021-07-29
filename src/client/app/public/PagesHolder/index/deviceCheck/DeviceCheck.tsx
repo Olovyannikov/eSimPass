@@ -1,7 +1,6 @@
 import s from './DeviceCheck.module.scss';
 import {Container} from "../../../../components/container/Container";
 import {Button} from "../../../../components/button/Button";
-// @ts-ignore
 import background from '../../../../../resources/img/MainImage@2x.jpg';
 import {FastInternetIcon, Globe, PhoneIcon} from "../../../../components/icons";
 import {Modal} from "./Modal/Modal";
@@ -9,22 +8,19 @@ import {useEffect, useState} from "react";
 
 export const DeviceCheck = () => {
 
+    const [device, setDevice] = useState<string>('');
     const [isActive, setActive] = useState<boolean>(false);
+
     const toggleModal = (e: any) => {
         window.scrollTo(0, 0);
         setActive(!isActive);
         document.body.classList.toggle('overlay');
-        // if (e.target.classList.contains())
         document.body.addEventListener('click', (e: any) => {
             if (e.target.tagName === 'BODY') {
                 setActive(false);
             }
         })
     };
-
-
-
-    const [device, setDevice] = useState<string>('');
 
     return (
         <section className={s.device}>

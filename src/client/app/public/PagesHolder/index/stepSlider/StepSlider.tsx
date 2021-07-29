@@ -26,25 +26,28 @@ export const StepSlider = () => {
                     <div className={s.sliderWithImages}>
                         <Swiper
                             updateOnWindowResize={true}
+                            onResize={swiper => swiper.update()}
                             onInit={swiper => {
                                 setStep(1);
                                 setLength(swiper.$wrapperEl[0].childElementCount);
                             }}
                             autoHeight={true}
-                            pagination={{clickable: true}}
                             onSwiper={setFirstSwiper} controller={{control: secondSwiper}}
                             slidesPerView={1}
                             centeredSlides={true}
                             breakpoints={{
                                 1200: {
                                     direction: 'vertical',
-                                    autoHeight: false,
-                                    touchRatio: 0.2
                                 },
                             }}
                         >
-                            < SwiperSlide>
-                                < div className={s.sliderImage}>
+                            <SwiperSlide>
+                                <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
+                                    <img src={iphone2} alt="Как скачать приложение?"/>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
                                     <img src={iphone} alt="Как скачать приложение?"/>
                                 </div>
                             </SwiperSlide>
@@ -55,22 +58,7 @@ export const StepSlider = () => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
-                                    <img src={iphone2} alt="Как скачать приложение?"/>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
-                                    <img src={iphone2} alt="Как скачать приложение?"/>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
-                                    <img src={iphone2} alt="Как скачать приложение?"/>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
-                                    <img src={iphone2} alt="Как скачать приложение?"/>
+                                    <img src={iphone} alt="Как скачать приложение?"/>
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide>
@@ -88,36 +76,34 @@ export const StepSlider = () => {
                             onSwiper={setSecondSwiper}
                             autoHeight={true}
                             onSlideChange={swiper => {
-                                // setStep( swiper.$wrapperEl[0])
-                                swiper.init();
-                                swiper.updateSize()
                             }}
+                            onResize={swiper => swiper.update()}
+                            onReachEnd={swiper => swiper.params.slidesOffsetBefore = -200}
                             slidesPerView={1}
+                            pagination={{clickable: true}}
                             breakpoints={{
                                 1200: {
                                     direction: 'vertical',
-                                    slidesPerView: 'auto',
+                                    slidesPerView: 1.9,
                                     autoHeight: false,
-                                    centeredSlides: true,
                                     slideToClickedSlide: true,
-                                    touchRatio: 0.2,
                                 },
                             }}
                         >
                             <SwiperSlide>
-                             <span className={s.counter}>
-                                Шаг 1/{length}
-                            </span>
+                                 <span className={s.counter}>
+                                    Шаг 1/{length}
+                                </span>
                                 <h3 className={s.slideTitle}>Скачай приложение eSIM pass
                                     и зарегистрируйся в нём.</h3>
                                 <div className={s.sliderContent}>
-                                    <p className={s.sliderText}>Приложение eSIM pass необходимо для подключения и
-                                        управления
-                                        пакетами интернет-трафика.
-                                        Рекомендуем установить приложение заранее до поездки т.к. для этого потребуется,
-                                        чтобы
-                                        ваше
-                                        устройство было подключено к интернету.</p>
+                                    <p className={s.sliderText}>Приложение eSIM pass позволяет быстро работать с
+                                        подключением и управлением пакетами интернет-трафика. В приложении отражается
+                                        текущий баланс, количество оставшегося интернет-трафика и срок действия
+                                        подключенного роумингового пакета. Так же вы можете сделать это и в Личном
+                                        кабинете.</p>
+                                    <p className={s.subTitle}>*Рекомендуем установить приложение заранее до поездки т.к.
+                                        для этого потребуется, чтобы ваше устройство было подключено к интернету. </p>
                                     <div className={s.download}>
                                         <div className={s.qrcode}>
                                             <img src={qr} alt="Скачать приложение. QR-код"/>
@@ -152,48 +138,50 @@ export const StepSlider = () => {
                                 <span className={s.counter}>
                                     Шаг 2/{length}
                                 </span>
-
                                 <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
                                 <div className={s.sliderContent}>
-                                <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в смартфоне
-                                    отсканируй
-                                    камерой уникальный QR-код, который придет на почту.</p>
+                                    <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
+                                        смартфоне
+                                        отсканируй
+                                        камерой уникальный QR-код, который придет на почту.</p>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <span className={s.counter}>
+                                    Шаг 3/{length}
+                                </span>
+                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
+                                <div className={s.sliderContent}>
+                                    <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
+                                        смартфоне
+                                        отсканируй
+                                        камерой уникальный QR-код, который придет на почту.</p>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <span className={s.counter}>
+                                    Шаг 4/{length}
+                                </span>
+                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
+
+                                <div className={s.sliderContent}>
+                                    <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
+                                        смартфоне
+                                        отсканируй
+                                        камерой уникальный QR-код, который придет на почту.</p>
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide>
                             <span className={s.counter}>
-                                Шаг 2/{length}
-                            </span>
-
-                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
-                                <div className={s.sliderContent}>
-                                <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в смартфоне
-                                    отсканируй
-                                    камерой уникальный QR-код, который придет на почту.</p>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <span className={s.counter}>
-                                Шаг 2/{length}
+                                Шаг 5/{length}
                             </span>
                                 <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
 
                                 <div className={s.sliderContent}>
-                                <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в смартфоне
-                                    отсканируй
-                                    камерой уникальный QR-код, который придет на почту.</p>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <span className={s.counter}>
-                                Шаг 2/{length}
-                            </span>
-                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
-
-                                <div className={s.sliderContent}>
-                                <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в смартфоне
-                                    отсканируй
-                                    камерой уникальный QR-код, который придет на почту.</p>
+                                    <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
+                                        смартфоне
+                                        отсканируй
+                                        камерой уникальный QR-код, который придет на почту.</p>
                                 </div>
                             </SwiperSlide>
 
