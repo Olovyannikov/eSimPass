@@ -84,9 +84,12 @@ export const StepSlider = () => {
                             breakpoints={{
                                 1200: {
                                     direction: 'vertical',
-                                    slidesPerView: 1.9,
-                                    autoHeight: false,
+                                    slidesPerView: 'auto',
+                                    slidesPerGroup: 1,
+                                    autoHeight: true,
                                     slideToClickedSlide: true,
+                                    resizeObserver: true,
+                                    centeredSlides: true,
                                 },
                             }}
                         >

@@ -14,7 +14,7 @@
         width: 12px;
         height: 4px;
         background: $color-ash;
-        opacity: 0.2;
+        opacity: 1;
         transition: 0.3s ease-in-out;
 
         &-active {
@@ -224,6 +224,7 @@
       }
 
       .swiper-slide {
+        margin-bottom: -10%;
 
         > div {
           display: none;
@@ -235,7 +236,7 @@
         }
 
         &-active {
-          height: inherit;
+          //height: 450px!important;
 
           h3 {
             font: $font-heading-3;
@@ -248,9 +249,28 @@
           }
         }
 
-        &:not(:last-child) {
-          margin-bottom: 40px;
+        &-prev {
+          margin-bottom: 0%;
         }
+
+
+
+        &:not(:first-child) {
+          margin-top: 15%;
+        }
+
+        &:first-child {
+          margin-top: 0%;
+          margin-bottom: 15%;
+
+          &.swiper-slide-active {
+            margin-bottom: -5%;
+          }
+        }
+      }
+
+      &-next {
+        height: 20px;
       }
     }
   }
