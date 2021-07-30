@@ -250,20 +250,24 @@
         }
 
         &-prev {
-          margin-bottom: 0%;
+          margin-bottom: 0;
+          transform: translateY(148%);
         }
-
-
 
         &:not(:first-child) {
           margin-top: 15%;
-        }
-
-        &:first-child {
-          margin-top: 0%;
-          margin-bottom: 15%;
 
           &.swiper-slide-active {
+            margin-top: 20%;
+          }
+        }
+
+        &:first-of-type {
+          margin-top: -20%;
+          margin-bottom: 0%;
+
+          &.swiper-slide-active {
+            margin-top: -45%;
             margin-bottom: -5%;
           }
         }
