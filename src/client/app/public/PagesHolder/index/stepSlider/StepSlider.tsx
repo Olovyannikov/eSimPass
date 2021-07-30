@@ -6,7 +6,7 @@ import qr from '../../../../../resources/img/qrcode.png';
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Controller, Navigation, Pagination} from 'swiper';
 import {useState} from "react";
-import {AppGallery, Appstore, GooglePlay} from "../../../../components/icons";
+import {AppGallery, Appstore, BackArr, GooglePlay} from "../../../../components/icons";
 import Link from "next/link";
 
 SwiperCore.use([Navigation, Pagination, Controller]);
@@ -188,7 +188,7 @@ export const StepSlider = () => {
                                 </div>
                             </SwiperSlide>
 
-                            <div className={s.controls}></div>
+
                         </Swiper>
                     </div>
                 </div>

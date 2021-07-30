@@ -219,7 +219,6 @@
       .swiper-wrapper {
         display: flex;
         flex-direction: column;
-
         height: 858px !important;
       }
 
@@ -236,8 +235,6 @@
         }
 
         &-active {
-          //height: 450px!important;
-
           h3 {
             font: $font-heading-3;
             color: $color-ash;
@@ -251,23 +248,23 @@
 
         &-prev {
           margin-bottom: 0;
-          transform: translateY(148%);
+          transform: translateY(550%);
         }
 
         &:not(:first-child) {
           margin-top: 15%;
 
           &.swiper-slide-active {
-            margin-top: 20%;
+            margin-top: 70%;
           }
         }
 
         &:first-of-type {
-          margin-top: -20%;
-          margin-bottom: 0%;
+          margin-top: 10% !important;
+          margin-bottom: 0;
 
           &.swiper-slide-active {
-            margin-top: -45%;
+            margin-top: -5%;
             margin-bottom: -5%;
           }
         }
@@ -317,3 +314,5 @@
   line-height: rem-calc(18);
   color: $color-label;
 }
+
+
