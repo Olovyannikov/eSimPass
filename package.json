@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "mock": "json-server -w countries.json -p 4200 -d 1750",
+    "mock": "json-server -w src/client/app/public/PagesHolder/index/countryChoose/countries.json -p 4200 -d 1750",
     "serve": "concurrently \"yarn dev\" \"yarn mock\""
   },
   "devDependencies": {

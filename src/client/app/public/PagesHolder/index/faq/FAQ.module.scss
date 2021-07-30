@@ -1,0 +1,94 @@
+.faq {
+  padding-top: 72px;
+  padding-bottom: 36px;
+
+  @include xl-block {
+    padding-top: 152px;
+    padding-bottom: 88px;
+  }
+}
+
+.title {
+  margin: 0 0 $middle-offset;
+  font: $font-heading-6;
+  text-align: center;
+  color: $color-off-black;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  @include lg-block {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-top: auto;
+  }
+
+  @include lg-block {
+    width: 50%;
+  }
+
+  @include xl-block {
+    &:not(:last-child) {
+      margin: 0;
+    }
+
+    button {
+      width: 302px;
+    }
+
+    &:last-child {
+      button {
+        width: 202px;
+      }
+    }
+  }
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $strong-offset;
+  border-radius: $rare-offset;
+  height: 177px;
+  background-color: $color-input;
+
+  svg {
+    height: 88%;
+  }
+
+  @include md-block {
+    margin-bottom: $big-offset;
+    height: 250px;
+  }
+}
+
+.subtitle {
+  margin: 0 0 $small-offset;
+  font: $font-heading-6;
+  color: $color-ash;
+
+  @include lg-block {
+    font: $font-heading-5;
+  }
+}
+
+.descr {
+  margin: 0 0 $middle-offset;
+  font: $font-body-regular-m;
+  line-height: rem-calc(24);
+  color: $color-off-black;
+  opacity: 0.8;
+}

@@ -6,10 +6,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid transparent;
   border-radius: $small-offset;
   width: 100%;
-  transition: 0.3s ease-in-out;
   color: $color-ash;
+  transition: 0.3s ease-in-out;
   gap: $small-offset;
 }
 

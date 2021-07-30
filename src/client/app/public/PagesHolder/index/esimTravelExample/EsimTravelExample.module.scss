@@ -157,6 +157,10 @@
     .info {
       padding-bottom: 75px;
 
+      @include md-block {
+        padding-bottom: 100px;
+      }
+
       @include xl-block {
         padding-bottom: 108px;
       }

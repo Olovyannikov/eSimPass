@@ -4,6 +4,8 @@ import {Chevron, Preloader, Ticket} from "../../../../components/icons";
 import {Button} from "../../../../components/button/Button";
 import {useEffect, useState} from "react";
 import {Modal} from "./modal/Modal";
+import countriesList from './countries.json';
+import {scrollToTop} from "../../../../components/scrollToTop/ScrollToTop";
 
 interface CountryChooseModel {
     title?: string
@@ -16,13 +18,12 @@ export const CountryChoose = (props: CountryChooseModel) => {
     const [isActive, setActive] = useState<boolean>(false);
     const toggleModal = () => {
         setActive(!isActive);
-        window.scrollTo(0, 0);
+        scrollToTop();
         document.body.style.overflow = isActive ? '' : 'hidden';
-        isActive ? document.getElementById('country').scrollIntoView() : '';
+        isActive ? document.getElementById('country').scrollIntoView({behavior: "smooth"}) : '';
     }
 
     /* Modal end */
-
 
     const [title, setTitle] = useState(props.title);
     const [data, setData] = useState<any>({
@@ -30,19 +31,19 @@ export const CountryChoose = (props: CountryChooseModel) => {
         "mbm": 0,
         "gb": 0,
         "gbm": 0
-    })
+    });
 
-    const [countries, setCountries] = useState([]);
+    const [countries, setCountries] = useState<any>([]);
+    try {
+        console.log(countries[0].name)
+    } catch (e) {}
 
     useEffect(() => {
 
         try {
             const load = async () => {
-                const response = await fetch(`http://localhost:4200/countries`)
-                const json = await response.json();
-
-                setTitle(localStorage.getItem('country') || json[0].name);
-                setCountries(json);
+                setTitle(localStorage.getItem('country') || countries[0]?.name);
+                setCountries(countriesList);
             }
 
             if (!props.title) {
@@ -57,7 +58,7 @@ export const CountryChoose = (props: CountryChooseModel) => {
 
         return (
             <ul className={`list-reset ${s.countryList}`}>
-                {countries.map(item =>
+                {countries.map((item: any) =>
                     <li className={title == item.name ? s.active : ''} key={item.name}>
                         <button className={'btn-reset'}
                                 onClick={() => {
@@ -68,7 +69,8 @@ export const CountryChoose = (props: CountryChooseModel) => {
                                         "gbm": item.gbm?.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
                                     })
                                     setTitle(item.name);
-                                    localStorage.setItem('country', item.name)
+                                    localStorage.setItem('country', item.name);
+                                    window.innerWidth < 1200 ? toggleModal() : ''
                                 }}>
                             {item.name}
                         </button>

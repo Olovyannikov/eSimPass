@@ -6,8 +6,9 @@ import qr from '../../../../../resources/img/qrcode.png';
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Controller, Navigation, Pagination} from 'swiper';
 import {useState} from "react";
-import {AppGallery, Appstore, BackArr, GooglePlay} from "../../../../components/icons";
+import {AppGallery, Appstore, BackArr, CircleBtn, GooglePlay} from "../../../../components/icons";
 import Link from "next/link";
+import {Button} from "../../../../components/button/Button";
 
 SwiperCore.use([Navigation, Pagination, Controller]);
 
@@ -17,10 +18,9 @@ export const StepSlider = () => {
     const [firstSwiper, setFirstSwiper] = useState(null);
     const [secondSwiper, setSecondSwiper] = useState(null);
 
-
     return (
         <section className={s.steps}>
-            <Container>
+            <Container className={s.container}>
                 <h2 className={s.title}>Как подключить eSIM-pass?</h2>
                 <div className={s.content}>
                     <div className={s.sliderWithImages}>
@@ -66,6 +66,11 @@ export const StepSlider = () => {
                                     <img src={iphone2} alt="Как скачать приложение?"/>
                                 </div>
                             </SwiperSlide>
+                            <SwiperSlide>
+                                <div className={`${s.sliderImage} ${s.sliderImageTall}`}>
+                                    <img src={iphone} alt="Как скачать приложение?"/>
+                                </div>
+                            </SwiperSlide>
                         </Swiper>
                     </div>
 
@@ -81,12 +86,17 @@ export const StepSlider = () => {
                             onReachEnd={swiper => swiper.params.slidesOffsetBefore = -200}
                             slidesPerView={1}
                             pagination={{clickable: true}}
+                            navigation={{
+                                nextEl: `.${s.next}`,
+                                prevEl: `.${s.prev}`
+                            }}
                             breakpoints={{
                                 1200: {
                                     direction: 'vertical',
                                     slidesPerView: 'auto',
                                     slidesPerGroup: 1,
-                                    autoHeight: true,
+                                    autoHeight: false,
+                                    spaceBetween: 50,
                                     slideToClickedSlide: true,
                                     resizeObserver: true,
                                     centeredSlides: true,
@@ -153,7 +163,22 @@ export const StepSlider = () => {
                                 <span className={s.counter}>
                                     Шаг 3/{length}
                                 </span>
-                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
+                                <h3 className={s.slideTitle}>Выбери страну поездки, подключи и оплати необходимый пакет интернет-трафика. </h3>
+                                <div className={s.sliderContent}>
+                                    <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
+                                        смартфоне
+                                        отсканируй
+                                        камерой уникальный QR-код, который придет на почту.</p>
+                                </div>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                            <span className={s.counter}>
+                                Шаг 5/{length}
+                            </span>
+                                <h3 className={s.slideTitle}>По прибытию, выбери нужную страну и подключи пакет интернет-трафика.
+                                    </h3>
+
                                 <div className={s.sliderContent}>
                                     <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
                                         смартфоне
@@ -163,36 +188,43 @@ export const StepSlider = () => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <span className={s.counter}>
-                                    Шаг 4/{length}
+                                    Шаг 6/{length}
                                 </span>
-                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
+                                <h3 className={s.slideTitle}>Убедись, что передача данных включена через eSIM.</h3>
 
                                 <div className={s.sliderContent}>
                                     <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
-                                        смартфоне
-                                        отсканируй
-                                        камерой уникальный QR-код, который придет на почту.</p>
+                                        смартфоне отсканируй камерой уникальный QR-код, который придет на почту.</p>
+                                    <div className={s.buttons}>
+                                        <Button>Подключить</Button>
+                                        <Button color={'secondary'}>Моё устройство подойдет?</Button>
+                                    </div>
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide>
-                            <span className={s.counter}>
-                                Шаг 5/{length}
-                            </span>
-                                <h3 className={s.slideTitle}>Заполни в приложении персональные данные.</h3>
+                                <span className={s.counter}>
+                                    Шаг 6/{length}
+                                </span>
+                                <h3 className={s.slideTitle}>Убедись, что передача данных включена через eSIM.</h3>
 
                                 <div className={s.sliderContent}>
                                     <p className={s.sliderText}>Для автоматической настройки виртуальной eSIM в
-                                        смартфоне
-                                        отсканируй
-                                        камерой уникальный QR-код, который придет на почту.</p>
+                                        смартфоне отсканируй камерой уникальный QR-код, который придет на почту.</p>
+                                    <div className={s.buttons}>
+                                        <Button>Подключить</Button>
+                                        <Button color={'secondary'}>Моё устройство подойдет?</Button>
+                                    </div>
                                 </div>
                             </SwiperSlide>
-
-
                         </Swiper>
                     </div>
                 </div>
+                <div className={s.controls}>
+                    <button className={`btn-reset ${s.prev}`}><CircleBtn/></button>
+                    <button className={`btn-reset ${s.next}`}><CircleBtn/></button>
+                </div>
             </Container>
+
         </section>
     )
 }

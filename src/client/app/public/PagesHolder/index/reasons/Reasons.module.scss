@@ -1,0 +1,173 @@
+.reasons {
+  padding-top: 36px;
+
+  @include xl-block {
+    padding-top: 88px;
+    padding-bottom: 74px;
+  }
+}
+
+.title {
+  margin: 0 0 $big-offset;
+  font: $font-heading-6;
+  text-align: center;
+  color: $color-off-black;
+
+  @include xl-block {
+    margin-bottom: 52px;
+    font: $font-heading-3;
+  }
+}
+
+.list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: $big-offset;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: $middle-offset;
+      border-radius: 22px;
+      width: 93px;
+      height: 93px;
+      background-color: $color-input;
+    }
+
+    p {
+      margin: 0;
+      font: $font-body-regular-m;
+      line-height: rem-calc(24);
+      text-align: center;
+    }
+
+    &:nth-last-child(-n+2) {
+      margin-bottom: 0;
+
+      @include xl-block {
+        margin-bottom: 0;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include lg-block {
+      max-width: 328px;
+    }
+
+    @include xl-block {
+      &:not(:nth-child(3n)) {
+        margin-right: 86px;
+      }
+    }
+  }
+
+  + button {
+    display: none;
+    margin: 0 auto;
+    max-width: 461px;
+
+    svg {
+      transform: rotate(90deg);
+    }
+
+    @include xl-block {
+      display: flex;
+      text-align: center;
+    }
+  }
+
+  @include lg-block {
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  @include xl-block {
+    justify-content: flex-start;
+    margin-bottom: 72px;
+  }
+}
+
+.start {
+  position: relative;
+  padding-top: $big-offset;
+  padding-bottom: $big-offset;
+  background-color: $color-green-300;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -$gutter;
+    top: 0;
+    z-index: -1;
+    width: calc(100% + #{$gutter * 2});
+    height: 100%;
+    background-color: $color-green-300;
+
+    @include lg-block {
+      border-radius: 24px;
+    }
+  }
+
+  button:first-child {
+    color: $color-green-300;
+  }
+
+  button {
+    display: flex;
+    width: 100%;
+  }
+
+  h4 {
+    margin: 0 0 $small-offset;
+    width: 100%;
+    font: $font-heading-6;
+    text-align: left;
+    color: $color-off-black;
+
+    @include xl-block {
+      font: $font-subtitle-s;
+    }
+  }
+
+  .controls {
+    display: flex;
+    margin-bottom: $rare-offset;
+    width: 100%;
+    gap: 12px;
+
+    @include xl-block {
+      margin-bottom: 14px;
+
+      button,
+      a {
+        width: 100%;
+        max-width: 144px;
+      }
+    }
+  }
+
+  small {
+    font: $font-body-regular-xs;
+  }
+
+  @include xl-block {
+    position: absolute;
+    right: $gutter;
+    bottom: 1%;
+    padding-top: 28px;
+    padding-bottom: 23px;
+    width: 412px;
+    min-width: 412px;
+  }
+}
