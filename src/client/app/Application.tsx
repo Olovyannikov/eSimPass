@@ -2,6 +2,7 @@ import s from './Application.module.scss';
 
 import * as React from 'react';
 import {Header} from "./components/header/Header";
+import {Footer} from "./components/footer/Footer";
 // import {Footer} from "./components/footer/Footer";
 
 interface ApplicationModel {
@@ -13,6 +14,7 @@ export const Application = (props: ApplicationModel) => {
         <div className={s.Application}>
             <Header/>
             {props.children}
+            <Footer/>
         </div>
     )
 }
