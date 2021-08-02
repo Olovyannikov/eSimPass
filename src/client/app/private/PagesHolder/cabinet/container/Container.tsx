@@ -1,6 +1,6 @@
 export const Container = (props: {children?: JSX.Element|JSX.Element[], className?: string}) => {
     return (
-        <div className={`container ${props.className}`}>{props.children}</div>
+        <div className={`container-cabinet ${props.className}`}>{props.children}</div>
     )
 }
 

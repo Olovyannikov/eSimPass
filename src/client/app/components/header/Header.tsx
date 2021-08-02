@@ -12,7 +12,7 @@ export const Header = () => {
 
     const firstRender = useRef(null);
 
-    const [isActive, setActive] = useState<string>('');
+    const [isActive, setActive] = useState<any>('');
     const [isAppModalActive, setAppModalActive] = useState<boolean>(false);
     const [isLogin, setLogin] = useState<boolean>(false);
     const [isRestoreActive, setRestoreActive] = useState<boolean>(false);
@@ -88,17 +88,20 @@ export const Header = () => {
                 <Container className={s.container}>
                     <div className={s.left}>
                         <Link href={'/'}>
-                            <a className={s.logo}>
+                            <a onClick={() => {
+                                setActive('');
+                                document.body.classList.remove('menu-active')
+                            }} className={s.logo}>
                                 <Logo/>
                             </a>
                         </Link>
                     </div>
                     <div className={`${s.menu} ${isActive ? s.active : ''}`}>
                         <ul className={`list-reset ${s.links}`}>
-                            <li><Link href="#"><a className={s.active}>Устройства и тарифы</a></Link></li>
-                            <li><Link href="#"><a>Как подключить?</a></Link></li>
-                            <li><Link href="#"><a>Особенности E-SIM</a></Link></li>
-                            <li className={s.last}><Link href="#"><a>О нас</a></Link></li>
+                            <li><Link href="#"><a onClick={() => {setActive(''); document.body.classList.remove('menu-active')}} className={s.active}>Устройства и тарифы</a></Link></li>
+                            <li><Link href="#"><a onClick={() => {setActive(''); document.body.classList.remove('menu-active')}}>Как подключить?</a></Link></li>
+                            <li><Link href="#"><a onClick={() => {setActive(''); document.body.classList.remove('menu-active')}}>Особенности E-SIM</a></Link></li>
+                            <li className={s.last}><Link href="/about"><a onClick={() => {setActive(''); document.body.classList.remove('menu-active')}}>О нас</a></Link></li>
                         </ul>
                         <div className={s.about}>
                             <button onClick={toggleModal} className={'btn-reset'}><EIcon/>eSIM App</button>

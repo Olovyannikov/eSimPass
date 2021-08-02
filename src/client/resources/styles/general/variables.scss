@@ -23,6 +23,7 @@ $color-gradient-dark: linear-gradient(90.2deg, #53eaff 11.9%, #b9f348 100%);
 
 /* Offset */
 $container-width: 1280px;
+$cabinet-width: 1024px;
 $gutter: 20px;
 $small-offset: 12px;
 $rare-offset: 16px;
@@ -58,7 +59,7 @@ $font-link-s: 700 rem-calc(14) / rem-calc(22) $font-family;
 
 // Body
 $font-body-regular-l: 400 rem-calc(18) / rem-calc(24) $font-family;
-$font-body-regular-m: 400 rem-calc(16) / rem-calc(22) $font-family;
+$font-body-regular-m: 400 rem-calc(16) / rem-calc(24) $font-family;
 $font-body-regular-s: 400 rem-calc(14) / rem-calc(20) $font-family;
 $font-body-regular-xs: 400 rem-calc(12) / rem-calc(18) $font-family;
 $font-body-regular-xxs: 400 rem-calc(10) / rem-calc(16) $font-family;

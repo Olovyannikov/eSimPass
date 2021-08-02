@@ -57,8 +57,8 @@
     background-color: $color-line;
 
     @include xl-block {
-      left: -$strong-offset;
-      width: calc(100% + #{$strong-offset * 2});
+      left: -$strong-offset + 10px;
+      width: calc(100% + #{$strong-offset + 10px});
       background-image: linear-gradient(to right, $color-line 33%, rgba(255, 255, 255, 0) 0%);
       background-position: bottom;
       background-size: 14px 1px;

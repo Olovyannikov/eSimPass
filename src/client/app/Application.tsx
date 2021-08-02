@@ -12,9 +12,7 @@ interface ApplicationModel {
 export const Application = (props: ApplicationModel) => {
     return (
         <div className={s.Application}>
-            <Header/>
             {props.children}
-            <Footer/>
         </div>
     )
 }
