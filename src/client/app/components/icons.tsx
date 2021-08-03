@@ -956,3 +956,99 @@ export const Watches = () => (
         </defs>
     </svg>
 )
+
+export const GradientBackground = () => (
+    <svg
+        width={570}
+        height={260}
+        viewBox="0 0 570 260"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <g opacity={0.8} filter="url(#prefix__filter0_f)">
+            <g filter="url(#prefix__filter1_f)">
+                <path
+                    d="M218.272 116.479c-21.493 6.643-22.721 11.713-33.446 19.5-20.703 15.031-5.455 24.902-30.062 39.65-50.208 30.094-137.03-64.635-13.537-81.95 77.631-10.886 304.794-13.496 236.312 0-27.349 5.389-53.525 4.82-84.411 9.206-31.876 4.527-52.922 6.815-74.856 13.594z"
+                    fill="url(#prefix__paint0_linear)"
+                />
+            </g>
+            <g filter="url(#prefix__filter2_f)">
+                <path
+                    d="M187.622 134.875c16.92-.814 27.963-5.382 38.704-16.011 21.76-21.53-105.372-28.37-87.667-4.716 11.163 14.914 27.351 21.767 48.963 20.727z"
+                    fill="#48E9FF"
+                />
+            </g>
+            <g filter="url(#prefix__filter3_f)">
+                <path
+                    d="M355.659 121.158c51.54.128 84.819-3.153 116.638-11.498 64.458-16.907-323.96-28.664-267.844-8.108 35.382 12.961 85.373 19.443 151.206 19.606z"
+                    fill="#72EEFF"
+                />
+            </g>
+        </g>
+        <defs>
+            <filter
+                id="prefix__filter0_f"
+                x={0.001}
+                y={6.51}
+                width={557.54}
+                height={252.981}
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+            >
+                <feFlood floodOpacity={0} result="BackgroundImageFix" />
+                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation={39} result="effect1_foregroundBlur" />
+            </filter>
+            <filter
+                id="prefix__filter1_f"
+                x={8.001}
+                y={14.51}
+                width={452.238}
+                height={236.981}
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+            >
+                <feFlood floodOpacity={0} result="BackgroundImageFix" />
+                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation={35} result="effect1_foregroundBlur" />
+            </filter>
+            <filter
+                id="prefix__filter2_f"
+                x={46.961}
+                y={9.289}
+                width={271.879}
+                height={215.689}
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+            >
+                <feFlood floodOpacity={0} result="BackgroundImageFix" />
+                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation={45} result="effect1_foregroundBlur" />
+            </filter>
+            <filter
+                id="prefix__filter3_f"
+                x={108.89}
+                y={0.625}
+                width={460.651}
+                height={210.537}
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+            >
+                <feFlood floodOpacity={0} result="BackgroundImageFix" />
+                <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation={45} result="effect1_foregroundBlur" />
+            </filter>
+            <linearGradient
+                id="prefix__paint0_linear"
+                x1={84.951}
+                y1={185.401}
+                x2={116.877}
+                y2={50.994}
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop stopColor="#B9F348" />
+                <stop offset={1} stopColor="#F3FFDC" />
+            </linearGradient>
+        </defs>
+    </svg>
+)

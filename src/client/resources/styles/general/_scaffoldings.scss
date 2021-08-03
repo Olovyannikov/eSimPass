@@ -55,8 +55,8 @@ body {
   }
 
   &.overlay {
+    position: fixed;
     overflow-y: scroll;
-    position:fixed;
 
     &::after {
       content: "";

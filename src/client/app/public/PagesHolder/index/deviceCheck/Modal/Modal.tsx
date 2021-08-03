@@ -17,6 +17,16 @@ interface ModalModel {
 
 export const Modal = (props: ModalModel) => {
 
+    const [isChosen, setChoose] = useState<boolean>(false);
+    const [selectedItem, setSelectedItem] = useState(-1);
+
+    const handleItemClick = (id: any) => {
+        if (selectedItem !== id) {
+            setSelectedItem(id);
+            setChoose(!isChosen);
+        }
+    }
+
     return (
         <>
             <section className={`${s.deviceModal} ${props.isActive ? s.active : ''}`}>

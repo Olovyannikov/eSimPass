@@ -31,9 +31,11 @@ export const ModalDesktop = () => {
     const handleItemClick = (id: any) => {
         if (selectedItem !== id) {
             setSelectedItem(id);
-            setChoose(!isChosen);
+            setChoose(true);
         }
     }
+
+    console.log(selectedItem)
 
     return (
         <div className={s.mainDesktop}>
@@ -50,24 +52,18 @@ export const ModalDesktop = () => {
             <div className={`${s.pickDevice} ${s.maintainers}`}>
                 <h3 className={s.pickTitle}>2.Выберите производителя</h3>
                 <ul className={`list-reset ${s.maintainerList}`}>
-                    {maintainers.map((item: any, id: any) => (
+                    {isChosen ? maintainers.map((item: any, id: any) => (
                         <li key={id}>
                             <button id={item.name} className={`btn-reset`}>{item.name}</button>
                         </li>
-                    ))}
+                    )) : ''}
                 </ul>
             </div>
 
             <div className={`${s.pickDevice} ${s.deviceList}`}>
                 <h3 className={s.pickTitle}>3.Проверьте устройство</h3>
                 <ul className={`list-reset ${s.maintainerList}`}>
-                    {maintainers.map((item: any, id: any) => {
-                        item.devices.map((device: any) => (
-                            <li key={id}>
-                                {device}
-                            </li>
-                        ))
-                    })}
+
                 </ul>
             </div>
         </div>
