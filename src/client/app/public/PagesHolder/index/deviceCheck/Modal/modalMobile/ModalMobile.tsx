@@ -27,7 +27,6 @@ export const ModalMobile = (props: any) => {
                         <button className={`btn-reset ${s.selectBtn}`} onClick={toggleDevice}>
                             <span className={s.smallTitle}>Выберите устройство</span>
                             <span className={s.deviceName}>{props.device}</span>
-
                             <Chevron/>
                         </button>
                     </>

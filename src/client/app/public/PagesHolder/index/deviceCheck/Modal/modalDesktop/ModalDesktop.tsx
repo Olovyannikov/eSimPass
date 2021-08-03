@@ -41,7 +41,9 @@ export const ModalDesktop = () => {
                 <h3 className={s.pickTitle}>1.Выберите устройство</h3>
                 <div className={s.devices}>
                     {buttons.map((item: any, id: any) => (
-                        <button id={id} key={id} onClick={(e: any) => handleItemClick(e.target.id)} className={`btn-reset ${s.device} ${selectedItem == id ? s.active : ''}`}>{item.icon}<span>{item.text}</span></button>
+                        <button id={id} key={id} onClick={(e: any) => handleItemClick(e.target.id)}
+                                className={`btn-reset ${s.device} ${selectedItem == id ? s.active : ''}`}>{item.icon}<span>{item.text}</span>
+                        </button>
                     ))}
                 </div>
             </div>
@@ -67,7 +69,7 @@ export const ModalDesktop = () => {
                         ))
                     })}
                 </ul>
-        </div>
+            </div>
         </div>
     )
 }
