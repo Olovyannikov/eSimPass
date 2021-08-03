@@ -55,7 +55,8 @@ body {
   }
 
   &.overlay {
-    overflow: hidden !important;
+    overflow-y: scroll;
+    position:fixed;
 
     &::after {
       content: "";
@@ -255,11 +256,4 @@ a {
 
 .js-validate-error-label {
   order: -1;
-}
-
-@media screen and (min-width: 960px) {
-  html {
-    margin-right: 0;
-    margin-left: calc(100vw - 100%);
-  }
 }
