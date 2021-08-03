@@ -51,6 +51,37 @@ export const LoginIcon = () => (
     </svg>
 )
 
+export const LogoutIcon = () => (
+    <svg
+        width={21}
+        height={20}
+        viewBox="0 0 21 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M3.333 7.5L1.111 10l2.223 2.5"
+            stroke="#000"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M1.25 10H12.5"
+            stroke="#000"
+            strokeWidth={2}
+            strokeLinecap="round"
+        />
+        <path
+            d="M7.5 4.167v-2.5h11.667v16.666H7.5v-2.5"
+            stroke="#000"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
 export const Appstore = () => (
     <svg width="115" height="29" viewBox="0 0 115 29" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -578,7 +609,6 @@ export const CircleBtn = () => (
         <line x1="20.0322" y1="12.2676" x2="20.0322" y2="28.0006" stroke="#262626" strokeWidth="2"
               strokeLinecap="round"/>
     </svg>
-
 )
 
 export const Simicon = () => {

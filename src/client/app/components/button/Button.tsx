@@ -9,7 +9,8 @@ interface ButtonModel {
     onClick?: VoidFunction | MouseEventHandler;
     isLink?: boolean;
     href?: string;
-    disabled?: boolean
+    disabled?: boolean;
+    className?: string;
 }
 
 export const Button = (props: ButtonModel) => {
@@ -23,6 +24,8 @@ export const Button = (props: ButtonModel) => {
         buttonClass = `${s.text}`
     } else if (props.color === 'dark') {
         buttonClass = `${s.dark}`
+    } else if (props.color === 'warning') {
+        buttonClass = `${s.warning}`
     }
 
     if (props.size === 'large') {
@@ -33,17 +36,19 @@ export const Button = (props: ButtonModel) => {
         buttonClass += ` ${s.small}`
     } else if (props.size === 'huge') {
         buttonClass += ` ${s.huge}`
+    } else if (props.size === 'badge') {
+        buttonClass += ` ${s.badge}`
     }
 
     if (props.isLink) {
         return (
             <Link href={props.href}>
-                <a className={`${s.btn} ${buttonClass}`}>{props.children}</a>
+                <a className={`${s.btn} ${buttonClass} ${props.className}`}>{props.children}</a>
             </Link>
         )
     } else {
         return (
-            <button disabled={props.disabled} onClick={props.onClick} type={'button'} className={`${s.btn} ${buttonClass}`}>
+            <button disabled={props.disabled} onClick={props.onClick} type={'button'} className={`${s.btn} ${buttonClass} ${props.className}`}>
                 {props.children}
             </button>
         )
@@ -54,5 +59,6 @@ Button.defaultProps = {
     isLink: false,
     size: 'medium',
     disabled: false,
-    color: 'primary'
+    color: 'primary',
+    className: ''
 }
